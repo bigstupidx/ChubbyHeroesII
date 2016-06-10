@@ -1,0 +1,3133 @@
+fileFormatVersion: 2
+guid: f4ef061159990cb4aadf3fc76f7b8996
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: abRTLine_ninja_lf_elbow_line_loc
+    100002: abRTLine_ninja_lf_knee_line_loc
+    100004: abRTLine_ninja_rt_elbow_line_loc
+    100006: abRTLine_ninja_rt_knee_line_loc
+    100008: head_band
+    100010: head_band1
+    100012: head_band1_1
+    100014: head_band1_2
+    100016: head_band1_3
+    100018: head_band1_4
+    100020: head_band1_5
+    100022: head_band1_6
+    100024: head_band1_7
+    100026: head_band1_8
+    100028: head_band2
+    100030: head_band3
+    100032: head_band4
+    100034: head_band5
+    100036: head_band6
+    100038: head_band7
+    100040: head_band8
+    100042: head_band9
+    100044: ninja
+    100046: ninja_charVars
+    100048: ninja_cog_ctrl
+    100050: ninja_cogCtrl_space_grp
+    100052: ninja_cogCtrl_space_switch_grp
+    100054: ninja_head_a_jnt
+    100056: ninja_head_b_jnt
+    100058: ninja_head_fk_ctrl
+    100060: ninja_head_fk_ctrl_frzGrp
+    100062: ninja_head_fk_ctrl_frzGrp 1
+    100064: ninja_head_fk_ctrl_frzGrp 2
+    100066: ninja_head_ik_ctrl
+    100068: ninja_head_rig_grp
+    100070: ninja_headAlignOffset_rig_grp
+    100072: ninja_headAlignOffset_rig_grp_frzGrp
+    100074: ninja_headCtrl_space_grp
+    100076: ninja_headCtrl_space_switch_grp
+    100078: ninja_hip_ctrl
+    100080: ninja_hip_jnt
+    100082: ninja_hipCtrl_space_grp
+    100084: ninja_hipCtrl_space_switch_grp
+    100086: ninja_hiSpineCtrl_space_grp
+    100088: ninja_hiSpineCtrl_space_switch_grp
+    100090: ninja_ikSpline_crv
+    100092: ninja_lf__ik_jnt
+    100094: ninja_lf_ankle_fk_ctrl
+    100096: ninja_lf_ankle_fk_ctrl_frzGrp
+    100098: ninja_lf_ankle_fk_ctrl_frzGrp 1
+    100100: ninja_lf_ankle_fk_jnt
+    100102: ninja_lf_ankle_ik_jnt
+    100104: ninja_lf_ankle_jnt
+    100106: ninja_lf_ankle_jnt1
+    100108: ninja_lf_ankle_rev_rig_jnt
+    100110: ninja_lf_ankleBallReader_Ankle_jnt
+    100112: ninja_lf_ankleBallReader_Ball_jnt
+    100114: ninja_lf_ankleBallReader_Knee_jnt
+    100116: ninja_lf_ankleBallReader_UpLeg_jnt
+    100118: ninja_lf_arm_ik_ctrl
+    100120: ninja_lf_arm_ik_ctrl_frzGrp
+    100122: ninja_lf_arm_ikHandle
+    100124: ninja_lf_arm_rig_grp
+    100126: ninja_lf_armFK_Grp
+    100128: ninja_lf_armIK_Grp
+    100130: ninja_lf_armIkCtrl_space_grp
+    100132: ninja_lf_armPvCtrlGrp_space_grp
+    100134: ninja_lf_armPvIkCtrl_dist
+    100136: ninja_lf_armPvIkCtrl_dist_ep
+    100138: ninja_lf_armPvIkCtrl_dist_sp
+    100140: ninja_lf_armStrDist_dist
+    100142: ninja_lf_armStrDist_dist_ep
+    100144: ninja_lf_armStrDist_dist_sp
+    100146: ninja_lf_ball_fk_ctrl
+    100148: ninja_lf_ball_fk_ctrl_frzGrp
+    100150: ninja_lf_ball_fk_ctrl_frzGrp 1
+    100152: ninja_lf_ball_fk_jnt
+    100154: ninja_lf_ball_ik_jnt
+    100156: ninja_lf_ball_jnt
+    100158: ninja_lf_ball_jnt1
+    100160: ninja_lf_ball_rev_rig_jnt
+    100162: ninja_lf_clavicle_fk_ctrl
+    100164: ninja_lf_clavicle_fk_ctrl_frzGrp
+    100166: ninja_lf_clavicle_fk_ctrl_frzGrp 1
+    100168: ninja_lf_clavicle_jnt
+    100170: ninja_lf_elbow_fk_ctrl
+    100172: ninja_lf_elbow_fk_ctrl_frzGrp
+    100174: ninja_lf_elbow_fk_ctrl_frzGrp 1
+    100176: ninja_lf_elbow_fk_jnt
+    100178: ninja_lf_elbow_ik_jnt
+    100180: ninja_lf_elbow_jnt
+    100182: ninja_lf_elbow_line_loc
+    100184: ninja_lf_elbow_pv_ctrl
+    100186: ninja_lf_elbow_pv_ctrl_annLoc
+    100188: ninja_lf_elbow_pv_ctrl_frzGrp
+    100190: ninja_lf_foot_ctrl
+    100192: ninja_lf_hand_ctrl
+    100194: ninja_lf_hand_ctrl_frzGrp
+    100196: ninja_lf_hand_ctrl_frzGrp 1
+    100198: ninja_lf_hand_jnt
+    100200: ninja_lf_hand_rig_grp
+    100202: ninja_lf_handCtrl_grp
+    100204: ninja_lf_heel_ik_ctrl
+    100206: ninja_lf_heel_ik_ctrl_frzGrp
+    100208: ninja_lf_heel_rev_rig_jnt
+    100210: ninja_lf_index_a_jnt
+    100212: ninja_lf_index_b_jnt
+    100214: ninja_lf_index_c_jnt
+    100216: ninja_lf_index_d_jnt
+    100218: ninja_lf_knee_fk_ctrl
+    100220: ninja_lf_knee_fk_ctrl_frzGrp
+    100222: ninja_lf_knee_fk_ctrl_frzGrp 1
+    100224: ninja_lf_knee_fk_jnt
+    100226: ninja_lf_knee_ik_jnt
+    100228: ninja_lf_knee_jnt
+    100230: ninja_lf_knee_jnt1
+    100232: ninja_lf_knee_line_loc
+    100234: ninja_lf_knee_pv_ctrl
+    100236: ninja_lf_knee_pv_ctrl_annLoc
+    100238: ninja_lf_knee_pv_ctrl_frzGrp
+    100240: ninja_lf_leg_ikHandle
+    100242: ninja_lf_leg_rig_grp
+    100244: ninja_lf_legFK_Grp
+    100246: ninja_lf_legIK_Grp
+    100248: ninja_lf_legIkCtrl_space_grp
+    100250: ninja_lf_legPvCtrlGrp_space_grp
+    100252: ninja_lf_legPvIkCtrl_dist
+    100254: ninja_lf_legPvIkCtrl_dist_ep
+    100256: ninja_lf_legPvIkCtrl_dist_sp
+    100258: ninja_lf_legStrDist_dist
+    100260: ninja_lf_legStrDist_dist_ep
+    100262: ninja_lf_legStrDist_dist_sp
+    100264: ninja_lf_middle_a_jnt
+    100266: ninja_lf_middle_b_jnt
+    100268: ninja_lf_middle_c_jnt
+    100270: ninja_lf_middle_d_jnt
+    100272: ninja_lf_pinky_a_jnt
+    100274: ninja_lf_pinky_b_jnt
+    100276: ninja_lf_pinky_c_jnt
+    100278: ninja_lf_pinky_d_jnt
+    100280: ninja_lf_pinkyCup_jnt
+    100282: ninja_lf_reverseFoot_rig_grp
+    100284: ninja_lf_ring_a_jnt
+    100286: ninja_lf_ring_b_jnt
+    100288: ninja_lf_ring_c_jnt
+    100290: ninja_lf_ring_d_jnt
+    100292: ninja_lf_ringCup_jnt
+    100294: ninja_lf_thumb_a_jnt
+    100296: ninja_lf_thumb_b_jnt
+    100298: ninja_lf_thumb_c_jnt
+    100300: ninja_lf_thumb_d_jnt
+    100302: ninja_lf_toe_fk_jnt
+    100304: ninja_lf_toe_ik_jnt
+    100306: ninja_lf_toe_jnt
+    100308: ninja_lf_toe_jnt1
+    100310: ninja_lf_toe_rev_rig_jnt
+    100312: ninja_lf_upArm_fk_ctrl
+    100314: ninja_lf_upArm_fk_ctrl_frzGrp
+    100316: ninja_lf_upArm_fk_ctrl_frzGrp 1
+    100318: ninja_lf_upArm_fk_jnt
+    100320: ninja_lf_upArm_ik_jnt
+    100322: ninja_lf_upArm_jnt
+    100324: ninja_lf_upArmAlignOffset_rig_grp
+    100326: ninja_lf_upArmAlignOffset_rig_grp_frzGrp
+    100328: ninja_lf_upArmPvCtrl_dist
+    100330: ninja_lf_upArmPvCtrl_dist_ep
+    100332: ninja_lf_upArmPvCtrl_dist_sp
+    100334: ninja_lf_upArmupJntFkCtrl_grp
+    100336: ninja_lf_upLeg_fk_ctrl
+    100338: ninja_lf_upLeg_fk_ctrl_frzGrp
+    100340: ninja_lf_upLeg_fk_ctrl_frzGrp 1
+    100342: ninja_lf_upLeg_fk_jnt
+    100344: ninja_lf_upLeg_ik_jnt
+    100346: ninja_lf_upLeg_jnt
+    100348: ninja_lf_upLeg_jnt1
+    100350: ninja_lf_upLegAlignOffset_rig_grp
+    100352: ninja_lf_upLegAlignOffset_rig_grp_frzGrp
+    100354: ninja_lf_upLegPvCtrl_dist
+    100356: ninja_lf_upLegPvCtrl_dist_ep
+    100358: ninja_lf_upLegPvCtrl_dist_sp
+    100360: ninja_lf_upLegupJntFkCtrl_grp
+    100362: ninja_lf_wrist_fk_jnt
+    100364: ninja_lf_wrist_ik_jnt
+    100366: ninja_lf_wrist_jnt
+    100368: ninja_lfArmIkCtrl_space_switch_grp
+    100370: ninja_lfLegIkCtrl_space_switch_grp
+    100372: ninja_lowSpineCtrl_space_grp
+    100374: ninja_lowSpineCtrl_space_switch_grp
+    100376: ninja_midSpineCtrl_space_grp
+    100378: ninja_midSpineCtrl_space_switch_grp
+    100380: ninja_neck_fk_ctrl
+    100382: ninja_neck_fk_ctrl_frzGrp
+    100384: ninja_neck_fk_ctrl_frzGrp 1
+    100386: ninja_neck_jnt
+    100388: ninja_neckAlignOffset_rig_grp
+    100390: ninja_neckAlignOffset_rig_grp_frzGrp
+    100392: ninja_neckCtrl_space_switch_grp
+    100394: ninja_neckupJntFkCtrl_grp
+    100396: ninja_rig_grp
+    100398: ninja_root_ctrl
+    100400: ninja_rootCtrl_space_switch_grp
+    100402: ninja_rt__ik_jnt
+    100404: ninja_rt_ankle_fk_ctrl
+    100406: ninja_rt_ankle_fk_ctrl_frzGrp
+    100408: ninja_rt_ankle_fk_ctrl_frzGrp 1
+    100410: ninja_rt_ankle_fk_jnt
+    100412: ninja_rt_ankle_ik_jnt
+    100414: ninja_rt_ankle_rev_rig_jnt
+    100416: ninja_rt_ankleBallReader_Ankle_jnt
+    100418: ninja_rt_ankleBallReader_Ball_jnt
+    100420: ninja_rt_ankleBallReader_Knee_jnt
+    100422: ninja_rt_ankleBallReader_UpLeg_jnt
+    100424: ninja_rt_arm_ik_ctrl
+    100426: ninja_rt_arm_ik_ctrl_frzGrp
+    100428: ninja_rt_arm_ikHandle
+    100430: ninja_rt_arm_rig_grp
+    100432: ninja_rt_armFK_Grp
+    100434: ninja_rt_armIK_Grp
+    100436: ninja_rt_armIkCtrl_space_grp
+    100438: ninja_rt_armPvCtrlGrp_space_grp
+    100440: ninja_rt_armPvIkCtrl_dist
+    100442: ninja_rt_armPvIkCtrl_dist_ep
+    100444: ninja_rt_armPvIkCtrl_dist_sp
+    100446: ninja_rt_armStrDist_dist
+    100448: ninja_rt_armStrDist_dist_ep
+    100450: ninja_rt_armStrDist_dist_sp
+    100452: ninja_rt_ball_fk_ctrl
+    100454: ninja_rt_ball_fk_ctrl_frzGrp
+    100456: ninja_rt_ball_fk_ctrl_frzGrp 1
+    100458: ninja_rt_ball_fk_jnt
+    100460: ninja_rt_ball_ik_jnt
+    100462: ninja_rt_ball_rev_rig_jnt
+    100464: ninja_rt_clavicle_fk_ctrl
+    100466: ninja_rt_clavicle_fk_ctrl_frzGrp
+    100468: ninja_rt_clavicle_fk_ctrl_frzGrp 1
+    100470: ninja_rt_clavicle_jnt
+    100472: ninja_rt_elbow_fk_ctrl
+    100474: ninja_rt_elbow_fk_ctrl_frzGrp
+    100476: ninja_rt_elbow_fk_ctrl_frzGrp 1
+    100478: ninja_rt_elbow_fk_jnt
+    100480: ninja_rt_elbow_ik_jnt
+    100482: ninja_rt_elbow_jnt
+    100484: ninja_rt_elbow_line_loc
+    100486: ninja_rt_elbow_pv_ctrl
+    100488: ninja_rt_elbow_pv_ctrl_annLoc
+    100490: ninja_rt_elbow_pv_ctrl_frzGrp
+    100492: ninja_rt_foot_ctrl
+    100494: ninja_rt_hand_ctrl
+    100496: ninja_rt_hand_ctrl_frzGrp
+    100498: ninja_rt_hand_ctrl_frzGrp 1
+    100500: ninja_rt_hand_jnt
+    100502: ninja_rt_hand_rig_grp
+    100504: ninja_rt_handCtrl_grp
+    100506: ninja_rt_heel_ik_ctrl
+    100508: ninja_rt_heel_ik_ctrl_frzGrp
+    100510: ninja_rt_heel_rev_rig_jnt
+    100512: ninja_rt_index_a_jnt
+    100514: ninja_rt_index_b_jnt
+    100516: ninja_rt_index_c_jnt
+    100518: ninja_rt_index_d_jnt
+    100520: ninja_rt_knee_fk_ctrl
+    100522: ninja_rt_knee_fk_ctrl_frzGrp
+    100524: ninja_rt_knee_fk_ctrl_frzGrp 1
+    100526: ninja_rt_knee_fk_jnt
+    100528: ninja_rt_knee_ik_jnt
+    100530: ninja_rt_knee_line_loc
+    100532: ninja_rt_knee_pv_ctrl
+    100534: ninja_rt_knee_pv_ctrl_annLoc
+    100536: ninja_rt_knee_pv_ctrl_frzGrp
+    100538: ninja_rt_leg_ikHandle
+    100540: ninja_rt_leg_rig_grp
+    100542: ninja_rt_legFK_Grp
+    100544: ninja_rt_legIK_Grp
+    100546: ninja_rt_legIkCtrl_space_grp
+    100548: ninja_rt_legPvCtrlGrp_space_grp
+    100550: ninja_rt_legPvIkCtrl_dist
+    100552: ninja_rt_legPvIkCtrl_dist_ep
+    100554: ninja_rt_legPvIkCtrl_dist_sp
+    100556: ninja_rt_legStrDist_dist
+    100558: ninja_rt_legStrDist_dist_ep
+    100560: ninja_rt_legStrDist_dist_sp
+    100562: ninja_rt_middle_a_jnt
+    100564: ninja_rt_middle_b_jnt
+    100566: ninja_rt_middle_c_jnt
+    100568: ninja_rt_middle_d_jnt
+    100570: ninja_rt_pinky_a_jnt
+    100572: ninja_rt_pinky_b_jnt
+    100574: ninja_rt_pinky_c_jnt
+    100576: ninja_rt_pinky_d_jnt
+    100578: ninja_rt_pinkyCup_jnt
+    100580: ninja_rt_reverseFoot_rig_grp
+    100582: ninja_rt_ring_a_jnt
+    100584: ninja_rt_ring_b_jnt
+    100586: ninja_rt_ring_c_jnt
+    100588: ninja_rt_ring_d_jnt
+    100590: ninja_rt_ringCup_jnt
+    100592: ninja_rt_thumb_a_jnt
+    100594: ninja_rt_thumb_b_jnt
+    100596: ninja_rt_thumb_c_jnt
+    100598: ninja_rt_thumb_d_jnt
+    100600: ninja_rt_toe_fk_jnt
+    100602: ninja_rt_toe_ik_jnt
+    100604: ninja_rt_toe_rev_rig_jnt
+    100606: ninja_rt_upArm_fk_ctrl
+    100608: ninja_rt_upArm_fk_ctrl_frzGrp
+    100610: ninja_rt_upArm_fk_ctrl_frzGrp 1
+    100612: ninja_rt_upArm_fk_jnt
+    100614: ninja_rt_upArm_ik_jnt
+    100616: ninja_rt_upArm_jnt
+    100618: ninja_rt_upArmAlignOffset_rig_grp
+    100620: ninja_rt_upArmAlignOffset_rig_grp_frzGrp
+    100622: ninja_rt_upArmPvCtrl_dist
+    100624: ninja_rt_upArmPvCtrl_dist_ep
+    100626: ninja_rt_upArmPvCtrl_dist_sp
+    100628: ninja_rt_upArmupJntFkCtrl_grp
+    100630: ninja_rt_upLeg_fk_ctrl
+    100632: ninja_rt_upLeg_fk_ctrl_frzGrp
+    100634: ninja_rt_upLeg_fk_ctrl_frzGrp 1
+    100636: ninja_rt_upLeg_fk_jnt
+    100638: ninja_rt_upLeg_ik_jnt
+    100640: ninja_rt_upLegAlignOffset_rig_grp
+    100642: ninja_rt_upLegAlignOffset_rig_grp_frzGrp
+    100644: ninja_rt_upLegPvCtrl_dist
+    100646: ninja_rt_upLegPvCtrl_dist_ep
+    100648: ninja_rt_upLegPvCtrl_dist_sp
+    100650: ninja_rt_upLegupJntFkCtrl_grp
+    100652: ninja_rt_wrist_fk_jnt
+    100654: ninja_rt_wrist_ik_jnt
+    100656: ninja_rt_wrist_jnt
+    100658: ninja_rtArmIkCtrl_space_switch_grp
+    100660: ninja_rtLegIkCtrl_space_switch_grp
+    100662: ninja_Skeleton_grp
+    100664: ninja_spine0_clstrHandle
+    100666: ninja_spine1_clstrHandle
+    100668: ninja_spine2_clstrHandle
+    100670: ninja_spine3_clstrHandle
+    100672: ninja_spine4_clstrHandle
+    100674: ninja_spine5_clstrHandle
+    100676: ninja_spine_end_jnt
+    100678: ninja_spine_hi_jnt
+    100680: ninja_spine_ikHandle
+    100682: ninja_spine_low_jnt
+    100684: ninja_spine_mid_jnt
+    100686: ninja_spine_rig_grp
+    100688: ninja_spineHigh_ctrl
+    100690: ninja_spineHigh_ctrl_frzGrp
+    100692: ninja_spineLow_ctrl
+    100694: ninja_spineMid_ctrl
+    100696: ninja_spineMid_ctrl_frzGrp
+    100698: ninja_spineNoScale_rig_grp
+    100700: ninja_spineRig_a_jnt
+    100702: ninja_spineRig_b_jnt
+    100704: ninja_spineRig_c_jnt
+    100706: ninja_spineRig_d_jnt
+    100708: ninja_spineRig_e_jnt
+    100710: ninja_spineRig_f_jnt
+    100712: ninja_spineRig_g_jnt
+    100714: ninja_spineRig_h_jnt
+    100716: ninja_spineShaper_ctrl
+    100718: ninja_spineShaper_ctrl_frzGrp
+    100720: ninja_spineShaper_ctrl_frzGrp 1
+    100722: ninja_spineSplitRot_ctrl
+    100724: ninja_weightSpine_b_jnt
+    100726: ninja_weightSpine_c_jnt
+    100728: ninja_weightSpine_d_jnt
+    100730: ninja_weightSpine_e_jnt
+    100732: ninja_weightSpine_f_jnt
+    100734: ninja_weightSpine_g_jnt
+    100736: //RootNode
+    100738: refSpine_a
+    100740: refSpine_b
+    100742: refSpine_c
+    100744: refSpine_d
+    100746: refSpine_e
+    100748: refSpine_f
+    100750: refSpine_g
+    100752: refSpine_h
+    100754: weightSpine_grp
+    400000: abRTLine_ninja_lf_elbow_line_loc
+    400002: abRTLine_ninja_lf_knee_line_loc
+    400004: abRTLine_ninja_rt_elbow_line_loc
+    400006: abRTLine_ninja_rt_knee_line_loc
+    400008: head_band
+    400010: head_band1
+    400012: head_band1_1
+    400014: head_band1_2
+    400016: head_band1_3
+    400018: head_band1_4
+    400020: head_band1_5
+    400022: head_band1_6
+    400024: head_band1_7
+    400026: head_band1_8
+    400028: head_band2
+    400030: head_band3
+    400032: head_band4
+    400034: head_band5
+    400036: head_band6
+    400038: head_band7
+    400040: head_band8
+    400042: head_band9
+    400044: ninja
+    400046: ninja_charVars
+    400048: ninja_cog_ctrl
+    400050: ninja_cogCtrl_space_grp
+    400052: ninja_cogCtrl_space_switch_grp
+    400054: ninja_head_a_jnt
+    400056: ninja_head_b_jnt
+    400058: ninja_head_fk_ctrl
+    400060: ninja_head_fk_ctrl_frzGrp
+    400062: ninja_head_fk_ctrl_frzGrp 1
+    400064: ninja_head_fk_ctrl_frzGrp 2
+    400066: ninja_head_ik_ctrl
+    400068: ninja_head_rig_grp
+    400070: ninja_headAlignOffset_rig_grp
+    400072: ninja_headAlignOffset_rig_grp_frzGrp
+    400074: ninja_headCtrl_space_grp
+    400076: ninja_headCtrl_space_switch_grp
+    400078: ninja_hip_ctrl
+    400080: ninja_hip_jnt
+    400082: ninja_hipCtrl_space_grp
+    400084: ninja_hipCtrl_space_switch_grp
+    400086: ninja_hiSpineCtrl_space_grp
+    400088: ninja_hiSpineCtrl_space_switch_grp
+    400090: ninja_ikSpline_crv
+    400092: ninja_lf__ik_jnt
+    400094: ninja_lf_ankle_fk_ctrl
+    400096: ninja_lf_ankle_fk_ctrl_frzGrp
+    400098: ninja_lf_ankle_fk_ctrl_frzGrp 1
+    400100: ninja_lf_ankle_fk_jnt
+    400102: ninja_lf_ankle_ik_jnt
+    400104: ninja_lf_ankle_jnt
+    400106: ninja_lf_ankle_jnt1
+    400108: ninja_lf_ankle_rev_rig_jnt
+    400110: ninja_lf_ankleBallReader_Ankle_jnt
+    400112: ninja_lf_ankleBallReader_Ball_jnt
+    400114: ninja_lf_ankleBallReader_Knee_jnt
+    400116: ninja_lf_ankleBallReader_UpLeg_jnt
+    400118: ninja_lf_arm_ik_ctrl
+    400120: ninja_lf_arm_ik_ctrl_frzGrp
+    400122: ninja_lf_arm_ikHandle
+    400124: ninja_lf_arm_rig_grp
+    400126: ninja_lf_armFK_Grp
+    400128: ninja_lf_armIK_Grp
+    400130: ninja_lf_armIkCtrl_space_grp
+    400132: ninja_lf_armPvCtrlGrp_space_grp
+    400134: ninja_lf_armPvIkCtrl_dist
+    400136: ninja_lf_armPvIkCtrl_dist_ep
+    400138: ninja_lf_armPvIkCtrl_dist_sp
+    400140: ninja_lf_armStrDist_dist
+    400142: ninja_lf_armStrDist_dist_ep
+    400144: ninja_lf_armStrDist_dist_sp
+    400146: ninja_lf_ball_fk_ctrl
+    400148: ninja_lf_ball_fk_ctrl_frzGrp
+    400150: ninja_lf_ball_fk_ctrl_frzGrp 1
+    400152: ninja_lf_ball_fk_jnt
+    400154: ninja_lf_ball_ik_jnt
+    400156: ninja_lf_ball_jnt
+    400158: ninja_lf_ball_jnt1
+    400160: ninja_lf_ball_rev_rig_jnt
+    400162: ninja_lf_clavicle_fk_ctrl
+    400164: ninja_lf_clavicle_fk_ctrl_frzGrp
+    400166: ninja_lf_clavicle_fk_ctrl_frzGrp 1
+    400168: ninja_lf_clavicle_jnt
+    400170: ninja_lf_elbow_fk_ctrl
+    400172: ninja_lf_elbow_fk_ctrl_frzGrp
+    400174: ninja_lf_elbow_fk_ctrl_frzGrp 1
+    400176: ninja_lf_elbow_fk_jnt
+    400178: ninja_lf_elbow_ik_jnt
+    400180: ninja_lf_elbow_jnt
+    400182: ninja_lf_elbow_line_loc
+    400184: ninja_lf_elbow_pv_ctrl
+    400186: ninja_lf_elbow_pv_ctrl_annLoc
+    400188: ninja_lf_elbow_pv_ctrl_frzGrp
+    400190: ninja_lf_foot_ctrl
+    400192: ninja_lf_hand_ctrl
+    400194: ninja_lf_hand_ctrl_frzGrp
+    400196: ninja_lf_hand_ctrl_frzGrp 1
+    400198: ninja_lf_hand_jnt
+    400200: ninja_lf_hand_rig_grp
+    400202: ninja_lf_handCtrl_grp
+    400204: ninja_lf_heel_ik_ctrl
+    400206: ninja_lf_heel_ik_ctrl_frzGrp
+    400208: ninja_lf_heel_rev_rig_jnt
+    400210: ninja_lf_index_a_jnt
+    400212: ninja_lf_index_b_jnt
+    400214: ninja_lf_index_c_jnt
+    400216: ninja_lf_index_d_jnt
+    400218: ninja_lf_knee_fk_ctrl
+    400220: ninja_lf_knee_fk_ctrl_frzGrp
+    400222: ninja_lf_knee_fk_ctrl_frzGrp 1
+    400224: ninja_lf_knee_fk_jnt
+    400226: ninja_lf_knee_ik_jnt
+    400228: ninja_lf_knee_jnt
+    400230: ninja_lf_knee_jnt1
+    400232: ninja_lf_knee_line_loc
+    400234: ninja_lf_knee_pv_ctrl
+    400236: ninja_lf_knee_pv_ctrl_annLoc
+    400238: ninja_lf_knee_pv_ctrl_frzGrp
+    400240: ninja_lf_leg_ikHandle
+    400242: ninja_lf_leg_rig_grp
+    400244: ninja_lf_legFK_Grp
+    400246: ninja_lf_legIK_Grp
+    400248: ninja_lf_legIkCtrl_space_grp
+    400250: ninja_lf_legPvCtrlGrp_space_grp
+    400252: ninja_lf_legPvIkCtrl_dist
+    400254: ninja_lf_legPvIkCtrl_dist_ep
+    400256: ninja_lf_legPvIkCtrl_dist_sp
+    400258: ninja_lf_legStrDist_dist
+    400260: ninja_lf_legStrDist_dist_ep
+    400262: ninja_lf_legStrDist_dist_sp
+    400264: ninja_lf_middle_a_jnt
+    400266: ninja_lf_middle_b_jnt
+    400268: ninja_lf_middle_c_jnt
+    400270: ninja_lf_middle_d_jnt
+    400272: ninja_lf_pinky_a_jnt
+    400274: ninja_lf_pinky_b_jnt
+    400276: ninja_lf_pinky_c_jnt
+    400278: ninja_lf_pinky_d_jnt
+    400280: ninja_lf_pinkyCup_jnt
+    400282: ninja_lf_reverseFoot_rig_grp
+    400284: ninja_lf_ring_a_jnt
+    400286: ninja_lf_ring_b_jnt
+    400288: ninja_lf_ring_c_jnt
+    400290: ninja_lf_ring_d_jnt
+    400292: ninja_lf_ringCup_jnt
+    400294: ninja_lf_thumb_a_jnt
+    400296: ninja_lf_thumb_b_jnt
+    400298: ninja_lf_thumb_c_jnt
+    400300: ninja_lf_thumb_d_jnt
+    400302: ninja_lf_toe_fk_jnt
+    400304: ninja_lf_toe_ik_jnt
+    400306: ninja_lf_toe_jnt
+    400308: ninja_lf_toe_jnt1
+    400310: ninja_lf_toe_rev_rig_jnt
+    400312: ninja_lf_upArm_fk_ctrl
+    400314: ninja_lf_upArm_fk_ctrl_frzGrp
+    400316: ninja_lf_upArm_fk_ctrl_frzGrp 1
+    400318: ninja_lf_upArm_fk_jnt
+    400320: ninja_lf_upArm_ik_jnt
+    400322: ninja_lf_upArm_jnt
+    400324: ninja_lf_upArmAlignOffset_rig_grp
+    400326: ninja_lf_upArmAlignOffset_rig_grp_frzGrp
+    400328: ninja_lf_upArmPvCtrl_dist
+    400330: ninja_lf_upArmPvCtrl_dist_ep
+    400332: ninja_lf_upArmPvCtrl_dist_sp
+    400334: ninja_lf_upArmupJntFkCtrl_grp
+    400336: ninja_lf_upLeg_fk_ctrl
+    400338: ninja_lf_upLeg_fk_ctrl_frzGrp
+    400340: ninja_lf_upLeg_fk_ctrl_frzGrp 1
+    400342: ninja_lf_upLeg_fk_jnt
+    400344: ninja_lf_upLeg_ik_jnt
+    400346: ninja_lf_upLeg_jnt
+    400348: ninja_lf_upLeg_jnt1
+    400350: ninja_lf_upLegAlignOffset_rig_grp
+    400352: ninja_lf_upLegAlignOffset_rig_grp_frzGrp
+    400354: ninja_lf_upLegPvCtrl_dist
+    400356: ninja_lf_upLegPvCtrl_dist_ep
+    400358: ninja_lf_upLegPvCtrl_dist_sp
+    400360: ninja_lf_upLegupJntFkCtrl_grp
+    400362: ninja_lf_wrist_fk_jnt
+    400364: ninja_lf_wrist_ik_jnt
+    400366: ninja_lf_wrist_jnt
+    400368: ninja_lfArmIkCtrl_space_switch_grp
+    400370: ninja_lfLegIkCtrl_space_switch_grp
+    400372: ninja_lowSpineCtrl_space_grp
+    400374: ninja_lowSpineCtrl_space_switch_grp
+    400376: ninja_midSpineCtrl_space_grp
+    400378: ninja_midSpineCtrl_space_switch_grp
+    400380: ninja_neck_fk_ctrl
+    400382: ninja_neck_fk_ctrl_frzGrp
+    400384: ninja_neck_fk_ctrl_frzGrp 1
+    400386: ninja_neck_jnt
+    400388: ninja_neckAlignOffset_rig_grp
+    400390: ninja_neckAlignOffset_rig_grp_frzGrp
+    400392: ninja_neckCtrl_space_switch_grp
+    400394: ninja_neckupJntFkCtrl_grp
+    400396: ninja_rig_grp
+    400398: ninja_root_ctrl
+    400400: ninja_rootCtrl_space_switch_grp
+    400402: ninja_rt__ik_jnt
+    400404: ninja_rt_ankle_fk_ctrl
+    400406: ninja_rt_ankle_fk_ctrl_frzGrp
+    400408: ninja_rt_ankle_fk_ctrl_frzGrp 1
+    400410: ninja_rt_ankle_fk_jnt
+    400412: ninja_rt_ankle_ik_jnt
+    400414: ninja_rt_ankle_rev_rig_jnt
+    400416: ninja_rt_ankleBallReader_Ankle_jnt
+    400418: ninja_rt_ankleBallReader_Ball_jnt
+    400420: ninja_rt_ankleBallReader_Knee_jnt
+    400422: ninja_rt_ankleBallReader_UpLeg_jnt
+    400424: ninja_rt_arm_ik_ctrl
+    400426: ninja_rt_arm_ik_ctrl_frzGrp
+    400428: ninja_rt_arm_ikHandle
+    400430: ninja_rt_arm_rig_grp
+    400432: ninja_rt_armFK_Grp
+    400434: ninja_rt_armIK_Grp
+    400436: ninja_rt_armIkCtrl_space_grp
+    400438: ninja_rt_armPvCtrlGrp_space_grp
+    400440: ninja_rt_armPvIkCtrl_dist
+    400442: ninja_rt_armPvIkCtrl_dist_ep
+    400444: ninja_rt_armPvIkCtrl_dist_sp
+    400446: ninja_rt_armStrDist_dist
+    400448: ninja_rt_armStrDist_dist_ep
+    400450: ninja_rt_armStrDist_dist_sp
+    400452: ninja_rt_ball_fk_ctrl
+    400454: ninja_rt_ball_fk_ctrl_frzGrp
+    400456: ninja_rt_ball_fk_ctrl_frzGrp 1
+    400458: ninja_rt_ball_fk_jnt
+    400460: ninja_rt_ball_ik_jnt
+    400462: ninja_rt_ball_rev_rig_jnt
+    400464: ninja_rt_clavicle_fk_ctrl
+    400466: ninja_rt_clavicle_fk_ctrl_frzGrp
+    400468: ninja_rt_clavicle_fk_ctrl_frzGrp 1
+    400470: ninja_rt_clavicle_jnt
+    400472: ninja_rt_elbow_fk_ctrl
+    400474: ninja_rt_elbow_fk_ctrl_frzGrp
+    400476: ninja_rt_elbow_fk_ctrl_frzGrp 1
+    400478: ninja_rt_elbow_fk_jnt
+    400480: ninja_rt_elbow_ik_jnt
+    400482: ninja_rt_elbow_jnt
+    400484: ninja_rt_elbow_line_loc
+    400486: ninja_rt_elbow_pv_ctrl
+    400488: ninja_rt_elbow_pv_ctrl_annLoc
+    400490: ninja_rt_elbow_pv_ctrl_frzGrp
+    400492: ninja_rt_foot_ctrl
+    400494: ninja_rt_hand_ctrl
+    400496: ninja_rt_hand_ctrl_frzGrp
+    400498: ninja_rt_hand_ctrl_frzGrp 1
+    400500: ninja_rt_hand_jnt
+    400502: ninja_rt_hand_rig_grp
+    400504: ninja_rt_handCtrl_grp
+    400506: ninja_rt_heel_ik_ctrl
+    400508: ninja_rt_heel_ik_ctrl_frzGrp
+    400510: ninja_rt_heel_rev_rig_jnt
+    400512: ninja_rt_index_a_jnt
+    400514: ninja_rt_index_b_jnt
+    400516: ninja_rt_index_c_jnt
+    400518: ninja_rt_index_d_jnt
+    400520: ninja_rt_knee_fk_ctrl
+    400522: ninja_rt_knee_fk_ctrl_frzGrp
+    400524: ninja_rt_knee_fk_ctrl_frzGrp 1
+    400526: ninja_rt_knee_fk_jnt
+    400528: ninja_rt_knee_ik_jnt
+    400530: ninja_rt_knee_line_loc
+    400532: ninja_rt_knee_pv_ctrl
+    400534: ninja_rt_knee_pv_ctrl_annLoc
+    400536: ninja_rt_knee_pv_ctrl_frzGrp
+    400538: ninja_rt_leg_ikHandle
+    400540: ninja_rt_leg_rig_grp
+    400542: ninja_rt_legFK_Grp
+    400544: ninja_rt_legIK_Grp
+    400546: ninja_rt_legIkCtrl_space_grp
+    400548: ninja_rt_legPvCtrlGrp_space_grp
+    400550: ninja_rt_legPvIkCtrl_dist
+    400552: ninja_rt_legPvIkCtrl_dist_ep
+    400554: ninja_rt_legPvIkCtrl_dist_sp
+    400556: ninja_rt_legStrDist_dist
+    400558: ninja_rt_legStrDist_dist_ep
+    400560: ninja_rt_legStrDist_dist_sp
+    400562: ninja_rt_middle_a_jnt
+    400564: ninja_rt_middle_b_jnt
+    400566: ninja_rt_middle_c_jnt
+    400568: ninja_rt_middle_d_jnt
+    400570: ninja_rt_pinky_a_jnt
+    400572: ninja_rt_pinky_b_jnt
+    400574: ninja_rt_pinky_c_jnt
+    400576: ninja_rt_pinky_d_jnt
+    400578: ninja_rt_pinkyCup_jnt
+    400580: ninja_rt_reverseFoot_rig_grp
+    400582: ninja_rt_ring_a_jnt
+    400584: ninja_rt_ring_b_jnt
+    400586: ninja_rt_ring_c_jnt
+    400588: ninja_rt_ring_d_jnt
+    400590: ninja_rt_ringCup_jnt
+    400592: ninja_rt_thumb_a_jnt
+    400594: ninja_rt_thumb_b_jnt
+    400596: ninja_rt_thumb_c_jnt
+    400598: ninja_rt_thumb_d_jnt
+    400600: ninja_rt_toe_fk_jnt
+    400602: ninja_rt_toe_ik_jnt
+    400604: ninja_rt_toe_rev_rig_jnt
+    400606: ninja_rt_upArm_fk_ctrl
+    400608: ninja_rt_upArm_fk_ctrl_frzGrp
+    400610: ninja_rt_upArm_fk_ctrl_frzGrp 1
+    400612: ninja_rt_upArm_fk_jnt
+    400614: ninja_rt_upArm_ik_jnt
+    400616: ninja_rt_upArm_jnt
+    400618: ninja_rt_upArmAlignOffset_rig_grp
+    400620: ninja_rt_upArmAlignOffset_rig_grp_frzGrp
+    400622: ninja_rt_upArmPvCtrl_dist
+    400624: ninja_rt_upArmPvCtrl_dist_ep
+    400626: ninja_rt_upArmPvCtrl_dist_sp
+    400628: ninja_rt_upArmupJntFkCtrl_grp
+    400630: ninja_rt_upLeg_fk_ctrl
+    400632: ninja_rt_upLeg_fk_ctrl_frzGrp
+    400634: ninja_rt_upLeg_fk_ctrl_frzGrp 1
+    400636: ninja_rt_upLeg_fk_jnt
+    400638: ninja_rt_upLeg_ik_jnt
+    400640: ninja_rt_upLegAlignOffset_rig_grp
+    400642: ninja_rt_upLegAlignOffset_rig_grp_frzGrp
+    400644: ninja_rt_upLegPvCtrl_dist
+    400646: ninja_rt_upLegPvCtrl_dist_ep
+    400648: ninja_rt_upLegPvCtrl_dist_sp
+    400650: ninja_rt_upLegupJntFkCtrl_grp
+    400652: ninja_rt_wrist_fk_jnt
+    400654: ninja_rt_wrist_ik_jnt
+    400656: ninja_rt_wrist_jnt
+    400658: ninja_rtArmIkCtrl_space_switch_grp
+    400660: ninja_rtLegIkCtrl_space_switch_grp
+    400662: ninja_Skeleton_grp
+    400664: ninja_spine0_clstrHandle
+    400666: ninja_spine1_clstrHandle
+    400668: ninja_spine2_clstrHandle
+    400670: ninja_spine3_clstrHandle
+    400672: ninja_spine4_clstrHandle
+    400674: ninja_spine5_clstrHandle
+    400676: ninja_spine_end_jnt
+    400678: ninja_spine_hi_jnt
+    400680: ninja_spine_ikHandle
+    400682: ninja_spine_low_jnt
+    400684: ninja_spine_mid_jnt
+    400686: ninja_spine_rig_grp
+    400688: ninja_spineHigh_ctrl
+    400690: ninja_spineHigh_ctrl_frzGrp
+    400692: ninja_spineLow_ctrl
+    400694: ninja_spineMid_ctrl
+    400696: ninja_spineMid_ctrl_frzGrp
+    400698: ninja_spineNoScale_rig_grp
+    400700: ninja_spineRig_a_jnt
+    400702: ninja_spineRig_b_jnt
+    400704: ninja_spineRig_c_jnt
+    400706: ninja_spineRig_d_jnt
+    400708: ninja_spineRig_e_jnt
+    400710: ninja_spineRig_f_jnt
+    400712: ninja_spineRig_g_jnt
+    400714: ninja_spineRig_h_jnt
+    400716: ninja_spineShaper_ctrl
+    400718: ninja_spineShaper_ctrl_frzGrp
+    400720: ninja_spineShaper_ctrl_frzGrp 1
+    400722: ninja_spineSplitRot_ctrl
+    400724: ninja_weightSpine_b_jnt
+    400726: ninja_weightSpine_c_jnt
+    400728: ninja_weightSpine_d_jnt
+    400730: ninja_weightSpine_e_jnt
+    400732: ninja_weightSpine_f_jnt
+    400734: ninja_weightSpine_g_jnt
+    400736: //RootNode
+    400738: refSpine_a
+    400740: refSpine_b
+    400742: refSpine_c
+    400744: refSpine_d
+    400746: refSpine_e
+    400748: refSpine_f
+    400750: refSpine_g
+    400752: refSpine_h
+    400754: weightSpine_grp
+    4300000: ninja
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: ninja
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 3
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    human:
+    - boneName: ninja_spine_low_jnt
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: ninja_lf_upLeg_jnt
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: ninja_lf_upLeg_jnt1
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: ninja_lf_knee_jnt
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: ninja_lf_knee_jnt1
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: ninja_lf_ankle_jnt
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: ninja_lf_ankle_jnt1
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: ninja_spine_mid_jnt
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: ninja_spine_hi_jnt
+      humanName: Chest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: ninja_neck_jnt
+      humanName: Neck
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: ninja_head_a_jnt
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: ninja_lf_clavicle_jnt
+      humanName: LeftShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: ninja_rt_clavicle_jnt
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: ninja_lf_upArm_jnt
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: ninja_rt_upArm_jnt
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: ninja_lf_elbow_jnt
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: ninja_rt_elbow_jnt
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: ninja_lf_wrist_jnt
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: ninja_rt_wrist_jnt
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: ninja_lf_toe_jnt
+      humanName: LeftToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: ninja_lf_toe_jnt1
+      humanName: RightToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: ninja_head_b_jnt
+      humanName: LeftEye
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: head_band9
+      humanName: RightEye
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: ninja_lf_thumb_a_jnt
+      humanName: Left Thumb Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: ninja_lf_thumb_b_jnt
+      humanName: Left Thumb Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: ninja_lf_thumb_c_jnt
+      humanName: Left Thumb Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: ninja_lf_index_a_jnt
+      humanName: Left Index Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: ninja_lf_index_b_jnt
+      humanName: Left Index Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: ninja_lf_index_c_jnt
+      humanName: Left Index Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: ninja_lf_middle_a_jnt
+      humanName: Left Middle Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: ninja_lf_middle_b_jnt
+      humanName: Left Middle Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: ninja_lf_middle_c_jnt
+      humanName: Left Middle Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: ninja_lf_ring_a_jnt
+      humanName: Left Ring Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: ninja_lf_ring_b_jnt
+      humanName: Left Ring Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: ninja_lf_ring_c_jnt
+      humanName: Left Ring Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: ninja_lf_pinky_a_jnt
+      humanName: Left Little Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: ninja_lf_pinky_b_jnt
+      humanName: Left Little Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: ninja_lf_pinky_c_jnt
+      humanName: Left Little Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: ninja_rt_thumb_a_jnt
+      humanName: Right Thumb Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: ninja_rt_thumb_b_jnt
+      humanName: Right Thumb Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: ninja_rt_thumb_c_jnt
+      humanName: Right Thumb Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: ninja_rt_index_a_jnt
+      humanName: Right Index Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: ninja_rt_index_b_jnt
+      humanName: Right Index Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: ninja_rt_index_c_jnt
+      humanName: Right Index Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: ninja_rt_middle_a_jnt
+      humanName: Right Middle Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: ninja_rt_middle_b_jnt
+      humanName: Right Middle Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: ninja_rt_middle_c_jnt
+      humanName: Right Middle Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: ninja_rt_ring_a_jnt
+      humanName: Right Ring Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: ninja_rt_ring_b_jnt
+      humanName: Right Ring Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: ninja_rt_ring_c_jnt
+      humanName: Right Ring Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: ninja_rt_pinky_a_jnt
+      humanName: Right Little Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: ninja_rt_pinky_b_jnt
+      humanName: Right Little Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: ninja_rt_pinky_c_jnt
+      humanName: Right Little Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: ninjagameplay(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rig_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_charVars
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_cogCtrl_space_switch_grp
+      position: {x: -0, y: 7.80293703, z: 2.92826343}
+      rotation: {x: .417560905, y: 0, z: -0, w: .908648968}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_head_rig_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_head_fk_ctrl_frzGrp
+      position: {x: 4.62896772e-15, y: 12.0831642, z: 8.52237225}
+      rotation: {x: .418278903, y: 2.22044631e-16, z: -4.99600414e-16, w: .908318698}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_head_fk_ctrl_frzGrp 1
+      position: {x: 4.43951091e-16, y: -4.97379915e-14, z: 5.95079473e-14}
+      rotation: {x: 5.55111512e-17, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_headAlignOffset_rig_grp_frzGrp
+      position: {x: 7.88860905e-31, y: 0, z: 0}
+      rotation: {x: -.0821781829, y: 0, z: -0, w: .996617675}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_headAlignOffset_rig_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_head_fk_ctrl_frzGrp 2
+      position: {x: 1.57772181e-30, y: 0, z: 2.22044605e-16}
+      rotation: {x: .0821781829, y: -0, z: -0, w: .996617675}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_head_fk_ctrl
+      position: {x: -1.57772181e-30, y: 0, z: 0}
+      rotation: {x: -.258280277, y: 0, z: -0, w: .966070056}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_headCtrl_space_grp
+      position: {x: -5.39427056e-16, y: .159453943, z: -2.64812827}
+      rotation: {x: .342220128, y: -0, z: -0, w: .939619839}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_head_ik_ctrl
+      position: {x: 5.61234586e-15, y: 16.3147297, z: .885742545}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_neck_fk_ctrl_frzGrp
+      position: {x: 4.0105587e-15, y: 11.9878578, z: 7.16957521}
+      rotation: {x: .681807697, y: -0, z: -0, w: .731531441}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_neckAlignOffset_rig_grp_frzGrp
+      position: {x: 7.88860905e-31, y: -1.77635684e-15, z: 1.77635684e-15}
+      rotation: {x: -.390295237, y: 0, z: -0, w: .920689762}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_neckAlignOffset_rig_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_neck_fk_ctrl_frzGrp 1
+      position: {x: -7.88860905e-31, y: 1.77635684e-15, z: 4.16333634e-17}
+      rotation: {x: .390295237, y: -0, z: -0, w: .920689762}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_neck_fk_ctrl
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_neckupJntFkCtrl_grp
+      position: {x: 4.0105587e-15, y: 11.9878578, z: 7.16957521}
+      rotation: {x: .681807697, y: 6.73980677e-32, z: -3.88578059e-16, w: .731531441}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_headCtrl_space_switch_grp
+      position: {x: 5.07291886e-15, y: 12.0831642, z: 8.52237225}
+      rotation: {x: .169485867, y: 0, z: -0, w: .985532641}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_hipCtrl_space_switch_grp
+      position: {x: -0, y: 7.80293703, z: 2.92826343}
+      rotation: {x: .417560905, y: 0, z: -0, w: .908648968}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_hiSpineCtrl_space_switch_grp
+      position: {x: 1.99208533e-15, y: 9.47182178, z: 4.46432543}
+      rotation: {x: .342220128, y: 0, z: -0, w: .939619839}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_arm_rig_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_arm_ikHandle
+      position: {x: -4.91821051, y: 11.1884966, z: 1.90293527}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_armFK_Grp
+      position: {x: -1.96942163, y: 11.2037535, z: 5.91884565}
+      rotation: {x: .328886449, y: .126662776, z: -.0681428984, w: .93335247}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_upArm_fk_jnt
+      position: {x: -1.85263884, y: -8.88178335e-15, z: 8.8817842e-16}
+      rotation: {x: .0139764454, y: -.128804371, z: .106966659, w: .985785127}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_elbow_fk_jnt
+      position: {x: -2.85891557, y: 1.77635684e-15, z: 2.08166804e-16}
+      rotation: {x: -4.87126597e-17, y: .107950643, z: -6.2302754e-17, w: .994156241}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_wrist_fk_jnt
+      position: {x: -2.10084605, y: 0, z: 1.55431223e-15}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_armIK_Grp
+      position: {x: -1.96942163, y: 11.2037535, z: 5.91884565}
+      rotation: {x: .328886449, y: .126662776, z: -.0681428984, w: .93335247}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_upArm_ik_jnt
+      position: {x: -1.85263884, y: -1.77635684e-15, z: -4.4408921e-16}
+      rotation: {x: .408840537, y: -.359524339, z: .612492502, w: .573100865}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_elbow_ik_jnt
+      position: {x: -2.85891557, y: 1.77635684e-15, z: 2.08166804e-16}
+      rotation: {x: -1.13272154e-16, y: .330874085, z: 5.86530082e-16, w: .943674922}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_wrist_ik_jnt
+      position: {x: -2.10084605, y: 0, z: 1.55431223e-15}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_armIkCtrl_space_grp
+      position: {x: -0, y: .00619915687, z: .643381655}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_arm_ik_ctrl_frzGrp
+      position: {x: -8.67538261, y: 14.3643169, z: -.0747203976}
+      rotation: {x: 0, y: .0745724365, z: -0, w: .997215629}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_arm_ik_ctrl
+      position: {x: 3.51693964, y: -3.18201971, z: 1.87823677}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_armPvIkCtrl_dist
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_armPvIkCtrl_dist_ep
+      position: {x: -4.91821051, y: 11.1884966, z: 1.90293527}
+      rotation: {x: 0, y: .0745724365, z: -0, w: .997215629}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_armPvIkCtrl_dist_sp
+      position: {x: -4.54795742, y: 14.9363832, z: 3.92202997}
+      rotation: {x: -.0030550966, y: .0509083681, z: .38097918, w: .923175991}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_armStrDist_dist
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_armStrDist_dist_ep
+      position: {x: -4.91821051, y: 11.1884966, z: 1.90293527}
+      rotation: {x: 0, y: .0745724365, z: -0, w: .997215629}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_armStrDist_dist_sp
+      position: {x: -3.74540997, y: 11.2850609, z: 6.4399271}
+      rotation: {x: -3.1918912e-16, y: -.0335134119, z: -2.16038125e-15, w: .999438286}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_clavicle_fk_ctrl_frzGrp
+      position: {x: -1.96942163, y: 11.2037535, z: 5.91884565}
+      rotation: {x: .328886449, y: .126662776, z: -.0681428984, w: .93335247}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_clavicle_fk_ctrl_frzGrp 1
+      position: {x: -1.77635684e-15, y: 0, z: -8.8817842e-16}
+      rotation: {x: 3.46944695e-18, y: -5.55111512e-17, z: 3.07913417e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_clavicle_fk_ctrl
+      position: {x: -0, y: -1.77635684e-15, z: 0}
+      rotation: {x: 0, y: -0, z: -1.04083409e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_elbow_fk_ctrl_frzGrp
+      position: {x: -6.59790325, y: 11.4082279, z: 6.29326916}
+      rotation: {x: .341267258, y: .0700697377, z: .0255201887, w: .937003553}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_elbow_fk_ctrl_frzGrp 1
+      position: {x: -4.35349534e-08, y: -3.55271368e-15, z: -9.56730961e-09}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_elbow_fk_ctrl
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_elbow_pv_ctrl_frzGrp
+      position: {x: -6.66801691, y: 14.3643169, z: -3.24523401}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_armPvCtrlGrp_space_grp
+      position: {x: 6.66801691, y: -14.3581181, z: 3.88861561}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_elbow_pv_ctrl
+      position: {x: -4.54795742, y: 14.9301844, z: 3.27864838}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_elbow_pv_ctrl_annLoc
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_elbow_line_loc
+      position: {x: 2.2010417, y: -2.3363874, z: 7.02041149}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: abRTLine_ninja_lf_elbow_line_loc
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_handCtrl_grp
+      position: {x: -4.91821051, y: 11.1884966, z: 1.90293527}
+      rotation: {x: .468086958, y: -.303171754, z: .548354983, w: .623127818}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_hand_ctrl_frzGrp
+      position: {x: -0, y: -2.66453526e-15, z: 1.77635684e-15}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_hand_ctrl_frzGrp 1
+      position: {x: -0, y: -1.77635684e-15, z: 0}
+      rotation: {x: -.425891489, y: .348795772, z: -.581734598, w: .598784566}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_hand_ctrl
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: .32863006, y: -.309184521, z: .611510813, w: .649970591}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_upArm_fk_ctrl_frzGrp
+      position: {x: -3.74540997, y: 11.2850609, z: 6.4399271}
+      rotation: {x: .342027903, y: -.0314898677, z: -.0114689646, w: .93909204}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_upArmAlignOffset_rig_grp_frzGrp
+      position: {x: -0, y: -8.88178335e-15, z: 1.38777878e-17}
+      rotation: {x: 0, y: .0335134119, z: -0, w: .999438286}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_upArmAlignOffset_rig_grp
+      position: {x: 4.4408921e-16, y: 1.77635684e-15, z: 2.77555756e-17}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_upArm_fk_ctrl_frzGrp 1
+      position: {x: -4.4408921e-16, y: 5.32907052e-15, z: -8.32667268e-17}
+      rotation: {x: 0, y: -.0335134119, z: -0, w: .999438286}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_upArm_fk_ctrl
+      position: {x: -0, y: -1.77635684e-15, z: 4.16333634e-17}
+      rotation: {x: 0, y: 2.08166817e-17, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_upArmPvCtrl_dist
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_upArmPvCtrl_dist_ep
+      position: {x: -4.54795742, y: 14.9363832, z: 3.92202997}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_upArmPvCtrl_dist_sp
+      position: {x: -3.74540997, y: 11.2850609, z: 6.4399271}
+      rotation: {x: -3.1918912e-16, y: -.0335134119, z: -2.16038125e-15, w: .999438286}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_upArmupJntFkCtrl_grp
+      position: {x: -3.74540997, y: 11.2850609, z: 6.4399271}
+      rotation: {x: .342027903, y: -.0314898677, z: -.0114689646, w: .93909204}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_hand_rig_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_leg_rig_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_ankle_fk_ctrl_frzGrp
+      position: {x: -1.99055099, y: 2.24936056, z: -3.61481166}
+      rotation: {x: .597131252, y: .378727257, z: -.597131252, w: -.378727257}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_ankle_fk_ctrl_frzGrp 1
+      position: {x: -9.23765953e-09, y: 5.74782888e-08, z: 2.22044605e-16}
+      rotation: {x: -1.2490009e-16, y: 2.11852294e-32, z: 2.77555756e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_ankle_fk_ctrl
+      position: {x: -0, y: -1.11022302e-16, z: -2.22044605e-16}
+      rotation: {x: 4.62223187e-32, y: 1.23259516e-32, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_ankleBallReader_UpLeg_jnt
+      position: {x: -1.99055099, y: 7.08406115, z: 2.05222964}
+      rotation: {x: .614037275, y: .350654095, z: -.614037275, w: -.350654095}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_ankleBallReader_Knee_jnt
+      position: {x: -3.5419426, y: -2.22044605e-16, z: -1.11022292e-15}
+      rotation: {x: -6.97182727e-18, y: 1.80203447e-17, z: -.53043437, w: .847725987}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_ankleBallReader_Ankle_jnt
+      position: {x: -3.95472455, y: -4.74243933e-07, z: -1.55431223e-14}
+      rotation: {x: 1.51852708e-17, y: 1.19476694e-17, z: .807480514, w: .589894354}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_ankleBallReader_Ball_jnt
+      position: {x: -1.88934112, y: 2.26566627e-07, z: -8.8817842e-16}
+      rotation: {x: 1.92014263e-17, y: 2.15510659e-18, z: .0831956863, w: .996533215}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_ball_fk_ctrl_frzGrp
+      position: {x: -1.99055099, y: .540263593, z: -2.80945587}
+      rotation: {x: .626569569, y: .327735513, z: -.626569569, w: -.327735513}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_ball_fk_ctrl_frzGrp 1
+      position: {x: -4.4408921e-16, y: -4.4408921e-16, z: 0}
+      rotation: {x: 1.44829932e-31, y: 4.93038066e-32, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_ball_fk_ctrl
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 1.44829932e-31, y: 4.93038066e-32, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_foot_ctrl
+      position: {x: -1.99055099, y: -.181257114, z: 3.01189756}
+      rotation: {x: .0036549971, y: 2.91433544e-16, z: -8.32667268e-17, w: .999993324}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_knee_fk_ctrl_frzGrp
+      position: {x: -1.99055099, y: 4.48142052, z: -.350189805}
+      rotation: {x: -.208866492, y: -.67555517, z: .208866492, w: .67555517}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_knee_fk_ctrl_frzGrp 1
+      position: {x: 1.06561018e-07, y: 2.44643719e-08, z: -2.22044605e-16}
+      rotation: {x: 0, y: 6.16297582e-33, z: -6.9388939e-18, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_knee_fk_ctrl
+      position: {x: -0, y: -2.77555756e-17, z: 0}
+      rotation: {x: 0, y: 6.16297582e-33, z: -6.9388939e-18, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_knee_pv_ctrl_frzGrp
+      position: {x: -1.99055099, y: 4.82869577, z: 3.878757}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_knee_line_loc
+      position: {x: 2.22044605e-16, y: -.795163095, z: -.0266290903}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: abRTLine_ninja_lf_knee_line_loc
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_legPvCtrlGrp_space_grp
+      position: {x: 1.99055099, y: -4.82249641, z: -3.23537517}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_knee_pv_ctrl
+      position: {x: -1.99055099, y: 3.09749103, z: 5.28932047}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_knee_pv_ctrl_annLoc
+      position: {x: -0, y: 0, z: 4.4408921e-16}
+      rotation: {x: -.0969554111, y: 0, z: -0, w: .99528873}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_leg_ikHandle
+      position: {x: -1.99055076, y: .736799538, z: 1.66776848}
+      rotation: {x: .0036549971, y: 4.4408921e-16, z: -5.58580959e-16, w: .999993324}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_legFK_Grp
+      position: {x: 2.06881232e-30, y: 7.41973591, z: 2.4979012}
+      rotation: {x: -.660840988, y: .251573503, z: .660840988, w: -.251573503}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_upLeg_fk_jnt
+      position: {x: .556070566, y: -.0456752144, z: 1.99055099}
+      rotation: {x: -3.9498761e-17, y: -1.0217775e-16, z: .998802543, w: -.0489236377}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_knee_fk_jnt
+      position: {x: -3.5419426, y: -7.77156117e-16, z: -6.66133815e-16}
+      rotation: {x: -1.04491209e-16, y: 3.2894273e-17, z: -.112595886, w: .9936409}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_ankle_fk_jnt
+      position: {x: -3.95472455, y: 1.69309011e-15, z: -1.55431223e-14}
+      rotation: {x: -6.82779097e-17, y: 8.5665458e-17, z: .648583353, w: .761143684}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_ball_fk_jnt
+      position: {x: -1.88934112, y: 4.4408921e-16, z: -6.66133815e-16}
+      rotation: {x: 1.26883377e-17, y: 1.08809237e-16, z: .0831956863, w: .996533215}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_toe_fk_jnt
+      position: {x: -1.56375599, y: -2.22044605e-16, z: -3.33066886e-15}
+      rotation: {x: .706181347, y: .0361655839, z: -.706181347, w: .0361655839}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_legIK_Grp
+      position: {x: 2.06881232e-30, y: 7.41973591, z: 2.4979012}
+      rotation: {x: -.660840988, y: .251573503, z: .660840988, w: -.251573503}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_upLeg_ik_jnt
+      position: {x: .556070566, y: -.0456752144, z: 1.99055099}
+      rotation: {x: -2.76820278e-09, y: 5.04502928e-09, z: -.772404075, w: .635131419}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_knee_ik_jnt
+      position: {x: -3.5419426, y: -7.77156117e-16, z: -6.66133815e-16}
+      rotation: {x: -2.47508808e-15, y: -7.10442235e-15, z: -.53043437, w: .847725987}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_ankle_ik_jnt
+      position: {x: -3.95472455, y: 1.69309011e-15, z: -1.55431223e-14}
+      rotation: {x: -6.82779097e-17, y: 8.5665458e-17, z: .648583353, w: .761143684}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_legIkCtrl_space_grp
+      position: {x: -0, y: .00619915687, z: .643381655}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_heel_ik_ctrl_frzGrp
+      position: {x: -1.99055099, y: .246480241, z: -.0956123397}
+      rotation: {x: -1.22464685e-16, y: 0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_heel_ik_ctrl
+      position: {x: -0, y: -.177592441, z: 1.11516178}
+      rotation: {x: .0036549971, y: -0, z: -0, w: .999993324}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_legPvIkCtrl_dist
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_legPvIkCtrl_dist_ep
+      position: {x: -1.99055099, y: .736799538, z: 1.66776848}
+      rotation: {x: -.700724363, y: -.0947914496, z: .700724363, w: .0947914496}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_legPvIkCtrl_dist_sp
+      position: {x: -1.99055099, y: 3.10369015, z: 5.93270254}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_legStrDist_dist
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_legStrDist_dist_ep
+      position: {x: -1.99055099, y: .736799538, z: 1.66776848}
+      rotation: {x: -.700724363, y: -.0947914496, z: .700724363, w: .0947914496}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_legStrDist_dist_sp
+      position: {x: -1.99055099, y: 7.08406115, z: 2.05222964}
+      rotation: {x: .528167188, y: .470148295, z: -.528167188, w: -.470148295}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_reverseFoot_rig_grp
+      position: {x: -0, y: -.172085643, z: 1.75673926}
+      rotation: {x: .0036549971, y: 0, z: -0, w: .999993324}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_heel_rev_rig_jnt
+      position: {x: -1.99055099, y: .246480241, z: -.0956123397}
+      rotation: {x: 0, y: .707106829, z: 0, w: .707106829}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_toe_rev_rig_jnt
+      position: {x: -3.37700987, y: 0, z: 1.09529212e-14}
+      rotation: {x: -0, y: -.707106829, z: 0, w: .707106829}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf__ik_jnt
+      position: {x: -3.77475828e-15, y: .159749895, z: -1.55557477}
+      rotation: {x: -.706181347, y: -.0361655839, z: .706181347, w: .0361655839}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_ball_ik_jnt
+      position: {x: -0, y: 0, z: -2.22044605e-16}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_toe_ik_jnt
+      position: {x: -1.56375599, y: -5.55111459e-16, z: -3.33066886e-15}
+      rotation: {x: .706181347, y: .0361655839, z: -.706181347, w: .0361655839}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_ball_rev_rig_jnt
+      position: {x: -3.77475828e-15, y: .159749895, z: -1.55557477}
+      rotation: {x: .706181347, y: .0361655839, z: -.706181347, w: -.0361655839}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_ankle_rev_rig_jnt
+      position: {x: 1.86318696, y: -.313280255, z: 4.4408921e-16}
+      rotation: {x: 9.9732326e-17, y: 1.168395e-16, z: -.0831956938, w: .996533215}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_upLeg_fk_ctrl_frzGrp
+      position: {x: -1.99055099, y: 7.08406115, z: 2.05222964}
+      rotation: {x: -.283603013, y: -.647741735, z: .283603013, w: .647741735}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_upLegAlignOffset_rig_grp_frzGrp
+      position: {x: -0, y: 0, z: -6.66133815e-16}
+      rotation: {x: .528167188, y: .470148295, z: -.528167188, w: .470148295}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_upLegAlignOffset_rig_grp
+      position: {x: -2.22044605e-16, y: 1.77635684e-15, z: -1.38777878e-17}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_upLeg_fk_ctrl_frzGrp 1
+      position: {x: -2.22044605e-16, y: 3.55271368e-15, z: -1.11022302e-16}
+      rotation: {x: .528167188, y: .470148295, z: -.528167188, w: -.470148295}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_upLeg_fk_ctrl
+      position: {x: -1.77635684e-15, y: 3.33066907e-16, z: 0}
+      rotation: {x: 3.05311332e-16, y: 1.11022302e-16, z: 1.66533454e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_upLegPvCtrl_dist
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_upLegPvCtrl_dist_ep
+      position: {x: -1.99055099, y: 3.10369015, z: 5.93270254}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_upLegPvCtrl_dist_sp
+      position: {x: -1.99055099, y: 7.08406115, z: 2.05222964}
+      rotation: {x: .528167188, y: .470148295, z: -.528167188, w: -.470148295}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_upLegupJntFkCtrl_grp
+      position: {x: -1.99055099, y: 7.08406115, z: 2.05222964}
+      rotation: {x: -.283603013, y: -.647741735, z: .283603013, w: .647741735}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lfArmIkCtrl_space_switch_grp
+      position: {x: -4.91821051, y: 11.1884966, z: 1.90293527}
+      rotation: {x: 0, y: .0745724365, z: -0, w: .997215629}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lfLegIkCtrl_space_switch_grp
+      position: {x: -1.99055099, y: .0750869587, z: 1.6629312}
+      rotation: {x: .0036549971, y: 0, z: -0, w: .999993324}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lowSpineCtrl_space_switch_grp
+      position: {x: -0, y: 7.80293703, z: 2.92826343}
+      rotation: {x: .478023976, y: 0, z: -0, w: .878346801}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_midSpineCtrl_space_switch_grp
+      position: {x: 9.93521578e-16, y: 8.61052227, z: 3.72188544}
+      rotation: {x: .448483318, y: 0, z: -0, w: .893791199}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_neckCtrl_space_switch_grp
+      position: {x: 4.0105587e-15, y: 11.9878578, z: 7.16957521}
+      rotation: {x: .681807697, y: 0, z: -0, w: .731531441}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_root_ctrl
+      position: {x: -0, y: .00619915687, z: .594946623}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rootCtrl_space_switch_grp
+      position: {x: -0, y: .00619915687, z: .594946623}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_arm_rig_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_arm_ikHandle
+      position: {x: 4.09444284, y: 9.12483692, z: 9.6426754}
+      rotation: {x: -5.69027048e-10, y: -1.80589913e-16, z: 3.78336473e-09, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_armFK_Grp
+      position: {x: 1.96941996, y: 11.203723, z: 5.91882038}
+      rotation: {x: .93335247, y: .0681428984, z: .126662776, w: -.328886449}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_upArm_fk_jnt
+      position: {x: 1.8526454, y: -2.15307318e-05, z: 5.79720847e-07}
+      rotation: {x: .0139764454, y: -.128804371, z: .106966659, w: .985785127}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_elbow_fk_jnt
+      position: {x: 2.85891199, y: 2.13162821e-14, z: -1.45260287e-07}
+      rotation: {x: 1.04751381e-08, y: .107950643, z: -1.13744481e-09, w: .994156241}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_wrist_fk_jnt
+      position: {x: 2.10084581, y: 0, z: 3.48202917e-07}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_armIK_Grp
+      position: {x: 1.96941996, y: 11.203723, z: 5.91882038}
+      rotation: {x: .93335247, y: .0681428984, z: .126662776, w: -.328886449}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_upArm_ik_jnt
+      position: {x: 1.8526454, y: -2.15307318e-05, z: 5.79720904e-07}
+      rotation: {x: -.45671761, y: .252845705, z: .570324421, w: .634198904}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_elbow_ik_jnt
+      position: {x: 2.85891199, y: 2.13162821e-14, z: -1.45260287e-07}
+      rotation: {x: 9.41325684e-09, y: .630591154, z: 4.73422279e-09, w: .776115179}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_wrist_ik_jnt
+      position: {x: 2.10084581, y: 0, z: 3.48202917e-07}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_armIkCtrl_space_grp
+      position: {x: -0, y: .00619915687, z: .643381655}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_arm_ik_ctrl_frzGrp
+      position: {x: 8.67537975, y: 14.3642988, z: -.0747203976}
+      rotation: {x: 2.53670436e-08, y: -.0745724365, z: 1.89696414e-09, w: .997215629}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_arm_ik_ctrl
+      position: {x: -3.18041253, y: -5.24566174, z: 9.65441322}
+      rotation: {x: -6.6174449e-24, y: 0, z: 8.27180613e-25, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_armPvIkCtrl_dist
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_armPvIkCtrl_dist_ep
+      position: {x: 4.09444284, y: 9.12483692, z: 9.6426754}
+      rotation: {x: 2.53670436e-08, y: -.0745724365, z: 1.89696414e-09, w: .997215629}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_armPvIkCtrl_dist_sp
+      position: {x: 4.41541386, y: 7.45273829, z: 6.79362106}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_armStrDist_dist
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_armStrDist_dist_ep
+      position: {x: 4.09444284, y: 9.12483692, z: 9.6426754}
+      rotation: {x: .997215629, y: 1.89696414e-09, z: .0745724365, w: -2.53670436e-08}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_armStrDist_dist_sp
+      position: {x: 3.74540997, y: 11.2850475, z: 6.43991661}
+      rotation: {x: .999438286, y: 2.34213906e-15, z: -.0335134119, w: 8.04677329e-16}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_clavicle_fk_ctrl_frzGrp
+      position: {x: 1.96941996, y: 11.203723, z: 5.91882038}
+      rotation: {x: .93335247, y: .0681428984, z: .126662776, w: -.328886449}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_clavicle_fk_ctrl_frzGrp 1
+      position: {x: -8.8817842e-16, y: 0, z: 0}
+      rotation: {x: 3.46944695e-18, y: -2.77555756e-17, z: -3.68628739e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_clavicle_fk_ctrl
+      position: {x: 8.8817842e-16, y: 0, z: 0}
+      rotation: {x: 8.42594351e-35, y: -1.38777878e-17, z: 6.07153217e-18, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_elbow_fk_ctrl_frzGrp
+      position: {x: 6.59789944, y: 11.4082146, z: 6.29325867}
+      rotation: {x: .937003553, y: -.0255201887, z: .0700697377, w: -.341267258}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_elbow_fk_ctrl_frzGrp 1
+      position: {x: 3.32424506e-08, y: 0, z: 7.30541272e-09}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_elbow_fk_ctrl
+      position: {x: -0, y: -3.55271368e-15, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_elbow_pv_ctrl_frzGrp
+      position: {x: 6.66801357, y: 14.3642988, z: -3.24522996}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_armPvCtrlGrp_space_grp
+      position: {x: -6.66801357, y: -14.3580999, z: 3.88861179}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_elbow_pv_ctrl
+      position: {x: 4.41541386, y: 7.4465394, z: 6.15023899}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_elbow_pv_ctrl_annLoc
+      position: {x: -0, y: 0, z: 8.8817842e-16}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_elbow_line_loc
+      position: {x: -2.4799912, y: -5.66046429, z: 10.8318005}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: abRTLine_ninja_rt_elbow_line_loc
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_handCtrl_grp
+      position: {x: 4.09444237, y: 9.12483978, z: 9.64267063}
+      rotation: {x: .480477363, y: -.408172369, z: .596378505, w: .496859759}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_hand_ctrl_frzGrp
+      position: {x: -1.77635684e-15, y: 1.77635684e-15, z: -8.8817842e-16}
+      rotation: {x: 2.68634501e-08, y: 1.38777878e-17, z: -1.19998592e-24, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_hand_ctrl_frzGrp 1
+      position: {x: 3.55271368e-15, y: -3.55271368e-15, z: -8.8817842e-16}
+      rotation: {x: .525914729, y: -.558887601, z: -.369983763, w: .523612916}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_hand_ctrl
+      position: {x: -0, y: 0, z: -2.22044605e-16}
+      rotation: {x: .666271627, y: -.493735254, z: -.332727253, w: -.448999107}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_upArm_fk_ctrl_frzGrp
+      position: {x: 3.74540997, y: 11.2850475, z: 6.43991661}
+      rotation: {x: .93909204, y: .0114689646, z: -.0314898677, w: -.342027903}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_upArmAlignOffset_rig_grp_frzGrp
+      position: {x: -0, y: 5.32907052e-15, z: 1.11022302e-16}
+      rotation: {x: .999438286, y: 8.73876364e-18, z: -.0335134119, w: -6.08361033e-17}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_upArmAlignOffset_rig_grp
+      position: {x: -0, y: 0, z: 8.32667268e-17}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_upArm_fk_ctrl_frzGrp 1
+      position: {x: -0, y: 0, z: 5.55111512e-17}
+      rotation: {x: .999438286, y: -6.16093385e-18, z: -.0335134119, w: -6.13357204e-17}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_upArm_fk_ctrl
+      position: {x: -0, y: 1.77635684e-15, z: 1.38777878e-17}
+      rotation: {x: -1.22464685e-16, y: 1.38777878e-17, z: 1.58794892e-34, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_upArmPvCtrl_dist
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_upArmPvCtrl_dist_ep
+      position: {x: 4.41541386, y: 7.45273829, z: 6.79362106}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_upArmPvCtrl_dist_sp
+      position: {x: 3.74540997, y: 11.2850475, z: 6.43991661}
+      rotation: {x: .999438286, y: 2.34213906e-15, z: -.0335134119, w: 8.04677329e-16}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_upArmupJntFkCtrl_grp
+      position: {x: 3.74540997, y: 11.2850475, z: 6.43991661}
+      rotation: {x: .93909204, y: .0114689646, z: -.0314898677, w: -.342027903}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_hand_rig_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_leg_rig_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_ankle_fk_ctrl_frzGrp
+      position: {x: 1.99055004, y: 2.2493608, z: -3.61481118}
+      rotation: {x: .378727257, y: -.597131252, z: -.378727257, w: .597131252}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_ankle_fk_ctrl_frzGrp 1
+      position: {x: 1.25263178e-08, y: -7.79408822e-08, z: -2.22044605e-16}
+      rotation: {x: -1.69481835e-32, y: 6.16297582e-33, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_ankle_fk_ctrl
+      position: {x: -0, y: 1.11022302e-16, z: 0}
+      rotation: {x: -1.69481835e-32, y: 6.16297582e-33, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_ankleBallReader_UpLeg_jnt
+      position: {x: 1.99055004, y: 7.08406258, z: 2.05223131}
+      rotation: {x: .483107001, y: -.516340613, z: -.483107001, w: .516340613}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_ankleBallReader_Knee_jnt
+      position: {x: 3.5419457, y: -1.77439432e-07, z: -2.22044605e-16}
+      rotation: {x: 1.15782456e-16, y: -6.38336073e-17, z: -.7730124, w: .63439101}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_ankleBallReader_Ankle_jnt
+      position: {x: 3.95472336, y: -3.53439134e-07, z: -1.77635684e-15}
+      rotation: {x: -1.83793361e-17, y: -1.30929377e-16, z: .521404803, w: .853309453}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_ankleBallReader_Ball_jnt
+      position: {x: 1.88933849, y: -1.32984951e-06, z: 8.8817842e-16}
+      rotation: {x: -1.16959884e-16, y: -6.16496983e-17, z: .0831956863, w: .996533215}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_ball_fk_ctrl_frzGrp
+      position: {x: 1.99055004, y: .540265501, z: -2.80945802}
+      rotation: {x: .327735513, y: -.626569569, z: -.327735513, w: .626569569}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_ball_fk_ctrl_frzGrp 1
+      position: {x: -0, y: -2.22044605e-16, z: 0}
+      rotation: {x: 0, y: -4.93038066e-32, z: 6.9388939e-18, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_ball_fk_ctrl
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -4.93038066e-32, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_foot_ctrl
+      position: {x: 1.9905504, y: 3.08468699, z: -2.93548393}
+      rotation: {x: .815028191, y: 2.77555756e-16, z: 1.2490009e-16, w: .579421341}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_knee_fk_ctrl_frzGrp
+      position: {x: 1.99055004, y: 4.48141956, z: -.350190282}
+      rotation: {x: -.67555517, y: .208866492, z: .67555517, w: -.208866492}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_knee_fk_ctrl_frzGrp 1
+      position: {x: -1.81210122e-08, y: -4.16023793e-09, z: 2.22044605e-16}
+      rotation: {x: -4.93038066e-32, y: 6.16297582e-33, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_knee_fk_ctrl
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: 6.16297582e-33, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_knee_pv_ctrl_frzGrp
+      position: {x: 1.99055004, y: 4.82869482, z: 3.87875986}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_knee_line_loc
+      position: {x: 4.4408921e-16, y: -1.278754, z: -1.59123576}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: abRTLine_ninja_rt_knee_line_loc
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_legPvCtrlGrp_space_grp
+      position: {x: -1.99055004, y: -4.82249594, z: -3.2353785}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_knee_pv_ctrl
+      position: {x: 1.99055004, y: 2.05209804, z: 2.75744414}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_knee_pv_ctrl_annLoc
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_leg_ikHandle
+      position: {x: 1.99055004, y: 4.06212902, z: -1.63388491}
+      rotation: {x: .815028191, y: -6.07153217e-16, z: -6.07153217e-16, w: .579421341}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_legFK_Grp
+      position: {x: 2.06881232e-30, y: 7.41973591, z: 2.4979012}
+      rotation: {x: -.660840988, y: .251573503, z: .660840988, w: -.251573503}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_upLeg_fk_jnt
+      position: {x: .556068361, y: -.0456751771, z: -1.99055004}
+      rotation: {x: 1.02177756e-16, y: -3.94987577e-17, z: .0489236787, w: .998802543}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_knee_fk_jnt
+      position: {x: 3.5419457, y: -1.77439432e-07, z: -1.11022292e-15}
+      rotation: {x: 1.04491209e-16, y: -3.2894273e-17, z: -.112595886, w: .9936409}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_ankle_fk_jnt
+      position: {x: 3.95472336, y: -2.60219934e-07, z: -2.22044584e-15}
+      rotation: {x: 6.82779097e-17, y: -8.5665458e-17, z: .648583353, w: .761143684}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_ball_fk_jnt
+      position: {x: 1.88933849, y: -1.37479503e-06, z: 1.55431223e-15}
+      rotation: {x: -1.26883377e-17, y: -1.08809237e-16, z: .0831956863, w: .996533215}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_toe_fk_jnt
+      position: {x: 1.56376123, y: 4.47020369e-07, z: 0}
+      rotation: {x: .706181347, y: .0361655839, z: -.706181347, w: .0361655839}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_legIK_Grp
+      position: {x: 2.06881232e-30, y: 7.41973591, z: 2.4979012}
+      rotation: {x: -.660840988, y: .251573503, z: .660840988, w: -.251573503}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_upLeg_ik_jnt
+      position: {x: .556068361, y: -.0456751771, z: -1.99055004}
+      rotation: {x: 3.36962597e-16, y: -8.96597186e-16, z: .439364225, w: .898309052}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_knee_ik_jnt
+      position: {x: 3.5419457, y: -1.77439432e-07, z: -1.11022292e-15}
+      rotation: {x: 4.45821763e-16, y: 8.94562825e-16, z: -.7730124, w: .63439101}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_ankle_ik_jnt
+      position: {x: 3.95472336, y: -2.60219934e-07, z: -2.22044584e-15}
+      rotation: {x: 6.82779097e-17, y: -8.5665458e-17, z: .648583353, w: .761143684}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_legIkCtrl_space_grp
+      position: {x: -0, y: .00619915687, z: .643381655}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_heel_ik_ctrl_frzGrp
+      position: {x: 1.99055099, y: .246480241, z: -.0956123397}
+      rotation: {x: -6.12323426e-17, y: 6.04901485e-16, z: 2.83276934e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_heel_ik_ctrl
+      position: {x: -0, y: 4.02685547, z: -2.80665183}
+      rotation: {x: .815028191, y: 0, z: 0, w: .579421341}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_legPvIkCtrl_dist
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_legPvIkCtrl_dist_ep
+      position: {x: 1.99055004, y: 4.06212902, z: -1.63388491}
+      rotation: {x: .0947914496, y: -.700724363, z: -.0947914496, w: .700724363}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_legPvIkCtrl_dist_sp
+      position: {x: 1.99055004, y: 2.0582974, z: 3.40082598}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_legStrDist_dist
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_legStrDist_dist_ep
+      position: {x: 1.99055004, y: 4.06212902, z: -1.63388491}
+      rotation: {x: .0947914496, y: -.700724363, z: -.0947914496, w: .700724363}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_legStrDist_dist_sp
+      position: {x: 1.99055004, y: 7.08406258, z: 2.05223131}
+      rotation: {x: .470148295, y: -.528167188, z: -.470148295, w: .528167188}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_reverseFoot_rig_grp
+      position: {x: -0, y: 4.27020931, z: -2.52309322}
+      rotation: {x: .815028191, y: 0, z: -0, w: .579421341}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_heel_rev_rig_jnt
+      position: {x: 1.99055099, y: .246480241, z: -.0956123397}
+      rotation: {x: -2.75568564e-08, y: .707106829, z: 2.75568564e-08, w: .707106829}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_toe_rev_rig_jnt
+      position: {x: -3.37701225, y: 9.3212687e-17, z: 1.32264696e-13}
+      rotation: {x: .707106829, y: 4.32978063e-17, z: .707106829, w: -4.32978063e-17}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt__ik_jnt
+      position: {x: -1.33226763e-15, y: -.15975, z: 1.55558002}
+      rotation: {x: .706181347, y: .0361655839, z: -.706181347, w: -.0361655839}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_ball_ik_jnt
+      position: {x: 2.22044605e-16, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_toe_ik_jnt
+      position: {x: 1.56376123, y: 4.47020369e-07, z: -2.22044605e-16}
+      rotation: {x: .706181347, y: .0361655839, z: -.706181347, w: .0361655839}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_ball_rev_rig_jnt
+      position: {x: -4.4408921e-16, y: -.15975, z: 1.55558002}
+      rotation: {x: .706181347, y: .0361655839, z: -.706181347, w: -.0361655839}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_ankle_rev_rig_jnt
+      position: {x: -1.86318421, y: .313281178, z: -8.8817842e-16}
+      rotation: {x: -4.20136627e-16, y: -3.21799563e-17, z: -.0831956938, w: .996533215}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_upLeg_fk_ctrl_frzGrp
+      position: {x: 1.99055004, y: 7.08406258, z: 2.05223131}
+      rotation: {x: -.647741735, y: .283603013, z: .647741735, w: -.283603013}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_upLegAlignOffset_rig_grp_frzGrp
+      position: {x: -1.77635684e-15, y: 2.22044605e-16, z: 0}
+      rotation: {x: -.470148295, y: .528167188, z: .470148295, w: .528167188}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_upLegAlignOffset_rig_grp
+      position: {x: -0, y: 0, z: -1.38777865e-16}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_upLeg_fk_ctrl_frzGrp 1
+      position: {x: -0, y: -1.77635684e-15, z: -4.16333634e-17}
+      rotation: {x: .470148295, y: -.528167188, z: -.470148295, w: .528167188}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_upLeg_fk_ctrl
+      position: {x: -0, y: -1.11022302e-16, z: 2.22044605e-16}
+      rotation: {x: -3.60822483e-16, y: -5.55111512e-17, z: 1.66533454e-16, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_upLegPvCtrl_dist
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_upLegPvCtrl_dist_ep
+      position: {x: 1.99055004, y: 2.0582974, z: 3.40082598}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_upLegPvCtrl_dist_sp
+      position: {x: 1.99055004, y: 7.08406258, z: 2.05223131}
+      rotation: {x: .470148295, y: -.528167188, z: -.470148295, w: .528167188}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_upLegupJntFkCtrl_grp
+      position: {x: 1.99055004, y: 7.08406258, z: 2.05223131}
+      rotation: {x: -.647741735, y: .283603013, z: .647741735, w: -.283603013}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rtArmIkCtrl_space_switch_grp
+      position: {x: 4.09444284, y: 9.12483692, z: 9.6426754}
+      rotation: {x: 2.53670436e-08, y: -.0745724365, z: 1.89696414e-09, w: .997215629}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rtLegIkCtrl_space_switch_grp
+      position: {x: 1.99055099, y: 4.27953529, z: -2.25888252}
+      rotation: {x: .815028191, y: 0, z: -0, w: .579421341}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_spine_rig_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_cogCtrl_space_grp
+      position: {x: -0, y: .00619915687, z: .643381655}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_cog_ctrl
+      position: {x: -0, y: 7.79673815, z: 2.28488207}
+      rotation: {x: .417560935, y: -0, z: -0, w: .908648968}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_hipCtrl_space_grp
+      position: {x: -0, y: 1.58530211, z: -4.24172068}
+      rotation: {x: .417560905, y: -0, z: -0, w: .908648968}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_hip_ctrl
+      position: {x: -0, y: 9.49027348, z: -.0484350473}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_hiSpineCtrl_space_grp
+      position: {x: -0, y: 2.04044938, z: -4.5955801}
+      rotation: {x: .448483318, y: -0, z: -0, w: .893791199}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_spineHigh_ctrl_frzGrp
+      position: {x: 1.99208533e-15, y: 11.7052536, z: -.542401254}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_spineHigh_ctrl
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -.115530461, y: 0, z: -0, w: .993303955}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lowSpineCtrl_space_grp
+      position: {x: -0, y: 1.58530211, z: -4.24172068}
+      rotation: {x: .417560905, y: -0, z: -0, w: .908648968}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_spineLow_ctrl
+      position: {x: -0, y: 9.49027348, z: -.0484350473}
+      rotation: {x: .0675927028, y: 0, z: -0, w: .997713029}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_midSpineCtrl_space_grp
+      position: {x: -0, y: 2.6091764, z: -5.01481533}
+      rotation: {x: .478023976, y: -0, z: -0, w: .878346801}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_spineMid_ctrl_frzGrp
+      position: {x: 9.93521578e-16, y: 10.5952196, z: -.295672238}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_spineMid_ctrl
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: -.0333297439, y: 0, z: -0, w: .999444425}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_spineSplitRot_ctrl
+      position: {x: -3.52490139, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_spineNoScale_rig_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_ikSpline_crv
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_spine0_clstrHandle
+      position: {x: -3.90555271e-31, y: 7.41973591, z: 2.4979012}
+      rotation: {x: .417560905, y: -4.06954263e-32, z: -3.88578059e-16, w: .908648968}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_spine1_clstrHandle
+      position: {x: 1.47203737e-31, y: 7.80293703, z: 2.92826343}
+      rotation: {x: .478023976, y: 5.55111512e-17, z: -4.4408921e-16, w: .878346801}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_spine2_clstrHandle
+      position: {x: 9.93521578e-16, y: 8.61052227, z: 3.72188544}
+      rotation: {x: .448483318, y: 5.55111512e-17, z: -3.88578059e-16, w: .893791199}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_spine3_clstrHandle
+      position: {x: -.079419978, y: 9.0030241, z: 4.08377314}
+      rotation: {x: .396015197, y: -0, z: -0, w: .918243945}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_spine4_clstrHandle
+      position: {x: 1.99208533e-15, y: 9.47182178, z: 4.46432543}
+      rotation: {x: .342220128, y: -1.31180203e-32, z: -3.33066907e-16, w: .939619839}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_spine5_clstrHandle
+      position: {x: 2.68827315e-15, y: 10.2750587, z: 5.13890505}
+      rotation: {x: .342220128, y: -1.31180203e-32, z: -3.33066907e-16, w: .939619839}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_spine_ikHandle
+      position: {x: 1.33400235e-15, y: 10.2753172, z: 5.13912106}
+      rotation: {x: -.297832906, y: .643289268, z: -.300176531, w: .638254285}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_spineRig_a_jnt
+      position: {x: -3.90555271e-31, y: 7.41973591, z: 2.4979012}
+      rotation: {x: -.257831514, y: .658153832, z: -.257711738, w: .65874207}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_spineRig_b_jnt
+      position: {x: -.556338429, y: -2.08166817e-17, z: 1.59967625e-16}
+      rotation: {x: .000398274511, y: -.00302507798, z: -.0152279418, w: .99987942}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_spineRig_c_jnt
+      position: {x: -.556510448, y: 4.02455846e-16, z: 4.90149591e-16}
+      rotation: {x: .00104819518, y: -.0106712403, z: -.0106731476, w: .999885559}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_spineRig_d_jnt
+      position: {x: -.557483971, y: 2.77555756e-17, z: 4.51902242e-16}
+      rotation: {x: .000245820265, y: -.0105788922, z: -.0148992371, w: .999833047}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_spineRig_e_jnt
+      position: {x: -.556912601, y: -1.30451205e-15, z: 6.63266608e-16}
+      rotation: {x: -.00495856162, y: .0480131246, z: -.0223474205, w: .99858439}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_spineRig_f_jnt
+      position: {x: -.555378199, y: -4.16333608e-16, z: 5.85386376e-16}
+      rotation: {x: .00159612426, y: -.00821214076, z: -.00143782736, w: .999963999}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_spineRig_g_jnt
+      position: {x: -.5567047, y: -7.35522701e-16, z: 7.15552734e-16}
+      rotation: {x: .000782091287, y: -.0113085583, z: .00117257494, w: .999935091}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_spineRig_h_jnt
+      position: {x: -.55680871, y: -8.15320034e-17, z: 4.51903195e-16}
+      rotation: {x: .503105938, y: -.49687472, z: .503105938, w: .49687472}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_spineShaper_ctrl_frzGrp
+      position: {x: 1.49280345e-15, y: 9.04117107, z: 4.09310532}
+      rotation: {x: .448483318, y: 0, z: -0, w: .893791199}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_spineShaper_ctrl_frzGrp 1
+      position: {x: -0, y: .0215649027, z: .0620454885}
+      rotation: {x: -.0578621738, y: 0, z: -0, w: .998324573}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_spineShaper_ctrl
+      position: {x: -.079419978, y: -.0472222902, z: -.0427821688}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: refSpine_a
+      position: {x: 1.08468374e-30, y: 8.9141283, z: -.0379384831}
+      rotation: {x: .517644763, y: -.481709361, z: .517644763, w: -.481709361}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: refSpine_b
+      position: {x: -.55462271, y: 1.11022302e-16, z: 3.44694102e-16}
+      rotation: {x: -9.05874473e-17, y: 1.62667304e-16, z: -.0444537438, w: .999011457}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: refSpine_c
+      position: {x: -.554794192, y: 4.4408921e-16, z: 6.65996648e-16}
+      rotation: {x: -1.02347553e-16, y: 1.55536862e-16, z: -.0294092074, w: .999567449}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: refSpine_d
+      position: {x: -.555764735, y: 0, z: 6.21365582e-16}
+      rotation: {x: -1.07218172e-16, y: 1.52220251e-16, z: -.0022362431, w: .999997497}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: refSpine_e
+      position: {x: -.555195093, y: -1.33226763e-15, z: 8.32023841e-16}
+      rotation: {x: -1.02544608e-16, y: 1.55407027e-16, z: .0326126926, w: .999468088}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: refSpine_f
+      position: {x: -.5536654, y: -2.22044605e-16, z: 7.61084991e-16}
+      rotation: {x: -8.99770145e-17, y: 1.63005773e-16, z: .046263095, w: .998929322}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: refSpine_g
+      position: {x: -.554987848, y: -4.4408921e-16, z: 9.00911972e-16}
+      rotation: {x: -7.78127479e-17, y: 1.69150574e-16, z: .0269286092, w: .999637365}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: refSpine_h
+      position: {x: -.55509156, y: -2.22044605e-16, z: 6.41949489e-16}
+      rotation: {x: .503105938, y: -.49687469, z: .503105938, w: .49687469}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_Skeleton_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_spine_low_jnt
+      position: {x: 0, y: 9.50491619, z: -.0525707379}
+      rotation: {x: .442053229, y: -.551895857, z: -.442053229, w: .551895797}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_hip_jnt
+      position: {x: .574963868, y: -.0383633375, z: -2.5107605e-16}
+      rotation: {x: -2.9529641e-08, y: 3.00725311e-08, z: -.100784995, w: .994908273}
+      scale: {x: .99999994, y: .999999821, z: 1}
+      transformModified: 1
+    - name: ninja_lf_upLeg_jnt
+      position: {x: .556070566, y: -.0456752144, z: 1.99055099}
+      rotation: {x: -2.95296427e-08, y: 3.00725311e-08, z: .99994421, w: .0105710225}
+      scale: {x: .999999702, y: .999999702, z: .999999881}
+      transformModified: 1
+    - name: ninja_lf_knee_jnt
+      position: {x: -3.5419426, y: -5.67380943e-16, z: -7.99888787e-16}
+      rotation: {x: -2.97585814e-08, y: -2.98459923e-08, z: -3.60620788e-06, w: 1}
+      scale: {x: .999999762, y: .999999821, z: 1}
+      transformModified: 1
+    - name: ninja_lf_ankle_jnt
+      position: {x: -3.95472455, y: 1.72860451e-15, z: -1.59903269e-14}
+      rotation: {x: 2.98459959e-08, y: -2.97585832e-08, z: .607098877, w: .794626296}
+      scale: {x: 1.00000012, y: 1.00000012, z: .999999881}
+      transformModified: 1
+    - name: ninja_lf_ball_jnt
+      position: {x: -1.88934112, y: 6.18799456e-17, z: -1.3789527e-15}
+      rotation: {x: 3.49437212e-09, y: 3.25254462e-10, z: .0831956416, w: .996533275}
+      scale: {x: 1.00000012, y: 1.00000012, z: 1.00000012}
+      transformModified: 1
+    - name: ninja_lf_toe_jnt
+      position: {x: -1.56375599, y: -3.5374412e-16, z: -3.51114342e-15}
+      rotation: {x: .706181288, y: .0361656547, z: -.706181347, w: .0361656547}
+      scale: {x: 1, y: .999999762, z: 1}
+      transformModified: 1
+    - name: ninja_lf_upLeg_jnt1
+      position: {x: .556068361, y: -.0456751771, z: -1.99055004}
+      rotation: {x: 0, y: 0, z: .0489236452, w: .998802602}
+      scale: {x: 1.00000024, y: 1.00000024, z: .999999881}
+      transformModified: 1
+    - name: ninja_lf_knee_jnt1
+      position: {x: 3.5419457, y: -1.77439432e-07, z: -1.55431223e-15}
+      rotation: {x: 0, y: 0, z: .112595834, w: -.9936409}
+      scale: {x: .999999881, y: 1.00000024, z: .999999881}
+      transformModified: 1
+    - name: ninja_lf_ankle_jnt1
+      position: {x: 3.95472336, y: -2.60219934e-07, z: -2.44249065e-15}
+      rotation: {x: 3.13894759e-08, y: -2.81257488e-08, z: -.648583353, w: -.761143684}
+      scale: {x: .999999821, y: .999999881, z: 1}
+      transformModified: 1
+    - name: ninja_lf_ball_jnt1
+      position: {x: 1.88933849, y: -1.37479503e-06, z: 6.66133815e-16}
+      rotation: {x: 7.80564502e-09, y: -8.38581116e-08, z: .0831955671, w: .996533275}
+      scale: {x: 1.00000012, y: 1.00000024, z: 1.00000012}
+      transformModified: 1
+    - name: ninja_lf_toe_jnt1
+      position: {x: 1.56376123, y: 4.47020369e-07, z: 0}
+      rotation: {x: .706181347, y: .0361656174, z: -.706181407, w: .0361656174}
+      scale: {x: 1, y: .999999642, z: .999999881}
+      transformModified: 1
+    - name: ninja_spine_mid_jnt
+      position: {x: -1.13226712, y: 6.55004939e-11, z: -4.90694021e-16}
+      rotation: {x: .999999821, y: -.000706741179, z: -3.28769225e-08, w: 2.63716657e-08}
+      scale: {x: .999999821, y: .999999821, z: .999999762}
+      transformModified: 1
+    - name: ninja_spine_hi_jnt
+      position: {x: -1.13712502, y: 1.14922249e-09, z: 4.95698504e-16}
+      rotation: {x: 0, y: 0, z: .109140091, w: .994026423}
+      scale: {x: 1, y: 1.00000012, z: 1}
+      transformModified: 1
+    - name: ninja_spine_end_jnt
+      position: {x: -1.04892755, y: 3.78476661e-16, z: 2.32908702e-16}
+      rotation: {x: 0, y: 0, z: -.0856704116, w: -.996323526}
+      scale: {x: .999999881, y: .99999994, z: 1}
+      transformModified: 1
+    - name: ninja_lf_clavicle_jnt
+      position: {x: -1.19495523, y: .207030863, z: -1.96942163}
+      rotation: {x: .459466964, y: -.439409137, z: .430432826, w: .640731871}
+      scale: {x: .99999994, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_upArm_jnt
+      position: {x: -1.85263884, y: 1.11154736e-15, z: -1.32179544e-16}
+      rotation: {x: .0139764715, y: -.128804341, z: .106966645, w: .985785127}
+      scale: {x: 1.00000012, y: 1.00000024, z: .999999583}
+      transformModified: 1
+    - name: ninja_lf_elbow_jnt
+      position: {x: -2.85891557, y: 1.99073262e-15, z: -1.06762011e-16}
+      rotation: {x: -9.44828482e-09, y: .0733560547, z: 7.52432996e-08, w: .99730587}
+      scale: {x: 1, y: .999999881, z: 1.00000024}
+      transformModified: 1
+    - name: ninja_lf_wrist_jnt
+      position: {x: -2.10084605, y: 1.10563786e-29, z: 9.54885758e-16}
+      rotation: {x: 4.60447787e-08, y: 2.38641178e-08, z: -.064771153, w: .997900188}
+      scale: {x: 1, y: .99999994, z: .99999994}
+      transformModified: 1
+    - name: ninja_lf_hand_jnt
+      position: {x: -0, y: -1.77635684e-15, z: 2.22044605e-16}
+      rotation: {x: 4.25446984e-08, y: 9.36028783e-08, z: -1.56677729e-08, w: 1}
+      scale: {x: 1, y: .99999994, z: .99999994}
+      transformModified: 1
+    - name: ninja_lf_index_a_jnt
+      position: {x: -2.26691389, y: -.760745227, z: .273155779}
+      rotation: {x: -.700337291, y: -.204964712, z: .109072402, w: .674996555}
+      scale: {x: .999999762, y: 1.00000012, z: 1.00000036}
+      transformModified: 1
+    - name: ninja_lf_index_b_jnt
+      position: {x: -.448656321, y: 2.22044605e-16, z: 3.96281315e-15}
+      rotation: {x: -1.27706315e-07, y: -.0106885089, z: 1.22827215e-08, w: .999942899}
+      scale: {x: 1, y: 1.00000012, z: .999999642}
+      transformModified: 1
+    - name: ninja_lf_index_c_jnt
+      position: {x: -.459179848, y: 2.22044605e-16, z: -6.06173901e-17}
+      rotation: {x: 2.26545147e-08, y: -.0370634757, z: 5.83298515e-07, w: .999312997}
+      scale: {x: 1.00000036, y: .999999881, z: 1.00000036}
+      transformModified: 1
+    - name: ninja_lf_index_d_jnt
+      position: {x: -.350547194, y: 2.22044605e-16, z: 1.11457021e-15}
+      rotation: {x: .650697887, y: .276753187, z: -.276753247, w: .650697827}
+      scale: {x: .999999881, y: 1, z: .999999762}
+      transformModified: 1
+    - name: ninja_lf_middle_a_jnt
+      position: {x: -2.19678044, y: -.654846549, z: -.254710168}
+      rotation: {x: -.700548053, y: -.199209139, z: .0960856527, w: .678465724}
+      scale: {x: .999999881, y: 1, z: 1.00000036}
+      transformModified: 1
+    - name: ninja_lf_middle_b_jnt
+      position: {x: -.411247313, y: 2.3131771e-16, z: 3.9999691e-15}
+      rotation: {x: -6.15404687e-08, y: -.039390143, z: -3.04401944e-08, w: .999223948}
+      scale: {x: 1, y: 1, z: .999999702}
+      transformModified: 1
+    - name: ninja_lf_middle_c_jnt
+      position: {x: -.473628938, y: 2.79642845e-16, z: 1.24168148e-15}
+      rotation: {x: -4.70961901e-08, y: -.0387836248, z: -1.3501672e-07, w: .99924767}
+      scale: {x: 1, y: 1.00000012, z: 1.00000036}
+      transformModified: 1
+    - name: ninja_lf_middle_d_jnt
+      position: {x: -.415489018, y: 2.84866815e-16, z: 3.96666292e-15}
+      rotation: {x: .653407156, y: .270294636, z: -.270294726, w: .653407037}
+      scale: {x: 1.00000012, y: 1.00000012, z: 1}
+      transformModified: 1
+    - name: ninja_lf_pinkyCup_jnt
+      position: {x: -.880981803, y: -.163041398, z: -1.08618498}
+      rotation: {x: -.697014451, y: -.188707441, z: -.00351271639, w: .691771686}
+      scale: {x: .99999994, y: 1.00000012, z: .999999881}
+      transformModified: 1
+    - name: ninja_lf_pinky_a_jnt
+      position: {x: -1.24518394, y: -3.62873123e-16, z: 1.86546746e-15}
+      rotation: {x: .0204415284, y: -.025442306, z: .0217389744, w: .999230862}
+      scale: {x: .999999702, y: .999999881, z: 1.00000024}
+      transformModified: 1
+    - name: ninja_lf_pinky_b_jnt
+      position: {x: -.491880894, y: 3.08145722e-17, z: -2.03753736e-16}
+      rotation: {x: -4.98278174e-09, y: .0352257714, z: -2.0475861e-08, w: .999379396}
+      scale: {x: .99999994, y: 1.00000012, z: .999999881}
+      transformModified: 1
+    - name: ninja_lf_pinky_c_jnt
+      position: {x: -.384988368, y: 2.22044605e-16, z: 2.57320457e-15}
+      rotation: {x: -7.68906432e-08, y: -.0360583477, z: 8.37391497e-07, w: .999349773}
+      scale: {x: 1.00000036, y: .999999881, z: .99999994}
+      transformModified: 1
+    - name: ninja_lf_pinky_d_jnt
+      position: {x: -.562881231, y: 2.22044605e-16, z: 2.37396759e-15}
+      rotation: {x: .654272676, y: .268192708, z: -.268192708, w: .654272676}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_lf_ringCup_jnt
+      position: {x: -.936631083, y: -.37727797, z: -.575381398}
+      rotation: {x: -.702288628, y: -.164161459, z: .0290671904, w: .692095995}
+      scale: {x: 1, y: 1, z: 1.00000012}
+      transformModified: 1
+    - name: ninja_lf_ring_a_jnt
+      position: {x: -1.23231363, y: -7.49557521e-17, z: 2.20391366e-15}
+      rotation: {x: -.000730040018, y: .0332678258, z: .021927435, w: .999205649}
+      scale: {x: .99999994, y: 1.00000024, z: 1.00000036}
+      transformModified: 1
+    - name: ninja_lf_ring_b_jnt
+      position: {x: -.409023046, y: 3.1956724e-16, z: -4.18838019e-16}
+      rotation: {x: 9.91170523e-08, y: -.0354055315, z: 3.6706524e-07, w: .999373019}
+      scale: {x: .999999881, y: 1, z: .999999762}
+      transformModified: 1
+    - name: ninja_lf_ring_c_jnt
+      position: {x: -.459223658, y: 2.22044605e-16, z: 6.53254361e-16}
+      rotation: {x: 5.46839551e-08, y: -.0373042636, z: 1.29201794e-09, w: .999303997}
+      scale: {x: 1, y: 1, z: 1.00000012}
+      transformModified: 1
+    - name: ninja_lf_ring_d_jnt
+      position: {x: -.495049775, y: 4.4408921e-16, z: 3.60657777e-15}
+      rotation: {x: .653248489, y: .270678014, z: -.270677984, w: .65324831}
+      scale: {x: 1, y: .999999762, z: .999999762}
+      transformModified: 1
+    - name: ninja_lf_thumb_a_jnt
+      position: {x: -1.02477014, y: -.574691236, z: .713135719}
+      rotation: {x: -.558882415, y: .226716086, z: .220152363, w: .766670287}
+      scale: {x: 1.00000012, y: .999999702, z: .999999762}
+      transformModified: 1
+    - name: ninja_lf_thumb_b_jnt
+      position: {x: -.41484791, y: 5.77424531e-16, z: 3.15024894e-15}
+      rotation: {x: -.176358491, y: -.0293414239, z: .00360217574, w: .98388201}
+      scale: {x: 1, y: .99999994, z: 1.00000024}
+      transformModified: 1
+    - name: ninja_lf_thumb_c_jnt
+      position: {x: -.359814465, y: 7.39289192e-16, z: 3.3696381e-15}
+      rotation: {x: -.0515345447, y: -.0356826857, z: -.0160095263, w: .997905195}
+      scale: {x: .99999994, y: 1.00000012, z: .99999994}
+      transformModified: 1
+    - name: ninja_lf_thumb_d_jnt
+      position: {x: -.607049882, y: 2.36723898e-16, z: 1.09619764e-15}
+      rotation: {x: .705231845, y: -.051460132, z: -.30663541, w: .637161493}
+      scale: {x: .999999821, y: 1.00000012, z: 1}
+      transformModified: 1
+    - name: ninja_neck_jnt
+      position: {x: -2.65655899, y: 1.77635684e-15, z: 1.45303989e-16}
+      rotation: {x: .571602404, y: -.416257977, z: .571602464, w: .416257977}
+      scale: {x: 1, y: .99999994, z: 1.00000012}
+      transformModified: 1
+    - name: ninja_head_a_jnt
+      position: {x: -2.27106421e-16, y: 1.35615003, z: 7.46069873e-14}
+      rotation: {x: -.313314468, y: 5.3293614e-10, z: -6.77148915e-09, w: .949649453}
+      scale: {x: 1, y: 1.00000036, z: .999999821}
+      transformModified: 1
+    - name: head_band
+      position: {x: .286334902, y: 2.97907805, z: -3.6002717}
+      rotation: {x: -.197309807, y: -.761122346, z: .179091647, w: .591344118}
+      scale: {x: 1, y: 1.00000012, z: 1}
+      transformModified: 1
+    - name: head_band1
+      position: {x: -.822221279, y: -2.16840434e-16, z: 3.31166668e-16}
+      rotation: {x: .155646116, y: .331377029, z: -.0565215051, w: -.928853571}
+      scale: {x: .999999821, y: .999999881, z: .999999583}
+      transformModified: 1
+    - name: head_band2
+      position: {x: -.972456098, y: -1.49880098e-15, z: -1.84755568e-16}
+      rotation: {x: -.0918049365, y: -.207837984, z: -.0816532895, w: .970416427}
+      scale: {x: 1.00000036, y: 1.00000024, z: 1.00000036}
+      transformModified: 1
+    - name: head_band3
+      position: {x: -1.09288371, y: -3.52040424e-15, z: -7.91033905e-16}
+      rotation: {x: -.0765477866, y: -.210955635, z: .0156788025, w: .974367678}
+      scale: {x: .999999702, y: .999999881, z: .999999642}
+      transformModified: 1
+    - name: head_band4
+      position: {x: -1.28413355, y: -1.74166237e-15, z: -1.1756524e-15}
+      rotation: {x: -.0650902241, y: -.246746227, z: -.102547027, w: .961438417}
+      scale: {x: 1.00000012, y: 1.00000012, z: .999999762}
+      transformModified: 1
+    - name: head_band5
+      position: {x: -1.35870087, y: 5.20417043e-16, z: 7.41588198e-16}
+      rotation: {x: .0758334994, y: .221363991, z: .172513515, w: .956810534}
+      scale: {x: .999999821, y: 1, z: 1.00000012}
+      transformModified: 1
+    - name: head_band6
+      position: {x: -1.22847688, y: -6.37337363e-15, z: 1.99564351e-16}
+      rotation: {x: .254826665, y: .399358451, z: .0523937047, w: .879108191}
+      scale: {x: 1.00000024, y: .999999821, z: 1.00000036}
+      transformModified: 1
+    - name: head_band7
+      position: {x: -1.61634064, y: 9.19403442e-16, z: -8.02993587e-16}
+      rotation: {x: -.0833387598, y: -.0917027742, z: .109096132, w: .986277521}
+      scale: {x: .999999821, y: .99999994, z: .99999994}
+      transformModified: 1
+    - name: head_band8
+      position: {x: -1.55996788, y: 2.66453526e-15, z: 5.14382568e-16}
+      rotation: {x: .0110235885, y: .0244279746, z: -.411178589, w: .911160767}
+      scale: {x: 1.00000024, y: 1, z: 1.00000012}
+      transformModified: 1
+    - name: head_band9
+      position: {x: -.0720634758, y: -.124560051, z: -.331337124}
+      rotation: {x: .01892641, y: .0311829112, z: .166289821, w: .985402048}
+      scale: {x: .999999821, y: 1, z: .999999881}
+      transformModified: 1
+    - name: head_band1_1
+      position: {x: -.704731941, y: -6.9388939e-18, z: 7.09292155e-18}
+      rotation: {x: .19075121, y: .203483671, z: -.0388069488, w: -.95953244}
+      scale: {x: 1.00000012, y: .99999994, z: 1.00000024}
+      transformModified: 1
+    - name: head_band1_2
+      position: {x: -.845535457, y: -1.68962067e-15, z: -1.40042848e-15}
+      rotation: {x: -.190546244, y: -.201958448, z: -.0357324854, w: .960014701}
+      scale: {x: 1.00000012, y: .999999881, z: 1}
+      transformModified: 1
+    - name: head_band1_3
+      position: {x: -1.00873315, y: -2.06432094e-15, z: 6.57707107e-16}
+      rotation: {x: -.27946201, y: -.262455881, z: .0900377929, w: .919190466}
+      scale: {x: .999999881, y: .999999821, z: 1.00000024}
+      transformModified: 1
+    - name: head_band1_4
+      position: {x: -1.32625079, y: 1.91513472e-15, z: -2.83959616e-16}
+      rotation: {x: -.112220399, y: -.12805593, z: -.190766796, w: .966755569}
+      scale: {x: .999999881, y: 1.00000036, z: 1}
+      transformModified: 1
+    - name: head_band1_5
+      position: {x: -1.19698393, y: 1.94289029e-15, z: 1.68324703e-16}
+      rotation: {x: .169192702, y: .183022514, z: .212655231, w: .944803894}
+      scale: {x: 1.00000012, y: .99999994, z: .99999994}
+      transformModified: 1
+    - name: head_band1_6
+      position: {x: -1.11520994, y: 1.69309011e-15, z: -3.92829926e-16}
+      rotation: {x: .434779584, y: .341617733, z: -.052227594, w: .831586719}
+      scale: {x: .999999762, y: 1.00000024, z: .99999994}
+      transformModified: 1
+    - name: head_band1_7
+      position: {x: -1.30761242, y: 2.22044605e-16, z: -7.99149116e-16}
+      rotation: {x: -.0865915045, y: -.066381529, z: .0741397515, w: .991261244}
+      scale: {x: 1.00000012, y: .999999881, z: 1}
+      transformModified: 1
+    - name: head_band1_8
+      position: {x: -.965508163, y: -1.72084569e-15, z: -7.35056267e-18}
+      rotation: {x: -.454303622, y: -.840157688, z: .140894681, w: -.260561019}
+      scale: {x: 1, y: 1, z: .999999881}
+      transformModified: 1
+    - name: ninja_head_b_jnt
+      position: {x: -2.17350814e-15, y: 7.67999744, z: -2.27373543e-15}
+      rotation: {x: -.08217825, y: 2.05400497e-09, z: -2.79241741e-09, w: .996617734}
+      scale: {x: 1, y: 1, z: .999999881}
+      transformModified: 1
+    - name: ninja_rt_clavicle_jnt
+      position: {x: -1.19491661, y: .207023904, z: 1.96941996}
+      rotation: {x: .439409107, y: .459466994, z: .640731871, w: -.430432856}
+      scale: {x: .999999821, y: 1, z: 1.00000012}
+      transformModified: 1
+    - name: ninja_rt_upArm_jnt
+      position: {x: 1.8526454, y: -2.15307318e-05, z: 5.79720904e-07}
+      rotation: {x: .0139764268, y: -.128804415, z: .106966659, w: .985785127}
+      scale: {x: 1.00000012, y: 1.00000024, z: .999999404}
+      transformModified: 1
+    - name: ninja_rt_elbow_jnt
+      position: {x: 2.85891199, y: 1.59872116e-14, z: -1.45260287e-07}
+      rotation: {x: -6.41869704e-08, y: .073356308, z: 3.26128777e-08, w: .99730587}
+      scale: {x: .999999642, y: 1.00000012, z: 1.00000048}
+      transformModified: 1
+    - name: ninja_rt_wrist_jnt
+      position: {x: 2.10084581, y: 1.42108547e-14, z: 3.48202917e-07}
+      rotation: {x: 6.19113933e-08, y: 2.67297224e-08, z: -.0647616237, w: .997900844}
+      scale: {x: 1, y: 1, z: .99999994}
+      transformModified: 1
+    - name: ninja_rt_hand_jnt
+      position: {x: -1.77635684e-15, y: 1.77635684e-15, z: -4.4408921e-16}
+      rotation: {x: 3.17907194e-08, y: 8.88973073e-09, z: -6.10033846e-09, w: 1}
+      scale: {x: 1.00000024, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_index_a_jnt
+      position: {x: 2.26695871, y: .760699928, z: -.273148626}
+      rotation: {x: -.700340986, y: -.204945683, z: .109056003, w: .675001204}
+      scale: {x: 1.00000012, y: 1.00000012, z: .999999762}
+      transformModified: 1
+    - name: ninja_rt_index_b_jnt
+      position: {x: .448597968, y: -7.77156117e-16, z: 1.43742345e-05}
+      rotation: {x: 1.68081314e-07, y: -.0106885824, z: -2.39934792e-08, w: .999942958}
+      scale: {x: .999999762, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_index_c_jnt
+      position: {x: .459223658, y: 1.4426238e-12, z: 6.84931219e-05}
+      rotation: {x: -8.10427423e-08, y: -.0372049287, z: 7.20773869e-07, w: .999307692}
+      scale: {x: 1.00000024, y: 1, z: 1.00000024}
+      transformModified: 1
+    - name: ninja_rt_index_d_jnt
+      position: {x: .350574523, y: 1.90741201e-09, z: -4.27209998e-05}
+      rotation: {x: .650697827, y: .276753217, z: -.276753247, w: .650697827}
+      scale: {x: 1.00000012, y: .999999881, z: .999999762}
+      transformModified: 1
+    - name: ninja_rt_middle_a_jnt
+      position: {x: 2.19676995, y: .654799998, z: .254708529}
+      rotation: {x: -.700548172, y: -.199209183, z: .0960855484, w: .678465664}
+      scale: {x: 1.00000036, y: 1.00000036, z: 1.00000024}
+      transformModified: 1
+    - name: ninja_rt_middle_b_jnt
+      position: {x: .411258548, y: -3.12141805e-16, z: -8.08923869e-06}
+      rotation: {x: 1.62313668e-07, y: -.039321173, z: -4.11799128e-08, w: .999226689}
+      scale: {x: .999999821, y: .999999881, z: .999999881}
+      transformModified: 1
+    - name: ninja_rt_middle_c_jnt
+      position: {x: .473605573, y: -7.76424228e-16, z: 5.24561001e-05}
+      rotation: {x: -1.43461492e-07, y: -.0388905555, z: -1.48794381e-08, w: .999243498}
+      scale: {x: .999999881, y: 1.00000012, z: .99999994}
+      transformModified: 1
+    - name: ninja_rt_middle_d_jnt
+      position: {x: .415496171, y: -6.714193e-16, z: -3.83591469e-05}
+      rotation: {x: .653407037, y: .270294756, z: -.270294696, w: .653407156}
+      scale: {x: 1.00000024, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_pinkyCup_jnt
+      position: {x: .880989909, y: .163000107, z: 1.08618951}
+      rotation: {x: -.697013795, y: -.188706324, z: -.00351507356, w: .69177264}
+      scale: {x: .999999881, y: .999999821, z: .999999821}
+      transformModified: 1
+    - name: ninja_rt_pinky_a_jnt
+      position: {x: 1.24516714, y: 1.79109497e-06, z: -9.70212841e-06}
+      rotation: {x: .0204387549, y: -.0254567266, z: .0217412282, w: .999230504}
+      scale: {x: 1.00000012, y: .999999881, z: .999999702}
+      transformModified: 1
+    - name: ninja_rt_pinky_b_jnt
+      position: {x: .491888642, y: 1.55431223e-15, z: -1.90337632e-05}
+      rotation: {x: 7.94120538e-08, y: .0352258049, z: -3.01690548e-08, w: .999379456}
+      scale: {x: 1.00000036, y: 1, z: 1.00000036}
+      transformModified: 1
+    - name: ninja_rt_pinky_c_jnt
+      position: {x: .384953529, y: 4.39870362e-13, z: 2.08653037e-05}
+      rotation: {x: -5.25430188e-08, y: -.0361120403, z: -4.91922037e-07, w: .999347806}
+      scale: {x: .999999702, y: 1, z: 1.00000012}
+      transformModified: 1
+    - name: ninja_rt_pinky_d_jnt
+      position: {x: .562943161, y: 3.51119023e-09, z: -2.96366779e-05}
+      rotation: {x: .654272616, y: .268192679, z: -.268192679, w: .654272676}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_rt_ringCup_jnt
+      position: {x: .936631024, y: .377300054, z: .575381756}
+      rotation: {x: -.702288747, y: -.164161488, z: .0290670916, w: .692095935}
+      scale: {x: .999999821, y: .99999994, z: .999999642}
+      transformModified: 1
+    - name: ninja_rt_ring_a_jnt
+      position: {x: 1.23230445, y: -4.45911212e-07, z: -2.3630364e-05}
+      rotation: {x: -.000729992462, y: .033267837, z: .0219274778, w: .999205709}
+      scale: {x: 1.00000024, y: 1, z: 1.00000012}
+      transformModified: 1
+    - name: ninja_rt_ring_b_jnt
+      position: {x: .40900293, y: 1.44328993e-15, z: -3.86613792e-05}
+      rotation: {x: -8.56604316e-08, y: -.0353705175, z: -4.53214568e-07, w: .99937427}
+      scale: {x: .999999642, y: .999999881, z: .999999702}
+      transformModified: 1
+    - name: ninja_rt_ring_c_jnt
+      position: {x: .4592143, y: -3.16857651e-13, z: -1.06727512e-05}
+      rotation: {x: 2.28626078e-08, y: -.0372700244, z: -1.43230324e-07, w: .999305308}
+      scale: {x: 1.00000012, y: 1, z: 1.00000012}
+      transformModified: 1
+    - name: ninja_rt_ring_d_jnt
+      position: {x: .495116174, y: 3.67629371e-09, z: 2.02593383e-05}
+      rotation: {x: .65324831, y: .270677984, z: -.270677984, w: .653248489}
+      scale: {x: .999999881, y: .999999702, z: .999999762}
+      transformModified: 1
+    - name: ninja_rt_thumb_a_jnt
+      position: {x: 1.02477193, y: .574699938, z: -.713135123}
+      rotation: {x: -.558874965, y: .226706877, z: .220163658, w: .766675115}
+      scale: {x: 1, y: .99999994, z: .999999881}
+      transformModified: 1
+    - name: ninja_rt_thumb_b_jnt
+      position: {x: .414855182, y: -3.55529187e-06, z: -1.8969793e-05}
+      rotation: {x: -.176355109, y: -.029280832, z: .00361170317, w: .983884454}
+      scale: {x: 1.00000012, y: 1, z: .999999881}
+      transformModified: 1
+    - name: ninja_rt_thumb_c_jnt
+      position: {x: .359832168, y: -1.33187668e-05, z: 2.32375132e-05}
+      rotation: {x: -.0515332222, y: -.0357547402, z: -.0160348881, w: .997902215}
+      scale: {x: 1.00000012, y: .99999994, z: 1.00000036}
+      transformModified: 1
+    - name: ninja_rt_thumb_d_jnt
+      position: {x: .607054591, y: 1.49104528e-06, z: -4.96784123e-05}
+      rotation: {x: .705231786, y: -.0514602028, z: -.306635469, w: .637161434}
+      scale: {x: 1, y: .999999762, z: .999999881}
+      transformModified: 1
+    - name: weightSpine_grp
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_weightSpine_b_jnt
+      position: {x: -.000465345162, y: 7.79744291, z: 2.90637302}
+      rotation: {x: -.268339962, y: .65205282, z: -.267194122, w: .656831861}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_weightSpine_c_jnt
+      position: {x: -.00428795954, y: 8.18752766, z: 3.30326509}
+      rotation: {x: -.277431518, y: .641824841, z: -.271993965, w: .661144376}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_weightSpine_d_jnt
+      position: {x: -.0199868642, y: 8.58656311, z: 3.69225454}
+      rotation: {x: -.289662778, y: .630523145, z: -.279021949, w: .663839459}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_weightSpine_e_jnt
+      position: {x: -.0473728739, y: 8.9963007, z: 4.06844234}
+      rotation: {x: -.293238252, y: .656413853, z: -.304243207, w: .624954581}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_weightSpine_f_jnt
+      position: {x: -.0213333238, y: 9.4213028, z: 4.42500973}
+      rotation: {x: -.295672476, y: .650350809, z: -.303770334, w: .630353272}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: ninja_weightSpine_g_jnt
+      position: {x: -.00437322538, y: 9.84859943, z: 4.78144979}
+      rotation: {x: -.297832936, y: .643289268, z: -.300176531, w: .638254285}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 3
+  additionalBone: 0
+  userData: 

@@ -1,0 +1,13 @@
+
+These events will fire when player clicked on them,
+you can register your own functions 
+
+GameEnd.showAds
+
+Ace_IngameUiControl.showLeaderBoard
+Ace_IngameUiControl.faceBookShare
+
+InAppMenu.gamerPackEvent
+InAppMenu.startpack
+InAppMenu.extermePack
+

@@ -1,0 +1,5 @@
+frames
+
+run       1 to 24
+
+attack   100 to 135

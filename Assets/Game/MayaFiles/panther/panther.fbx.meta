@@ -1,0 +1,368 @@
+fileFormatVersion: 2
+guid: e69b8a09829900b449faba362bdcf934
+ModelImporter:
+  serializedVersion: 16
+  fileIDToRecycleName:
+    100000: back_left_leg_a_jt
+    100002: back_left_leg_b_jt
+    100004: back_left_leg_c_jt
+    100006: back_left_leg_d_jt
+    100008: back_left_leg_jt
+    100010: back_right_leg_a_jt
+    100012: back_right_leg_b_jt
+    100014: back_right_leg_c_jt
+    100016: back_right_leg_d_jt
+    100018: back_right_leg_jt
+    100020: front_left_leg_a_jt
+    100022: front_left_leg_b_jt
+    100024: front_left_leg_c_jt
+    100026: front_left_leg_end_jt
+    100028: front_left_leg_jt
+    100030: front_right_leg_a_jt
+    100032: front_right_leg_b_jt
+    100034: front_right_leg_c_jt
+    100036: front_right_leg_d_jt
+    100038: front_right_leg_jt
+    100040: head_end_jt
+    100042: head_jt
+    100044: ikHandle1
+    100046: ikHandle2
+    100048: ikHandle3
+    100050: ikHandle4
+    100052: ikHandle5
+    100054: ikHandle6
+    100056: main_jt
+    100058: neck_jt
+    100060: //RootNode
+    100062: panther 1
+    100064: skeleton
+    100066: spine_a
+    100068: spine_b_jt
+    100070: spine_c_jt
+    100072: spine_end
+    100074: tail_a_jt
+    100076: tail_b_jt
+    100078: tail_c_jt
+    100080: tail_end_jt
+    100082: tail_jt
+    400000: back_left_leg_a_jt
+    400002: back_left_leg_b_jt
+    400004: back_left_leg_c_jt
+    400006: back_left_leg_d_jt
+    400008: back_left_leg_jt
+    400010: back_right_leg_a_jt
+    400012: back_right_leg_b_jt
+    400014: back_right_leg_c_jt
+    400016: back_right_leg_d_jt
+    400018: back_right_leg_jt
+    400020: front_left_leg_a_jt
+    400022: front_left_leg_b_jt
+    400024: front_left_leg_c_jt
+    400026: front_left_leg_end_jt
+    400028: front_left_leg_jt
+    400030: front_right_leg_a_jt
+    400032: front_right_leg_b_jt
+    400034: front_right_leg_c_jt
+    400036: front_right_leg_d_jt
+    400038: front_right_leg_jt
+    400040: head_end_jt
+    400042: head_jt
+    400044: ikHandle1
+    400046: ikHandle2
+    400048: ikHandle3
+    400050: ikHandle4
+    400052: ikHandle5
+    400054: ikHandle6
+    400056: main_jt
+    400058: neck_jt
+    400060: //RootNode
+    400062: panther 1
+    400064: skeleton
+    400066: spine_a
+    400068: spine_b_jt
+    400070: spine_c_jt
+    400072: spine_end
+    400074: tail_a_jt
+    400076: tail_b_jt
+    400078: tail_c_jt
+    400080: tail_end_jt
+    400082: tail_jt
+    4300000: panther
+    7400000: Run
+    7400002: attack
+    9500000: //RootNode
+    13700000: panther 1
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Run
+      takeName: Take 001
+      firstFrame: 1
+      lastFrame: 24
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: panther 1
+        weight: 1
+      - path: skeleton
+        weight: 1
+      - path: skeleton/ikHandle1
+        weight: 1
+      - path: skeleton/ikHandle2
+        weight: 1
+      - path: skeleton/ikHandle3
+        weight: 1
+      - path: skeleton/ikHandle4
+        weight: 1
+      - path: skeleton/ikHandle5
+        weight: 1
+      - path: skeleton/ikHandle6
+        weight: 1
+      - path: skeleton/main_jt
+        weight: 1
+      - path: skeleton/main_jt/back_left_leg_jt
+        weight: 1
+      - path: skeleton/main_jt/back_left_leg_jt/back_left_leg_a_jt
+        weight: 1
+      - path: skeleton/main_jt/back_left_leg_jt/back_left_leg_a_jt/back_left_leg_b_jt
+        weight: 1
+      - path: skeleton/main_jt/back_left_leg_jt/back_left_leg_a_jt/back_left_leg_b_jt/back_left_leg_c_jt
+        weight: 1
+      - path: skeleton/main_jt/back_left_leg_jt/back_left_leg_a_jt/back_left_leg_b_jt/back_left_leg_c_jt/back_left_leg_d_jt
+        weight: 1
+      - path: skeleton/main_jt/back_right_leg_jt
+        weight: 1
+      - path: skeleton/main_jt/back_right_leg_jt/back_right_leg_a_jt
+        weight: 1
+      - path: skeleton/main_jt/back_right_leg_jt/back_right_leg_a_jt/back_right_leg_b_jt
+        weight: 1
+      - path: skeleton/main_jt/back_right_leg_jt/back_right_leg_a_jt/back_right_leg_b_jt/back_right_leg_c_jt
+        weight: 1
+      - path: skeleton/main_jt/back_right_leg_jt/back_right_leg_a_jt/back_right_leg_b_jt/back_right_leg_c_jt/back_right_leg_d_jt
+        weight: 1
+      - path: skeleton/main_jt/spine_a
+        weight: 1
+      - path: skeleton/main_jt/spine_a/spine_b_jt
+        weight: 1
+      - path: skeleton/main_jt/spine_a/spine_b_jt/spine_c_jt
+        weight: 1
+      - path: skeleton/main_jt/spine_a/spine_b_jt/spine_c_jt/spine_end
+        weight: 1
+      - path: skeleton/main_jt/spine_a/spine_b_jt/spine_c_jt/spine_end/front_left_leg_jt
+        weight: 1
+      - path: skeleton/main_jt/spine_a/spine_b_jt/spine_c_jt/spine_end/front_left_leg_jt/front_left_leg_a_jt
+        weight: 1
+      - path: skeleton/main_jt/spine_a/spine_b_jt/spine_c_jt/spine_end/front_left_leg_jt/front_left_leg_a_jt/front_left_leg_b_jt
+        weight: 1
+      - path: skeleton/main_jt/spine_a/spine_b_jt/spine_c_jt/spine_end/front_left_leg_jt/front_left_leg_a_jt/front_left_leg_b_jt/front_left_leg_c_jt
+        weight: 1
+      - path: skeleton/main_jt/spine_a/spine_b_jt/spine_c_jt/spine_end/front_left_leg_jt/front_left_leg_a_jt/front_left_leg_b_jt/front_left_leg_c_jt/front_left_leg_end_jt
+        weight: 1
+      - path: skeleton/main_jt/spine_a/spine_b_jt/spine_c_jt/spine_end/front_right_leg_jt
+        weight: 1
+      - path: skeleton/main_jt/spine_a/spine_b_jt/spine_c_jt/spine_end/front_right_leg_jt/front_right_leg_a_jt
+        weight: 1
+      - path: skeleton/main_jt/spine_a/spine_b_jt/spine_c_jt/spine_end/front_right_leg_jt/front_right_leg_a_jt/front_right_leg_b_jt
+        weight: 1
+      - path: skeleton/main_jt/spine_a/spine_b_jt/spine_c_jt/spine_end/front_right_leg_jt/front_right_leg_a_jt/front_right_leg_b_jt/front_right_leg_c_jt
+        weight: 1
+      - path: skeleton/main_jt/spine_a/spine_b_jt/spine_c_jt/spine_end/front_right_leg_jt/front_right_leg_a_jt/front_right_leg_b_jt/front_right_leg_c_jt/front_right_leg_d_jt
+        weight: 1
+      - path: skeleton/main_jt/spine_a/spine_b_jt/spine_c_jt/spine_end/neck_jt
+        weight: 1
+      - path: skeleton/main_jt/spine_a/spine_b_jt/spine_c_jt/spine_end/neck_jt/head_jt
+        weight: 1
+      - path: skeleton/main_jt/spine_a/spine_b_jt/spine_c_jt/spine_end/neck_jt/head_jt/head_end_jt
+        weight: 1
+      - path: skeleton/main_jt/tail_jt
+        weight: 1
+      - path: skeleton/main_jt/tail_jt/tail_a_jt
+        weight: 1
+      - path: skeleton/main_jt/tail_jt/tail_a_jt/tail_b_jt
+        weight: 1
+      - path: skeleton/main_jt/tail_jt/tail_a_jt/tail_b_jt/tail_c_jt
+        weight: 1
+      - path: skeleton/main_jt/tail_jt/tail_a_jt/tail_b_jt/tail_c_jt/tail_end_jt
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    - serializedVersion: 16
+      name: attack
+      takeName: Take 001
+      firstFrame: 100
+      lastFrame: 135
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: panther 1
+        weight: 1
+      - path: skeleton
+        weight: 1
+      - path: skeleton/ikHandle1
+        weight: 1
+      - path: skeleton/ikHandle2
+        weight: 1
+      - path: skeleton/ikHandle3
+        weight: 1
+      - path: skeleton/ikHandle4
+        weight: 1
+      - path: skeleton/ikHandle5
+        weight: 1
+      - path: skeleton/ikHandle6
+        weight: 1
+      - path: skeleton/main_jt
+        weight: 1
+      - path: skeleton/main_jt/back_left_leg_jt
+        weight: 1
+      - path: skeleton/main_jt/back_left_leg_jt/back_left_leg_a_jt
+        weight: 1
+      - path: skeleton/main_jt/back_left_leg_jt/back_left_leg_a_jt/back_left_leg_b_jt
+        weight: 1
+      - path: skeleton/main_jt/back_left_leg_jt/back_left_leg_a_jt/back_left_leg_b_jt/back_left_leg_c_jt
+        weight: 1
+      - path: skeleton/main_jt/back_left_leg_jt/back_left_leg_a_jt/back_left_leg_b_jt/back_left_leg_c_jt/back_left_leg_d_jt
+        weight: 1
+      - path: skeleton/main_jt/back_right_leg_jt
+        weight: 1
+      - path: skeleton/main_jt/back_right_leg_jt/back_right_leg_a_jt
+        weight: 1
+      - path: skeleton/main_jt/back_right_leg_jt/back_right_leg_a_jt/back_right_leg_b_jt
+        weight: 1
+      - path: skeleton/main_jt/back_right_leg_jt/back_right_leg_a_jt/back_right_leg_b_jt/back_right_leg_c_jt
+        weight: 1
+      - path: skeleton/main_jt/back_right_leg_jt/back_right_leg_a_jt/back_right_leg_b_jt/back_right_leg_c_jt/back_right_leg_d_jt
+        weight: 1
+      - path: skeleton/main_jt/spine_a
+        weight: 1
+      - path: skeleton/main_jt/spine_a/spine_b_jt
+        weight: 1
+      - path: skeleton/main_jt/spine_a/spine_b_jt/spine_c_jt
+        weight: 1
+      - path: skeleton/main_jt/spine_a/spine_b_jt/spine_c_jt/spine_end
+        weight: 1
+      - path: skeleton/main_jt/spine_a/spine_b_jt/spine_c_jt/spine_end/front_left_leg_jt
+        weight: 1
+      - path: skeleton/main_jt/spine_a/spine_b_jt/spine_c_jt/spine_end/front_left_leg_jt/front_left_leg_a_jt
+        weight: 1
+      - path: skeleton/main_jt/spine_a/spine_b_jt/spine_c_jt/spine_end/front_left_leg_jt/front_left_leg_a_jt/front_left_leg_b_jt
+        weight: 1
+      - path: skeleton/main_jt/spine_a/spine_b_jt/spine_c_jt/spine_end/front_left_leg_jt/front_left_leg_a_jt/front_left_leg_b_jt/front_left_leg_c_jt
+        weight: 1
+      - path: skeleton/main_jt/spine_a/spine_b_jt/spine_c_jt/spine_end/front_left_leg_jt/front_left_leg_a_jt/front_left_leg_b_jt/front_left_leg_c_jt/front_left_leg_end_jt
+        weight: 1
+      - path: skeleton/main_jt/spine_a/spine_b_jt/spine_c_jt/spine_end/front_right_leg_jt
+        weight: 1
+      - path: skeleton/main_jt/spine_a/spine_b_jt/spine_c_jt/spine_end/front_right_leg_jt/front_right_leg_a_jt
+        weight: 1
+      - path: skeleton/main_jt/spine_a/spine_b_jt/spine_c_jt/spine_end/front_right_leg_jt/front_right_leg_a_jt/front_right_leg_b_jt
+        weight: 1
+      - path: skeleton/main_jt/spine_a/spine_b_jt/spine_c_jt/spine_end/front_right_leg_jt/front_right_leg_a_jt/front_right_leg_b_jt/front_right_leg_c_jt
+        weight: 1
+      - path: skeleton/main_jt/spine_a/spine_b_jt/spine_c_jt/spine_end/front_right_leg_jt/front_right_leg_a_jt/front_right_leg_b_jt/front_right_leg_c_jt/front_right_leg_d_jt
+        weight: 1
+      - path: skeleton/main_jt/spine_a/spine_b_jt/spine_c_jt/spine_end/neck_jt
+        weight: 1
+      - path: skeleton/main_jt/spine_a/spine_b_jt/spine_c_jt/spine_end/neck_jt/head_jt
+        weight: 1
+      - path: skeleton/main_jt/spine_a/spine_b_jt/spine_c_jt/spine_end/neck_jt/head_jt/head_end_jt
+        weight: 1
+      - path: skeleton/main_jt/tail_jt
+        weight: 1
+      - path: skeleton/main_jt/tail_jt/tail_a_jt
+        weight: 1
+      - path: skeleton/main_jt/tail_jt/tail_a_jt/tail_b_jt
+        weight: 1
+      - path: skeleton/main_jt/tail_jt/tail_a_jt/tail_b_jt/tail_c_jt
+        weight: 1
+      - path: skeleton/main_jt/tail_jt/tail_a_jt/tail_b_jt/tail_c_jt/tail_end_jt
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
