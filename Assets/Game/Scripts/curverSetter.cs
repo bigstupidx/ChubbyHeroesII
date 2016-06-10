@@ -45,13 +45,13 @@ public class curverSetter : MonoBehaviour
 		public void BendToRightCurve ()
 		{
 		
-				targetCurveVector = new Vector4 (18, -12, 0);
+				targetCurveVector = new Vector4 (12, -4, 0);
 				Invoke ("BendToLeftCurve", 30);
 		} 
 		public void BendToLeftCurve ()
 		{
 		
-				targetCurveVector = new Vector4 (-18, -12, 0);
+				targetCurveVector = new Vector4 (-12, -4, 0);
 				Invoke ("BendToRightCurve", 30);
 		}
 }

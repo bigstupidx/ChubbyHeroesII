@@ -83,7 +83,7 @@ public class GameController : MonoBehaviour
 		//to show an ad at the end of the Game
 		if (ShowADD != null)
 			ShowADD (null, null);
-		GameObject.FindGameObjectWithTag ("GameController").GetComponent<curverSetter> ().enabled = false;
+		GameObject.FindGameObjectWithTag ("GameController").GetComponent<curverSetter> ().enabled = false; //add pause state in curve setter!
 	}
 	
 	void Start ()
@@ -236,30 +236,37 @@ public class GameController : MonoBehaviour
 
 	int newWay_Index = 2;
 	int selectedGroundIndex;
-	GameObject CreatedObj;
+	GameObject nextObj;
 	public void CreateNewWay ()
 	{
 		//if no block available add it to the bringit from usedGroundLists
-
 
 		if (World1.Count != 0) {
 
 						 
 			if (currentWorld == Worlds.world1) {
-				selectedGroundIndex = UnityEngine.Random.Range (0, World1.Count - 1);   //selecting random block from World1
-				CreatedObj = GameObject.Instantiate (World1 [selectedGroundIndex]) as GameObject;
-				CreatedObj.transform.position = new Vector3 (0, 0, NewWayDistance * newWay_Index);
-			} else {
+                // pooling here!
+				nextObj = GetNextPoolObject(currentWorld);
+				nextObj.transform.position = new Vector3(0, 0, NewWayDistance * newWay_Index);
 
-				selectedGroundIndex = UnityEngine.Random.Range (0, World2.Count - 1);   //selecting random block from World1
-				CreatedObj = GameObject.Instantiate (World2 [selectedGroundIndex]) as GameObject;
-				CreatedObj.transform.position = new Vector3 (0, 0, NewWayDistance * newWay_Index);
+//                //no pooling
+//                selectedGroundIndex = UnityEngine.Random.Range (0, World1.Count - 1);   //selecting random block from World1
+//                nextObj = GameObject.Instantiate (World1 [selectedGroundIndex]) as GameObject;
+//                nextObj.transform.position = new Vector3 (0, 0, NewWayDistance * newWay_Index);
+
+			} else {
+                // pooling here!
+				nextObj = GetNextPoolObject(currentWorld);
+				nextObj.transform.position = new Vector3(0, 0, NewWayDistance * newWay_Index);
+
+//                //no pooling
+//                selectedGroundIndex = UnityEngine.Random.Range (0, World2.Count - 1);   //selecting random block from World1
+//                nextObj = GameObject.Instantiate (World2 [selectedGroundIndex]) as GameObject;
+//                nextObj.transform.position = new Vector3 (0, 0, NewWayDistance * newWay_Index);
 			}
 
-
-
-						
-			CreatedObj.GetComponent<groundDestroyer> ().canBeDestroyed = true;
+			// i think this is pointless
+			nextObj.GetComponent<groundDestroyer> ().canBeDestroyed = true;
 
 			//World1.RemoveAt (selectedGroundIndex);
 						 
@@ -269,9 +276,34 @@ public class GameController : MonoBehaviour
 		}
 	}
 
-	//............................................
+    GameObject GetNextPoolObject(Worlds w)
+    {
+        if (w == Worlds.world1) 
+        {        
+            GameObject go = World1[0];
+			World1.RemoveAt[0];
+            return go;
+        }
+        else
+        {
+            GameObject go = World2[0];
+			World2.RemoveAt[0];
+            return go;
+        }
+    }
+    //
 
-	public void ONGameEnd ()
+    //void ReturnPoolObject(GameObject go, Worlds w)
+    //{
+    //    if (w == Worlds.world1)
+    //        World1.Add(go);
+    //    else
+    //        World2.Add(go);
+    //}
+
+    //............................................
+
+    public void ONGameEnd ()
 	{
 		SoundController.Static.bgSound.enabled = false;
 		SoundController.Static.playSoundFromName ("GameOver");
@@ -280,6 +312,7 @@ public class GameController : MonoBehaviour
 		CancelInvoke ("GeneratePowerUps");// for PowerUps
 		CancelInvoke ("GenerateCoins");// for coins
 		isStopCreateNewWay = false;
+
 	}
 
 }
