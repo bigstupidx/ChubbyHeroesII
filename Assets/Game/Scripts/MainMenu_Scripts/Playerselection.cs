@@ -28,7 +28,7 @@ public class Playerselection : MonoBehaviour
 				PlayerPriceDisplayText.text = "FREE ";
 				playOrBuy.text = "Run";
 				playerDescriptionText.text = "WITHSTAND 1 HIT ";
-				Playerselection.PlayerIndex = 0;
+                PlayerIndex = 0;
 		}
 
 	 
@@ -112,7 +112,7 @@ public class Playerselection : MonoBehaviour
 						PlayerIndex = targetPlayerCamPositions.Length - 1;
 				
 				lastSwipeTime = Time.timeSinceLevelLoad;
-				showcarINFO ();
+				ShowPlayerInfo ();
 				
 		}
 
@@ -125,10 +125,10 @@ public class Playerselection : MonoBehaviour
 				if (PlayerIndex < 0)
 						PlayerIndex = 0;
 				lastSwipeTime = Time.timeSinceLevelLoad;
-				showcarINFO ();
+				ShowPlayerInfo ();
 		}
 
-		void showcarINFO ()
+		void ShowPlayerInfo ()
 		{
 		
 				switch (PlayerIndex) {

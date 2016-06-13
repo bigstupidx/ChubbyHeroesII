@@ -1,9 +1,8 @@
-Shader "Ace/CurveToonBasic" {
+Shader "Toon/Basic" {
 	Properties {
 		_Color ("Main Color", Color) = (.5,.5,.5,1)
 		_MainTex ("Base (RGB)", 2D) = "white" {}
 		_ToonShade ("ToonShader Cubemap(RGB)", CUBE) = "" { Texgen CubeNormal }
-			_Brightness ("Brightness", Float) = 10.0
 	}
 
 
@@ -24,9 +23,7 @@ Shader "Ace/CurveToonBasic" {
 			samplerCUBE _ToonShade;
 			float4 _MainTex_ST;
 			float4 _Color;
-float4 _Offset;
-		 float _Distance;
-			float _Brightness;
+
 			struct appdata {
 				float4 vertex : POSITION;
 				float2 texcoord : TEXCOORD0;
@@ -42,10 +39,7 @@ float4 _Offset;
 			v2f vert (appdata v)
 			{
 				v2f o;
-				 float4 vPos = mul (UNITY_MATRIX_MV, v.vertex);
-			    float zOff = vPos.z/(100+_Distance);
-			   vPos += _Offset*zOff*zOff;
-			   o.pos = mul (UNITY_MATRIX_P, vPos);
+				o.pos = mul (UNITY_MATRIX_MVP, v.vertex);
 				o.texcoord = TRANSFORM_TEX(v.texcoord, _MainTex);
 				o.cubenormal = mul (UNITY_MATRIX_MV, float4(v.normal,0));
 				return o;

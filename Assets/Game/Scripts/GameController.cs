@@ -16,7 +16,7 @@ public class GameController : MonoBehaviour
 	public Worlds currentWorld;
 
 	public static GameController Static ;
-	public GameObject[] powerUps, coins, coins_FlyMode, obstacles_Tutorials;
+	public GameObject[] powerUps, coins, coins_FlyMode, obstacles_Tutorials, playerPrefabs;
 	public GameObject PlayerPosition, shuriken, brokenBarrel, brokenPot, StartingWorldGroup;
 	public static event GAMESTATE onGameStateChange ;	
 	public static event EventHandler ShowADD;
@@ -29,10 +29,12 @@ public class GameController : MonoBehaviour
 	Transform playerTransform ;
 	float lastPlayerPosition ;
 	public Transform mainCameraTrans;
-	public List<GameObject> World1 = new List<GameObject> ();
-	public List<GameObject> World2 = new List<GameObject> ();
+	//public List<GameObject> World1 = new List<GameObject> ();
+	//public List<GameObject> World2 = new List<GameObject> ();
 	public List<GameObject> upCoins = new List<GameObject> ();
     public List<GameObject> pooledGrounds = new List<GameObject>();
+    Vector3 playerStartPos = new Vector3(0, 0, 0);
+
 
     void OnEnable ()
 	{
@@ -43,9 +45,12 @@ public class GameController : MonoBehaviour
 		Physics.IgnoreLayerCollision (0, 2);//to ignore collision between broken objects layer and player
 				
 		PlayerController.DestroyUpCoins += onDestoryUPCoinsCall;
-		//InvokeRepeating ("ChangeWorld", 25, 15);
-		Invoke ("DestroyStartingWorld", 30);
-	}
+        //InvokeRepeating ("ChangeWorld", 25, 15);
+        //Invoke ("DestroyStartingWorld", 30);
+        Debug.Log(Playerselection.PlayerIndex);
+        //Selected Player................. instantiate correct player prefab here, then update it's stats - should be moved to gamecontoller
+        
+    }
 
     void ChangeWorld()
     {
@@ -61,11 +66,11 @@ public class GameController : MonoBehaviour
 		CancelInvoke ();
 		PlayerController.DestroyUpCoins -= onDestoryUPCoinsCall;
 	}
-	void DestroyStartingWorld ()
-	{
+	//void DestroyStartingWorld ()
+	//{
 
-		Destroy (StartingWorldGroup);
-	}
+	//	Destroy (StartingWorldGroup);
+	//}
 	public bool stopObsticalIns = false; //to create or stop the instatiation of new obstacles
 	//if player is on ground ,we will create new obstacles,if he is flying or dead ,we will stop creating new ones.
 
@@ -78,7 +83,7 @@ public class GameController : MonoBehaviour
 		isStopCreateNewWay = true;
 		stopObsticalIns = false;
 
-		//Ace_IngameUiControl.Static.ShowHighestIndicatorAnim();
+		//IngameUiControlls.Static.ShowHighestIndicatorAnim();
 	}
 
 	public void ON_GAME_END ()
@@ -93,8 +98,9 @@ public class GameController : MonoBehaviour
 	
 	void Start ()
 	{
-		playerTransform = PlayerPosition.transform;
-		lastPlayerPosition = playerTransform.position.z;
+        playerTransform = PlayerPosition.transform;
+
+        lastPlayerPosition = playerTransform.position.z;
 	}
 
 	public	 float flyCointTicks = 51;
@@ -244,50 +250,52 @@ public class GameController : MonoBehaviour
 	GameObject nextObj;
     Vector3 restingPos = new Vector3(0, 0, -1000);
     public bool usePooling;
+
 	public void CreateNewWay ()
 	{
-		//if no block available add it to the bringit from usedGroundLists
-
-		if (World1.Count != 0) {
-
-						 
-			//if (currentWorld == Worlds.world1) {
-                if (usePooling) {
+		//if (World1.Count != 0)
+  //      {
+            //if (currentWorld == Worlds.world1)
+            //{
+                //if (usePooling)
+                //{
 				    nextObj = GetNextPoolObject();
 				    nextObj.transform.position = new Vector3(0, 0, NewWayDistance * newWay_Index);
-                }
-                //else {
+                //}
+                //else
+                //{
                 //    selectedGroundIndex = UnityEngine.Random.Range(0, World1.Count - 1);   //selecting random block from World1
-                //    nextObj = GameObject.Instantiate(World1[selectedGroundIndex]) as GameObject;
+                //    nextObj = Instantiate(World1[selectedGroundIndex]) as GameObject;
                 //    nextObj.transform.position = new Vector3(0, 0, NewWayDistance * newWay_Index);
                 //}
-                //}
+        //}
+        //else
+        //{
+    //        if (usePooling)
+    //        {
+				//nextObj = GetNextPoolObject();
+				//nextObj.transform.position = new Vector3(0, 0, NewWayDistance * newWay_Index);
+    //        }
+            //else
+            //{
+            //    selectedGroundIndex = UnityEngine.Random.Range(0, World2.Count - 1);   //selecting random block from World1
+            //    nextObj = Instantiate(World2[selectedGroundIndex]) as GameObject;
+            //    nextObj.transform.position = new Vector3(0, 0, NewWayDistance * newWay_Index);
+            //}
+        //}
 
-                else
-                {
-                    if (usePooling)
-                    {
-				        nextObj = GetNextPoolObject();
-				        nextObj.transform.position = new Vector3(0, 0, NewWayDistance * newWay_Index);
-                    }
-                //else {
-                //    selectedGroundIndex = UnityEngine.Random.Range(0, World2.Count - 1);   //selecting random block from World1
-                //    nextObj = GameObject.Instantiate(World2[selectedGroundIndex]) as GameObject;
-                //    nextObj.transform.position = new Vector3(0, 0, NewWayDistance * newWay_Index);
-                //}
-            }
+            // i think this is pointless
+            //nextObj.GetComponent<groundDestroyer>().canBeDestroyed = true;
 
-			// i think this is pointless
-			//nextObj.GetComponent<groundDestroyer> ().canBeDestroyed = true;	
-            					 
-			newWay_Index++; 
-		}
+            newWay_Index++; 
+		//}
 	}
 
     GameObject GetNextPoolObject()
     {     
             GameObject go = pooledGrounds[0];
             pooledGrounds.RemoveAt(0);
+            go.GetComponent<groundDestroyer>().isInPool = false;
             return go;
     }
 
@@ -295,6 +303,7 @@ public class GameController : MonoBehaviour
     {
             go.transform.position = restingPos;
             pooledGrounds.Add(go);
+            go.GetComponent<groundDestroyer>().isInPool = true;
     }
 
     //............................................

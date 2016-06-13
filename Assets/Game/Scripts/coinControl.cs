@@ -101,7 +101,7 @@ public class coinControl : MonoBehaviour
 			thisTrans.position = Vector3.MoveTowards (thisTrans.position, newCoinPostionTarget, 80 * Time.deltaTime);
 			
 			if (punchCoinUIImage) {
-				Ace_IngameUiControl.Static.InGameAnimator.SetTrigger ("coinPunch");
+				InGameUIController.Static.InGameAnimator.SetTrigger ("coinPunch");
 				punchCoinUIImage = false;
 				
 			}

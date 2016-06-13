@@ -61,9 +61,9 @@ public class InputController : MonoBehaviour
 				// to generate new shuriken.
 				if (Time.timeSinceLevelLoad - lastThrowTime > 0.3f && (doubleTap)) {
 						doubleTap = false;
-						//playerScript.playerAnimator.SetTrigger ("attack");
+						playerScript.playerAnimator.SetTrigger ("attack");
 						lastThrowTime = Time.timeSinceLevelLoad;
-						//ThrowShuriken ();
+						ThrowShuriken ();
 			
 				} 
 		
@@ -217,7 +217,7 @@ public class InputController : MonoBehaviour
 		
 				if ((present_Input_X >= 0 || present_Input_X <= 0) && present_Input_Y > 0 && (angle > 1 || angle < -1)) { //...... Swipe Jump  
 						swipeUp = true;
-						InputController.Static.isJump = true;
+						Static.isJump = true;
 						toucheCount = -1;
 			
 				} else if (present_Input_X > 0 && (present_Input_Y >= 0 || present_Input_Y <= 0) && (angle < 1 && angle >= 0 || angle > -1 && angle <= 0)) {//.........Swipe Right 
@@ -232,7 +232,7 @@ public class InputController : MonoBehaviour
 			
 				} else if ((present_Input_X >= 0 || present_Input_X <= 0) && present_Input_Y < 0 && (angle < -1 || angle > 1)) {//..........Swipe Down 
 						swipeDown = true;
-						InputController.Static.RollPlayer ();
+                        Static.RollPlayer ();
 						toucheCount = -1;
 			
 				} else

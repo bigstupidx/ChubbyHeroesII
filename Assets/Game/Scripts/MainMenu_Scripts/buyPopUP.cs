@@ -34,7 +34,7 @@ public	void OnButtonClick(string ButtonName )
 		switch(ButtonName)
 			{
 			case "YES":
-				PlayerPrefs.SetInt("isPlayer"+Playerselection.PlayerIndex+"Purchased",1); // to save the Player lock status
+				PlayerPrefs.SetInt("isPlayer" + Playerselection.PlayerIndex+"Purchased", 1); // to save the Player lock status
 			  	TotalCoins.Static.SubtractCoins(PlayerCost);
 		     	SelectBtn.SetActive(true);
 			    BuyBtn.SetActive(false);

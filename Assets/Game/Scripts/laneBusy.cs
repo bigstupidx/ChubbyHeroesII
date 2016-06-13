@@ -9,11 +9,6 @@ public class laneBusy : MonoBehaviour {
 	{
 		GetComponent<Renderer>().enabled = false;
 	}
-	void Update()
-	{
-
-	}
-
 
 	float lastTime;
 	void OnTriggerEnter(Collider inc)

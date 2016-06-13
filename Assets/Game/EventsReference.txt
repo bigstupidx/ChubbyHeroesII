@@ -4,8 +4,8 @@ you can register your own functions
 
 GameEnd.showAds
 
-Ace_IngameUiControl.showLeaderBoard
-Ace_IngameUiControl.faceBookShare
+IngameUiControlls.showLeaderBoard
+IngameUiControlls.faceBookShare
 
 InAppMenu.gamerPackEvent
 InAppMenu.startpack

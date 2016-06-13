@@ -23,6 +23,7 @@ public class PlayerController : MonoBehaviour
 	// Use this for initialization
 	
 	public Animator playerAnimator;
+    public GameObject[] playerPrefabs;
 	public float speed = 10f, TopSpeed = 10f, increaseSpeedTime;
 	public float jumpSpeed = 8.0F;
 	public float gravity = 20.0F;
@@ -38,7 +39,7 @@ public class PlayerController : MonoBehaviour
 	int Coin = 0;
 	public GameObject powerObj_JetPack, powerObj_Magnet, shoe1, shoe2;// this can be used in when player picup any powers
 	public ParticleEmitter coinParticle ;
-	int hitCount;// hitCount changes accoding to player index value
+	int hitCount;// hitCount changes accoding to player index value THIS IS A STAT SPECIFFIC TO EACH PLAYER
 	public Material playerMaterial;// Player material	
 	public Texture[] playerTextures;// Player Texture changes according to Player Main menu PlayerIndex value
 	public PlayerStates CurrentState;
@@ -57,38 +58,80 @@ public class PlayerController : MonoBehaviour
 	Transform thisTranfrom;
 	public PlayerObstacleCheck ObstacleCheck;
 	private float presentSpeed;
-	
-	void Start ()
+
+    void Awake()
+    {
+        if (Playerselection.PlayerIndex == 0)
+        { // for Player 1
+            // instantiate Correct player prefab
+            GameObject p = Instantiate(playerPrefabs[0], transform.position, Quaternion.identity) as GameObject;
+            p.transform.SetParent(transform);
+            p.transform.position = transform.position;
+            // set it's stats
+        }
+        else if (Playerselection.PlayerIndex == 1)
+        {//  for Player 2
+            // instantiate Correct player prefab
+            GameObject p = Instantiate(playerPrefabs[1], transform.position, Quaternion.identity) as GameObject;
+            p.transform.SetParent(transform);
+            p.transform.position = transform.position;
+            // set it's stats
+        }
+        else if (Playerselection.PlayerIndex == 2)
+        { // for Player 3
+            // instantiate Correct player prefab
+            GameObject p = Instantiate(playerPrefabs[2], transform.position, Quaternion.identity) as GameObject;
+            p.transform.SetParent(transform);
+            p.transform.position = transform.position;
+            // set it's stats
+
+        }
+        else if (Playerselection.PlayerIndex == 3)
+        { // for Player 4
+            // instantiate Correct player prefab
+            GameObject p = Instantiate(playerPrefabs[3], transform.position, Quaternion.identity) as GameObject;
+            p.transform.SetParent(transform);
+            p.transform.position = transform.position;
+            // set it's stats
+
+        }
+        //.......................................
+    }
+
+
+
+    void Start ()
 	{
-		powerObj_JetPack.SetActive (false);
+        playerAnimator = GetComponentInChildren<Animator>();
+        powerObj_JetPack.SetActive (false);
 		powerObj_Magnet.SetActive (false);
 		isPlayerDead = false;
 		shoe1.SetActive (false);
 		shoe2.SetActive (false);
 		controller = GetComponent<CharacterController> ();
 		thisTranfrom = transform;
-		
-		//Selected Player................. 
-		if (Playerselection.PlayerIndex == 0) { // for Player 1
-			playerMaterial.mainTexture = playerTextures [0];
-			hitCount = 2;
-			
-		} else if (Playerselection.PlayerIndex == 1) {//  for Player 2
-			playerMaterial.mainTexture = playerTextures [1];
-			hitCount = 4;
-			
-		} else if (Playerselection.PlayerIndex == 2) { // for Player 3
-			playerMaterial.mainTexture = playerTextures [2];
-			hitCount = 6;
-			
-		} else if (Playerselection.PlayerIndex == 3) { // for Player 4
-			playerMaterial.mainTexture = playerTextures [3];
-			hitCount = 8;
-			
-		}
-		//.......................................
-		
-		CurrentState = PlayerStates.PlayerAlive;
+        hitCount = 2;
+        ////Selected Player................. instantiate correct player prefab here, then update it's stats - should be moved to gamecontoller
+        //if (Playerselection.PlayerIndex == 0) { // for Player 1
+        //	playerMaterial.mainTexture = playerTextures [0];
+        //	hitCount = 2;
+
+        //} else if (Playerselection.PlayerIndex == 1) {//  for Player 2
+        //	playerMaterial.mainTexture = playerTextures [1];
+        //	hitCount = 4;
+
+        //} else if (Playerselection.PlayerIndex == 2) { // for Player 3
+        //	playerMaterial.mainTexture = playerTextures [2];
+        //	hitCount = 6;
+
+        //} else if (Playerselection.PlayerIndex == 3) { // for Player 4
+        //	playerMaterial.mainTexture = playerTextures [3];
+        //	hitCount = 8;
+
+        //}
+        ////.......................................
+
+        CurrentState = PlayerStates.PlayerAlive;
 	}
 	
 	public float tilt ;
@@ -209,9 +252,6 @@ public class PlayerController : MonoBehaviour
 	// Random Animation for slide or role
 	public void Slide_Roll ()
 	{
-	
-	
-			
 		playerAnimator.SetTrigger ("Roll");
 
 		SoundController.Static.playSoundFromName ("roll");
@@ -223,8 +263,8 @@ public class PlayerController : MonoBehaviour
 	public void PowerJumpReset ()
 	{
 		powerJump = false;
-		Ace_IngameUiControl.Static.playerInJumpIndicator.SetActive (false);
-		Ace_IngameUiControl.Static.progressBarScript.jumpModeProgressbar.fillAmount = 1;
+		InGameUIController.Static.playerInJumpIndicator.SetActive (false);
+		InGameUIController.Static.progressBarScript.jumpModeProgressbar.fillAmount = 1;
 		isJumpModeIndicator = false;
 		shoe1.SetActive (false);
 		shoe2.SetActive (false);
@@ -236,8 +276,8 @@ public class PlayerController : MonoBehaviour
 	public void JetPackPowerReset ()
 	{
 		PlayerCamera.Static.currentCam = PlayerCamera.Cam.NormalCam;
-		Ace_IngameUiControl.Static.playerInFlyIndicator.SetActive (false);
-		Ace_IngameUiControl.Static.progressBarScript.flyModeProgressBar.fillAmount = 1;// to reset fill amount here
+		InGameUIController.Static.playerInFlyIndicator.SetActive (false);
+		InGameUIController.Static.progressBarScript.flyModeProgressBar.fillAmount = 1;// to reset fill amount here
 		isFlyModeIndicator = false;
 		playerAnimator.SetTrigger ("JetPackLand");
 		powerObj_JetPack.SetActive (false);
@@ -307,7 +347,7 @@ public class PlayerController : MonoBehaviour
 		for (int i=0; i<destroy_Obsticals_Respwan.Length; i++) {
 			Destroy (destroy_Obsticals_Respwan [i]);
 		}
-		PlayerPrefs.SetInt ("TotalCoins", PlayerPrefs.GetInt ("TotalCoins", 0) - Mathf.RoundToInt (Ace_IngameUiControl.Static.continueCoins));
+		PlayerPrefs.SetInt ("TotalCoins", PlayerPrefs.GetInt ("TotalCoins", 0) - Mathf.RoundToInt (InGameUIController.Static.continueCoins));
 		isPlayerDead = false;
 		Invoke ("latePlayerAliveOnRespwan", 1.0f);
 	}
@@ -316,12 +356,12 @@ public class PlayerController : MonoBehaviour
 	{
 		speed = 10;
 		SoundController.Static.bgSound.enabled = true;
-		PlayerEnemyController.Static.ResetToChase ();
+		//PlayerEnemyController.Static.ResetToChase ();
 		playerAnimator.SetTrigger ("Run");
 		CurrentState = PlayerStates.PlayerAlive;
 		GameObject.FindGameObjectWithTag ("GameController").GetComponent<curverSetter> ().enabled = true;
 		GameController.Static.ON_GAME_Start ();
-		Ace_IngameUiControl.isGameEnd = false;
+		InGameUIController.isGameEnd = false;
 	}
 	// used when player trigger with DoubleJump
 	public static bool doubleJump = false, powerJump = false;
@@ -360,7 +400,7 @@ public class PlayerController : MonoBehaviour
 				coinScript.moveToPlayer = true;
 			SoundController.Static.playCoinSound ();
 			PlayerPrefs.SetInt ("MissionCoinsCount", PlayerPrefs.GetInt ("MissionCoinsCount") - 1);
-			Ace_IngameUiControl.Static.inGameCoinCount = Coin;
+			InGameUIController.Static.inGameCoinCount = Coin;
 			coinParticle.emit = true;
 			Coin++;
 						
@@ -371,12 +411,12 @@ public class PlayerController : MonoBehaviour
 		// player  Trigger with Magnet...........
 		
 		else if (incomingTag.Contains ("Magnet")) {
-			Ace_IngameUiControl.Static.ShowPowerIndicatorAnim ();
-			Ace_IngameUiControl.Static.powerUpIndicatorText.text = "Magnet Power";
+			InGameUIController.Static.ShowPowerIndicatorAnim ();
+			InGameUIController.Static.powerUpIndicatorText.text = "Magnet Power";
 			powerObj_Magnet.SetActive (true);
 			SoundController.Static.playSoundFromName ("PickUp");
 			PlayerPrefs.SetInt ("MissionMagnetPowerCount", PlayerPrefs.GetInt ("MissionMagnetPowerCount") - 1);
-			Ace_IngameUiControl.Static.magnetIndicator.SetActive (true);
+			InGameUIController.Static.magnetIndicator.SetActive (true);
 			isMagnetIndicator = true;
 			if (switchOnMagnetPower != null)
 				switchOnMagnetPower (null, null);
@@ -390,13 +430,13 @@ public class PlayerController : MonoBehaviour
 		//Player trigger with Multiplier..........
 		
 		else if (incomingTag.Contains ("Multiplier")) {
-			Ace_IngameUiControl.Static.ShowPowerIndicatorAnim ();
-			Ace_IngameUiControl.Static.powerUpIndicatorText.text = " Score Multiplier";
+			InGameUIController.Static.ShowPowerIndicatorAnim ();
+			InGameUIController.Static.powerUpIndicatorText.text = " Score Multiplier";
 			SoundController.Static.playSoundFromName ("PickUp");
 			PlayerPrefs.SetInt ("Mission2XPowerCount", PlayerPrefs.GetInt ("Mission2XPowerCount") - 1);
 			
-			Ace_IngameUiControl.Static.multiplierIndicator.SetActive (true);
-			Ace_IngameUiControl.Static.multiplierValue *= 2;
+			InGameUIController.Static.multiplierIndicator.SetActive (true);
+			InGameUIController.Static.multiplierValue *= 2;
 			isMultiplierIndicator = true;
 			Destroy (incomingObj);
 			//Invoke ("switchOffMultiplier", 10);
@@ -418,16 +458,16 @@ public class PlayerController : MonoBehaviour
 		// Player trigger with JumpMode the current will jump mode in 10sec
 		
 		else if (incomingTag.Contains ("JumpMode")) { 
-			Ace_IngameUiControl.Static.ShowPowerIndicatorAnim ();
-			Ace_IngameUiControl.Static.powerUpIndicatorText.text = "Jump Shoe";
+			InGameUIController.Static.ShowPowerIndicatorAnim ();
+			InGameUIController.Static.powerUpIndicatorText.text = "Jump Shoe";
 			SoundController.Static.playSoundFromName ("PickUp");
 			powerJump = true;
 			PlayerPrefs.SetInt ("MissionJumpPowerCount", PlayerPrefs.GetInt ("MissionJumpPowerCount") - 1);
-			Ace_IngameUiControl.Static.playerInJumpIndicator.SetActive (true);
+			InGameUIController.Static.playerInJumpIndicator.SetActive (true);
 			isJumpModeIndicator = true;
 			shoe1.SetActive (true);
 			shoe2.SetActive (true);
-			PlayerEnemyController.Static.QuickHideEnemy ();
+			//PlayerEnemyController.Static.QuickHideEnemy ();
 			//Invoke ("PowerJumpReset", 10);
 			Destroy (incomingObj);
 			
@@ -436,8 +476,8 @@ public class PlayerController : MonoBehaviour
 		// Player trigger with FlyMode the currentState will  Fly mode 10 sec
 		
 		else if (incomingTag.Contains ("FlyMode")) {
-			Ace_IngameUiControl.Static.ShowPowerIndicatorAnim ();
-			Ace_IngameUiControl.Static.powerUpIndicatorText.text = " JetPack Power";
+			InGameUIController.Static.ShowPowerIndicatorAnim ();
+			InGameUIController.Static.powerUpIndicatorText.text = " JetPack Power";
 			CurrentState = PlayerStates.fly;
 			SoundController.Static.playSoundFromName ("PickUp");
 			SoundController.Static.jetPackSound.volume = 0.5f;
@@ -447,13 +487,13 @@ public class PlayerController : MonoBehaviour
 			for (int i=0; i<=Obj.Length-1; i++) {
 				Destroy (Obj [i], 1.0f);
 			}
-			Ace_IngameUiControl.Static.playerInFlyIndicator.SetActive (true);
+			InGameUIController.Static.playerInFlyIndicator.SetActive (true);
 			isFlyModeIndicator = true;
 			playerAnimator.SetTrigger ("JetPackJump");
 			GameController.Static.GenerateCoins_FlyMode ();
 			GameController.Static.stopObsticalIns = true;
 			ObstacleGenerator.Static.index = 0;
-			PlayerEnemyController.Static.QuickHideEnemy ();
+			//PlayerEnemyController.Static.QuickHideEnemy ();
 			Destroy (incomingObj);
 		}
 		//...................................................
@@ -462,7 +502,7 @@ public class PlayerController : MonoBehaviour
 		
 		else if (incomingTag.Contains ("Barrel")) {
 			PlayerPrefs.SetInt ("MissionDestroyBarrelCount", PlayerPrefs.GetInt ("MissionDestroyBarrelCount", 0) - 1);
-			PlayerEnemyController.Static.currentEnemyState = PlayerEnemyController.PlayerEnemyStates.chasing;
+			//PlayerEnemyController.Static.currentEnemyState = PlayerEnemyController.PlayerEnemyStates.chasing;
 			isBarrelBroken = true;
 			barrelPosition = incomingObj.transform.position;
 			GameController.Static.GenerateBrokenBarrel ();
@@ -476,11 +516,11 @@ public class PlayerController : MonoBehaviour
 			print ("Barrel Count  " + barrelPotTouche_Count);
 			barrelPotTouche_Count ++;
 			if (barrelPotTouche_Count == hitCount) {
-				PlayerEnemyController.Static.currentEnemyState = PlayerEnemyController.PlayerEnemyStates.attack;
+				//PlayerEnemyController.Static.currentEnemyState = PlayerEnemyController.PlayerEnemyStates.attack;
 				CurrentState = PlayerStates.PlayerDead;
 				playerAnimator.SetTrigger ("CrashBack");
 				GameController.Static.ONGameEnd ();
-				Ace_IngameUiControl.Static.ContinueScreen (); 
+				InGameUIController.Static.ContinueScreen (); 
 			}
 			Invoke ("ResetBarrelPotCount", 5.0f);
 			Destroy (incomingObj);
@@ -490,7 +530,7 @@ public class PlayerController : MonoBehaviour
 		else if (incomingTag.Contains ("Pots")) {
 			isPotBroken = true;
 			PlayerPrefs.SetInt ("MissionDestroyPotsCount", PlayerPrefs.GetInt ("MissionDestroyPotsCount", 0) - 1);
-			PlayerEnemyController.Static.currentEnemyState = PlayerEnemyController.PlayerEnemyStates.chasing;// Player enemy state changes here
+			//PlayerEnemyController.Static.currentEnemyState = PlayerEnemyController.PlayerEnemyStates.chasing;// Player enemy state changes here
 			potPosition = incomingObj.transform.position;
 			GameController.Static.GenerateBrokenPots ();// to generate broken pot here
 			int randomNum = UnityEngine.Random.Range (-1, 2);
@@ -503,11 +543,11 @@ public class PlayerController : MonoBehaviour
 			print ("Pot Count  " + barrelPotTouche_Count);
 			barrelPotTouche_Count ++;
 			if (barrelPotTouche_Count == hitCount) {
-				PlayerEnemyController.Static.currentEnemyState = PlayerEnemyController.PlayerEnemyStates.attack;
+				//PlayerEnemyController.Static.currentEnemyState = PlayerEnemyController.PlayerEnemyStates.attack;
 				CurrentState = PlayerStates.PlayerDead;
 				playerAnimator.SetTrigger ("CrashBack");
 				GameController.Static.ONGameEnd ();
-				Ace_IngameUiControl.Static.ContinueScreen (); 
+				InGameUIController.Static.ContinueScreen (); 
 			}
 			Invoke ("ResetBarrelPotCount", 5.0f);// to reset the pots touche count and player enemy state
 			Destroy (incomingObj);
@@ -519,7 +559,7 @@ public class PlayerController : MonoBehaviour
 	
 	void ResetBarrelPotCount ()
 	{
-		PlayerEnemyController.Static.currentEnemyState = PlayerEnemyController.PlayerEnemyStates.Idle;
+		//PlayerEnemyController.Static.currentEnemyState = PlayerEnemyController.PlayerEnemyStates.Idle;
 		barrelPotTouche_Count = 0;
 	}
 	
@@ -567,8 +607,8 @@ public class PlayerController : MonoBehaviour
 			GameController.Static.ONGameEnd ();
 			CurrentState = PlayerStates.PlayerDead;
 			
-			Ace_IngameUiControl.Static.ContinueScreen (); 
-			PlayerEnemyController.Static.currentEnemyState = PlayerEnemyController.PlayerEnemyStates.attack;
+			InGameUIController.Static.ContinueScreen (); 
+			//PlayerEnemyController.Static.currentEnemyState = PlayerEnemyController.PlayerEnemyStates.attack;
 		}
 		//............................................................
 	}
@@ -577,23 +617,23 @@ public class PlayerController : MonoBehaviour
 	// to reset the Multiplier Power............
 	public void switchOffMultiplier ()
 	{
-		Ace_IngameUiControl.Static.progressBarScript.multiplierProgressBar.fillAmount = 1;
+		InGameUIController.Static.progressBarScript.multiplierProgressBar.fillAmount = 1;
 		isMultiplierIndicator = false;
 		
-		Ace_IngameUiControl.Static.multiplierIndicator.SetActive (false);
-		Ace_IngameUiControl.Static.multiplierValue = PlayerPrefs.GetInt ("MultiplierCount_Ingame", 1);
+		InGameUIController.Static.multiplierIndicator.SetActive (false);
+		InGameUIController.Static.multiplierValue = PlayerPrefs.GetInt ("MultiplierCount_Ingame", 1);
 	}
 	//........................................
 	
 	// to reset the magnet Power......................
 	public void switchOffMagnet ()
 	{
-		Ace_IngameUiControl.Static.progressBarScript.magnetProgressBar.fillAmount = 1;
+		InGameUIController.Static.progressBarScript.magnetProgressBar.fillAmount = 1;
 		coinControl.isONMagetPower = false;
 		isMagnetIndicator = false;
 		powerObj_Magnet.SetActive (false);
 		//ProgressBarMagnet.Static.magnetProgressBar.fillAmount = 1;
-		Ace_IngameUiControl.Static.magnetIndicator.SetActive (false);
+		InGameUIController.Static.magnetIndicator.SetActive (false);
 		if (switchOFFMagnetPower != null)
 			switchOFFMagnetPower (null, null);
 	}
@@ -603,8 +643,8 @@ public class PlayerController : MonoBehaviour
 	
 	void GameEnd ()
 	{
-		Ace_IngameUiControl.Static.HUD.SetActive (false);// to set hud set deactive here
-		Ace_IngameUiControl.Static.GameEndMenuParent.SetActive (true);// to set Game end menu active here
+		InGameUIController.Static.HUD.SetActive (false);// to set hud set deactive here
+		InGameUIController.Static.GameEndMenuParent.SetActive (true);// to set Game end menu active here
 	}
 	
 	#endregion

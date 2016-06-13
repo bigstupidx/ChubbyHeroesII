@@ -83,7 +83,7 @@ public class GameEnd : MonoBehaviour {
 	void FinalScoreCount()
 	{
 	
-		TargetDistanceCount = Ace_IngameUiControl.Static.inGameDistance;
+		TargetDistanceCount = InGameUIController.Static.inGameDistance;
 		toreachDistance = TargetDistanceCount;
 	 
 	}
@@ -96,7 +96,7 @@ public class GameEnd : MonoBehaviour {
 	void TotalCoins()
 	{
 		
-		TargetCoisCount = Ace_IngameUiControl.Static.inGameCoinCount;
+		TargetCoisCount = InGameUIController.Static.inGameCoinCount;
 
 		toreachCoins = TargetCoisCount;
 		//too store in playerprefs
@@ -107,13 +107,13 @@ public class GameEnd : MonoBehaviour {
 	void BestScore()
 	{
 		toreachBestScore =Mathf.RoundToInt(PlayerPrefs.GetFloat ("BestDistance", 0));
-		if (PlayerPrefs.GetFloat ("BestDistance", 0) < Ace_IngameUiControl.Static.inGameDistance) {
+		if (PlayerPrefs.GetFloat ("BestDistance", 0) < InGameUIController.Static.inGameDistance) {
 				newBestScore_Image.SetActive(true);
 
-			TargetBestScoreCount=Ace_IngameUiControl.Static.inGameDistance;
+			TargetBestScoreCount=InGameUIController.Static.inGameDistance;
 			toreachBestScore=TargetBestScoreCount;
 				
-			PlayerPrefs.SetFloat("BestDistance",Ace_IngameUiControl.Static.inGameDistance );
+			PlayerPrefs.SetFloat("BestDistance",InGameUIController.Static.inGameDistance );
 			}
 		bestScore.text= ""+Mathf.RoundToInt(PlayerPrefs.GetFloat ("BestDistance", 0));
 	 

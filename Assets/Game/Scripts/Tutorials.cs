@@ -101,7 +101,7 @@ public class Tutorials : MonoBehaviour
 		{
 
 				hud.SetActive (true);
-				//Ace_IngameUiControl.Static.ShowHighestIndicatorAnim();
+				//IngameUiControlls.Static.ShowHighestIndicatorAnim();
 				tutorialParent.SetActive (false);
 				GameController.Static.ON_GAME_Start ();
 				this.enabled = false;

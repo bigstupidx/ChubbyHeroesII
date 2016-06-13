@@ -6,7 +6,8 @@ public class PlayerCamera : MonoBehaviour {
 	// Use this for initialization
 
 	public Transform targetTrans,thisTransform ;
- 
+
+    public float backOffset = 10f;
 	public Vector3 offset;
 	public Vector3 flyModeOffset;
 	public static PlayerCamera Static; 
@@ -50,7 +51,7 @@ public class PlayerCamera : MonoBehaviour {
 		case Cam.NormalCam:
 			camPositionX = Mathf.Lerp (camPositionX, targetTrans.position.x, camChangeSpeedX);
 			camPositionY = Mathf.Lerp (camPositionY, targetTrans.position.y+offset.y, camChangeSpeedY);
-			camPositionZ = Mathf.Lerp(camPositionZ,targetTrans.position.z+PlayerEnemyController.Static.CamZPosition,camChangeSpeedZ);//+PlayerEnemyController.Static.CamZPosition
+			camPositionZ = Mathf.Lerp(camPositionZ,targetTrans.position.z - backOffset, camChangeSpeedZ);//+PlayerEnemyController.Static.CamZPosition
 		
 			if (targetTrans != null) {
 				thisTransform.position = new Vector3 (camPositionX, camPositionY,  camPositionZ);
