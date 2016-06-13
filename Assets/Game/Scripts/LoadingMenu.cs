@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class LoadingMenu : MonoBehaviour
 {
@@ -16,7 +16,7 @@ public class LoadingMenu : MonoBehaviour
 		void PlayGame ()
 		{
 				if (!justOnce)
-						Application.LoadLevel ("gameplay");
+						SceneManager.LoadScene ("gameplay");
 				justOnce = true;
 		}
 }

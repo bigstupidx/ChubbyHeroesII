@@ -2,6 +2,7 @@
 using System.Collections;
 using UnityEngine.UI;
 using System;
+using UnityEngine.SceneManagement;
 
 public class InGameUIController : MonoBehaviour
 {
@@ -71,7 +72,7 @@ public class InGameUIController : MonoBehaviour
 				
 						Distance_IngameCount ();
 				}
-				if (InGameAnimator.GetCurrentAnimatorStateInfo (0).nameHash == finish && isGameEnd) {
+				if (InGameAnimator.GetCurrentAnimatorStateInfo (0).fullPathHash == finish && isGameEnd) {
 						GameEnd (); // to show game end menu on clock ran out 
 						
 				}
@@ -119,7 +120,7 @@ public class InGameUIController : MonoBehaviour
 						SoundController.Static.playSoundFromName ("Click");
 						break;
 				case "Home":
-						Application.LoadLevelAsync ("MainMenu");
+						SceneManager.LoadSceneAsync ("MainMenu");
 						ResumeMenuParent.SetActive (false);
 						SoundController.Static.playSoundFromName ("Click");
 						break;
@@ -167,8 +168,8 @@ public class InGameUIController : MonoBehaviour
 
     void PlayAgain2()
     {
-
-        Application.LoadLevelAsync(Application.loadedLevelName);
+        Scene thisScene = SceneManager.GetActiveScene();
+        SceneManager.LoadSceneAsync(thisScene.name);
     }
 
     int countinueCount = 1;

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Playerselection : MonoBehaviour
 {
@@ -71,7 +72,7 @@ public class Playerselection : MonoBehaviour
 				case "Select":
 						SoundController.Static.playSoundFromName ("Click");
 						PlayerSelectionMenu.SetActive (false);
-						Application.LoadLevelAsync ("gameplay");
+						SceneManager.LoadSceneAsync ("gameplay");
 						loadingParent.SetActive (true);
 		 
 						 

@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class SpalshScreen : MonoBehaviour {
 
@@ -15,7 +15,7 @@ public class SpalshScreen : MonoBehaviour {
 	void loadMenuLevel( )
 	{
 
-		Application.LoadLevel("Mainmenu");
+		SceneManager.LoadScene("Mainmenu");
 	}
 	 
 	public GameObject logo;

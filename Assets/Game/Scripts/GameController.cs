@@ -78,7 +78,7 @@ public class GameController : MonoBehaviour
 	public void ON_GAME_Start ()
 	{
 		InvokeRepeating ("GenerateObstacles", 2f, 1.0f);// for obstacles
-		InvokeRepeating ("GeneratePowerUps", 20, 50);// for PowerUps
+		InvokeRepeating ("GeneratePowerUps", 20, 10);// for PowerUps
 		InvokeRepeating ("GenerateCoins", 2, 10f);// for coins
 		isStopCreateNewWay = true;
 		stopObsticalIns = false;

@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class LoadingRotation : MonoBehaviour
 {
@@ -24,7 +24,7 @@ public class LoadingRotation : MonoBehaviour
 		}
 		void StartGame ()
 		{
-				Application.LoadLevelAsync ("gamePlay");
+				SceneManager.LoadSceneAsync ("gamePlay");
 		}
 
  

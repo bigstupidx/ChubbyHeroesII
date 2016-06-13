@@ -17,7 +17,7 @@ public class PlayerObstacleCheck : MonoBehaviour
 
 	public bool CheckRightSide ()
 	{
-		Debug.DrawRay (thisTrans.position, Vector3.right * 5, Color.red, 200000, false);
+		//Debug.DrawRay (thisTrans.position, Vector3.right * 5, Color.red, 2, false);
 		 
 		if (Physics.Raycast (transform.position + charPositionOffset, Vector3.right * 2, out hit, 8)) {
 			GameObject hitObj = hit.collider.gameObject;
@@ -38,7 +38,7 @@ public class PlayerObstacleCheck : MonoBehaviour
 	{
 		   
 
-		Debug.DrawRay (thisTrans.position + charPositionOffset, Vector3.left * 5, Color.blue, 200000, false);
+		//Debug.DrawRay (thisTrans.position + charPositionOffset, Vector3.left * 5, Color.blue, 2, false);
 
 		 
 		if (Physics.Raycast (transform.position + charPositionOffset, Vector3.left * 2, out hit, 8)) {
