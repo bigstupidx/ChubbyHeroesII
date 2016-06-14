@@ -187,7 +187,7 @@ public class InGameUIController : MonoBehaviour
 				cointinueCost.text = "" + continueCoins;
 				countinueCount++;
 				//Debug.Log("Finish");
-				worldCruveScript.enabled = false;
+				worldCruveScript.enabled = false;  // add pause curveing
 		}
 
 		public void GameEnd ()

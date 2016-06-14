@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
     public ParticleEmitter coinParticle;
     int hitCount;// hitCount changes accoding to player index value THIS IS A STAT SPECIFFIC TO EACH PLAYER
     public Material playerMaterial;// Player material	
-    public Texture[] playerTextures;// Player Texture changes according to Player Main menu PlayerIndex value
+    //public Texture[] playerTextures;// Player Texture changes according to Player Main menu PlayerIndex value
     public PlayerStates CurrentState;
     int runState = Animator.StringToHash("Base Layer.Run");
     int downStateValue2 = Animator.StringToHash("Base Layer.Roll");
@@ -138,6 +138,7 @@ public class PlayerController : MonoBehaviour
 
             // player in normal mode....................................................
             case PlayerStates.PlayerAlive:
+                InputController.Static.takeInput = true;
 
                 speed = Mathf.Lerp(speed, TopSpeed, increaseSpeedTime);
                 presentSpeed = speed;
@@ -159,10 +160,10 @@ public class PlayerController : MonoBehaviour
                     if (doubleJump || (playerAnimator.GetCurrentAnimatorStateInfo(0).fullPathHash == runState && InputController.Static.isJump))
                     {
 
-                        if (powerJump)
+                        if (normalJump)
                         {//Normal Jump
 
-                            playerAnimator.SetTrigger("JumpPower");
+                            playerAnimator.SetTrigger("JumpHigh");
                             jumpSpeed = Mathf.Clamp(speed * 1.6f, 15, 18);
                             InputController.Static.isJump = false;
                             doubleJump = false;
@@ -174,7 +175,7 @@ public class PlayerController : MonoBehaviour
                             InputController.Static.isJump = false;
                             if (playerAnimator.GetCurrentAnimatorStateInfo(0).fullPathHash != Double_Jump)
                                 //playerAnimator.SetTrigger ("DoubleJump");
-                                playerAnimator.SetTrigger("JumpPower");
+                                playerAnimator.SetTrigger("JumpHigh");
                         }
                         else
                         { // when jump power 
@@ -239,6 +240,8 @@ public class PlayerController : MonoBehaviour
 
             case PlayerStates.PlayerDead:
                 CurrentState = PlayerStates.empty;
+                InputController.Static.takeInput = false;
+
                 break;
             case PlayerStates.Idle:
                 break;
@@ -259,7 +262,7 @@ public class PlayerController : MonoBehaviour
 
     public void PowerJumpReset()
     {
-        powerJump = false;
+        normalJump = false;
         InGameUIController.Static.playerInJumpIndicator.SetActive(false);
         InGameUIController.Static.progressBarScript.jumpModeProgressbar.fillAmount = 1;
         isJumpModeIndicator = false;
@@ -363,7 +366,7 @@ public class PlayerController : MonoBehaviour
         InGameUIController.isGameEnd = false;
     }
     // used when player trigger with DoubleJump
-    public static bool doubleJump = false, powerJump = false;
+    public static bool doubleJump = false, normalJump = false;
     public bool isMagnetIndicator = false, isMultiplierIndicator = false, isFlyModeIndicator = false, isJumpModeIndicator = false;
     public static Vector3 barrelPosition, potPosition;
     public static bool isBarrelBroken = false, isPotBroken = false;
@@ -372,12 +375,6 @@ public class PlayerController : MonoBehaviour
 
     #region player Trigger Enter with
     //for some reason ,if player is at great speed ,it misses the collision with DoubleJump trigger,so we checking with ray
-
-
-
-
-
-
 
     public float magnetPowerTime, multiplierPowerTime, lastTriggerJumpTime;
 
@@ -465,12 +462,13 @@ public class PlayerController : MonoBehaviour
             InGameUIController.Static.ShowPowerIndicatorAnim();
             InGameUIController.Static.powerUpIndicatorText.text = "Jump Shoe";
             SoundController.Static.playSoundFromName("PickUp");
-            powerJump = true;
+            normalJump = true;
             PlayerPrefs.SetInt("MissionJumpPowerCount", PlayerPrefs.GetInt("MissionJumpPowerCount") - 1);
             InGameUIController.Static.playerInJumpIndicator.SetActive(true);
             isJumpModeIndicator = true;
-            shoe1.SetActive(true);
-            shoe2.SetActive(true);
+            //shoe1.SetActive(true); tre sa le fac reenable si sa le pun direct pe player....astea se vad dupa ce ia powerupu
+            //shoe2.SetActive(true);
+
             //PlayerEnemyController.Static.QuickHideEnemy ();
             //Invoke ("PowerJumpReset", 10);
             Destroy(incomingObj);
@@ -596,7 +594,7 @@ public class PlayerController : MonoBehaviour
 
             if (Time.timeSinceLevelLoad - lastTriggerJumpTime > 0.1f)
             {
-
+                Debug.Log("Double jumped fromPlayerController");
                 incoming.collider.enabled = false;
                 lastTriggerJumpTime = Time.timeSinceLevelLoad;
                 doubleJump = true;
@@ -611,7 +609,7 @@ public class PlayerController : MonoBehaviour
             if (playerAnimator.GetCurrentAnimatorStateInfo(0).fullPathHash == Double_Jump)
                 return;
 
-
+            // aici e o problema de coliziune : playerul moare cand face slide jos de pe platforma
             if (thisTranfrom.position.y < 3)
             {
                 thisTranfrom.position = new Vector3(thisTranfrom.position.x, 1.28f, thisTranfrom.position.z);
@@ -630,9 +628,9 @@ public class PlayerController : MonoBehaviour
                     playerAnimator.SetTrigger("CrashBack");
                 }
             }
-            GameController.Static.ONGameEnd();
             CurrentState = PlayerStates.PlayerDead;
-
+            playerAnimator.SetTrigger("CrashBack");
+            GameController.Static.ONGameEnd();
             InGameUIController.Static.ContinueScreen();
             //PlayerEnemyController.Static.currentEnemyState = PlayerEnemyController.PlayerEnemyStates.attack;
         }
@@ -667,11 +665,11 @@ public class PlayerController : MonoBehaviour
 
     #region On Game End
 
-    void GameEnd()
-    {
-        InGameUIController.Static.HUD.SetActive(false);// to set hud set deactive here
-        InGameUIController.Static.GameEndMenuParent.SetActive(true);// to set Game end menu active here
-    }
+    //void GameEnd()
+    //{
+    //    InGameUIController.Static.HUD.SetActive(false);// to set hud set deactive here
+    //    InGameUIController.Static.GameEndMenuParent.SetActive(true);// to set Game end menu active here
+    //}
 
     #endregion
 
@@ -708,16 +706,16 @@ public class PlayerController : MonoBehaviour
                 playerAnimator.SetTrigger("Run");
             }
 
-            if (hit.collider.tag != null && hit.collider.tag.Contains("DoubleJump"))
-            {
+            //if (hit.collider.tag != null && hit.collider.tag.Contains("DoubleJump"))
+            //{
+            //    Debug.Log("Double jumped from isPlayerOnGround");
+            //    hit.collider.enabled = false;
+            //    lastTriggerJumpTime = Time.timeSinceLevelLoad;
+            //    doubleJump = true;
+            //    InputController.Static.isJump = true;
+            //    SoundController.Static.playSoundFromName("jumpTrigger");
 
-                hit.collider.enabled = false;
-                lastTriggerJumpTime = Time.timeSinceLevelLoad;
-                doubleJump = true;
-                InputController.Static.isJump = true;
-                SoundController.Static.playSoundFromName("jumpTrigger");
-
-            }
+            //}
         }
     }
 
@@ -737,7 +735,6 @@ public class PlayerController : MonoBehaviour
         Invoke("ResetPlayerHurtCount", 5.0f); // to reset player hurt count
         if (ObstacleCheck.CheckLeftSide())
         {
-            Debug.Log("LeftSideMoving");
             if (playerAnimator.GetCurrentAnimatorStateInfo(0).fullPathHash == runState)
             {
                 playerAnimator.SetTrigger("LeftSideHit");
@@ -745,11 +742,12 @@ public class PlayerController : MonoBehaviour
             print("Debug PlayerHurtCount : " + playeHurtCount);
             speed = originalSpeed;
             playeHurtCount++;
-            if (playeHurtCount >= 2)
+            if (playeHurtCount >= hitCount)
             {
-                GameController.Static.ONGameEnd();
                 CurrentState = PlayerStates.PlayerDead;
                 playerAnimator.SetTrigger("CrashBack");
+                GameController.Static.ONGameEnd();
+                InGameUIController.Static.ContinueScreen();
             }
         }
         else if (CurrentState != PlayerStates.PlayerDead)
@@ -775,8 +773,6 @@ public class PlayerController : MonoBehaviour
                     PlayerPrefs.SetInt("MissionswipeLeftCount", PlayerPrefs.GetInt("MissionswipeLeftCount", 0) - 1);
                     if (playerAnimator.GetCurrentAnimatorStateInfo(0).fullPathHash == runState)
                     {
-                        Debug.Log("Animator: LeftTurn");
-
                         playerAnimator.SetTrigger("LeftTurn");
                     }
                     SoundController.Static.playSoundFromName("swipe");
@@ -794,7 +790,6 @@ public class PlayerController : MonoBehaviour
         Invoke("ResetPlayerHurtCount", 5.0f);// Player hurt count reset after 5 seconds,so he can hit two more times
         if (ObstacleCheck.CheckRightSide())
         {
-            Debug.Log("RightSideMoving");
             if (playerAnimator.GetCurrentAnimatorStateInfo(0).fullPathHash == runState)
             {
                 playerAnimator.SetTrigger("RightSideHit");
@@ -802,11 +797,12 @@ public class PlayerController : MonoBehaviour
             print("Debug PlayerHurtCount : " + playeHurtCount);
             speed = originalSpeed;
             playeHurtCount++;
-            if (playeHurtCount >= 2)
+            if (playeHurtCount >= hitCount)
             {
-                GameController.Static.ONGameEnd();
                 CurrentState = PlayerStates.PlayerDead;
                 playerAnimator.SetTrigger("CrashBack");
+                GameController.Static.ONGameEnd();
+                InGameUIController.Static.ContinueScreen();
             }
 
         }
@@ -817,31 +813,27 @@ public class PlayerController : MonoBehaviour
         {
             switch (currentLane)
             {
-                case PlayerController.PlayerLane.one:
+                case PlayerLane.one:
 
                     PlayerPrefs.SetInt("MissionswipeRightCount", PlayerPrefs.GetInt("MissionswipeRightCount") - 1);
-                    currentLane = PlayerController.PlayerLane.two;
+                    currentLane = PlayerLane.two;
                     if (playerAnimator.GetCurrentAnimatorStateInfo(0).fullPathHash == runState)
                     {
-                        Debug.Log("Animator: RightTurn");
-
                         playerAnimator.SetTrigger("RightTurn");
                     }
                     SoundController.Static.playSoundFromName("swipe");
                     break;
-                case PlayerController.PlayerLane.two:
+                case PlayerLane.two:
 
                     PlayerPrefs.SetInt("MissionswipeRightCount", PlayerPrefs.GetInt("MissionswipeRightCount") - 1);
-                    currentLane = PlayerController.PlayerLane.three;
+                    currentLane = PlayerLane.three;
                     if (playerAnimator.GetCurrentAnimatorStateInfo(0).fullPathHash == runState)
                     {
-                        Debug.Log("Animator: RightTurn");
-
                         playerAnimator.SetTrigger("RightTurn");
                     }
                     SoundController.Static.playSoundFromName("swipe");
                     break;
-                case PlayerController.PlayerLane.three:
+                case PlayerLane.three:
 
                     break;
 

@@ -16,7 +16,7 @@ public class GameController : MonoBehaviour
 	public Worlds currentWorld;
 
 	public static GameController Static ;
-	public GameObject[] powerUps, coins, coins_FlyMode, obstacles_Tutorials, playerPrefabs;
+	public GameObject[] powerUps, coins, coins_FlyMode, obstacles_Tutorials;
 	public GameObject PlayerPosition, shuriken, brokenBarrel, brokenPot, StartingWorldGroup;
 	public static event GAMESTATE onGameStateChange ;	
 	public static event EventHandler ShowADD;
@@ -46,10 +46,7 @@ public class GameController : MonoBehaviour
 				
 		PlayerController.DestroyUpCoins += onDestoryUPCoinsCall;
         //InvokeRepeating ("ChangeWorld", 25, 15);
-        //Invoke ("DestroyStartingWorld", 30);
-        Debug.Log(Playerselection.PlayerIndex);
-        //Selected Player................. instantiate correct player prefab here, then update it's stats - should be moved to gamecontoller
-        
+        //Invoke ("DestroyStartingWorld", 30);        
     }
 
     void ChangeWorld()
@@ -86,22 +83,23 @@ public class GameController : MonoBehaviour
 		//IngameUiControlls.Static.ShowHighestIndicatorAnim();
 	}
 
-	public void ON_GAME_END ()
-	{
-		CancelInvoke ("DestroyStartingWorld");
-		stopObsticalIns = true;
-		//to show an ad at the end of the Game
-		if (ShowADD != null)
-			ShowADD (null, null);
-		GameObject.FindGameObjectWithTag ("GameController").GetComponent<curverSetter> ().enabled = false; //add pause state in curve setter!
-	}
-	
-	void Start ()
+    //public void ON_GAME_END()
+    //{
+    //    CancelInvoke("DestroyStartingWorld");
+    //    stopObsticalIns = true;
+    //    to show an ad at the end of the Game
+
+    //    if (ShowADD != null)
+    //        ShowADD(null, null);
+    //    GameObject.FindGameObjectWithTag("GameController").GetComponent<curverSetter>().enabled = false; //add pause state in curve setter!
+    //}
+
+    void Start ()
 	{
         playerTransform = PlayerPosition.transform;
 
         lastPlayerPosition = playerTransform.position.z;
-	}
+    }
 
 	public	 float flyCointTicks = 51;
 	void Update ()
@@ -311,8 +309,10 @@ public class GameController : MonoBehaviour
     public void ONGameEnd () {
 		SoundController.Static.bgSound.enabled = false;
 		SoundController.Static.playSoundFromName ("GameOver");
-		//avoid all cancel
-		CancelInvoke ("GenerateObstacles");// for obstacles
+        InGameUIController.isGameEnd = true;
+        //InputController.Static.takeInput = false;
+        //avoid all cancel
+        CancelInvoke("GenerateObstacles");// for obstacles
 		CancelInvoke ("GeneratePowerUps");// for PowerUps
 		CancelInvoke ("GenerateCoins");// for coins
 		isStopCreateNewWay = false;

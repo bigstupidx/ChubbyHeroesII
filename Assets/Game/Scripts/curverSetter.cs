@@ -1,57 +1,55 @@
 ﻿using UnityEngine;
-using System.Collections;
-using System;
-using System.Collections.Generic;
+
+
 public class curverSetter : MonoBehaviour
 {
+	public Vector4 curveOffsetValues;
+	// Update is called once per frame
+
+	public Vector4 targetCurveVector;
+    private Vector4 lastKnownOffsetValue;
+
+
+    void Start ()
+	{
+        NoBendJustRunStraight();
+	}
 
  
-		public Vector4 curveOffsetValues;
-		// Update is called once per frame
+	void Update ()
+	{
+		curveOffsetValues = Vector4.MoveTowards (curveOffsetValues, targetCurveVector, 0.005f);
 
-		public Vector4 targetCurveVector;
-	 
-		void Start ()
-		{
-
-	 
-				BendToRightCurve ();
-		 
-
-		}
-
+		Shader.SetGlobalVector ("_Offset", curveOffsetValues);
  
-		void Update ()
-		{
+	}
 
-	
-				curveOffsetValues = Vector4.MoveTowards (curveOffsetValues, targetCurveVector, 0.04f);
+	void OnDisable ()
+	{
+        lastKnownOffsetValue = curveOffsetValues;
 
+        Shader.SetGlobalVector ("_Offset", lastKnownOffsetValue); 
+	}
 
-				Shader.SetGlobalVector ("_Offset", curveOffsetValues);
- 
-	
-		}
-
-		void OnDisable ()
-		{
-				Shader.SetGlobalVector ("_Offset", Vector4.zero);
-		 
-		}
+    // first start straight
+    void NoBendJustRunStraight()
+    {
+        targetCurveVector = new Vector4(0, -4, 0);
+        Invoke("BendToRightCurve", 6f);
+    }
 
 
-		//cycling through left and right curves 
+    //cycling through left and right curves 
 
-		public void BendToRightCurve ()
-		{
-		
-				targetCurveVector = new Vector4 (12, -4, 0);
-				Invoke ("BendToLeftCurve", 30);
-		} 
-		public void BendToLeftCurve ()
-		{
-		
-				targetCurveVector = new Vector4 (-12, -4, 0);
-				Invoke ("BendToRightCurve", 30);
-		}
+    public void BendToRightCurve ()
+	{
+		targetCurveVector = new Vector4 (12, -4, 0);
+		Invoke ("BendToLeftCurve", 30);
+	} 
+
+	public void BendToLeftCurve ()
+	{
+		targetCurveVector = new Vector4 (-12, -4, 0);
+		Invoke ("BendToRightCurve", 30);
+	}
 }

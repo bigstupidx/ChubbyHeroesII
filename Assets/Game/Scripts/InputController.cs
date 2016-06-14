@@ -33,11 +33,14 @@ public class InputController : MonoBehaviour
 	
 		public bool doubleTap;
 		float doubleTapTime;
+        public bool takeInput = true;
 	
 		Vector2 startMousePosition;
 		void Update ()
 		{
-				if (Input.GetKeyDown (KeyCode.Mouse0)) {
+        if (!takeInput)
+            return;
+                if (Input.GetKeyDown (KeyCode.Mouse0)) {
 						startMousePosition = Input.mousePosition;
 			
 				}
