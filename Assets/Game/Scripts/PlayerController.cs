@@ -294,7 +294,7 @@ public class PlayerController : MonoBehaviour
 
     #region player lanePosition
 
-    public float[] LaneLimits;
+    //public float[] LaneLimits;
     public float[] LanesPositions;
     public float laneShiftSpeed;
     public float targetLanePosition, lanePosition;

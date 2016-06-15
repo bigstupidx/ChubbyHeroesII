@@ -74,9 +74,9 @@ public class GameController : MonoBehaviour
 
 	public void ON_GAME_Start ()
 	{
-		InvokeRepeating ("GenerateObstacles", 2f, 1.0f);// for obstacles
-		InvokeRepeating ("GeneratePowerUps", 20, 10);// for PowerUps
-		InvokeRepeating ("GenerateCoins", 2, 10f);// for coins
+		InvokeRepeating ("GenerateObstacles", 0.1f, 1.0f);// for obstacles
+		InvokeRepeating ("GeneratePowerUps", 20, 30f);// for PowerUps
+		InvokeRepeating ("GenerateCoins", 0.1F, 1.5f);// for coins
 		isStopCreateNewWay = true;
 		stopObsticalIns = false;
 
@@ -124,32 +124,60 @@ public class GameController : MonoBehaviour
 		}
 	}
 
-	//.............................................
+    //.............................................
 
-	// to create shuriken.............................
-	//int countShuriken;
-	//public void GenerateWeapon ()
-	//{
-	//	if (Time.timeScale != 1)
-	//		return;
-	//	GameObject Obj = Instantiate (shuriken, PlayerController.thisPosition + new Vector3 (0, 0.07f, 2), Quaternion.identity)as GameObject;
-	//	Obj.name = "shuriken" + countShuriken;
-	//	countShuriken++;
-	//}
-		
+    // to create shuriken.............................
+    //int countShuriken;
+    //public void GenerateWeapon ()
+    //{
+    //	if (Time.timeScale != 1)
+    //		return;
+    //	GameObject Obj = Instantiate (shuriken, PlayerController.thisPosition + new Vector3 (0, 0.07f, 2), Quaternion.identity)as GameObject;
+    //	Obj.name = "shuriken" + countShuriken;
+    //	countShuriken++;
+    //}
 
-	//...................................
+
+    //...................................
+
 
 	int newPowerUp = 1;
-
+    float laneOffset;
+    Vector3 downDir = Vector3.down;
+    Vector3 offsetInst = new Vector3(0, 1f, 0);
 	// to create PowerUPs ....................
 	public void GeneratePowerUps ()
 	{
-	
-		GameObject Obj = Instantiate (powerUps [UnityEngine.Random.Range (0, powerUps.Length)], new Vector3 (0.0f, 2.0f, PlayerController.thisPosition.z + 100 * newPowerUp), Quaternion.identity)as GameObject;//lanePositions[UnityEngine.Random.Range (0,coins.Length)]
-		Obj.name = "powerUp" + newPowerUp;
+        //get random lane position on X axis
+        laneOffset = lanePositions[UnityEngine.Random.Range(0, lanePositions.Length)];
+        
+        //raycast to that pposition down, see what hits
+        Vector3 origin = new Vector3(laneOffset, 40.0f, PlayerController.thisPosition.z + 100); // * newPowerup
+        RaycastHit hit;
+        if (Physics.Raycast(origin, downDir, out hit, 50f))
+        {
+ 
+            if (hit.transform.name == "Col") //change to BUS
+            {
+                Invoke("GeneratePowerUps", 2f);
+                return;
+            }
+
+            else if (hit.transform.tag == "Coin")
+            {
+                Invoke("GeneratePowerUps", 2f);
+                return;
+            }
+            else
+            {
+                GameObject Obj = Instantiate(powerUps[UnityEngine.Random.Range(0, powerUps.Length)], hit.point + offsetInst, Quaternion.identity) as GameObject;
+            }
+
+        }
 		newPowerUp++;
-	}
+    }
+
+
 
 	//..........................................
 
@@ -204,7 +232,7 @@ public class GameController : MonoBehaviour
 		if (coin_Index >= coins.Length)
 			coin_Index = 0;
 		GameObject coin = Instantiate (coins [UnityEngine.Random.Range (0, coins.Length)],
-		                            new Vector3 (0, 1.5f, PlayerController.thisPosition.z + 80 * newCoins),
+		                            new Vector3 (0, 1f, PlayerController.thisPosition.z + 100), // * NEWCOINS
 		                            Quaternion.identity)as GameObject;
 		coin.name = "Coin " + coin_Index;
 		coin_Index++;
