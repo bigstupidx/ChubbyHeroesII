@@ -628,6 +628,7 @@ public class PlayerController : MonoBehaviour
                     playerAnimator.SetTrigger("CrashBack");
                 }
             }
+            //Destroy(incoming.gameObject);
             CurrentState = PlayerStates.PlayerDead;
             playerAnimator.SetTrigger("CrashBack");
             GameController.Static.ONGameEnd();

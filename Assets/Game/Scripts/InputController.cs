@@ -7,6 +7,7 @@ public class InputController : MonoBehaviour
 	
 		public  static InputController Static;
 		PlayerController playerScript;
+        AttackScript attackScript;
 		public bool isJump = false, isDown = false, isLeft = false, isRight = false;
 		Touch currentTouch ;
 		float minSwipeDistY = 40;
@@ -19,8 +20,8 @@ public class InputController : MonoBehaviour
 		{
 				Static = this;
 				playerScript = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerController> ();
-		
-				swipe_Initial_X = 0.0f;  
+                attackScript = GameObject.FindGameObjectWithTag("Player").GetComponent<AttackScript>();
+                swipe_Initial_X = 0.0f;  
 				swipe_Initial_Y = 0.0f;  
 				swipe_Final_X = 0.0f;  
 				swipe_Final_Y = 0.0f;
@@ -63,10 +64,9 @@ public class InputController : MonoBehaviour
 		
 				// to generate new shuriken.
 				if (Time.timeSinceLevelLoad - lastThrowTime > 0.3f && (doubleTap)) {
-						doubleTap = false;
-						playerScript.playerAnimator.SetTrigger ("attack");
+						doubleTap = false;					
 						lastThrowTime = Time.timeSinceLevelLoad;
-						ThrowShuriken ();
+					    attackScript.Shoot ();
 			
 				} 
 		
@@ -177,14 +177,14 @@ public class InputController : MonoBehaviour
 		//........................................
 	
 		// when SpaceBar  Pressed Jump the player
-		void ThrowShuriken ()
-		{
-				stopTutorial = true;
-				if ((playerScript.CurrentState == PlayerStates.PlayerAlive || playerScript.CurrentState == PlayerStates.powerJump)) {
-						SoundController.Static.playSoundFromName ("Shuriken");
-						GameController.Static.GenerateWeapon ();
-				}
-		}
+		//void ThrowShuriken ()
+		//{
+		//		stopTutorial = true;
+		//		if ((playerScript.CurrentState == PlayerStates.PlayerAlive || playerScript.CurrentState == PlayerStates.powerJump)) {
+		//				SoundController.Static.playSoundFromName ("Shuriken");
+		//				GameController.Static.GenerateWeapon ();
+		//		}
+		//}
 		//........................................
 	
 	

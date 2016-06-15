@@ -17,7 +17,7 @@ public class GameController : MonoBehaviour
 
 	public static GameController Static ;
 	public GameObject[] powerUps, coins, coins_FlyMode, obstacles_Tutorials;
-	public GameObject PlayerPosition, shuriken, brokenBarrel, brokenPot, StartingWorldGroup;
+	public GameObject PlayerPosition, brokenBarrel, brokenPot, StartingWorldGroup;
 	public static event GAMESTATE onGameStateChange ;	
 	public static event EventHandler ShowADD;
 	public float[] lanePositions ;
@@ -127,15 +127,15 @@ public class GameController : MonoBehaviour
 	//.............................................
 
 	// to create shuriken.............................
-	int countShuriken;
-	public void GenerateWeapon ()
-	{
-		if (Time.timeScale != 1)
-			return;
-		GameObject Obj = Instantiate (shuriken, PlayerController.thisPosition + new Vector3 (0, 0.07f, 2), Quaternion.identity)as GameObject;
-		Obj.name = "shuriken" + countShuriken;
-		countShuriken++;
-	}
+	//int countShuriken;
+	//public void GenerateWeapon ()
+	//{
+	//	if (Time.timeScale != 1)
+	//		return;
+	//	GameObject Obj = Instantiate (shuriken, PlayerController.thisPosition + new Vector3 (0, 0.07f, 2), Quaternion.identity)as GameObject;
+	//	Obj.name = "shuriken" + countShuriken;
+	//	countShuriken++;
+	//}
 		
 
 	//...................................
