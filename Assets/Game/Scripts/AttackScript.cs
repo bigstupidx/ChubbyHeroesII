@@ -6,27 +6,32 @@ public class AttackScript : MonoBehaviour {
     PlayerController playerScript;
     public GameObject projectile;
     int countProjectile;
+    public Transform shootPos;
 
     // Use this for initialization
     void Start () {
         playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
 
-        InvokeRepeating("FindClosestEnemy", 0.5f, 0.1f);
+        InvokeRepeating("FindClosestEnemy", 0.5f, 0.2f);
     }
 
     GameObject FindClosestEnemy()
     {
+        // get all enemies in the scene
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
+
+        // check if we have some enemies to work with, else return null GameObject 
+        if (enemies.Length == 0)
+            return null;
 
         int closestIndex = 0;
         float closestDistance = 120f;
         float tempDistance;
 
+        // find closest enemy to player on the Z axis
         for (int i = 0; i < enemies.Length; i++)
         {
-            //tempDistance = Vector3.Distance(transform.position, enemies[i].transform.position);
             tempDistance = (enemies[i].transform.position.z - transform.position.z);
-            //Debug.Log("Object " + enemies[i].name + " is at position " + enemies[i].transform.position.z +  " and it's tempDistance is :" + tempDistance);
 
             if (Mathf.Abs(tempDistance) < closestDistance && enemies[i].transform.position.z >= (transform.position.z + 30f))
             {
@@ -34,9 +39,14 @@ public class AttackScript : MonoBehaviour {
                 closestIndex = i;
             }
         }
+
+        // call Targeted Method on closest enemy
         enemies[closestIndex].GetComponent<Enemy>().Targeted();
+
+        //return the closest enemy gameObject to be used wherever
         return enemies[closestIndex];
     }
+
 
     public void Shoot()
     {
@@ -51,21 +61,10 @@ public class AttackScript : MonoBehaviour {
             {
                 playerScript.playerAnimator.SetTrigger("attack");
                 SoundController.Static.playSoundFromName("Shuriken");
-                GameObject Obj = Instantiate(projectile, transform.position, Quaternion.identity) as GameObject;
+                GameObject Obj = Instantiate(projectile, shootPos.position, Quaternion.identity) as GameObject;
                 Obj.GetComponent<Projectile>().target = firstEnemy;
                 countProjectile++;
             }
-            //else if (firstEnemy.transform.position.z < transform.position.z + 30f)
-            //{
-            //    return;
-            //}
-
-
-
-            //Vector3 bulletDirection = FindClosestEnemy().transform.position - transform.position;
-            //Quaternion bulletRotation = Quaternion.LookRotation(bulletDirection, Vector3.up);
-
-
         }
     }
 }

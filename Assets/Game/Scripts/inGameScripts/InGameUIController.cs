@@ -10,6 +10,7 @@ public class InGameUIController : MonoBehaviour
 		public GameObject ResumeMenuParent, GameEndMenuParent, HUD, continueScreen;
 		public int inGameCoinCount = 0;
 		public int inGameScoreCount = 0;
+        public Image[] hearts;
 	 
 		public float inGameDistance, continueCoins;
 		public Text  scoreCountText, coinsCountText, distanceCountText, missionCompletedText;
@@ -87,6 +88,19 @@ public class InGameUIController : MonoBehaviour
 				}
 
 		}
+
+        public void UpdateHearts(int hurtCount)
+        {
+        Debug.Log("try to update hearts");
+            for (int i = 0; i < hearts.Length; i++)
+            {
+                if(hurtCount <= i)
+                    hearts[i].enabled = true;
+                else
+                    hearts[i].enabled = false;
+            }
+        }
+        
 
 		public static bool isGameEnd = false;
 		GameObject[] coinsScript;

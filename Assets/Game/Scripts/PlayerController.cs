@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
     int Coin = 0;
     public GameObject powerObj_JetPack, powerObj_Magnet, shoe1, shoe2;// this can be used in when player picup any powers
     public ParticleEmitter coinParticle;
-    int hitCount;// hitCount changes accoding to player index value THIS IS A STAT SPECIFFIC TO EACH PLAYER
+    int playerHealt;// hitCount changes accoding to player index value THIS IS A STAT SPECIFFIC TO EACH PLAYER
     public Material playerMaterial;// Player material	
     //public Texture[] playerTextures;// Player Texture changes according to Player Main menu PlayerIndex value
     public PlayerStates CurrentState;
@@ -106,14 +106,14 @@ public class PlayerController : MonoBehaviour
         playerAnimator = GetComponentInChildren<Animator>();
         //powerObj_JetPack.SetActive(false); dezactivate pana testez platforma
         //powerObj_Magnet.SetActive(false);
-        //isPlayerDead = false;
+        isPlayerDead = false;
         //shoe1.SetActive(false);
         //shoe2.SetActive(false);
         controller = GetComponent<CharacterController>();
         thisTranfrom = transform;
         originalSpeed = speed;
 
-        hitCount = 2; // lifes? per player?
+        playerHealt = 3; // lifes? per player?
 
 
         CurrentState = PlayerStates.PlayerAlive;
@@ -133,16 +133,19 @@ public class PlayerController : MonoBehaviour
 
         if (GameController.Static.isGamePaused)
             return;
+
+
+
         switch (CurrentState)
         {
 
             // player in normal mode....................................................
             case PlayerStates.PlayerAlive:
                 InputController.Static.takeInput = true;
-
+                isPlayerDead = false;
                 speed = Mathf.Lerp(speed, TopSpeed, increaseSpeedTime);
                 presentSpeed = speed;
-
+                
                 isPlayerOnGround();
                 // for LaneChanging
                 PlayerLaneChanging();
@@ -241,7 +244,7 @@ public class PlayerController : MonoBehaviour
             case PlayerStates.PlayerDead:
                 CurrentState = PlayerStates.empty;
                 InputController.Static.takeInput = false;
-
+                isPlayerDead = true;
                 break;
             case PlayerStates.Idle:
                 break;
@@ -358,6 +361,7 @@ public class PlayerController : MonoBehaviour
     {
         speed = 10;
         SoundController.Static.bgSound.enabled = true;
+        ResetPlayerHurtCount();
         //PlayerEnemyController.Static.ResetToChase ();
         playerAnimator.SetTrigger("Run");
         CurrentState = PlayerStates.PlayerAlive;
@@ -381,8 +385,27 @@ public class PlayerController : MonoBehaviour
     void OnTriggerEnter(Collider incoming)
     {
         string incomingTag = incoming.tag;
-        //string incomingName = incoming.name;
         GameObject incomingObj = incoming.gameObject;
+
+        // player Trigger with bullet...............
+        if (incomingTag.Contains("Projectile"))
+        {
+            Destroy(incoming.gameObject);
+
+            if (!GameController.Static.isGamePaused || !isPlayerDead)
+            {
+                playeHurtCount++;
+                Debug.Log("Player hurt count is :" + playeHurtCount);
+                InGameUIController.Static.UpdateHearts(playeHurtCount);
+                if (playeHurtCount == playerHealt)
+                {
+                    Debug.Log("hurt count max!");
+                    KillPlayer();
+
+                }
+            }
+        }
+
 
         // Player Trigger with Coin............
 
@@ -442,21 +465,7 @@ public class PlayerController : MonoBehaviour
         }
         //.........................................................
 
-
-        // player Trigger with doublejump trigger  
-        else if (incomingTag.Contains("DoubleJump"))
-        {
-            //						if (Time.timeSinceLevelLoad - lastTriggerJumpTime > 2.0f) {
-            //								lastTriggerJumpTime = Time.timeSinceLevelLoad;
-            //								doubleJump = true;
-            //								InputController.Static.isJump = true;
-            //								SoundController.Static.playSoundFromName ("jumpTrigger");
-            //						}
-        }
-        //...................................................
-
         // Player trigger with JumpMode the current will jump mode in 10sec
-
         else if (incomingTag.Contains("JumpMode"))
         {
             InGameUIController.Static.ShowPowerIndicatorAnim();
@@ -523,7 +532,7 @@ public class PlayerController : MonoBehaviour
             SoundController.Static.playSoundFromName("Pot");
             print("Barrel Count  " + barrelPotTouche_Count);
             barrelPotTouche_Count++;
-            if (barrelPotTouche_Count == hitCount)
+            if (barrelPotTouche_Count == playerHealt)
             {
                 //PlayerEnemyController.Static.currentEnemyState = PlayerEnemyController.PlayerEnemyStates.attack;
                 CurrentState = PlayerStates.PlayerDead;
@@ -555,7 +564,7 @@ public class PlayerController : MonoBehaviour
             SoundController.Static.playSoundFromName("Pot");
             print("Pot Count  " + barrelPotTouche_Count);
             barrelPotTouche_Count++;
-            if (barrelPotTouche_Count == hitCount)
+            if (barrelPotTouche_Count == playerHealt)
             {
                 //PlayerEnemyController.Static.currentEnemyState = PlayerEnemyController.PlayerEnemyStates.attack;
                 CurrentState = PlayerStates.PlayerDead;
@@ -629,10 +638,7 @@ public class PlayerController : MonoBehaviour
                 }
             }
             //Destroy(incoming.gameObject);
-            CurrentState = PlayerStates.PlayerDead;
-            playerAnimator.SetTrigger("CrashBack");
-            GameController.Static.ONGameEnd();
-            InGameUIController.Static.ContinueScreen();
+            KillPlayer();
             //PlayerEnemyController.Static.currentEnemyState = PlayerEnemyController.PlayerEnemyStates.attack;
         }
         //............................................................
@@ -706,17 +712,6 @@ public class PlayerController : MonoBehaviour
             {
                 playerAnimator.SetTrigger("Run");
             }
-
-            //if (hit.collider.tag != null && hit.collider.tag.Contains("DoubleJump"))
-            //{
-            //    Debug.Log("Double jumped from isPlayerOnGround");
-            //    hit.collider.enabled = false;
-            //    lastTriggerJumpTime = Time.timeSinceLevelLoad;
-            //    doubleJump = true;
-            //    InputController.Static.isJump = true;
-            //    SoundController.Static.playSoundFromName("jumpTrigger");
-
-            //}
         }
     }
 
@@ -733,7 +728,7 @@ public class PlayerController : MonoBehaviour
     {
 
         //thisTranfrom.eulerAngles = new Vector3 (0, 0, 0);
-        Invoke("ResetPlayerHurtCount", 5.0f); // to reset player hurt count
+        //Invoke("ResetPlayerHurtCount", 5.0f); // to reset player hurt count
         if (ObstacleCheck.CheckLeftSide())
         {
             if (playerAnimator.GetCurrentAnimatorStateInfo(0).fullPathHash == runState)
@@ -743,12 +738,10 @@ public class PlayerController : MonoBehaviour
             print("Debug PlayerHurtCount : " + playeHurtCount);
             speed = originalSpeed;
             playeHurtCount++;
-            if (playeHurtCount >= hitCount)
+            InGameUIController.Static.UpdateHearts(playeHurtCount);
+            if (playeHurtCount == playerHealt)
             {
-                CurrentState = PlayerStates.PlayerDead;
-                playerAnimator.SetTrigger("CrashBack");
-                GameController.Static.ONGameEnd();
-                InGameUIController.Static.ContinueScreen();
+                KillPlayer();
             }
         }
         else if (CurrentState != PlayerStates.PlayerDead)
@@ -788,7 +781,7 @@ public class PlayerController : MonoBehaviour
     {
         
         //thisTranfrom.eulerAngles = new Vector3 (0, 0, 0);
-        Invoke("ResetPlayerHurtCount", 5.0f);// Player hurt count reset after 5 seconds,so he can hit two more times
+        //Invoke("ResetPlayerHurtCount", 5.0f);// Player hurt count reset after 5 seconds,so he can hit two more times
         if (ObstacleCheck.CheckRightSide())
         {
             if (playerAnimator.GetCurrentAnimatorStateInfo(0).fullPathHash == runState)
@@ -798,12 +791,10 @@ public class PlayerController : MonoBehaviour
             print("Debug PlayerHurtCount : " + playeHurtCount);
             speed = originalSpeed;
             playeHurtCount++;
-            if (playeHurtCount >= hitCount)
+            InGameUIController.Static.UpdateHearts(playeHurtCount);
+            if (playeHurtCount == playerHealt)
             {
-                CurrentState = PlayerStates.PlayerDead;
-                playerAnimator.SetTrigger("CrashBack");
-                GameController.Static.ONGameEnd();
-                InGameUIController.Static.ContinueScreen();
+                KillPlayer();
             }
 
         }
@@ -843,10 +834,19 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    void KillPlayer()
+    {
+        CurrentState = PlayerStates.PlayerDead;
+        playerAnimator.SetTrigger("CrashBack");
+        GameController.Static.ONGameEnd();
+        InGameUIController.Static.ContinueScreen();
+    }
+
     // Player hurt count reset here
     void ResetPlayerHurtCount()
     {
         playeHurtCount = 0;
+        InGameUIController.Static.UpdateHearts(playeHurtCount);
     }
     #endregion
 

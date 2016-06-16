@@ -1,21 +1,87 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class Enemy : MonoBehaviour {
 
     public bool targetable = true;
     public GameObject targetedNotifier;
+    public GameObject projectile;
+    GameObject player;
+    PlayerController playerScript;
+    int numberOfShots = 1;
+    float dist;
 
-    void OnTriggerEnter(Collider other)
+    int health = 3;
+
+    // find the player
+    void Start()
+    {
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerScript = player.GetComponent<PlayerController>();
+    }
+
+    // check if still alive and check if I should shoot
+    void Update()
+    {
+        if (health <= 0)
         {
-            if (other.CompareTag("Projectile"))
+            Die();
+        }
+
+        if (player == null)
+            return;
+        dist = Vector3.Distance(player.transform.position, transform.position);
+
+        if (dist < 60f)
+        {
+            PrepareShooting();
+        }
+
+        if (dist < 40f)
+        {
+            if (numberOfShots > 0)
             {
-                Destroy(other.gameObject);
+                Shoot();
+                numberOfShots--;
             }
         }
 
+
+    }
+
+    // receive dmage from bullets and destroy bullets
+    void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("I got shot!");
+        if (other.CompareTag("Projectile"))
+        {
+            Destroy(other.gameObject);
+            health--;
+        }
+    }
+
+    void PrepareShooting()
+    {
+        Debug.Log("Weapons Armed!");
+    }
+
+    // shoot at the player when in range
+    void Shoot()
+    {
+        
+        GameObject Obj = Instantiate(projectile, transform.position + new Vector3(0,0,-5f), Quaternion.identity) as GameObject;
+        Obj.GetComponent<Projectile>().target = player;
+    }
+
+    // when tageted, display target animation
     public void Targeted()
     {
         targetedNotifier.SetActive(true);
+    }
+
+    // destroy this object when dead
+    void Die()
+    {
+        //drop a life then die
+        Destroy(gameObject);
     }
 }

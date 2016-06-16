@@ -6,7 +6,7 @@ public class coinControl : MonoBehaviour
 {
 	
 	// Use this for initialization
-	float coinSpeed = 1.0f;
+	//float coinSpeed = 1.0f;
 	public Transform coinTrans ;
 	public static int  turnCount;
 	public BoxCollider box ;
