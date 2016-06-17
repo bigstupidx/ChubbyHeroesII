@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour {
     public GameObject projectile;
     GameObject player;
     PlayerController playerScript;
+    AttackScript atackScript;
     int numberOfShots = 1;
     float dist;
 
@@ -17,6 +18,7 @@ public class Enemy : MonoBehaviour {
     {
         player = GameObject.FindGameObjectWithTag("Player");
         playerScript = player.GetComponent<PlayerController>();
+        atackScript = player.GetComponent<AttackScript>();
     }
 
     // check if still alive and check if I should shoot
@@ -61,6 +63,11 @@ public class Enemy : MonoBehaviour {
 
     void PrepareShooting()
     {
+        //disable targeting on me
+        atackScript.currentTarget = null;
+        atackScript.FindClosestEnemy();
+        targetable = false;
+        targetedNotifier.SetActive(false);
         Debug.Log("Weapons Armed!");
     }
 

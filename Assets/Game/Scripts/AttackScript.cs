@@ -7,6 +7,7 @@ public class AttackScript : MonoBehaviour {
     public GameObject projectile;
     int countProjectile;
     public Transform shootPos;
+    public GameObject currentTarget;
 
     // Use this for initialization
     void Start () {
@@ -15,8 +16,12 @@ public class AttackScript : MonoBehaviour {
         InvokeRepeating("FindClosestEnemy", 0.5f, 0.2f);
     }
 
-    GameObject FindClosestEnemy()
+    public GameObject FindClosestEnemy()
     {
+        // maintain target from first aquired to when it shoots me
+        if (currentTarget != null)
+            return currentTarget;
+
         // get all enemies in the scene
         GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
@@ -31,40 +36,45 @@ public class AttackScript : MonoBehaviour {
         // find closest enemy to player on the Z axis
         for (int i = 0; i < enemies.Length; i++)
         {
-            tempDistance = (enemies[i].transform.position.z - transform.position.z);
+            tempDistance = Vector3.Distance(transform.position, enemies[i].transform.position);
+            //tempDistance = (enemies[i].transform.position.z - transform.position.z);
 
-            if (Mathf.Abs(tempDistance) < closestDistance && enemies[i].transform.position.z >= (transform.position.z + 30f))
+            if (tempDistance < closestDistance && enemies[i].transform.position.z >= (transform.position.z + 30f))
             {
-                closestDistance = Mathf.Abs(tempDistance);
+                closestDistance = tempDistance;
                 closestIndex = i;
             }
         }
 
         // call Targeted Method on closest enemy
-        enemies[closestIndex].GetComponent<Enemy>().Targeted();
+        currentTarget = enemies[closestIndex];
+        currentTarget.GetComponent<Enemy>().Targeted();
 
         //return the closest enemy gameObject to be used wherever
-        return enemies[closestIndex];
+        return currentTarget;
     }
 
 
+    // clear current target when enemy 
+
     public void Shoot()
     {
-        GameObject firstEnemy = FindClosestEnemy();
+        //GameObject firstEnemy = FindClosestEnemy();
         
-        if ((playerScript.CurrentState == PlayerStates.PlayerAlive || playerScript.CurrentState == PlayerStates.powerJump) && firstEnemy != null)
+        if ((playerScript.CurrentState == PlayerStates.PlayerAlive || playerScript.CurrentState == PlayerStates.powerJump) && currentTarget != null)
         {
             if (Time.timeScale != 1)
             return;
 
-            if (firstEnemy.transform.position.z >= (transform.position.z + 30f) && firstEnemy.GetComponent<Enemy>().targetable)
+            if (currentTarget.transform.position.z >= (transform.position.z + 30f) && currentTarget.GetComponent<Enemy>().targetable)
             {
                 playerScript.playerAnimator.SetTrigger("attack");
                 SoundController.Static.playSoundFromName("Shuriken");
                 GameObject Obj = Instantiate(projectile, shootPos.position, Quaternion.identity) as GameObject;
-                Obj.GetComponent<Projectile>().target = firstEnemy;
+                Obj.GetComponent<Projectile>().target = currentTarget;
                 countProjectile++;
             }
+            
         }
     }
 }
