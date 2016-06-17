@@ -395,7 +395,6 @@ public class PlayerController : MonoBehaviour
             if (!GameController.Static.isGamePaused || !isPlayerDead)
             {
                 playeHurtCount++;
-                Debug.Log("Player hurt count is :" + playeHurtCount);
                 InGameUIController.Static.UpdateHearts(playeHurtCount);
                 if (playeHurtCount == playerHealt)
                 {

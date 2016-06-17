@@ -34,7 +34,7 @@ public class curverSetter : MonoBehaviour
     // first start straight
     void NoBendJustRunStraight()
     {
-        targetCurveVector = new Vector4(0, -4, 0);
+        targetCurveVector = new Vector4(0, -5, 0);
         Invoke("BendToRightCurve", 6f);
     }
 
@@ -43,13 +43,13 @@ public class curverSetter : MonoBehaviour
 
     public void BendToRightCurve ()
 	{
-		targetCurveVector = new Vector4 (12, -4, 0);
+		targetCurveVector = new Vector4 (12, -5, 0);
 		Invoke ("BendToLeftCurve", 30);
 	} 
 
 	public void BendToLeftCurve ()
 	{
-		targetCurveVector = new Vector4 (-12, -4, 0);
+		targetCurveVector = new Vector4 (-12, -5, 0);
 		Invoke ("BendToRightCurve", 30);
 	}
 }

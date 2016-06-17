@@ -163,8 +163,8 @@ public class GameController : MonoBehaviour
     }
     //..........................................
     // To generate enemies ..........................
-    Vector3 enemiesOffset = new Vector3(0, 15f, 0);
-
+    Vector3 enemiesOffset = new Vector3(0, 12f, 0);
+    int enemyIndex = 1;
     public void GenerateEnemies()
     {
         // stop generating if player dead
@@ -179,6 +179,7 @@ public class GameController : MonoBehaviour
         if (Physics.Raycast(origin, Vector3.down, out hit, 50f))
         {
             GameObject Obj = Instantiate(enemies[UnityEngine.Random.Range(0, enemies.Length)], hit.point + enemiesOffset, Quaternion.identity) as GameObject;
+            Obj.name = "Enemy " + enemyIndex++;
         }
 
     }

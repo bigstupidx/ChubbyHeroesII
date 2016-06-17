@@ -91,7 +91,6 @@ public class InGameUIController : MonoBehaviour
 
         public void UpdateHearts(int hurtCount)
         {
-        Debug.Log("try to update hearts");
             for (int i = 0; i < hearts.Length; i++)
             {
                 if(hurtCount <= i)
