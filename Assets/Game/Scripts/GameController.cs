@@ -322,18 +322,19 @@ public class GameController : MonoBehaviour
 	}
 
     GameObject GetNextPoolObject()
-    {     
-            GameObject go = pooledGrounds[0];
-            pooledGrounds.RemoveAt(0);
-            go.GetComponent<groundDestroyer>().isInPool = false;
-            return go;
+    {
+        int indexul = UnityEngine.Random.Range(0, pooledGrounds.Count);
+        GameObject go = pooledGrounds[indexul];
+        pooledGrounds.RemoveAt(indexul);
+        go.GetComponent<groundDestroyer>().isInPool = false;
+        return go;
     }
 
     public void ReturnPoolObject(GameObject go)
     {
-            go.transform.position = restingPos;
-            pooledGrounds.Add(go);
-            go.GetComponent<groundDestroyer>().isInPool = true;
+        go.transform.position = restingPos;
+        pooledGrounds.Add(go);
+        go.GetComponent<groundDestroyer>().isInPool = true;
     }
 
     //............................................
