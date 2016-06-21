@@ -14,35 +14,50 @@ public enum PlayerStates
 	empty,
 	Tutorial,
 	Idle,
-}
-;
+};
 //..
 public class PlayerController : MonoBehaviour
 {
+    public PlayerStates CurrentState;
 
-    // Use this for initialization
+    public static event EventHandler
+        switchOnMagnetPower,
+        switchOFFMagnetPower,
+        gameEnded,
+        DestroyUpCoins;
+
+    CharacterController controller;
 
     public Animator playerAnimator;
     public GameObject[] playerPrefabs;
-    public float speed = 10f, TopSpeed = 10f, increaseSpeedTime;
-    public float jumpSpeed = 8.0F;
-    public float gravity = 20.0F;
+    public float 
+        speed = 10f, 
+        TopSpeed = 10f,
+        jumpSpeed = 8.0F,
+        gravity = 20.0F,
+        increaseSpeedTime,
+        StandingHeight,
+        DownHeight;
+
     private Vector3 moveDirection = Vector3.zero;
-    CharacterController controller;
 
-    public static event EventHandler switchOnMagnetPower,
-        switchOFFMagnetPower, gameEnded, DestroyUpCoins;
+    public Vector3 
+        StandingPosition, 
+        DownPosistion;
 
-    public float StandingHeight, DownHeight;
-    public Vector3 StandingPosition, DownPosistion;
     public static Vector3 thisPosition;
+
     int Coin = 0;
-    public GameObject powerObj_JetPack, powerObj_Magnet, shoe1, shoe2;// this can be used in when player picup any powers
+
+    public GameObject 
+        powerObj_JetPack, 
+        powerObj_Magnet, 
+        shoe1, 
+        shoe2;// this can be used in when player picup any powers
+
     public ParticleEmitter coinParticle;
+
     int playerHealt;// hitCount changes accoding to player index value THIS IS A STAT SPECIFFIC TO EACH PLAYER
-    public Material playerMaterial;// Player material	
-    //public Texture[] playerTextures;// Player Texture changes according to Player Main menu PlayerIndex value
-    public PlayerStates CurrentState;
     int runState = Animator.StringToHash("Base Layer.Run");
     int downStateValue2 = Animator.StringToHash("Base Layer.Roll");
     int downStateValue1 = Animator.StringToHash("Base Layer.Slide");
@@ -57,8 +72,10 @@ public class PlayerController : MonoBehaviour
     public int rightTurn = Animator.StringToHash("Base Layer.Right_Turn");
     Transform thisTranfrom;
     public PlayerObstacleCheck ObstacleCheck;
-    private float presentSpeed;
-    private float originalSpeed;
+
+    private float 
+        presentSpeed,
+        originalSpeed;
 
     void Awake()
     {
@@ -94,9 +111,9 @@ public class PlayerController : MonoBehaviour
             p.transform.SetParent(transform);
             p.transform.position = transform.position;
             // set it's stats
-
         }
         //.......................................
+
     }
 
 
@@ -115,8 +132,7 @@ public class PlayerController : MonoBehaviour
 
         playerHealt = 3; // lifes? per player?
 
-
-        CurrentState = PlayerStates.PlayerAlive;
+        CurrentState = PlayerStates.Idle;
     }
 
     public float tilt;
@@ -134,11 +150,8 @@ public class PlayerController : MonoBehaviour
         if (GameController.Static.isGamePaused)
             return;
 
-
-
         switch (CurrentState)
         {
-
             // player in normal mode....................................................
             case PlayerStates.PlayerAlive:
                 InputController.Static.takeInput = true;
@@ -153,7 +166,6 @@ public class PlayerController : MonoBehaviour
 
                 if (controller.isGrounded)
                 {
-
                     GameController.Static.stopObsticalIns = false;
 
                     moveDirection = new Vector3(0, 0, Time.deltaTime * 10 * speed);
@@ -162,10 +174,8 @@ public class PlayerController : MonoBehaviour
 
                     if (doubleJump || (playerAnimator.GetCurrentAnimatorStateInfo(0).fullPathHash == runState && InputController.Static.isJump))
                     {
-
                         if (normalJump)
                         {//Normal Jump
-
                             playerAnimator.SetTrigger("JumpHigh");
                             jumpSpeed = Mathf.Clamp(speed * 1.6f, 15, 18);
                             InputController.Static.isJump = false;
@@ -190,13 +200,11 @@ public class PlayerController : MonoBehaviour
                             InputController.Static.isJump = false;
                         }
                         moveDirection.y = jumpSpeed;
-
                     }
-
                 }
+
                 moveDirection.y -= (gravity * Time.deltaTime);
                 controller.Move(moveDirection * Time.deltaTime);
-                //thisTranfrom.rotation = Quaternion.Euler (0, lanePosition * tilt, 0);
                 thisTranfrom.position = new Vector3(lanePosition, thisTranfrom.position.y, thisTranfrom.position.z);
 
                 //   player Collider reduces here when Player animation Base Layer name is Slide or Roll
@@ -247,6 +255,9 @@ public class PlayerController : MonoBehaviour
                 isPlayerDead = true;
                 break;
             case PlayerStates.Idle:
+                Debug.Log("Playerstate is IDLE");
+                playerAnimator.SetTrigger("Slide");
+                //play idle anim
                 break;
         }
     }
@@ -266,8 +277,8 @@ public class PlayerController : MonoBehaviour
     public void PowerJumpReset()
     {
         normalJump = false;
-        InGameUIController.Static.playerInJumpIndicator.SetActive(false);
-        InGameUIController.Static.progressBarScript.jumpModeProgressbar.fillAmount = 1;
+        GameUIController.Static.playerInJumpIndicator.SetActive(false);
+        GameUIController.Static.progressBarScript.jumpModeProgressbar.fillAmount = 1;
         isJumpModeIndicator = false;
         shoe1.SetActive(false);
         shoe2.SetActive(false);
@@ -279,8 +290,8 @@ public class PlayerController : MonoBehaviour
     public void JetPackPowerReset()
     {
         PlayerCamera.Static.currentCam = PlayerCamera.Cam.NormalCam;
-        InGameUIController.Static.playerInFlyIndicator.SetActive(false);
-        InGameUIController.Static.progressBarScript.flyModeProgressBar.fillAmount = 1;// to reset fill amount here
+        GameUIController.Static.playerInFlyIndicator.SetActive(false);
+        GameUIController.Static.progressBarScript.flyModeProgressBar.fillAmount = 1;// to reset fill amount here
         isFlyModeIndicator = false;
         playerAnimator.SetTrigger("JetPackLand");
         powerObj_JetPack.SetActive(false);
@@ -307,10 +318,9 @@ public class PlayerController : MonoBehaviour
         one,
         two,
         three
-    }
-    ;
-    public PlayerLane currentLane, lastLane;
+    };
 
+    public PlayerLane currentLane, lastLane;
 
     // Player lane changing here this method is called at fixed update Player state alive 
 
@@ -336,11 +346,6 @@ public class PlayerController : MonoBehaviour
 
     #endregion
 
-    void OnTriggerExit()
-    {
-        //Debug.Log ("trigge exit  ");
-    }
-
     //for  destroy already crated objects 
     GameObject[] destroy_Obsticals_Respwan;
 
@@ -352,7 +357,7 @@ public class PlayerController : MonoBehaviour
         {
             Destroy(destroy_Obsticals_Respwan[i]);
         }
-        PlayerPrefs.SetInt("TotalCoins", PlayerPrefs.GetInt("TotalCoins", 0) - Mathf.RoundToInt(InGameUIController.Static.continueCoins));
+        PlayerPrefs.SetInt("TotalCoins", PlayerPrefs.GetInt("TotalCoins", 0) - Mathf.RoundToInt(GameUIController.Static.continueCoins));
         isPlayerDead = false;
         Invoke("latePlayerAliveOnRespwan", 1.0f);
     }
@@ -366,8 +371,8 @@ public class PlayerController : MonoBehaviour
         playerAnimator.SetTrigger("Run");
         CurrentState = PlayerStates.PlayerAlive;
         GameObject.FindGameObjectWithTag("GameController").GetComponent<curverSetter>().enabled = true;
-        GameController.Static.ON_GAME_Start();
-        InGameUIController.isGameEnd = false;
+        GameController.Static.OnGameStart();
+        GameUIController.isGameEnd = false;
     }
     // used when player trigger with DoubleJump
     public static bool doubleJump = false, normalJump = false;
@@ -395,7 +400,7 @@ public class PlayerController : MonoBehaviour
             if (!GameController.Static.isGamePaused || !isPlayerDead)
             {
                 playeHurtCount++;
-                InGameUIController.Static.UpdateHearts(playeHurtCount);
+                GameUIController.Static.UpdateHearts(playeHurtCount);
                 if (playeHurtCount == playerHealt)
                 {
                     Debug.Log("hurt count max!");
@@ -419,7 +424,7 @@ public class PlayerController : MonoBehaviour
                 coinScript.moveToPlayer = true;
             SoundController.Static.playCoinSound();
             PlayerPrefs.SetInt("MissionCoinsCount", PlayerPrefs.GetInt("MissionCoinsCount") - 1);
-            InGameUIController.Static.inGameCoinCount = Coin;
+            GameUIController.Static.inGameCoinCount = Coin;
             coinParticle.emit = true;
             Coin++;
 
@@ -431,12 +436,12 @@ public class PlayerController : MonoBehaviour
 
         else if (incomingTag.Contains("Magnet"))
         {
-            InGameUIController.Static.ShowPowerIndicatorAnim();
-            InGameUIController.Static.powerUpIndicatorText.text = "Magnet Power";
+            GameUIController.Static.ShowPowerIndicatorAnim();
+            GameUIController.Static.powerUpIndicatorText.text = "Magnet Power";
             powerObj_Magnet.SetActive(true);
             SoundController.Static.playSoundFromName("PickUp");
             PlayerPrefs.SetInt("MissionMagnetPowerCount", PlayerPrefs.GetInt("MissionMagnetPowerCount") - 1);
-            InGameUIController.Static.magnetIndicator.SetActive(true);
+            GameUIController.Static.magnetIndicator.SetActive(true);
             isMagnetIndicator = true;
             if (switchOnMagnetPower != null)
                 switchOnMagnetPower(null, null);
@@ -451,13 +456,13 @@ public class PlayerController : MonoBehaviour
 
         else if (incomingTag.Contains("Multiplier"))
         {
-            InGameUIController.Static.ShowPowerIndicatorAnim();
-            InGameUIController.Static.powerUpIndicatorText.text = " Score Multiplier";
+            GameUIController.Static.ShowPowerIndicatorAnim();
+            GameUIController.Static.powerUpIndicatorText.text = " Score Multiplier";
             SoundController.Static.playSoundFromName("PickUp");
             PlayerPrefs.SetInt("Mission2XPowerCount", PlayerPrefs.GetInt("Mission2XPowerCount") - 1);
 
-            InGameUIController.Static.multiplierIndicator.SetActive(true);
-            InGameUIController.Static.multiplierValue *= 2;
+            GameUIController.Static.multiplierIndicator.SetActive(true);
+            GameUIController.Static.multiplierValue *= 2;
             isMultiplierIndicator = true;
             Destroy(incomingObj);
             //Invoke ("switchOffMultiplier", 10);
@@ -467,12 +472,12 @@ public class PlayerController : MonoBehaviour
         // Player trigger with JumpMode the current will jump mode in 10sec
         else if (incomingTag.Contains("JumpMode"))
         {
-            InGameUIController.Static.ShowPowerIndicatorAnim();
-            InGameUIController.Static.powerUpIndicatorText.text = "Jump Shoe";
+            GameUIController.Static.ShowPowerIndicatorAnim();
+            GameUIController.Static.powerUpIndicatorText.text = "Jump Shoe";
             SoundController.Static.playSoundFromName("PickUp");
             normalJump = true;
             PlayerPrefs.SetInt("MissionJumpPowerCount", PlayerPrefs.GetInt("MissionJumpPowerCount") - 1);
-            InGameUIController.Static.playerInJumpIndicator.SetActive(true);
+            GameUIController.Static.playerInJumpIndicator.SetActive(true);
             isJumpModeIndicator = true;
             //shoe1.SetActive(true); tre sa le fac reenable si sa le pun direct pe player....astea se vad dupa ce ia powerupu
             //shoe2.SetActive(true);
@@ -487,8 +492,8 @@ public class PlayerController : MonoBehaviour
 
         else if (incomingTag.Contains("FlyMode"))
         {
-            InGameUIController.Static.ShowPowerIndicatorAnim();
-            InGameUIController.Static.powerUpIndicatorText.text = " JetPack Power";
+            GameUIController.Static.ShowPowerIndicatorAnim();
+            GameUIController.Static.powerUpIndicatorText.text = " JetPack Power";
             CurrentState = PlayerStates.fly;
             SoundController.Static.playSoundFromName("PickUp");
             SoundController.Static.jetPackSound.volume = 0.5f;
@@ -499,7 +504,7 @@ public class PlayerController : MonoBehaviour
             {
                 Destroy(Obj[i], 1.0f);
             }
-            InGameUIController.Static.playerInFlyIndicator.SetActive(true);
+            GameUIController.Static.playerInFlyIndicator.SetActive(true);
             isFlyModeIndicator = true;
             playerAnimator.SetTrigger("JetPackJump");
             GameController.Static.GenerateCoins_FlyMode();
@@ -536,8 +541,8 @@ public class PlayerController : MonoBehaviour
                 //PlayerEnemyController.Static.currentEnemyState = PlayerEnemyController.PlayerEnemyStates.attack;
                 CurrentState = PlayerStates.PlayerDead;
                 playerAnimator.SetTrigger("CrashBack");
-                GameController.Static.ONGameEnd();
-                InGameUIController.Static.ContinueScreen();
+                GameController.Static.OnGameEnd();
+                GameUIController.Static.ContinueScreen();
             }
             Invoke("ResetBarrelPotCount", 5.0f);
             Destroy(incomingObj);
@@ -568,8 +573,8 @@ public class PlayerController : MonoBehaviour
                 //PlayerEnemyController.Static.currentEnemyState = PlayerEnemyController.PlayerEnemyStates.attack;
                 CurrentState = PlayerStates.PlayerDead;
                 playerAnimator.SetTrigger("CrashBack");
-                GameController.Static.ONGameEnd();
-                InGameUIController.Static.ContinueScreen();
+                GameController.Static.OnGameEnd();
+                GameUIController.Static.ContinueScreen();
             }
             Invoke("ResetBarrelPotCount", 5.0f);// to reset the pots touche count and player enemy state
             Destroy(incomingObj);
@@ -647,23 +652,23 @@ public class PlayerController : MonoBehaviour
     // to reset the Multiplier Power............
     public void switchOffMultiplier()
     {
-        InGameUIController.Static.progressBarScript.multiplierProgressBar.fillAmount = 1;
+        GameUIController.Static.progressBarScript.multiplierProgressBar.fillAmount = 1;
         isMultiplierIndicator = false;
 
-        InGameUIController.Static.multiplierIndicator.SetActive(false);
-        InGameUIController.Static.multiplierValue = PlayerPrefs.GetInt("MultiplierCount_Ingame", 1);
+        GameUIController.Static.multiplierIndicator.SetActive(false);
+        GameUIController.Static.multiplierValue = PlayerPrefs.GetInt("MultiplierCount_Ingame", 1);
     }
     //........................................
 
     // to reset the magnet Power......................
     public void switchOffMagnet()
     {
-        InGameUIController.Static.progressBarScript.magnetProgressBar.fillAmount = 1;
+        GameUIController.Static.progressBarScript.magnetProgressBar.fillAmount = 1;
         coinControl.isONMagetPower = false;
         isMagnetIndicator = false;
         powerObj_Magnet.SetActive(false);
         //ProgressBarMagnet.Static.magnetProgressBar.fillAmount = 1;
-        InGameUIController.Static.magnetIndicator.SetActive(false);
+        GameUIController.Static.magnetIndicator.SetActive(false);
         if (switchOFFMagnetPower != null)
             switchOFFMagnetPower(null, null);
     }
@@ -737,7 +742,7 @@ public class PlayerController : MonoBehaviour
             print("Debug PlayerHurtCount : " + playeHurtCount);
             speed = originalSpeed;
             playeHurtCount++;
-            InGameUIController.Static.UpdateHearts(playeHurtCount);
+            GameUIController.Static.UpdateHearts(playeHurtCount);
             if (playeHurtCount == playerHealt)
             {
                 KillPlayer();
@@ -790,7 +795,7 @@ public class PlayerController : MonoBehaviour
             print("Debug PlayerHurtCount : " + playeHurtCount);
             speed = originalSpeed;
             playeHurtCount++;
-            InGameUIController.Static.UpdateHearts(playeHurtCount);
+            GameUIController.Static.UpdateHearts(playeHurtCount);
             if (playeHurtCount == playerHealt)
             {
                 KillPlayer();
@@ -837,15 +842,15 @@ public class PlayerController : MonoBehaviour
     {
         CurrentState = PlayerStates.PlayerDead;
         playerAnimator.SetTrigger("CrashBack");
-        GameController.Static.ONGameEnd();
-        InGameUIController.Static.ContinueScreen();
+        GameController.Static.OnGameEnd();
+        GameUIController.Static.ContinueScreen();
     }
 
     // Player hurt count reset here
     void ResetPlayerHurtCount()
     {
         playeHurtCount = 0;
-        InGameUIController.Static.UpdateHearts(playeHurtCount);
+        GameUIController.Static.UpdateHearts(playeHurtCount);
     }
     #endregion
 

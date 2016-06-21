@@ -3,18 +3,17 @@ using System.Collections;
 using System;
 using System.Collections.Generic;
 
-public enum Worlds
-{
-	world1,
-	world2
-}
+
 
 public class GameController : MonoBehaviour
 {
-
-    // Use this for initialization
-    public Worlds currentWorld;
-
+    public enum GameState
+    {
+        mainMenu,
+        gameplay
+    }
+    public GameState currentGameState;
+    PlayerController playerController;
     public static GameController Static;
     public GameObject[] powerUps, coins, coins_FlyMode, obstacles_Tutorials, enemies;
     public GameObject PlayerPosition, brokenBarrel, brokenPot, StartingWorldGroup;
@@ -29,33 +28,25 @@ public class GameController : MonoBehaviour
     Transform playerTransform;
     float lastPlayerPosition;
     public Transform mainCameraTrans;
-    //public List<GameObject> World1 = new List<GameObject> ();
-    //public List<GameObject> World2 = new List<GameObject> ();
     public List<GameObject> upCoins = new List<GameObject>();
     public List<GameObject> pooledGrounds = new List<GameObject>();
     Vector3 playerStartPos = new Vector3(0, 0, 0);
 
 
-    void OnEnable()
-    {
-        //ON_GAME_Start(); // this methos should me called after the tutorials 
-        Static = this;
-        CoinMultipler = PlayerPrefs.GetInt("2XMultiplier", 0);
-        mainCameraTrans = Camera.main.transform;
-        Physics.IgnoreLayerCollision(0, 2);//to ignore collision between broken objects layer and player
 
-        PlayerController.DestroyUpCoins += onDestoryUPCoinsCall;
-        //InvokeRepeating ("ChangeWorld", 25, 15);
-        //Invoke ("DestroyStartingWorld", 30);        
+    void Awake()
+    {
+        Static = this;
+        currentGameState = GameState.mainMenu;
     }
 
-    void ChangeWorld()
+    void OnEnable()
     {
+        CoinMultipler = PlayerPrefs.GetInt("2XMultiplier", 0);
+        mainCameraTrans = Camera.main.transform;
+        Physics.IgnoreLayerCollision(0, 2); //to ignore collision between broken objects layer and player
 
-        if (currentWorld == Worlds.world1)
-            currentWorld = Worlds.world2;
-        else
-            currentWorld = Worlds.world1;
+        PlayerController.DestroyUpCoins += onDestoryUPCoinsCall;       
     }
 
     void OnDisable()
@@ -63,65 +54,79 @@ public class GameController : MonoBehaviour
         CancelInvoke();
         PlayerController.DestroyUpCoins -= onDestoryUPCoinsCall;
     }
-    //void DestroyStartingWorld ()
-    //{
-
-    //	Destroy (StartingWorldGroup);
-    //}
-    public bool stopObsticalIns = false; //to create or stop the instatiation of new obstacles
-                                         //if player is on ground ,we will create new obstacles,if he is flying or dead ,we will stop creating new ones.
-
-
-    public void ON_GAME_Start()
-    {
-        InvokeRepeating("GenerateObstacles", 0.1f, 1.0f);// for obstacles
-        InvokeRepeating("GeneratePowerUps", 20, 30f);// for PowerUps
-        InvokeRepeating("GenerateCoins", 0.1F, 1.5f);// for coins
-        InvokeRepeating("GenerateEnemies", 0.1f, 4f); // for enemies
-        isStopCreateNewWay = true;
-        stopObsticalIns = false;
-
-        //IngameUiControlls.Static.ShowHighestIndicatorAnim();
-    }
-
-    //public void ON_GAME_END()
-    //{
-    //    CancelInvoke("DestroyStartingWorld");
-    //    stopObsticalIns = true;
-    //    to show an ad at the end of the Game
-
-    //    if (ShowADD != null)
-    //        ShowADD(null, null);
-    //    GameObject.FindGameObjectWithTag("GameController").GetComponent<curverSetter>().enabled = false; //add pause state in curve setter!
-    //}
 
     void Start()
     {
+        playerController = FindObjectOfType<PlayerController>();
+
         playerTransform = PlayerPosition.transform;
 
         lastPlayerPosition = playerTransform.position.z;
+
+        if (FindObjectOfType<MenuHelper>().restartFromGameplay == 1)
+        {   
+            FindObjectOfType<MainMenu>().OnButtonClick("Play");
+            GetComponent<curverSetter>().enabled = true;
+        }
+        else
+        {
+            GetComponent<curverSetter>().enabled = false;
+        }
+        
     }
 
-    public float flyCointTicks = 51;
     void Update()
     {
-        // to create new way depending on player z value...............
-        if (playerTransform.position.z - lastPlayerPosition > 295) {
-            CreateNewWay();
-            lastPlayerPosition = playerTransform.position.z;
+        if (currentGameState == GameState.mainMenu)
+        {
+            playerController.CurrentState = PlayerStates.Idle;
         }
 
-
+        else if (currentGameState == GameState.gameplay)
+        {
+            if (playerTransform.position.z - lastPlayerPosition > 295)
+            {
+                CreateNewWay();
+                lastPlayerPosition = playerTransform.position.z;
+            }
+        }
     }
 
-    // to create New Obsticals....................................
 
+    //to create or stop the instatiation of new obstacles
+    //if player is on ground ,we will create new obstacles,if he is flying or dead ,we will stop creating new ones.
+    public bool stopObsticalIns = false;
+
+    public void OnGameStart()
+    {
+        GetComponent<curverSetter>().enabled = true;
+        playerController.CurrentState = PlayerStates.PlayerAlive;
+        InvokeRepeating("GenerateObstacles", 0.1f, 1.0f); // for obstacles
+        InvokeRepeating("GeneratePowerUps", 20, 30f); // for PowerUps
+        InvokeRepeating("GenerateCoins", 0.1F, 1.5f); // for coins
+        InvokeRepeating("GenerateEnemies", 0.1f, 4f); // for enemies
+        isStopCreateNewWay = true;
+        stopObsticalIns = false;
+    }
+
+    public void OnGameEnd()
+    {
+        SoundController.Static.bgSound.enabled = false;
+        SoundController.Static.playSoundFromName("GameOver");
+        GameUIController.isGameEnd = true;
+
+        CancelInvoke("GenerateObstacles"); // for obstacles
+        CancelInvoke("GeneratePowerUps"); // for PowerUps
+        CancelInvoke("GenerateCoins"); // for coins
+        CancelInvoke("GenerateEnemies"); // for enemies
+        isStopCreateNewWay = false;
+    }
+
+    // to create New Obstacles....................................
     void GenerateObstacles()
     {
         if (!stopObsticalIns) {
-            //Debug.Log("Obstacles Insta");
             ObstacleGenerator.Static.CreateNewObstacle();
-            //Debug.Log("Obstacle generated here");
         }
     }
     //...................................
@@ -132,7 +137,6 @@ public class GameController : MonoBehaviour
 
     public void GeneratePowerUps()
     {
-
         //get random lane position on X axis
         float laneOffset = lanePositions[UnityEngine.Random.Range(0, lanePositions.Length)];
 
@@ -141,37 +145,30 @@ public class GameController : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(origin, Vector3.down, out hit, 50f))
         {
-
-            if (hit.transform.name == "Col") //change to BUS
-            {
+            if (hit.transform.name == "Col") {//change to BUS
                 Invoke("GeneratePowerUps", 2f);
                 return;
             }
-
-            else if (hit.transform.tag == "Coin")
-            {
+            else if (hit.transform.tag == "Coin") { }
                 Invoke("GeneratePowerUps", 2f);
                 return;
             }
-            else
-            {
+            else { 
                 GameObject Obj = Instantiate(powerUps[UnityEngine.Random.Range(0, powerUps.Length)], hit.point + powerupOffset, Quaternion.identity) as GameObject;
             }
-
-        }
         newPowerUp++;
     }
     //..........................................
+
+
     // To generate enemies ..........................
     Vector3 enemiesOffset = new Vector3(0, 12f, 0);
     int enemyIndex = 1;
     public void GenerateEnemies()
     {
         // stop generating if player dead
-        if (PlayerController.isPlayerDead || GameController.Static.isGamePaused)
-        return;
-        //get random lane position on X axis
-        //float laneOffset = lanePositions[UnityEngine.Random.Range(0, lanePositions.Length)];
+        if (PlayerController.isPlayerDead || isGamePaused)
+            return;
 
         //raycast to that pposition down, see what hits
         Vector3 origin = new Vector3(0, 40.0f, PlayerController.thisPosition.z + 150); // * newPowerup
@@ -183,10 +180,10 @@ public class GameController : MonoBehaviour
         }
 
     }
+    // ........................................
 
 
     // To created broken barrenl here........................
-
     Component[] barrel_ChildObj, pot_ChildObj;
 	GameObject barrel;
 
@@ -201,12 +198,10 @@ public class GameController : MonoBehaviour
 		}
 		Destroy (barrel, 1.0f);
 	}
-
 	//.............................................................
 
 
 	// To creat broken pot here..................................
-
 	GameObject pot;
 
 	public void GenerateBrokenPots ()
@@ -223,14 +218,14 @@ public class GameController : MonoBehaviour
 		}
 		Destroy (pot, 1.0f);
 	}
-	
-	//...........................................................
 
-	int coin_Index = 0;
+    //...........................................................
+
+
+    // To create Coins.................................
+    int coin_Index = 0;
 	int newCoins = 1;
 
-	// To create Coins.................................
-	
 	public void GenerateCoins ()
 	{
 		if (coin_Index >= coins.Length)
@@ -243,15 +238,10 @@ public class GameController : MonoBehaviour
 		newCoins++;
 	}
 
-	//................................................
+    //................................................
 
-
-
-		 
-	
-	// To create Coins at fly mode.................................
-		
-	public void GenerateCoins_FlyMode ()
+    // To create Coins at fly mode.................................
+    public void GenerateCoins_FlyMode ()
 	{
 		//Debug.Log ("Generate Coins At fly Mode");
 		for (int i = 1; i < 12 + PlayerPrefs.GetInt ("FlyPower_Ingame", 0); i++) {
@@ -259,22 +249,19 @@ public class GameController : MonoBehaviour
 		                               new Vector3 (0, 21.5f, PlayerController.thisPosition.z + (80 * i)),
 		                               Quaternion.identity)as GameObject;//
 			upCoins.Add (coinGroupUP);
-		}
-		 
+		}		 
 	}
 			
 	void onDestoryUPCoinsCall (System.Object obj, EventArgs args)
-	{
-			 
-		foreach (GameObject Coinobj in upCoins) {
-
+	{	 
+		foreach (GameObject Coinobj in upCoins)
+        {
 			Destroy (Coinobj);
 		}
 	}
 	//................................................
 
 	// To create new way.............................
-
 	int newWay_Index = 2;
 	int selectedGroundIndex;
 	GameObject nextObj;
@@ -283,42 +270,9 @@ public class GameController : MonoBehaviour
 
 	public void CreateNewWay ()
 	{
-		//if (World1.Count != 0)
-  //      {
-            //if (currentWorld == Worlds.world1)
-            //{
-                //if (usePooling)
-                //{
-				    nextObj = GetNextPoolObject();
-				    nextObj.transform.position = new Vector3(0, 0, NewWayDistance * newWay_Index);
-                //}
-                //else
-                //{
-                //    selectedGroundIndex = UnityEngine.Random.Range(0, World1.Count - 1);   //selecting random block from World1
-                //    nextObj = Instantiate(World1[selectedGroundIndex]) as GameObject;
-                //    nextObj.transform.position = new Vector3(0, 0, NewWayDistance * newWay_Index);
-                //}
-        //}
-        //else
-        //{
-    //        if (usePooling)
-    //        {
-				//nextObj = GetNextPoolObject();
-				//nextObj.transform.position = new Vector3(0, 0, NewWayDistance * newWay_Index);
-    //        }
-            //else
-            //{
-            //    selectedGroundIndex = UnityEngine.Random.Range(0, World2.Count - 1);   //selecting random block from World1
-            //    nextObj = Instantiate(World2[selectedGroundIndex]) as GameObject;
-            //    nextObj.transform.position = new Vector3(0, 0, NewWayDistance * newWay_Index);
-            //}
-        //}
-
-            // i think this is pointless
-            //nextObj.GetComponent<groundDestroyer>().canBeDestroyed = true;
-
-            newWay_Index++; 
-		//}
+        nextObj = GetNextPoolObject();
+        nextObj.transform.position = new Vector3(0, 0, NewWayDistance * newWay_Index);
+        newWay_Index++; 
 	}
 
     GameObject GetNextPoolObject()
@@ -338,17 +292,4 @@ public class GameController : MonoBehaviour
     }
 
     //............................................
-
-    public void ONGameEnd () {
-		SoundController.Static.bgSound.enabled = false;
-		SoundController.Static.playSoundFromName ("GameOver");
-        InGameUIController.isGameEnd = true;
-        //InputController.Static.takeInput = false;
-        //avoid all cancel
-        CancelInvoke("GenerateObstacles");// for obstacles
-		CancelInvoke ("GeneratePowerUps");// for PowerUps
-		CancelInvoke ("GenerateCoins");// for coins
-        CancelInvoke("GenerateEnemies");// for enemies
-		isStopCreateNewWay = false;
-	}
 }

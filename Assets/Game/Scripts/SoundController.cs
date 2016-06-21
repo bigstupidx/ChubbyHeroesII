@@ -11,8 +11,7 @@ public class SoundController : MonoBehaviour {
 	public AudioSource bgSound,coinsCount,jetPackSound;
 	public AudioSource coinSoundSource;
 	public AudioClip coinSound;
-	void Start () {
-		
+	void Awake () {
 		Static = this;
 	}
 

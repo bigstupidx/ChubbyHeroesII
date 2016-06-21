@@ -15,7 +15,7 @@ public class curverSetter : MonoBehaviour
         NoBendJustRunStraight();
 	}
 
- 
+
 	void Update ()
 	{
 		curveOffsetValues = Vector4.MoveTowards (curveOffsetValues, targetCurveVector, 0.005f);

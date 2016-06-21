@@ -27,37 +27,31 @@ public class PlayerCamera : MonoBehaviour {
 	}
 	public Cam currentCam;
 
-	   void Start()
-	   {
-		Static = this;
-		 
-		 
-		}
+    void Start()
+    {
+        Static = this;
+    }
+
 	public int camIndex ; 
 
  
 	void FixedUpdate () {
-
-
-
 		switch(currentCam)
 		{
 		case Cam.StartingCam:
-
- 
-		
 			break;
 
 		case Cam.NormalCam:
 			camPositionX = Mathf.Lerp (camPositionX, targetTrans.position.x, camChangeSpeedX);
 			camPositionY = Mathf.Lerp (camPositionY, targetTrans.position.y+offset.y, camChangeSpeedY);
-			camPositionZ = Mathf.Lerp(camPositionZ,targetTrans.position.z - backOffset, camChangeSpeedZ);//+PlayerEnemyController.Static.CamZPosition
+			camPositionZ = Mathf.Lerp(camPositionZ,targetTrans.position.z - backOffset, camChangeSpeedZ);
 		
 			if (targetTrans != null) {
 				thisTransform.position = new Vector3 (camPositionX, camPositionY,  camPositionZ);
 			}
 
 			break;
+
 		case Cam.flyModeCam:
 			camPositionX = Mathf.Lerp (camPositionX, targetTrans.position.x, camChangeSpeedX);
 			camPositionY = Mathf.Lerp (camPositionY, targetTrans.position.y+offset.y, flyCamChangeY);
