@@ -91,7 +91,7 @@ public class Playerselection : MonoBehaviour
 				break;
 		case "Buy":
 				SoundController.Static.playSoundFromName ("Click");
-				purchasePlayer ();
+				PurchasePlayer ();
 				MainMenuScreens.currentScreen = MainMenuScreens.MenuScreens.UnSufficentCoinsMenu;
 				break;
 		case "Back":
@@ -212,7 +212,7 @@ public class Playerselection : MonoBehaviour
 			}	
 	}
 
-	void purchasePlayer ()
+	void PurchasePlayer ()
 	{
 		switch (PlayerIndex) {
 		case 1:		

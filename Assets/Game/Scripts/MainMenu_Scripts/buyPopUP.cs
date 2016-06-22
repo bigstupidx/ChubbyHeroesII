@@ -1,36 +1,28 @@
 ﻿using UnityEngine;
-using System.Collections;
-using UnityEngine.UI;
+
 public class buyPopUP : MonoBehaviour {
 
-
 	//public Text costText;
-	public GameObject PlayerSelectionMenuParent,buyPopUpMenuParent,SelectBtn,BuyBtn;
+	public GameObject 
+        PlayerSelectionMenuParent,
+        buyPopUpMenuParent,
+        SelectBtn,
+        BuyBtn;
 		
 
 	public static int PlayerCost;
-	void OnEnable()
-	{
-		//costText.text=" "+PlayerCost;
-   
-
-	}
-	void Start () {
 	
-	}
-	
-	void  Update (){
+	void  Update ()
+    {
 		if (Input.GetKeyDown (KeyCode.Escape)) {
 			buyPopUpMenuParent.SetActive(false);
 			PlayerSelectionMenuParent.SetActive(true);
 		}
-		}
+	}
 
 
-public	void OnButtonClick(string ButtonName )
+    public void OnButtonClick(string ButtonName)
 	{
-
-
 		switch(ButtonName)
 			{
 			case "YES":
@@ -47,9 +39,6 @@ public	void OnButtonClick(string ButtonName )
 				PlayerSelectionMenuParent.SetActive(true);
 				buyPopUpMenuParent.SetActive(false);
 			break; 
-			}
-			
-		}
-		
+			}			
+		}		
 	}
-

@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Destroyer : MonoBehaviour {
+public class Destroyer : MonoBehaviour
+{
 	bool isObjDestoy = false;
 
 	void OnBecameInvisible()

@@ -5,12 +5,19 @@ using UnityEngine.UI;
 public class ProgressBar : MonoBehaviour {
 	
 
-	public Image magnetProgressBar,multiplierProgressBar,flyModeProgressBar,jumpModeProgressbar;
+	public Image 
+        magnetProgressBar,
+        multiplierProgressBar,
+        flyModeProgressBar,
+        jumpModeProgressbar;
 	PlayerController playerScript; 
 
-	public int MagnetValue,MultiplerValue,JetpackValue,DoubleJumpValue;
-	void Start () {
-	
+	public int MagnetValue,
+        MultiplerValue,
+        JetpackValue,
+        DoubleJumpValue;
+	void Start ()
+    {
 		playerScript = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerController> ();
 
 		MagnetValue = PlayerPrefs.GetInt ("MagnetCount_Ingame", 1);
@@ -19,14 +26,15 @@ public class ProgressBar : MonoBehaviour {
 		DoubleJumpValue = PlayerPrefs.GetInt ("JumpPower_Ingame", 1);
 	}
 
-	void Update () {
+	void Update ()
+    {
 		if (playerScript.isMagnetIndicator) {
 			magnetProgressBar.fillAmount -= (float) 1/( MagnetValue * 500);
 			if(magnetProgressBar.fillAmount==0)
 			{
 				playerScript.switchOffMagnet();
 			}
-				}
+		}
 
 		else if (playerScript.isMultiplierIndicator) {
 			multiplierProgressBar.fillAmount -=(float) 1/( MultiplerValue *500);
@@ -48,12 +56,10 @@ public class ProgressBar : MonoBehaviour {
 		else if(playerScript.isJumpModeIndicator)
 		{
 			jumpModeProgressbar.fillAmount -= (float) 1/( DoubleJumpValue   *500);
-			if(jumpModeProgressbar.fillAmount==0){
+			if(jumpModeProgressbar.fillAmount==0)
+            {
 				playerScript.PowerJumpReset();
-			}
-			
-		}
-
-	
+			}		
+		}	
 	}
 }

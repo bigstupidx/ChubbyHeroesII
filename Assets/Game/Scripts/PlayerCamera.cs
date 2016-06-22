@@ -8,10 +8,17 @@ public class PlayerCamera : MonoBehaviour {
 	public Transform targetTrans,thisTransform ;
 
     public float backOffset = 10f;
-	public Vector3 offset;
-	public Vector3 flyModeOffset;
+	public Vector3 
+        offset,
+        flyModeOffset;
 	public static PlayerCamera Static; 
-	public float camChangeSpeedX,camPositionX,camPositionY,camChangeSpeedY,flyCamChangeY,camChangeSpeedZ,camPositionZ;
+	public float camChangeSpeedX,
+        camPositionX,
+        camPositionY,
+        camChangeSpeedY,
+        flyCamChangeY,
+        camChangeSpeedZ,
+        camPositionZ;
 	 
 	 
 	public Animator camAnimator;
@@ -35,32 +42,33 @@ public class PlayerCamera : MonoBehaviour {
 	public int camIndex ; 
 
  
-	void FixedUpdate () {
+	void FixedUpdate ()
+    {
 		switch(currentCam)
 		{
-		case Cam.StartingCam:
-			break;
+		    case Cam.StartingCam:
+			    break;
 
-		case Cam.NormalCam:
-			camPositionX = Mathf.Lerp (camPositionX, targetTrans.position.x, camChangeSpeedX);
-			camPositionY = Mathf.Lerp (camPositionY, targetTrans.position.y+offset.y, camChangeSpeedY);
-			camPositionZ = Mathf.Lerp(camPositionZ,targetTrans.position.z - backOffset, camChangeSpeedZ);
+		    case Cam.NormalCam:
+			    camPositionX = Mathf.Lerp (camPositionX, targetTrans.position.x, camChangeSpeedX);
+			    camPositionY = Mathf.Lerp (camPositionY, targetTrans.position.y+offset.y, camChangeSpeedY);
+			    camPositionZ = Mathf.Lerp(camPositionZ,targetTrans.position.z - backOffset, camChangeSpeedZ);
 		
-			if (targetTrans != null) {
-				thisTransform.position = new Vector3 (camPositionX, camPositionY,  camPositionZ);
-			}
+			    if (targetTrans != null) {
+				    thisTransform.position = new Vector3 (camPositionX, camPositionY,  camPositionZ);
+			    }
 
-			break;
+			    break;
 
-		case Cam.flyModeCam:
-			camPositionX = Mathf.Lerp (camPositionX, targetTrans.position.x, camChangeSpeedX);
-			camPositionY = Mathf.Lerp (camPositionY, targetTrans.position.y+offset.y, flyCamChangeY);
-			camPositionZ = Mathf.Lerp(camPositionZ, targetTrans.position.z-flyModeOffset.z,camChangeSpeedZ);
-			if (targetTrans != null) {
-				thisTransform.position = new Vector3 (camPositionX, camPositionY+flyModeOffset.y,  targetTrans.position.z-flyModeOffset.z);
-			}
+		    case Cam.flyModeCam:
+			    camPositionX = Mathf.Lerp (camPositionX, targetTrans.position.x, camChangeSpeedX);
+			    camPositionY = Mathf.Lerp (camPositionY, targetTrans.position.y+offset.y, flyCamChangeY);
+			    camPositionZ = Mathf.Lerp(camPositionZ, targetTrans.position.z-flyModeOffset.z,camChangeSpeedZ);
+			    if (targetTrans != null) {
+				    thisTransform.position = new Vector3 (camPositionX, camPositionY+flyModeOffset.y,  targetTrans.position.z-flyModeOffset.z);
+			    }
 
-			break;
+			    break;
 		}
 			
 	}

@@ -1,14 +1,11 @@
 ﻿using UnityEngine;
-using System.Collections;
-using UnityEngine.UI;
-using System;
 
 public class DoubleJumpMover : MonoBehaviour {
 	
 	public Animator DoubleJumpTriggerAnim;
-	
 
 	float jumpHeight;
+
 	void OnTriggerEnter(Collider incoming)
 	{
 		if (incoming.GetComponent<Collider>().tag.Contains ("Player") || incoming.GetComponent<Collider>().tag.Contains ("coinTrigger")) {
@@ -16,8 +13,7 @@ public class DoubleJumpMover : MonoBehaviour {
 			PlayerController.doubleJump = true ;
 			InputController.Static.isJump = true;
 			SoundController.Static.playSoundFromName ("jumpTrigger");
-			GetComponent<Collider>().enabled = false;
-			
+			GetComponent<Collider>().enabled = false;	
 		}
 	}
 }

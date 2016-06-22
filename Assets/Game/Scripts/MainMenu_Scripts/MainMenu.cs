@@ -16,7 +16,8 @@ public class MainMenu : MonoBehaviour {
         exitButton,
         inGameUi;
 
-	void Start () {
+	void Start ()
+    {
 		Time.timeScale = 1;
     }
 	

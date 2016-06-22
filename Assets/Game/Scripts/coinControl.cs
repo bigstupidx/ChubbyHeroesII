@@ -81,7 +81,6 @@ public class coinControl : MonoBehaviour
 	
 	void FixedUpdate ()
 	{
-		
 		if (coinTrans != null)
 			coinTrans.Rotate (0, 2, 0);
 		
@@ -91,10 +90,8 @@ public class coinControl : MonoBehaviour
 			if (Vector3.Distance (thisTrans.position, PlayerController.thisPosition) < 4) {
 				moveToPlayer = false;
 				moveToCoinTarget = true;
-				Destroy (gameObject, 1f); 
-				
-			}
-			
+				Destroy (gameObject, 1f); 		
+			}		
 		} else if (moveToCoinTarget) {
 			
 			newCoinPostionTarget = GameController.Static.mainCameraTrans.position + new Vector3 (-320, 500, 860);
@@ -102,15 +99,9 @@ public class coinControl : MonoBehaviour
 			
 			if (punchCoinUIImage) {
 				GameUIController.Static.InGameAnimator.SetTrigger ("coinPunch");
-				punchCoinUIImage = false;
-				
+				punchCoinUIImage = false;		
 			}
-			
-		}
-		
-			
-		
-		
+		}	
 	}
 	
 	public void MoveToPlayer ()

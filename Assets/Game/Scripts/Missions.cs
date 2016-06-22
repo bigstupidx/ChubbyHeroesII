@@ -116,12 +116,12 @@ public class Missions : MonoBehaviour {
 	public void OnButtonClick (string ButtonName)
 	{
 		switch (ButtonName) {
-		case "Close":
-			SoundController.Static.playSoundFromName("Click");
-			MissionParent.SetActive(false);
-			mainMenuParent.SetActive(true);
+		    case "Close":
+			    SoundController.Static.playSoundFromName("Click");
+			    MissionParent.SetActive(false);
+			    mainMenuParent.SetActive(true);
 
-			break;
+			    break;
 		}
 	}
 
@@ -151,9 +151,9 @@ public class Missions : MonoBehaviour {
 			{
 				task1.text = "Collect 3000 coins, Left " + PlayerPrefs.GetInt ("MissionCoinsCount");
 				PlayerPrefs.SetInt("CollectCoins",1);
-
-			}else{
-
+			}
+            else
+            {
 				task1_Tickmark.SetActive(true);
 				task1.text = "Collect 3000 coins"; 
 			}
@@ -163,19 +163,19 @@ public class Missions : MonoBehaviour {
 				task2.text =  "Collect  20 Magnet, Left " + PlayerPrefs.GetInt ("MissionMagnetPowerCount");
 				PlayerPrefs.SetInt("LeftSwipe",1);
 			}
-			else{
-
+			else
+            {
 				Debug.Log("Swipe Left at missions");
 				task2.text= "Collect 20 Magnet";
 				task2_Tickmark.SetActive(true);
-
 			}
 
 			if(PlayerPrefs.GetInt ("MissionJumpCount", 0)>0){
 				task3.text =  "Jump 200 times, Left "+ PlayerPrefs.GetInt ("MissionJumpCount", 0);
 				PlayerPrefs.SetInt("JumpCount",1);
 			}
-			else{
+			else
+            {
 				task3.text ="Jump 200 times";
 				task3_Tickmark.SetActive(true);
 			}
@@ -201,14 +201,13 @@ public class Missions : MonoBehaviour {
 		// Mission Two : coins, Swipe left , Swipe Right .................
 
 		if (PlayerPrefs.GetInt ("Mission", 0) == 2) {
-
-
 			if(PlayerPrefs.GetInt ("MissionFlyPowerCount", 0)>0){
 
 				task1.text =  "Collect 20 Jet Pack, Left "+ PlayerPrefs.GetInt ("MissionFlyPowerCount");
 				PlayerPrefs.SetInt("RightSwipe",1);
 			}
-			else{
+			else
+            {
 				task1.text ="Collect 20 Jet Pack";
 				task1_Tickmark.SetActive(true);
 			}
@@ -218,7 +217,8 @@ public class Missions : MonoBehaviour {
 				task2.text =  "Collect 30 Magnet " +PlayerPrefs.GetInt ("MissionMagnetPowerCount",30);
 				PlayerPrefs.SetInt("LeftSwipe",1);
 			}
-			else{
+			else
+            {
 				task2.text= "Collect 30 Magnet";
 				task2_Tickmark.SetActive(true);
 			}
@@ -227,7 +227,9 @@ public class Missions : MonoBehaviour {
 			{
 				task3.text = "Collect 5000 coins, Left " + PlayerPrefs.GetInt ("MissionCoinsCount"); 
 				PlayerPrefs.SetInt("CollectCoins",1);
-			}else{
+			}
+            else
+            {
 				task3_Tickmark.SetActive(true);
 				task3.text = "Collect 5000 coins"; 
 			}
@@ -254,7 +256,6 @@ public class Missions : MonoBehaviour {
 		// mission three : coins, swipe right ,  jump
 
 		if (PlayerPrefs.GetInt ("Mission", 0) == 3) {
-			
 
 			if( PlayerPrefs.GetInt ("MissionCoinsCount", 0)>0)
 			{

@@ -106,7 +106,7 @@ public class Enemy : MonoBehaviour
         if (numberOfShots > 0)
         {
             GameObject Obj = Instantiate(projectile, transform.position + new Vector3(0, 0, -5f), Quaternion.identity) as GameObject;
-            Obj.GetComponent<ProjectileEnemyBombDropper>().target = player;
+            Obj.GetComponent<ProjectileEnemyBombDropper>().player = player;
             numberOfShots--;
         }
     }

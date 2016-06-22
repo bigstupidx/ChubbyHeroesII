@@ -32,48 +32,41 @@ public class ObstacleGenerator : MonoBehaviour
 		if (ObstacleDistance - PlayerController.thisPosition.z > 300)
 			return;
 
-		if (ObjCount == 0) {
-				
-			ObstacleDistance = PlayerController.thisPosition.z + FirstDistance;
-				
-		} else {
-
+		if (ObjCount == 0) {		
+			ObstacleDistance = PlayerController.thisPosition.z + FirstDistance;			
+		}
+        else
+        {
 			ObstacleDistance += DistanceBetweenObstacles;
 		}
 
 				
 		switch (UnityEngine.Random.Range (1, 5)) {
-		case 1:
+		    case 1:
 
-			Obscaleobj = Instantiate (obstaclesGroup [UnityEngine.Random.Range (0, obstaclesGroup.Length)])as GameObject;
-			Obscaleobj.transform.position = new Vector3 (0.0f, 0.0f, ObstacleDistance);
+			    Obscaleobj = Instantiate (obstaclesGroup [UnityEngine.Random.Range (0, obstaclesGroup.Length)])as GameObject;
+			    Obscaleobj.transform.position = new Vector3 (0.0f, 0.0f, ObstacleDistance);
 						 
-			break;
+			    break;
 
-		case 2:
+		    case 2:
 
-			Obscaleobj = Instantiate (obstaclesGroup [UnityEngine.Random.Range (0, obstaclesGroup.Length)])as GameObject;
-			Obscaleobj.transform.position = new Vector3 (0.0f, 0.0f, ObstacleDistance);
+			    Obscaleobj = Instantiate (obstaclesGroup [UnityEngine.Random.Range (0, obstaclesGroup.Length)])as GameObject;
+			    Obscaleobj.transform.position = new Vector3 (0.0f, 0.0f, ObstacleDistance);
 						 
-			break;
+			    break;
 		
-		case 3:
-			Obscaleobj1 = Instantiate (obstaclesGroup [UnityEngine.Random.Range (0, obstaclesGroup.Length)])as GameObject;
-			Obscaleobj1.transform.position = new Vector3 (0.0f, 0.0f, ObstacleDistance);
+		    case 3:
+			    Obscaleobj1 = Instantiate (obstaclesGroup [UnityEngine.Random.Range (0, obstaclesGroup.Length)])as GameObject;
+			    Obscaleobj1.transform.position = new Vector3 (0.0f, 0.0f, ObstacleDistance);
 			 
-			break;
-		case 4:
-			Obscaleobj1 = Instantiate (obstaclesGroup [UnityEngine.Random.Range (0, obstaclesGroup.Length)])as GameObject;
-			Obscaleobj1.transform.position = new Vector3 (0.0f, 0.0f, ObstacleDistance);
+			    break;
+		    case 4:
+			    Obscaleobj1 = Instantiate (obstaclesGroup [UnityEngine.Random.Range (0, obstaclesGroup.Length)])as GameObject;
+			    Obscaleobj1.transform.position = new Vector3 (0.0f, 0.0f, ObstacleDistance);
 			 
-			break;
-		}
-
-				 
-		ObjCount++;
-		
+			    break;
+		}		 
+		ObjCount++;	
 	}
-	
-
-
 }

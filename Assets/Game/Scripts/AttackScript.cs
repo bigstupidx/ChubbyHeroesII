@@ -18,6 +18,25 @@ public class AttackScript : MonoBehaviour {
         //InvokeRepeating("FindClosestEnemy", 0.1f, 0.1f);
     }
 
+
+    public void Shoot()
+    {
+        if (Time.timeScale != 1)
+            return;
+
+        if ((playerScript.CurrentState == PlayerStates.PlayerAlive || playerScript.CurrentState == PlayerStates.powerJump) && currentTarget != null)
+        {
+            // really shoot a bullet
+            playerScript.playerAnimator.SetTrigger("attack");
+            SoundController.Static.playSoundFromName("Shuriken");
+            GameObject Obj = Instantiate(projectile, shootPos.position, Quaternion.identity) as GameObject;
+
+            //Debug.Log("Bullet to target : " + currentTarget.transform.parent.name);
+            Obj.GetComponent<Projectile>().target = currentTarget;
+            countProjectile++;
+        }
+    }
+
     //public void FindClosestEnemy()
     //{
     //    // get all enemies in the scene
@@ -55,29 +74,12 @@ public class AttackScript : MonoBehaviour {
     //        Debug.Log("Current target is : " + currentTarget.transform.parent.name);
     //    }
 
-        
+
     //}
 
 
     // clear current target when enemy 
 
-    public void Shoot()
-    {
-        if (Time.timeScale != 1)
-            return;
-
-        if ((playerScript.CurrentState == PlayerStates.PlayerAlive || playerScript.CurrentState == PlayerStates.powerJump) && currentTarget != null)
-        {
-                // really shoot a bullet
-                playerScript.playerAnimator.SetTrigger("attack");
-                SoundController.Static.playSoundFromName("Shuriken");
-                GameObject Obj = Instantiate(projectile, shootPos.position, Quaternion.identity) as GameObject;
-
-                //Debug.Log("Bullet to target : " + currentTarget.transform.parent.name);
-                Obj.GetComponent<Projectile>().target = currentTarget;
-                countProjectile++;
-        }
-    }
 }
 
 

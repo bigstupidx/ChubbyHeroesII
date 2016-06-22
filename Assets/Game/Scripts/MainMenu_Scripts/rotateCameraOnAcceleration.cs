@@ -5,15 +5,15 @@ public class rotateCameraOnAcceleration : MonoBehaviour {
 
 	// Use this for initialization
 	Transform camTrans;
-	void Start () {
+    Quaternion targetRotation;
+    float target;
 
+    void Start ()
+    {
 		camTrans = transform;
-	
 	}
 	
-	// Update is called once per frame
-	Quaternion targetRotation;
-	float target ;
+
 	void Update () {
 		float reciver = Input.acceleration.x * 5;
 #if UNITY_EDITOR

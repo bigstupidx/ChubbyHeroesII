@@ -15,7 +15,7 @@ public class laneBusy : MonoBehaviour {
 	{
 		if (inc.GetComponent<Collider>().tag.Contains ("Obstacle")) {
 			IsBusy = true;
-		GetComponent<Renderer>().material.color = Color.red;
+		    GetComponent<Renderer>().material.color = Color.red;
 			lastTime = Time.timeSinceLevelLoad;
 			Invoke("lateDeactive",0.8f);
 		}
@@ -28,6 +28,7 @@ public class laneBusy : MonoBehaviour {
 		//	IsBusy = false;
 			GetComponent<Renderer>().material.color = Color.white;
 		}
+
 		if (inc.GetComponent<Collider>().tag.Contains ("Obstacle")&& Time.timeSinceLevelLoad-lastTime  < 1.0f) {
 
 		}
