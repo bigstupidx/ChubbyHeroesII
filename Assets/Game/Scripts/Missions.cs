@@ -5,13 +5,23 @@ using System;
 
 public class Missions : MonoBehaviour {
 
-	public Text task1,task2,task3,coinsCountText;
-	public GameObject mainMenuParent,MissionParent;
-	public GameObject task1_Tickmark,task2_Tickmark,task3_Tickmark;
+    public Text
+        task1,
+        task2,
+        task3;
+	public GameObject 
+        mainMenuParent,
+        MissionParent;
+	public GameObject 
+        task1_Tickmark,
+        task2_Tickmark,
+        task3_Tickmark;
 	public static Missions Static;
 
 
-	DateTime time,updatedtime;
+	DateTime 
+        time,
+        updatedtime;
 
 	void Start () {
 		Static = this;
@@ -32,7 +42,7 @@ public class Missions : MonoBehaviour {
 			PlayerPrefs.SetInt ("MissionCoinsCount", 3000);
 			PlayerPrefs.SetInt ("MissionMagnetPowerCount", 20);
 			PlayerPrefs.SetInt ("MissionJumpCount",100);
-			PlayerPrefs.SetInt ("Mission",PlayerPrefs.GetInt ("Mission", 0)+ 1);
+			PlayerPrefs.SetInt ("Mission", PlayerPrefs.GetInt ("Mission", 0)+ 1);
 			PlayerPrefs.SetInt("startDailes", PlayerPrefs.GetInt ("startDailes", 0)+1);
 			}
 
@@ -40,8 +50,8 @@ public class Missions : MonoBehaviour {
 		updatedtime = DateTime.Now;
 
 		if (PlayerPrefs.GetInt ("Mission", 0) == 1) {
-			task1.text = "Collect 3000 coins ,Left " + PlayerPrefs.GetInt ("MissionCoinsCount");
-			task2.text =  "Collect  20 Magnet, Left " + PlayerPrefs.GetInt ("MissionMagnetPowerCount");
+			task1.text = "Collect 3000 coinssss," + "\n" + " Left " + PlayerPrefs.GetInt ("MissionCoinsCount");
+			task2.text =  "Collect  20 Magnet, Left \n" + PlayerPrefs.GetInt ("MissionMagnetPowerCount");
 			task3.text =  "Jump 200 times, Left "+ PlayerPrefs.GetInt ("MissionJumpCount");
 		} 
 		if (PlayerPrefs.GetInt ("Mission", 0) == 2) {
@@ -149,7 +159,7 @@ public class Missions : MonoBehaviour {
 			//Debug.Log(PlayerPrefs.GetInt ("MissionCoinsCount"));
 			if( PlayerPrefs.GetInt ("MissionCoinsCount", 0)>0)
 			{
-				task1.text = "Collect 3000 coins, Left " + PlayerPrefs.GetInt ("MissionCoinsCount");
+				task1.text = "Collect 3000 coins" + "\n Left " + PlayerPrefs.GetInt ("MissionCoinsCount");
 				PlayerPrefs.SetInt("CollectCoins",1);
 			}
             else

@@ -9,7 +9,8 @@ public class StoreMenu : MonoBehaviour {
         MagnetIndicators,
         multiplierIndicators,
         flyIndicators,
-        jumpIndicators;
+        jumpIndicators,
+        shieldIndicators;
 	public GameObject 
         inSufficentCoinsParent,
         mainMenuParent,
@@ -22,7 +23,8 @@ public class StoreMenu : MonoBehaviour {
         flyCostText,
         jumpCostText,
         flyFullText,
-        jumpFullText;
+        jumpFullText,
+        shieldFullText;
     float lastTime;
 
 
@@ -55,7 +57,8 @@ public class StoreMenu : MonoBehaviour {
 	    multiplierCostText.text = ""+PlayerPrefs.GetInt ("MultiplierCost",2000);
 	    flyCostText.text = "" + PlayerPrefs.GetInt ("FlyCost", 3000);
 	    jumpCostText.text = "" + PlayerPrefs.GetInt ("JumpCost", 4000);
-		    lastTime = Time.timeSinceLevelLoad;
+
+		lastTime = Time.timeSinceLevelLoad;
 	}
 
 	if (Input.GetKey (KeyCode.D))
@@ -98,7 +101,7 @@ public class StoreMenu : MonoBehaviour {
 
 	void IncraseMagnetPower()
 	{
-		if (TotalCoins.Static.totalCoins >= PlayerPrefs.GetInt("MagnetCost",1000) && PlayerPrefs.GetInt ("MagnetPower", 0) <= 3)
+		if (TotalCoins.Static.totalCoins >= PlayerPrefs.GetInt("MagnetCost",1000) && PlayerPrefs.GetInt ("MagnetPower", 0) <= 4)
         {
 
 			TotalCoins.Static.SubtractCoins (PlayerPrefs.GetInt("MagnetCost",1000));
@@ -117,7 +120,7 @@ public class StoreMenu : MonoBehaviour {
 		}
         else
         {
-			if( PlayerPrefs.GetInt ("MagnetPower", 0)>3)
+			if( PlayerPrefs.GetInt ("MagnetPower", 0)>4)
             {
 				MagnetFull.text ="Full";
 			}
@@ -131,7 +134,7 @@ public class StoreMenu : MonoBehaviour {
 
 	void IncraseMultipiler()
 	{
-		if (TotalCoins.Static.totalCoins >= PlayerPrefs.GetInt("MultiplierCost",2000) && PlayerPrefs.GetInt ("Multiplier", 0) <= 3) {
+		if (TotalCoins.Static.totalCoins >= PlayerPrefs.GetInt("MultiplierCost",2000) && PlayerPrefs.GetInt ("Multiplier", 0) <= 4) {
 			TotalCoins.Static.SubtractCoins (PlayerPrefs.GetInt("MultiplierCost",2000));
 			PlayerPrefs.SetInt("MultiplierCost",PlayerPrefs.GetInt("MultiplierCost",2000)+1000);
 
@@ -147,7 +150,7 @@ public class StoreMenu : MonoBehaviour {
 		}
         else
         {
-			if( PlayerPrefs.GetInt ("Multiplier", 0)>3)
+			if( PlayerPrefs.GetInt ("Multiplier", 0)>4)
             {
 				MultiplayerFull.text ="Full";
 			}
@@ -162,7 +165,7 @@ public class StoreMenu : MonoBehaviour {
 
 	void IncreaseFlyPower()
 	{
-		if (TotalCoins.Static.totalCoins >= PlayerPrefs.GetInt ("FlyCost", 3000) && PlayerPrefs.GetInt ("Fly", 0) <= 3)
+		if (TotalCoins.Static.totalCoins >= PlayerPrefs.GetInt ("FlyCost", 3000) && PlayerPrefs.GetInt ("Fly", 0) <= 4)
         {
 			TotalCoins.Static.SubtractCoins (PlayerPrefs.GetInt ("FlyCost", 3000));
 			PlayerPrefs.SetInt ("FlyCost", PlayerPrefs.GetInt ("FlyCost", 3000) + 1000);
@@ -179,7 +182,7 @@ public class StoreMenu : MonoBehaviour {
 		}
         else
         {
-			if( PlayerPrefs.GetInt ("Fly", 0)>3)
+			if( PlayerPrefs.GetInt ("Fly", 0)>4)
             {
 				flyFullText.text ="Full";
 			}
@@ -193,7 +196,7 @@ public class StoreMenu : MonoBehaviour {
 
 	void IncreaseJumpPower()
 	{
-		if (TotalCoins.Static.totalCoins >= PlayerPrefs.GetInt ("JumpCost", 4000) && PlayerPrefs.GetInt ("Jump", 0) <= 3)
+		if (TotalCoins.Static.totalCoins >= PlayerPrefs.GetInt ("JumpCost", 4000) && PlayerPrefs.GetInt ("Jump", 0) <= 4)
         {
 			TotalCoins.Static.SubtractCoins (PlayerPrefs.GetInt ("JumpCost", 4000));
 			PlayerPrefs.SetInt ("JumpCost", PlayerPrefs.GetInt ("JumpCost", 4000) + 1000);
@@ -209,7 +212,7 @@ public class StoreMenu : MonoBehaviour {
 		}
         else
         {
-			if( PlayerPrefs.GetInt ("Jump", 0)>3)
+			if( PlayerPrefs.GetInt ("Jump", 0)>4)
             {
 				jumpFullText.text ="Full";
 			}
@@ -220,4 +223,34 @@ public class StoreMenu : MonoBehaviour {
 			}	
 		}	
 	}
+
+    void IncreaseShieldPower()
+    {
+        if (TotalCoins.Static.totalCoins >= PlayerPrefs.GetInt("ShieldCost", 5000) && PlayerPrefs.GetInt("Shield", 0) <= 4)
+        {
+            TotalCoins.Static.SubtractCoins(PlayerPrefs.GetInt("ShieldCost", 5000));
+            PlayerPrefs.SetInt("ShieldCost", PlayerPrefs.GetInt("ShieldCost", 5000) + 1000);
+            for (int i = 0; i < shieldIndicators.Length; i++)
+            {
+                if (i == PlayerPrefs.GetInt("Shield", 0))
+                {
+                    shieldIndicators[i].SetActive(true);
+                }
+            }
+            PlayerPrefs.SetInt("ShieldPower_Ingame", PlayerPrefs.GetInt("ShieldPower_Ingame", 0) + 2);
+            PlayerPrefs.SetInt("Shield", PlayerPrefs.GetInt("Jump") + 1);
+        }
+        else
+        {
+            if (PlayerPrefs.GetInt("Shield", 0) > 4)
+            {
+                shieldFullText.text = "Full";
+            }
+            else
+            {
+                StoreMenuParent.SetActive(false);
+                inSufficentCoinsParent.SetActive(true);
+            }
+        }
+    }
 }

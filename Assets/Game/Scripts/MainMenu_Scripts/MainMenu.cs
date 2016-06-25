@@ -13,7 +13,7 @@ public class MainMenu : MonoBehaviour {
         missionsParent,
         exitParent,
         totalCoinsParent,
-        exitButton,
+        //exitButton,
         inGameUi;
 
 	void Start ()
