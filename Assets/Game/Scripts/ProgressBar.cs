@@ -16,6 +16,7 @@ public class ProgressBar : MonoBehaviour {
         MultiplerValue,
         JetpackValue,
         DoubleJumpValue;
+
 	void Start ()
     {
 		playerScript = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerController> ();

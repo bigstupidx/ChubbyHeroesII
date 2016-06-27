@@ -9,7 +9,7 @@ public class Destroyer : MonoBehaviour
 	{
 		if (isObjDestoy)
         {
-			Destroy (gameObject, 3f);
+			Destroy (gameObject, 2f);
 		}
 	}
 

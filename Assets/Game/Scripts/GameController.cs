@@ -99,10 +99,11 @@ public class GameController : MonoBehaviour
 
     public void OnGameStart()
     {
+        Debug.Log("OnGameStart");
         GetComponent<curverSetter>().enabled = true;
         playerController.CurrentState = PlayerStates.PlayerAlive;
         InvokeRepeating("GenerateObstacles", 0.1f, 1.0f); // for obstacles
-        InvokeRepeating("GeneratePowerUps", 20, 30f); // for PowerUps
+        InvokeRepeating("GeneratePowerUps", 5, 10f); // for PowerUps
         InvokeRepeating("GenerateCoins", 0.1F, 1.5f); // for coins
         InvokeRepeating("GenerateEnemies", 0.1f, 4f); // for enemies
         isStopCreateNewWay = true;
@@ -143,19 +144,19 @@ public class GameController : MonoBehaviour
         //raycast to that pposition down, see what hits
         Vector3 origin = new Vector3(laneOffset, 40.0f, PlayerController.thisPosition.z + 100); // * newPowerup
         RaycastHit hit;
-        if (Physics.Raycast(origin, Vector3.down, out hit, 50f))
+        if (Physics.Raycast(origin, Vector3.down, out hit, 500f))
         {
-            if (hit.transform.name == "Col") {//change to BUS
-                Invoke("GeneratePowerUps", 2f);
-                return;
-            }
-            else if (hit.transform.tag == "Coin") { }
-                Invoke("GeneratePowerUps", 2f);
-                return;
-            }
-            else { 
+            if (hit.transform.name != "Col" || hit.transform.tag != "Coin")
+            {
+                Debug.Log("Powerups");
+
                 GameObject Obj = Instantiate(powerUps[UnityEngine.Random.Range(0, powerUps.Length)], hit.point + powerupOffset, Quaternion.identity) as GameObject;
             }
+            else
+            {
+                Invoke("GeneratePowerUps", 1f);
+            }
+        }
         newPowerUp++;
     }
     //..........................................

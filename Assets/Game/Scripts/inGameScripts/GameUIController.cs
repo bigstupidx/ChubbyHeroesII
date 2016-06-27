@@ -211,9 +211,10 @@ public class GameUIController : MonoBehaviour
 	{
 		isGameEnd = true;
 
-		InGameAnimator.SetTrigger ("CountinueBoXMoving");
+		
 		continueScreen.SetActive (true);
-		HUD.SetActive (false);			 
+        InGameAnimator.SetTrigger("CountinueBoXMoving");
+        HUD.SetActive (false);			 
 		continueCoins = 500 * countinueCount;
 		cointinueCost.text = "" + continueCoins;
 		countinueCount++;
