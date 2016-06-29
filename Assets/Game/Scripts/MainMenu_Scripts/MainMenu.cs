@@ -13,7 +13,7 @@ public class MainMenu : MonoBehaviour {
         missionsParent,
         exitParent,
         totalCoinsParent,
-        //exitButton,
+        settingsMenuParent,
         inGameUi;
 
 	void Start ()
@@ -64,6 +64,12 @@ public class MainMenu : MonoBehaviour {
 			    SoundController.Static.playSoundFromName("Click");
 			    MainMenuScreens.currentScreen=MainMenuScreens.MenuScreens.StoreMenu;
 			    break;
-		}
+            case "Settings":
+                settingsMenuParent.SetActive(true);
+                MainMenuParent.SetActive(false);
+                SoundController.Static.playSoundFromName("Click");
+                MainMenuScreens.currentScreen = MainMenuScreens.MenuScreens.StoreMenu;
+                break;
+        }
 	}
 }
