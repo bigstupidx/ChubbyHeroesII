@@ -11,10 +11,10 @@ public class LoadingRotation : MonoBehaviour
 		Invoke ("StartGame", 3.0f);
 	}
 
-	void Update ()
-	{
-		LoadinBg.transform.Rotate (Vector3.forward * -10);
-	}
+	//void Update ()
+	//{
+	//	LoadinBg.transform.Rotate (Vector3.forward * -10);
+	//}
 	void StartGame ()
 	{
 		SceneManager.LoadSceneAsync ("gamePlay");
