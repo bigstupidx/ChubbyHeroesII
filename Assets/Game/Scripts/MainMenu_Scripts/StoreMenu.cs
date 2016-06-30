@@ -127,7 +127,7 @@ public class StoreMenu : MonoBehaviour {
             else
             {
 				inSufficentCoinsParent.SetActive(true);
-			    StoreMenuParent.SetActive(false);
+			    //StoreMenuParent.SetActive(false);
 			}
 		}
 	}
@@ -156,7 +156,7 @@ public class StoreMenu : MonoBehaviour {
 			}
 			else
 			{
-				StoreMenuParent.SetActive(false);
+				//StoreMenuParent.SetActive(false);
 				inSufficentCoinsParent.SetActive(true);
 			}
 		}	
@@ -188,7 +188,7 @@ public class StoreMenu : MonoBehaviour {
 			}
 			else
 			{
-				StoreMenuParent.SetActive(false);
+				//StoreMenuParent.SetActive(false);
 				inSufficentCoinsParent.SetActive(true);	
 			}
 		}
@@ -218,7 +218,7 @@ public class StoreMenu : MonoBehaviour {
 			}
 			else
 			{
-				StoreMenuParent.SetActive(false);
+				//StoreMenuParent.SetActive(false);
 				inSufficentCoinsParent.SetActive(true);	
 			}	
 		}	
@@ -248,7 +248,7 @@ public class StoreMenu : MonoBehaviour {
             }
             else
             {
-                StoreMenuParent.SetActive(false);
+                //StoreMenuParent.SetActive(false);
                 inSufficentCoinsParent.SetActive(true);
             }
         }

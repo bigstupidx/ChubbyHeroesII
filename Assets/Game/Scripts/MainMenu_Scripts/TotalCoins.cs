@@ -22,7 +22,7 @@ public class TotalCoins : MonoBehaviour
 
 	void Start ()
 	{
-        PlayerPrefs.SetInt("TotalCoins", 150000);
+        PlayerPrefs.SetInt("TotalCoins", 15000);
         UpdateCoins ();
 		Static = this;
 	}
@@ -62,7 +62,7 @@ public class TotalCoins : MonoBehaviour
 			case "BuyCoins":
 				DeActive ();
 		        InnAppMenuParent.SetActive (true);
-		        MainMenuScreens.currentScreen=MainMenuScreens.MenuScreens.InnAppmenu;
+		        MainMenu.currentScreen=MainMenu.MenuScreens.InnAppmenu;
 		        SoundController.Static.playSoundFromName("Click");
 				break;
 		}

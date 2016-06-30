@@ -17,7 +17,7 @@ public class ExitParent : MonoBehaviour {
 			    SoundController.Static.playSoundFromName("Click");
 			    exitParent.SetActive(false);
 			    mainMenuParent.SetActive(true);
-			    MainMenuScreens.currentScreen=MainMenuScreens.MenuScreens.InnAppmenu;
+			    MainMenu.currentScreen=MainMenu.MenuScreens.mainmenu;
 			    break;
 		}
 	}

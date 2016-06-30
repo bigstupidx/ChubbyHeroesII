@@ -54,7 +54,7 @@ public class Playerselection : MonoBehaviour
 	{
 		playerCamera.localPosition = Vector3.MoveTowards (playerCamera.localPosition, targetPlayerCamPositions [PlayerIndex], playerCamSpeed * Time.deltaTime);
 		 
-		if (Input.GetKeyDown (KeyCode.Mouse0) && MainMenuScreens.currentScreen == MainMenuScreens.MenuScreens.playerSelectionMenu) {
+		if (Input.GetKeyDown (KeyCode.Mouse0) && MainMenu.currentScreen == MainMenu.MenuScreens.playerSelectionMenu) {
 			startMousePosition = Input.mousePosition;
 			touchStarted = true;
 		}
@@ -93,7 +93,7 @@ public class Playerselection : MonoBehaviour
 		case "Buy":
 				SoundController.Static.playSoundFromName ("Click");
 				PurchasePlayer ();
-				MainMenuScreens.currentScreen = MainMenuScreens.MenuScreens.UnSufficentCoinsMenu;
+				MainMenu.currentScreen = MainMenu.MenuScreens.UnSufficentCoinsMenu;
 				break;
 		case "Back":
 				SoundController.Static.playSoundFromName ("Click");

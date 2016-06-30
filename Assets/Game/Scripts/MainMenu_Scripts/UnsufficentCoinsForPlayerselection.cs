@@ -16,9 +16,15 @@ public class UnsufficentCoinsForPlayerselection : MonoBehaviour
 	        case "ok":
 		        SoundController.Static.playSoundFromName("Click");
 		        InsufficentCoinsForPlayerselectionMenu.SetActive(false);
-		        InAppMenuParent.SetActive(true);
-		        MainMenuScreens.currentScreen=MainMenuScreens.MenuScreens.InnAppmenu;
+		        //InAppMenuParent.SetActive(true);
+		        //MainMenu.currentScreen=MainMenu.MenuScreens.InnAppmenu;
 		        break;
-	    }
+            case "more":
+                SoundController.Static.playSoundFromName("Click");
+                InsufficentCoinsForPlayerselectionMenu.SetActive(false);
+                InAppMenuParent.SetActive(true);
+                MainMenu.currentScreen = MainMenu.MenuScreens.InnAppmenu;
+                break;
+        }
     }
 }

@@ -22,14 +22,14 @@ public class levelSelection : MonoBehaviour
 			levelName = "GamePlay";
 			ControlSelection.SetActive(true);
 			LevelSelectionParent.SetActive(false);
-			MainMenuScreens.currentScreen=MainMenuScreens.MenuScreens.ControlselectionMenu;
+			MainMenu.currentScreen=MainMenu.MenuScreens.ControlselectionMenu;
 			SoundController.Static.playSoundFromName("Click");
             break;
 		case "Level2":
 			levelName = "cityGameplay";
 			ControlSelection.SetActive(true);
 			LevelSelectionParent.SetActive(false);
-			MainMenuScreens.currentScreen=MainMenuScreens.MenuScreens.ControlselectionMenu;
+			MainMenu.currentScreen=MainMenu.MenuScreens.ControlselectionMenu;
 			SoundController.Static.playSoundFromName("Click");
             break;
 		case "Level3":
@@ -37,7 +37,7 @@ public class levelSelection : MonoBehaviour
 			levelName = "NightGameplay";
 			ControlSelection.SetActive(true);
 			LevelSelectionParent.SetActive(false);
-			MainMenuScreens.currentScreen=MainMenuScreens.MenuScreens.ControlselectionMenu;
+			MainMenu.currentScreen=MainMenu.MenuScreens.ControlselectionMenu;
 			break;
 		}
 	}

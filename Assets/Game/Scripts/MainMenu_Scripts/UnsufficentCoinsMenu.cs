@@ -12,10 +12,10 @@ public class UnsufficentCoinsMenu : MonoBehaviour {
 		switch (ButtonName)
         {
 		    case "Ok":
-			    InAppMenuParent.SetActive(true);
+			    //InAppMenuParent.SetActive(true);
 			    InsufficentMenu.SetActive(false);
 			    SoundController.Static.playSoundFromName("Click");
-			    MainMenuScreens.currentScreen=MainMenuScreens.MenuScreens.InnAppmenu;
+			    //MainMenu.currentScreen=MainMenu.MenuScreens.InnAppmenu;
 			    break;
 		}
 	}
