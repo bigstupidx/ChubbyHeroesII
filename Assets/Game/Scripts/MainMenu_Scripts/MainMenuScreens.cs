@@ -40,7 +40,7 @@ public class MainMenuScreens : MonoBehaviour
     {
         currentScreen = MenuScreens.mainmenu;
         DeActive();
-        if (FindObjectOfType<MenuHelper>().restartFromGameplay == 0)
+        if (MenuHelper._Instance.restartFromGameplay == 0)
             MainMenuParent.SetActive(true);
     }
 

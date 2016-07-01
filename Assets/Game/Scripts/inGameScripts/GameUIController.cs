@@ -155,13 +155,13 @@ public class GameUIController : MonoBehaviour
 				ResumeMenuParent.SetActive (false);						
 				loadingParent.SetActive (true);
                 //SoundController.Static.playSoundFromName("Click");
-                FindObjectOfType<MenuHelper>().restartFromGameplay = 1;
+                MenuHelper._Instance.restartFromGameplay = 1;
                 SceneManager.LoadSceneAsync(1);
 				break;
 		    case "Home":
                 //SoundController.Static.playSoundFromName ("Click");
                 ResumeMenuParent.SetActive (false);
-                FindObjectOfType<MenuHelper>().restartFromGameplay = 0;
+                MenuHelper._Instance.restartFromGameplay = 0;
                 SceneManager.LoadSceneAsync(1);
 				break;
 		    case "FbLike":

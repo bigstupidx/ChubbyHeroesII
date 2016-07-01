@@ -45,20 +45,29 @@ public class MainMenu : MonoBehaviour {
 		Time.timeScale = 1;
         currentScreen = MenuScreens.mainmenu;
         DeActive();
-        if (FindObjectOfType<MenuHelper>().restartFromGameplay == 0)
+        if (MenuHelper._Instance.restartFromGameplay == 0)
             MainMenuParent.SetActive(true);
+    }
+
+    void DoPlayStart()
+    {
+        GameController.Static.currentGameState = GameController.GameState.gameplay;
+        MainMenuParent.SetActive(false);
+        InGameUi.SetActive(true);
+        CameraFade.current.FadeIn(null, 1f, 0f);
     }
 	
 	public void OnButtonClick(string ButtonName){
 		switch(ButtonName){
 		    case "Play": // start intro animation, enable ingameUI
-                GameController.Static.currentGameState = GameController.GameState.gameplay;
-                SoundController.Static.playSoundFromName("Click");
-			    MainMenuParent.SetActive(false);
-                InGameUi.SetActive(true);
+                CameraFade.current.FadeOut(CameraFade.current.FadeInTest, 0.2f, 0f);
 
+                SoundController.Static.playSoundFromName("Click");
+                MainMenuParent.SetActive(false);
+                InGameUi.SetActive(true);
                 break;
 		    case "PlayerSelect":
+                //CameraFade.current.FadeOut(CameraFade.current.FadeInTest, 0.3f, 0f);
                 MainMenuParent.SetActive(false);
                 PlayerSelectionmenuParent.SetActive(true);           
 			    SoundController.Static.playSoundFromName("Click");
@@ -78,25 +87,33 @@ public class MainMenu : MonoBehaviour {
 			    Application.Quit();
 			    break;
 		    case "Store":
-			    PlayerSelectionmenuParent.SetActive(false);
+                //CameraFade.current.FadeOut(CameraFade.current.FadeInTest, 0.3f, 0f);
+
+                PlayerSelectionmenuParent.SetActive(false);
                 UpgradesMenuParent.SetActive(true);
 			    MainMenuParent.SetActive(false);
 			    SoundController.Static.playSoundFromName("Click");
 			    currentScreen=MenuScreens.StoreMenu;
 			    break;
 		    case "Missions":
-			    MissionsMenuParent.SetActive(true);
+                //CameraFade.current.FadeOut(CameraFade.current.FadeInTest, 0.3f, 0f);
+
+                MissionsMenuParent.SetActive(true);
 			    MainMenuParent.SetActive(false);
 			    SoundController.Static.playSoundFromName("Click");
 			    currentScreen=MenuScreens.Missions;
 			    break;
             case "Settings":
+                //CameraFade.current.FadeOut(CameraFade.current.FadeInTest, 0.3f, 0f);
+
                 SettingsMenuParent.SetActive(true);
                 MainMenuParent.SetActive(false);
                 SoundController.Static.playSoundFromName("Click");
                 currentScreen = MenuScreens.SettingsMenu;
                 break;
             case "PauseMenu":
+                //CameraFade.current.FadeOut(CameraFade.current.FadeInTest, 0.3f, 0f);
+
                 SettingsMenuParent.SetActive(true);
                 MainMenuParent.SetActive(false);
                 SoundController.Static.playSoundFromName("Click");
@@ -109,7 +126,6 @@ public class MainMenu : MonoBehaviour {
     {
         if (GameController.Static.currentGameState == GameController.GameState.gameplay)
             return;
-        Debug.Log("HUEHUEHUE");
 
         switch (currentScreen)
         {

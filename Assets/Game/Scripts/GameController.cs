@@ -63,8 +63,9 @@ public class GameController : MonoBehaviour
 
         lastPlayerPosition = playerTransform.position.z;
 
-        if (FindObjectOfType<MenuHelper>().restartFromGameplay == 1)
-        {   
+        if (MenuHelper._Instance.restartFromGameplay == 1)
+        {
+
             FindObjectOfType<MainMenu>().OnButtonClick("Play");
             GetComponent<curverSetter>().enabled = true;
         }
@@ -79,7 +80,7 @@ public class GameController : MonoBehaviour
     {
         if (currentGameState == GameState.mainMenu)
         {
-            playerController.CurrentState = PlayerStates.Idle;
+            //playerController.CurrentState = PlayerStates.Idle;
         }
 
         else if (currentGameState == GameState.gameplay)

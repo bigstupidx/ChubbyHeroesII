@@ -38,9 +38,9 @@ public class CountDown : MonoBehaviour {
 		i++;
 	}
 
-	void OnDisable()
-	{
-		hudParent.SetActive(true);
-		gameControllerScript.OnGameStart ();
-	}
+	//void OnDisable()
+	//{
+	//	hudParent.SetActive(true);
+	//	gameControllerScript.OnGameStart ();
+	//}
 }

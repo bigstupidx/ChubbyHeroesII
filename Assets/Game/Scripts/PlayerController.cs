@@ -79,7 +79,16 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
-        if (Playerselection.PlayerIndex == 0)
+ 
+
+    }
+
+
+
+    void Start()
+    {
+
+        if (PlayerPrefs.GetInt("SelectedPlayer", 0) == 0)
         { // for Player 1
             // instantiate Correct player prefab
             GameObject p = Instantiate(playerPrefabs[0], transform.position, Quaternion.identity) as GameObject;
@@ -87,7 +96,7 @@ public class PlayerController : MonoBehaviour
             p.transform.position = transform.position;
             // set it's stats
         }
-        else if (Playerselection.PlayerIndex == 1)
+        else if (PlayerPrefs.GetInt("SelectedPlayer", 0) == 1)
         {//  for Player 2
             // instantiate Correct player prefab
             GameObject p = Instantiate(playerPrefabs[1], transform.position, Quaternion.identity) as GameObject;
@@ -95,7 +104,7 @@ public class PlayerController : MonoBehaviour
             p.transform.position = transform.position;
             // set it's stats
         }
-        else if (Playerselection.PlayerIndex == 2)
+        else if (PlayerPrefs.GetInt("SelectedPlayer", 0) == 2)
         { // for Player 3
             // instantiate Correct player prefab
             GameObject p = Instantiate(playerPrefabs[2], transform.position, Quaternion.identity) as GameObject;
@@ -104,7 +113,7 @@ public class PlayerController : MonoBehaviour
             // set it's stats
 
         }
-        else if (Playerselection.PlayerIndex == 3)
+        else if (PlayerPrefs.GetInt("SelectedPlayer", 0) == 3)
         { // for Player 4
             // instantiate Correct player prefab
             GameObject p = Instantiate(playerPrefabs[3], transform.position, Quaternion.identity) as GameObject;
@@ -114,12 +123,6 @@ public class PlayerController : MonoBehaviour
         }
         //.......................................
 
-    }
-
-
-
-    void Start()
-    {
         playerAnimator = GetComponentInChildren<Animator>();
         //powerObj_JetPack.SetActive(false); dezactivate pana testez platforma
         //powerObj_Magnet.SetActive(false);
