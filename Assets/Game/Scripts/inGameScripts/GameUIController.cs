@@ -17,7 +17,8 @@ public class GameUIController : MonoBehaviour
     playerInJumpIndicator, 
     missionCompletedIndicator, 
     loadingParent, 
-    insufficientFunds;
+    insufficientFunds,
+    DeathParticles;
 
 	public int inGameCoinCount = 0;
 	public int inGameScoreCount = 0;
@@ -81,7 +82,13 @@ public class GameUIController : MonoBehaviour
 		isGameEnd = false;				
 	}
 
-	void Start ()
+    void OnApplicationFocus(bool focusStatus)
+    {
+        if (!isGameEnd)
+        OnButtonClick("Pause");
+    }
+
+    void Start ()
 	{
         Static = this;
         multiplierValue = PlayerPrefs.GetInt ("MultiplierCount_Ingame", 1);
@@ -211,7 +218,7 @@ public class GameUIController : MonoBehaviour
 	{
 		isGameEnd = true;
 
-		
+        DeathParticles.SetActive(true);
 		continueScreen.SetActive (true);
         InGameAnimator.SetTrigger("CountinueBoXMoving");
         HUD.SetActive (false);			 

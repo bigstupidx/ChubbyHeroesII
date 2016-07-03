@@ -102,6 +102,7 @@ public class GameController : MonoBehaviour
     {
         Debug.Log("OnGameStart");
         GetComponent<curverSetter>().enabled = true;
+        currentGameState = GameState.gameplay;
         playerController.CurrentState = PlayerStates.PlayerAlive;
         InvokeRepeating("GenerateObstacles", 0.1f, 1.0f); // for obstacles
         InvokeRepeating("GeneratePowerUps", 5, 10f); // for PowerUps

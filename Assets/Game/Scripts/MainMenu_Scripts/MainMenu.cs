@@ -61,7 +61,7 @@ public class MainMenu : MonoBehaviour {
 		switch(ButtonName){
 		    case "Play": // start intro animation, enable ingameUI
                 CameraFade.current.FadeOut(CameraFade.current.FadeInTest, 0.2f, 0f);
-
+                GameController.Static.OnGameStart();
                 SoundController.Static.playSoundFromName("Click");
                 MainMenuParent.SetActive(false);
                 InGameUi.SetActive(true);
