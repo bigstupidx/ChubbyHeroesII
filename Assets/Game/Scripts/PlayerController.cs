@@ -258,7 +258,7 @@ public class PlayerController : MonoBehaviour
                 isPlayerDead = true;
                 break;
             case PlayerStates.Idle:
-                Debug.Log("Playerstate is IDLE");
+                //Debug.Log("Playerstate is IDLE");
                 playerAnimator.SetTrigger("Slide");
                 //play idle anim
                 break;

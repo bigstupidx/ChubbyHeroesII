@@ -98,7 +98,7 @@ public class coinControl : MonoBehaviour
 			thisTrans.position = Vector3.MoveTowards (thisTrans.position, newCoinPostionTarget, 80 * Time.deltaTime);
 			
 			if (punchCoinUIImage) {
-				GameUIController.Static.InGameAnimator.SetTrigger ("coinPunch");
+				//GameUIController.Static.countdownToDeath.SetTrigger ("coinPunch"); NO IDEA?
 				punchCoinUIImage = false;		
 			}
 		}	

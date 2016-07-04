@@ -11,6 +11,9 @@ public class GameUIController : MonoBehaviour
     GameEndMenuParent, 
     HUD, 
     continueScreen,
+        continueContainer,
+        continueBgImg,
+        powEffect,
     magnetIndicator, 
     multiplierIndicator, 
     playerInFlyIndicator, 
@@ -56,17 +59,19 @@ public class GameUIController : MonoBehaviour
     showLeaderBoard,
     faceBookShare;
 
-	public Animator 
-    moveIndicatorAnim, 
-    InGameAnimator,
+    public Animator
+    moveIndicatorAnim,
+    countdownToDeath,
     powerIndicatorAnim,
     highestScoreAnim;
-
 	Vector3 missionCompleteIncator_StartPosition;
 
     public static bool isGameEnd = false;
     GameObject[] coinsScript;
+
+    // hashes
     int finish = Animator.StringToHash("Base Layer.finish");
+    
 
 
     void OnEnable ()
@@ -113,7 +118,7 @@ public class GameUIController : MonoBehaviour
             Distance_IngameCount ();
         }
 
-        if (InGameAnimator.GetCurrentAnimatorStateInfo (0).fullPathHash == finish && isGameEnd)
+        if (countdownToDeath.GetCurrentAnimatorStateInfo (0).fullPathHash == finish && isGameEnd)
         {
             GameEnd (); // to show game end menu on clock ran out 						
         }
@@ -217,16 +222,24 @@ public class GameUIController : MonoBehaviour
 	public void ContinueScreen ()
 	{
 		isGameEnd = true;
-
-        DeathParticles.SetActive(true);
-		continueScreen.SetActive (true);
-        InGameAnimator.SetTrigger("CountinueBoXMoving");
+        
+        continueScreen.SetActive (true);
+        powEffect.SetActive(true);
+        Invoke("StartCountTodeath", 1.5f);
         HUD.SetActive (false);			 
 		continueCoins = 500 * countinueCount;
 		cointinueCost.text = "" + continueCoins;
 		countinueCount++;
 		worldCruveScript.enabled = false;  // add pause curveing
 	}
+
+    void StartCountTodeath()
+    {
+        continueBgImg.SetActive(true);
+        powEffect.SetActive(false);
+        continueContainer.SetActive(true);
+        countdownToDeath.SetTrigger("count2Death");
+    }
 
 	public void GameEnd ()
 	{
