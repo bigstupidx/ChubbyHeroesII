@@ -1,0 +1,306 @@
+fileFormatVersion: 2
+guid: 0a6689f32e76d5c49b01bc47207f3f1a
+timeCreated: 1467745004
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: PowBg_Red
+    21300002: PowBg_Blue
+    21300004: PowBg_Purple
+    21300006: PowBg_Green
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 1024
+  textureSettings:
+    filterMode: 2
+    aniso: -1
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: PowBg_Red
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 158, y: -98}
+        - {x: 226, y: -92}
+        - {x: 230, y: -91}
+        - {x: 203, y: -20}
+        - {x: 203, y: -7}
+        - {x: 246, y: 0}
+        - {x: 250, y: 7}
+        - {x: 205, y: 64}
+        - {x: 201, y: 84}
+        - {x: 256, y: 186}
+        - {x: 256, y: 195}
+        - {x: 251, y: 195}
+        - {x: 240, y: 192}
+        - {x: 135, y: 129}
+        - {x: 121, y: 161}
+        - {x: 109, y: 182}
+        - {x: 98, y: 178}
+        - {x: 17, y: 128}
+        - {x: 1, y: 169}
+        - {x: -3, y: 166}
+        - {x: -67, y: 103}
+        - {x: -82, y: 112}
+        - {x: -169, y: 163}
+        - {x: -189, y: 174}
+        - {x: -192, y: 175}
+        - {x: -194, y: 167}
+        - {x: -169, y: 79}
+        - {x: -222, y: 82}
+        - {x: -256, y: 83}
+        - {x: -256, y: 74}
+        - {x: -197, y: -16}
+        - {x: -231, y: -81}
+        - {x: -226, y: -84}
+        - {x: -163, y: -89}
+        - {x: -174, y: -146}
+        - {x: -173, y: -158}
+        - {x: -62, y: -128}
+        - {x: -29, y: -160}
+        - {x: -26, y: -161}
+        - {x: -7, y: -136}
+        - {x: 5, y: -117}
+        - {x: 26, y: -127}
+        - {x: 161, y: -190}
+        - {x: 165, y: -190}
+        - {x: 169, y: -189}
+        - {x: 130, y: -113}
+        - {x: 128, y: -100}
+    - name: PowBg_Blue
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 163, y: -26}
+        - {x: 164, y: -21}
+        - {x: 231, y: -5}
+        - {x: 249, y: 3}
+        - {x: 248, y: 7}
+        - {x: 196, y: 77}
+        - {x: 215, y: 112}
+        - {x: 252, y: 179}
+        - {x: 256, y: 189}
+        - {x: 256, y: 197}
+        - {x: 255, y: 197}
+        - {x: 183, y: 155}
+        - {x: 151, y: 131}
+        - {x: 113, y: 170}
+        - {x: 102, y: 167}
+        - {x: 48, y: 141}
+        - {x: 40, y: 138}
+        - {x: 2, y: 187}
+        - {x: -30, y: 167}
+        - {x: -59, y: 149}
+        - {x: -64, y: 145}
+        - {x: -113, y: 220}
+        - {x: -118, y: 223}
+        - {x: -121, y: 223}
+        - {x: -123, y: 221}
+        - {x: -173, y: 82}
+        - {x: -219, y: 93}
+        - {x: -230, y: 92}
+        - {x: -230, y: 91}
+        - {x: -226, y: 82}
+        - {x: -210, y: 55}
+        - {x: -191, y: 25}
+        - {x: -230, y: -74}
+        - {x: -230, y: -82}
+        - {x: -229, y: -85}
+        - {x: -153, y: -90}
+        - {x: -154, y: -104}
+        - {x: -174, y: -151}
+        - {x: -172, y: -156}
+        - {x: -162, y: -155}
+        - {x: -62, y: -129}
+        - {x: -30, y: -160}
+        - {x: -26, y: -161}
+        - {x: -18, y: -151}
+        - {x: 4, y: -118}
+        - {x: 13, y: -126}
+        - {x: 110, y: -197}
+        - {x: 114, y: -197}
+        - {x: 117, y: -196}
+        - {x: 119, y: -102}
+        - {x: 249, y: -145}
+        - {x: 251, y: -138}
+    - name: PowBg_Purple
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 67, y: -147}
+        - {x: 132, y: -165}
+        - {x: 172, y: -173}
+        - {x: 174, y: -169}
+        - {x: 149, y: -107}
+        - {x: 186, y: -105}
+        - {x: 229, y: -101}
+        - {x: 231, y: -95}
+        - {x: 188, y: -16}
+        - {x: 200, y: -4}
+        - {x: 256, y: 60}
+        - {x: 256, y: 67}
+        - {x: 232, y: 67}
+        - {x: 169, y: 66}
+        - {x: 192, y: 148}
+        - {x: 193, y: 156}
+        - {x: 190, y: 158}
+        - {x: 170, y: 148}
+        - {x: 68, y: 88}
+        - {x: 35, y: 143}
+        - {x: 14, y: 180}
+        - {x: 10, y: 180}
+        - {x: 6, y: 179}
+        - {x: -28, y: 120}
+        - {x: -39, y: 101}
+        - {x: -106, y: 165}
+        - {x: -109, y: 167}
+        - {x: -127, y: 134}
+        - {x: -136, y: 113}
+        - {x: -177, y: 137}
+        - {x: -256, y: 180}
+        - {x: -256, y: 169}
+        - {x: -244, y: 147}
+        - {x: -203, y: 71}
+        - {x: -196, y: 60}
+        - {x: -236, y: 10}
+        - {x: -252, y: -16}
+        - {x: -199, y: -27}
+        - {x: -241, y: -114}
+        - {x: -239, y: -119}
+        - {x: -146, y: -117}
+        - {x: -126, y: -122}
+        - {x: -182, y: -217}
+        - {x: -181, y: -219}
+        - {x: -176, y: -219}
+        - {x: -157, y: -211}
+        - {x: -15, y: -139}
+        - {x: 9, y: -167}
+        - {x: 32, y: -197}
+    - name: PowBg_Green
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 512
+        height: 512
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 52, y: -171}
+        - {x: 79, y: -142}
+        - {x: 196, y: -172}
+        - {x: 198, y: -163}
+        - {x: 188, y: -145}
+        - {x: 170, y: -100}
+        - {x: 194, y: -99}
+        - {x: 255, y: -94}
+        - {x: 256, y: -93}
+        - {x: 256, y: -86}
+        - {x: 236, y: -31}
+        - {x: 219, y: 12}
+        - {x: 218, y: 23}
+        - {x: 254, y: 87}
+        - {x: 256, y: 91}
+        - {x: 240, y: 94}
+        - {x: 240, y: 91}
+        - {x: 184, y: 91}
+        - {x: 171, y: 90}
+        - {x: 145, y: 215}
+        - {x: 142, y: 231}
+        - {x: 136, y: 231}
+        - {x: 131, y: 228}
+        - {x: 113, y: 196}
+        - {x: 81, y: 149}
+        - {x: 77, y: 152}
+        - {x: 22, y: 186}
+        - {x: 13, y: 191}
+        - {x: -8, y: 169}
+        - {x: -27, y: 140}
+        - {x: -48, y: 150}
+        - {x: -103, y: 174}
+        - {x: -107, y: 174}
+        - {x: -145, y: 135}
+        - {x: -253, y: 203}
+        - {x: -256, y: 202}
+        - {x: -256, y: 193}
+        - {x: -193, y: 74}
+        - {x: -199, y: 68}
+        - {x: -251, y: -2}
+        - {x: -228, y: -12}
+        - {x: -157, y: -28}
+        - {x: -174, y: -52}
+        - {x: -252, y: -151}
+        - {x: -251, y: -160}
+        - {x: -111, y: -112}
+        - {x: -111, y: -137}
+        - {x: -109, y: -212}
+        - {x: -107, y: -214}
+        - {x: -102, y: -213}
+        - {x: 10, y: -131}
+        - {x: 15, y: -138}
+        - {x: 42, y: -176}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

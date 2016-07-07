@@ -121,6 +121,22 @@ public class PlayerController : MonoBehaviour
             p.transform.position = transform.position;
             // set it's stats
         }
+        else if (PlayerPrefs.GetInt("SelectedPlayer", 0) == 4)
+        { // for Player 4
+            // instantiate Correct player prefab
+            GameObject p = Instantiate(playerPrefabs[3], transform.position, Quaternion.identity) as GameObject;
+            p.transform.SetParent(transform);
+            p.transform.position = transform.position;
+            // set it's stats
+        }
+        else if (PlayerPrefs.GetInt("SelectedPlayer", 0) == 5)
+        { // for Player 4
+            // instantiate Correct player prefab
+            GameObject p = Instantiate(playerPrefabs[3], transform.position, Quaternion.identity) as GameObject;
+            p.transform.SetParent(transform);
+            p.transform.position = transform.position;
+            // set it's stats
+        }
         //.......................................
 
         playerAnimator = GetComponentInChildren<Animator>();

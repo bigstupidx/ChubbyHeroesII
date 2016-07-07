@@ -219,10 +219,22 @@ public class GameUIController : MonoBehaviour
 		insufficientFunds.SetActive (true);
 	}
 
-	public void ContinueScreen ()
+    // _________
+    public GameObject[] powShapes;
+    public Text powText;
+    public string[] powStrings;
+    int shapeIndex;
+
+    public void ContinueScreen ()
 	{
 		isGameEnd = true;
-        
+
+        shapeIndex = UnityEngine.Random.Range(0, powShapes.Length);
+        powShapes[shapeIndex].SetActive(true);
+
+        int powTextIndex = UnityEngine.Random.Range(0, powStrings.Length);
+        powText.text = powStrings[powTextIndex];
+
         continueScreen.SetActive (true);
         powEffect.SetActive(true);
         Invoke("StartCountTodeath", 1.5f);
@@ -237,6 +249,7 @@ public class GameUIController : MonoBehaviour
     {
         continueBgImg.SetActive(true);
         powEffect.SetActive(false);
+        powShapes[shapeIndex].SetActive(false);
         continueContainer.SetActive(true);
         countdownToDeath.SetTrigger("count2Death");
     }
@@ -275,47 +288,47 @@ public class GameUIController : MonoBehaviour
 		//indicatorSpeed = Mathf.Lerp (indicatorSpeed, -250, 0.5f);
 		if (PlayerPrefs.GetInt ("MissionCoinsCount", 0) <= 0 && PlayerPrefs.GetInt ("CollectCoins", 0) == 1) {
 				missionCompletedText.text = "Collect Coins Completed";
-				moveIndicatorAnim.SetTrigger ("NewPosition");
+				//moveIndicatorAnim.SetTrigger ("NewPosition");
 				Invoke ("MissionIndicatorMove_Start", 4f);
 				PlayerPrefs.SetInt ("CollectCoins", 2);
 		} else if (PlayerPrefs.GetInt ("MissionMagnetPowerCount", 0) <= 0 && PlayerPrefs.GetInt ("MagnerPower", 0) == 1) {
 				missionCompletedText.text = "Collect Magnet Power Completed";
-				moveIndicatorAnim.SetTrigger ("NewPosition");
+				//moveIndicatorAnim.SetTrigger ("NewPosition");
 				Invoke ("MissionIndicatorMove_Start", 4f);
 				PlayerPrefs.SetInt ("MagnetPower", 2);
 		} else if (PlayerPrefs.GetInt ("MissionFlyPowerCount", 0) <= 0 && PlayerPrefs.GetInt ("FlyPower", 0) == 1) {
 				missionCompletedText.text = "Collect JetPack Power Completed";
-				moveIndicatorAnim.SetTrigger ("NewPosition");
+				//moveIndicatorAnim.SetTrigger ("NewPosition");
 				Invoke ("MissionIndicatorMove_Start", 4f);
 				PlayerPrefs.SetInt ("FlyPower", 2);
 		} else if (PlayerPrefs.GetInt ("Mission2XPowerCount", 0) <= 0 && PlayerPrefs.GetInt ("2XPower", 0) == 1) {
 				missionCompletedText.text = "Collect Coin Multiplier Power Completed";
-				moveIndicatorAnim.SetTrigger ("NewPosition");
+				//moveIndicatorAnim.SetTrigger ("NewPosition");
 				Invoke ("MissionIndicatorMove_Start", 4f);
 				PlayerPrefs.GetInt ("2XPower", 2);
 		} else if (PlayerPrefs.GetInt ("MissionJumpPowerCount", 0) <= 0 && PlayerPrefs.GetInt ("JumpPower", 0) == 1) {
 				missionCompletedText.text = "Collect Extra Jump Power Completed";
-				moveIndicatorAnim.SetTrigger ("NewPosition");
+				//moveIndicatorAnim.SetTrigger ("NewPosition");
 				Invoke ("MissionIndicatorMove_Start", 4f);
 				PlayerPrefs.SetInt ("JumpPower", 2);
 		} else if (PlayerPrefs.GetInt ("MissionRoll/SlideCount", 0) <= 0 && PlayerPrefs.GetInt ("Roll/Slide", 0) == 1) {
 				missionCompletedText.text = "Slide and Roll Completed";
-				moveIndicatorAnim.SetTrigger ("NewPosition");
+				//moveIndicatorAnim.SetTrigger ("NewPosition");
 				Invoke ("MissionIndicatorMove_Start", 4f);
 				PlayerPrefs.SetInt ("Roll/Slide", 2);
 		} else if (PlayerPrefs.GetInt ("MissionDestroyBarrelCount", 0) <= 0 && PlayerPrefs.GetInt ("Barrel", 0) == 1) {
 				missionCompletedText.text = "Destroy Barrels Completed";
-				moveIndicatorAnim.SetTrigger ("NewPosition");
+				//moveIndicatorAnim.SetTrigger ("NewPosition");
 				Invoke ("MissionIndicatorMove_Start", 4f);
 				PlayerPrefs.SetInt ("Barrel", 2);
 		} else if (PlayerPrefs.GetInt ("MissionDestroyPotsCount", 0) <= 0 && PlayerPrefs.GetInt ("Pots", 0) == 1) {
 				missionCompletedText.text = "Destroy Pots Completed";
-				moveIndicatorAnim.SetTrigger ("NewPosition");
+				//moveIndicatorAnim.SetTrigger ("NewPosition");
 				Invoke ("MissionIndicatorMove_Start", 4f);
 				PlayerPrefs.SetInt ("Pots", 2);
 		} else if (PlayerPrefs.GetInt ("MissionJumpCount", 0) <= 0 && PlayerPrefs.GetInt ("JumpCount", 0) == 1) {
 				missionCompletedText.text = "Jump Completed";
-				moveIndicatorAnim.SetTrigger ("NewPosition");
+				//moveIndicatorAnim.SetTrigger ("NewPosition");
 				Invoke ("MissionIndicatorMove_Start", 4f);
 				PlayerPrefs.SetInt ("JumpCount", 2);
 		}
@@ -323,7 +336,7 @@ public class GameUIController : MonoBehaviour
 
 	void MissionIndicatorMove_Start ()
 	{
-		moveIndicatorAnim.SetTrigger ("Previous");
+		//moveIndicatorAnim.SetTrigger ("Previous");
 	}
 
 

@@ -27,6 +27,7 @@ public class MainMenu : MonoBehaviour {
         CreditsMenuParent,
         UpgradesMenuParent,
         PlayerSelectionmenuParent,
+        PlayerSelectionWithCamera,
         MissionsMenuParent,
         ExitParent,
         TotalCoinsParent,
@@ -70,6 +71,7 @@ public class MainMenu : MonoBehaviour {
 		    case "PlayerSelect":
                 //CameraFade.current.FadeOut(CameraFade.current.FadeInTest, 0.3f, 0f);
                 MainMenuParent.SetActive(false);
+                PlayerSelectionWithCamera.SetActive(true);
                 PlayerSelectionmenuParent.SetActive(true);           
 			    SoundController.Static.playSoundFromName("Click");
                 currentScreen = MenuScreens.playerSelectionMenu;
@@ -220,6 +222,7 @@ public class MainMenu : MonoBehaviour {
         MainMenuParent.SetActive(false);
         LoadingMenuParent.SetActive(false);
         PlayerSelectionmenuParent.SetActive(false);
+        PlayerSelectionWithCamera.SetActive(false);
         CreditsMenuParent.SetActive(false);
         ByPopupMenuParent.SetActive(false);
         InSufficentCoinsMenuParent.SetActive(false);

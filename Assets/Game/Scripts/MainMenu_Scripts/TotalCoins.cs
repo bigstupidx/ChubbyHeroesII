@@ -22,7 +22,7 @@ public class TotalCoins : MonoBehaviour
 
 	void Start ()
 	{
-        PlayerPrefs.SetInt("TotalCoins", 0);
+        PlayerPrefs.SetInt("TotalCoins", 150000);
         UpdateCoins ();
 		Static = this;
 	}

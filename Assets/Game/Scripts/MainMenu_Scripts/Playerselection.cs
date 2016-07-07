@@ -11,7 +11,9 @@ public class Playerselection : MonoBehaviour
         selectedButton,
         LevelSelectionParent, 
         buyPopUp, 
-        PlayerSelectionMenu, 
+        PlayerSelectionMenu,
+        PlayerSelectionWithCamera,
+        PlayerPriceGO,
         MainMenuParent, 
         UnsufficentCoinsForPlayerselection, 
         loadingParent,
@@ -97,7 +99,8 @@ public class Playerselection : MonoBehaviour
 				break;
 		case "Back":
 				SoundController.Static.playSoundFromName ("Click");
-				PlayerSelectionMenu.SetActive (false);
+                PlayerSelectionWithCamera.SetActive(false);
+                PlayerSelectionMenu.SetActive (false);
 				MainMenuParent.SetActive (true);
 				break;
 		}
@@ -150,10 +153,13 @@ public class Playerselection : MonoBehaviour
 			case 1:		 
 				playerDescriptionText.text = "WITHSTAND 2 HITS ";
 				PlayerNameText.text = "Fire Ninja";
-				PlayerPriceDisplayText.text = "10000 ";
+				PlayerPriceDisplayText.text = "10000";
                 previousButton.SetActive(true);
-                if (PlayerPrefs.GetInt ("isPlayer1Purchased", 0) == 1) {
+                if (PlayerPrefs.GetInt ("isPlayer1Purchased", 0) == 1)
+                {
 					buyButton.SetActive (false);
+                    PlayerPriceGO.SetActive(false);
+
                     if (PlayerPrefs.GetInt("SelectedPlayer") == PlayerIndex)
                     {
                         selectButton.SetActive(false);
@@ -166,6 +172,7 @@ public class Playerselection : MonoBehaviour
                     }
                 } else {
                     buyButton.SetActive (true);
+                    PlayerPriceGO.SetActive(true);
                     selectedButton.SetActive(false);
                     selectButton.SetActive(false);
                 }
@@ -175,8 +182,11 @@ public class Playerselection : MonoBehaviour
 				PlayerNameText.text = "Earth Ninja";
 				PlayerPriceDisplayText.text = "30000 ";
 			
-				if (PlayerPrefs.GetInt ("isPlayer2Purchased", 0) == 1) {
+				if (PlayerPrefs.GetInt ("isPlayer2Purchased", 0) == 1)
+                {
 					buyButton.SetActive (false);
+                    PlayerPriceGO.SetActive(false);
+
                     if (PlayerPrefs.GetInt("SelectedPlayer") == PlayerIndex)
                     {
                         selectButton.SetActive(false);
@@ -189,6 +199,7 @@ public class Playerselection : MonoBehaviour
                     }
                 } else {
 					buyButton.SetActive (true);
+                    PlayerPriceGO.SetActive(true);
                     selectedButton.SetActive(false);
                     selectButton.SetActive(false);
                 }
@@ -200,6 +211,7 @@ public class Playerselection : MonoBehaviour
 			
 				if (PlayerPrefs.GetInt ("isPlayer3Purchased", 0) == 1) {
 					buyButton.SetActive (false);
+                    PlayerPriceGO.SetActive(false);
                     if (PlayerPrefs.GetInt("SelectedPlayer") == PlayerIndex)
                     {
                         selectButton.SetActive(false);
@@ -212,16 +224,19 @@ public class Playerselection : MonoBehaviour
                     }
                 } else {
 					buyButton.SetActive (true);
+                    PlayerPriceGO.SetActive(true);
                     selectedButton.SetActive(false);
                     selectButton.SetActive(false);
                 }
 				break;
 			case 4:					 
 				PlayerNameText.text = "";
-				PlayerPriceDisplayText.text = "Price  : 50000 ";
+				PlayerPriceDisplayText.text = "50000 ";
                 nextButton.SetActive(true);
-                if (PlayerPrefs.GetInt ("isPlayer4Purchased", 0) == 1) {
+                if (PlayerPrefs.GetInt ("isPlayer4Purchased", 0) == 1)
+                {
 					buyButton.SetActive (false);
+                    PlayerPriceGO.SetActive(false);
                     if (PlayerPrefs.GetInt("SelectedPlayer") == PlayerIndex)
                     {
                         selectButton.SetActive(false);
@@ -234,16 +249,19 @@ public class Playerselection : MonoBehaviour
                     }
                 } else {
 					buyButton.SetActive (true);
+                    PlayerPriceGO.SetActive(true);
                     selectedButton.SetActive(false);
                     selectButton.SetActive(false);
                 }
 				break;
 			case 5:						 
 				PlayerNameText.text = "Name : FFF";
-				PlayerPriceDisplayText.text = "PRice  : 7000 ";
+				PlayerPriceDisplayText.text = "70000 ";
                 nextButton.SetActive(false);
-				if (PlayerPrefs.GetInt ("isPlayer5Purchased", 0) == 1) {
+				if (PlayerPrefs.GetInt ("isPlayer5Purchased", 0) == 1)
+                {
 					buyButton.SetActive (false);
+                    PlayerPriceGO.SetActive(false);
                     if (PlayerPrefs.GetInt("SelectedPlayer") == PlayerIndex)
                     {
                         selectButton.SetActive(false);
@@ -256,6 +274,7 @@ public class Playerselection : MonoBehaviour
                     }
                 } else {
 					buyButton.SetActive (true);
+                    PlayerPriceGO.SetActive(true);
                     selectedButton.SetActive(false);
                     selectButton.SetActive(false);
                 }
@@ -280,7 +299,7 @@ public class Playerselection : MonoBehaviour
 			break;
 		case 2:
 			if (TotalCoins.Static.totalCoins >= 30000) {
-					buyPopUP.PlayerCost = 3000;
+					buyPopUP.PlayerCost = 30000;
 					buyPopUp.SetActive (true);
 					//PlayerSelectionMenu.SetActive (false);
 			} else {
@@ -292,7 +311,7 @@ public class Playerselection : MonoBehaviour
 			break;
 		case 3:
 			if (TotalCoins.Static.totalCoins >= 40000) {
-					buyPopUP.PlayerCost = 4000;
+					buyPopUP.PlayerCost = 40000;
 					buyPopUp.SetActive (true);
 					//PlayerSelectionMenu.SetActive (false);
 			} else {
@@ -304,7 +323,7 @@ public class Playerselection : MonoBehaviour
 			break;
 		case 4:
 			if (TotalCoins.Static.totalCoins >= 50000) {
-					buyPopUP.PlayerCost = 5000;
+					buyPopUP.PlayerCost = 50000;
 					buyPopUp.SetActive (true);
 					//PlayerSelectionMenu.SetActive (false);
 			} else {
@@ -315,8 +334,8 @@ public class Playerselection : MonoBehaviour
 			}			
 			break;
 		case 5:
-			if (TotalCoins.Static.totalCoins >= 6000) {
-					buyPopUP.PlayerCost = 6000;
+			if (TotalCoins.Static.totalCoins >= 7000) {
+					buyPopUP.PlayerCost = 70000;
 					buyPopUp.SetActive (true);
 					//PlayerSelectionMenu.SetActive (false);
 			} else {
