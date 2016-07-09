@@ -102,7 +102,8 @@ public class Playerselection : MonoBehaviour
                 PlayerSelectionWithCamera.SetActive(false);
                 PlayerSelectionMenu.SetActive (false);
 				MainMenuParent.SetActive (true);
-				break;
+                MainMenu.currentScreen = MainMenu.MenuScreens.mainmenu;
+                break;
 		}
 	}
 
@@ -287,7 +288,7 @@ public class Playerselection : MonoBehaviour
 		switch (PlayerIndex) {
 		case 1:		
 			if (TotalCoins.Static.totalCoins >= 10000) {
-					buyPopUP.PlayerCost = 1000;//to set the cost in buyPopUpScript
+					buyPopUP.PlayerCost = 10000;//to set the cost in buyPopUpScript
 					buyPopUp.SetActive (true);
 					//PlayerSelectionMenu.SetActive (false);
 			} else {
@@ -334,7 +335,7 @@ public class Playerselection : MonoBehaviour
 			}			
 			break;
 		case 5:
-			if (TotalCoins.Static.totalCoins >= 7000) {
+			if (TotalCoins.Static.totalCoins >= 70000) {
 					buyPopUP.PlayerCost = 70000;
 					buyPopUp.SetActive (true);
 					//PlayerSelectionMenu.SetActive (false);

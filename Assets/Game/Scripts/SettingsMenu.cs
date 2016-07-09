@@ -15,6 +15,7 @@ public class SettingsMenu : MonoBehaviour
             case "Back":
                 settingsMenuParent.SetActive(false);
                 mainMenuParent.SetActive(true);
+                MainMenu.currentScreen = MainMenu.MenuScreens.mainmenu;
                 SoundController.Static.playSoundFromName("Click");
                 break;
         }

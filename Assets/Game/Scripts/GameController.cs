@@ -21,7 +21,7 @@ public class GameController : MonoBehaviour
     public static event EventHandler ShowADD;
     public float[] lanePositions;
     public delegate void GAMESTATE();
-    public float NewWayDistance;
+    public float NewWayDistance, runDistance;
     public bool isStopCreateNewWay = true;
     public bool isGamePaused = false;
     public int CoinMultipler;
@@ -30,7 +30,7 @@ public class GameController : MonoBehaviour
     public Transform mainCameraTrans;
     public List<GameObject> upCoins = new List<GameObject>();
     public List<GameObject> pooledGrounds = new List<GameObject>();
-    Vector3 playerStartPos = new Vector3(0, 0, 0);
+    Vector3 playerStartPos;
 
 
 
@@ -58,7 +58,8 @@ public class GameController : MonoBehaviour
     void Start()
     {
         playerController = FindObjectOfType<PlayerController>();
-
+        playerStartPos = PlayerPosition.transform.position;
+        runDistance = 0;
         playerTransform = PlayerPosition.transform;
 
         lastPlayerPosition = playerTransform.position.z;
@@ -85,6 +86,8 @@ public class GameController : MonoBehaviour
 
         else if (currentGameState == GameState.gameplay)
         {
+            runDistance = Vector3.Distance(playerStartPos, playerTransform.position) / 2;
+
             if (playerTransform.position.z - lastPlayerPosition > 295)
             {
                 CreateNewWay();

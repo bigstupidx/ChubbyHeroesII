@@ -130,8 +130,8 @@ public class Missions : MonoBehaviour {
 			    SoundController.Static.playSoundFromName("Click");
 			    MissionParent.SetActive(false);
 			    mainMenuParent.SetActive(true);
-
-			    break;
+                MainMenu.currentScreen = MainMenu.MenuScreens.mainmenu;
+                break;
 		}
 	}
 

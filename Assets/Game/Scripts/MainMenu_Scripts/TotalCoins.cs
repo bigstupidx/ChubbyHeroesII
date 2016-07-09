@@ -16,22 +16,50 @@ public class TotalCoins : MonoBehaviour
     InnAppMenuParent,
     InsufficentCoinsForPlayerselectionMenu;
 	public static TotalCoins Static;
-	public  Text TotalCoinstext;
+	public  Text TotalCoinstext, TotalCoinsEverywhereText;
 	public int totalCoins;
 	int coinsIn;
 
-	void Start ()
+
+    //TEMP HEATS
+    public void CheatCoins()
+    {
+        AddCoins(10000);
+        UpdateCoins();
+    }
+
+    public void CheatClearCoins()
+    {
+        PlayerPrefs.SetInt("TotalCoins", 0);
+        PlayerPrefs.DeleteAll();
+        UpdateCoins();
+    }
+
+    public void CheatAll()
+    {
+        PlayerPrefs.DeleteAll();
+        UpdateCoins();
+    }
+    // -------------------------------
+
+    void Start ()
 	{
-        PlayerPrefs.SetInt("TotalCoins", 150000);
+        //PlayerPrefs.SetInt("TotalCoins", 150000);
         UpdateCoins ();
 		Static = this;
 	}
 	
-	public  void UpdateCoins ()
+	public void UpdateCoins ()
 	{
-		totalCoins = PlayerPrefs.GetInt ("TotalCoins", 0)+PlayerPrefs.GetInt("AddMissionCoins",0);
-		TotalCoinstext.text = "" + PlayerPrefs.GetInt ("TotalCoins", 0);
-	}
+		totalCoins = PlayerPrefs.GetInt ("TotalCoins", 0) + PlayerPrefs.GetInt("AddMissionCoins",0);
+        UpdateCointTexts();
+    }
+
+    public void UpdateCointTexts()
+    {
+        TotalCoinstext.text = "" + PlayerPrefs.GetInt("TotalCoins", 0);
+        TotalCoinsEverywhereText.text = "" + PlayerPrefs.GetInt("TotalCoins", 0);
+    }
 
 	public void AddCoins (int AddingCoins)
 	{
@@ -50,10 +78,7 @@ public class TotalCoins : MonoBehaviour
 		return PlayerPrefs.GetInt ("TotalCoins", 0);
 	}
 
-	public void ClearCoins ()
-	{
-		PlayerPrefs.DeleteAll ();
-	}
+
 
 	public void OnButtonClic (string ButtonName)
 	{

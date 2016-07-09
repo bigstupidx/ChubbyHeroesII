@@ -30,6 +30,7 @@ public class MainMenu : MonoBehaviour {
         PlayerSelectionWithCamera,
         MissionsMenuParent,
         ExitParent,
+        //TotalCoinsMainMenuParent,
         TotalCoinsParent,
         SettingsMenuParent,
         InGameUi,
@@ -61,64 +62,48 @@ public class MainMenu : MonoBehaviour {
 	public void OnButtonClick(string ButtonName){
 		switch(ButtonName){
 		    case "Play": // start intro animation, enable ingameUI
-                CameraFade.current.FadeOut(CameraFade.current.FadeInTest, 0.2f, 0f);
-
+                CameraFade.current.FadeOut(CameraFade.current.FadeInTest, 0f, 0f);
                 GameController.Static.OnGameStart();
                 SoundController.Static.playSoundFromName("Click");
                 MainMenuParent.SetActive(false);
                 InGameUi.SetActive(true);
+                TotalCoinsParent.SetActive(false);
                 break;
 		    case "PlayerSelect":
                 //CameraFade.current.FadeOut(CameraFade.current.FadeInTest, 0.3f, 0f);
-                MainMenuParent.SetActive(false);
-                PlayerSelectionWithCamera.SetActive(true);
-                PlayerSelectionmenuParent.SetActive(true);           
-			    SoundController.Static.playSoundFromName("Click");
-                currentScreen = MenuScreens.playerSelectionMenu;
+                Invoke("OpenPlayerSelection", 0.2f);
                 break;
 		    case "Credits":
 			    SoundController.Static.playSoundFromName("Click");
 			    MainMenuParent.SetActive(false);
 			    CreditsMenuParent.SetActive(true);
-			    currentScreen=MenuScreens.CredtsMenu;
+                TotalCoinsParent.SetActive(false);
+                currentScreen = MenuScreens.CredtsMenu;
 			    break;
 		    case "Exit":
 			    SoundController.Static.playSoundFromName("Click");
 			    ExitParent.SetActive(true);
 			    MainMenuParent.SetActive(false);
-			    //TotalCoinsParent.SetActive(false);
+			    TotalCoinsParent.SetActive(false);
 			    Application.Quit();
 			    break;
 		    case "Store":
-                //CameraFade.current.FadeOut(CameraFade.current.FadeInTest, 0.3f, 0f);
-
-                PlayerSelectionmenuParent.SetActive(false);
-                UpgradesMenuParent.SetActive(true);
-			    MainMenuParent.SetActive(false);
-			    SoundController.Static.playSoundFromName("Click");
-			    currentScreen=MenuScreens.StoreMenu;
+                CameraFade.current.FadeOut(CameraFade.current.FadeInTest, 0.3f, 0f);
+                Invoke("OpenUpgradesMenu", 0.2f);
 			    break;
 		    case "Missions":
                 //CameraFade.current.FadeOut(CameraFade.current.FadeInTest, 0.3f, 0f);
-
-                MissionsMenuParent.SetActive(true);
-			    MainMenuParent.SetActive(false);
-			    SoundController.Static.playSoundFromName("Click");
-			    currentScreen=MenuScreens.Missions;
+                Invoke("OpenMissionsMenu", 0.2f);
 			    break;
             case "Settings":
                 //CameraFade.current.FadeOut(CameraFade.current.FadeInTest, 0.3f, 0f);
-
-                SettingsMenuParent.SetActive(true);
-                MainMenuParent.SetActive(false);
-                SoundController.Static.playSoundFromName("Click");
-                currentScreen = MenuScreens.SettingsMenu;
+                Invoke("OpenSettingsMenu", 0.2f);
                 break;
             case "PauseMenu":
                 //CameraFade.current.FadeOut(CameraFade.current.FadeInTest, 0.3f, 0f);
-
                 SettingsMenuParent.SetActive(true);
                 MainMenuParent.SetActive(false);
+                TotalCoinsParent.SetActive(false);
                 SoundController.Static.playSoundFromName("Click");
                 currentScreen = MenuScreens.PauseMenu;
                 break;
@@ -133,6 +118,8 @@ public class MainMenu : MonoBehaviour {
         switch (currentScreen)
         {
             case MenuScreens.mainmenu:
+                TotalCoinsParent.SetActive(false);
+
                 if (Input.GetKeyDown(KeyCode.Escape))
                 {
                     //DeActive();
@@ -231,5 +218,44 @@ public class MainMenu : MonoBehaviour {
         InnAppMenuParent.SetActive(false);
         InsufficentCoinsForPlayerselectionMenu.SetActive(false);
         MissionsMenuParent.SetActive(false);
+    }
+
+
+    void OpenUpgradesMenu()
+    {
+        PlayerSelectionmenuParent.SetActive(false);
+        UpgradesMenuParent.SetActive(true);
+        MainMenuParent.SetActive(false);
+        TotalCoinsParent.SetActive(true);
+        SoundController.Static.playSoundFromName("Click");
+        currentScreen = MenuScreens.StoreMenu;
+    }
+
+    void OpenMissionsMenu()
+    {
+        MissionsMenuParent.SetActive(true);
+        MainMenuParent.SetActive(false);
+        TotalCoinsParent.SetActive(true);
+        SoundController.Static.playSoundFromName("Click");
+        currentScreen = MenuScreens.Missions;
+    }
+
+    void OpenSettingsMenu()
+    {
+        SettingsMenuParent.SetActive(true);
+        MainMenuParent.SetActive(false);
+        TotalCoinsParent.SetActive(false);
+        SoundController.Static.playSoundFromName("Click");
+        currentScreen = MenuScreens.SettingsMenu;
+    }
+
+    void OpenPlayerSelection()
+    {
+        MainMenuParent.SetActive(false);
+        PlayerSelectionWithCamera.SetActive(true);
+        PlayerSelectionmenuParent.SetActive(true);
+        TotalCoinsParent.SetActive(true);
+        SoundController.Static.playSoundFromName("Click");
+        currentScreen = MenuScreens.playerSelectionMenu;
     }
 }

@@ -11,9 +11,9 @@ public class GameUIController : MonoBehaviour
     GameEndMenuParent, 
     HUD, 
     continueScreen,
-        continueContainer,
-        continueBgImg,
-        powEffect,
+    continueContainer,
+    continueBgImg,
+    powEffect,
     magnetIndicator, 
     multiplierIndicator, 
     playerInFlyIndicator, 
@@ -24,8 +24,8 @@ public class GameUIController : MonoBehaviour
     DeathParticles;
 
 	public int inGameCoinCount = 0;
-	public int inGameScoreCount = 0;
     public int multiplierValue = 1;
+    public int inGameEnemiesKilled = 0;
     int countinueCount = 1;
     public int
     swipeLeftCount,
@@ -35,13 +35,11 @@ public class GameUIController : MonoBehaviour
 
     public Image[] hearts;	
      
-	public float 
-    inGameDistance, 
-    continueCoins;
+	public float continueCoins;
     float indicatorSpeed;
 
     public Text  
-    scoreCountText, 
+   // scoreCountText, 
     coinsCountText, 
     distanceCountText, 
     missionCompletedText,
@@ -113,7 +111,7 @@ public class GameUIController : MonoBehaviour
         {
             Completed_MissionsIndications ();
             Coins_IngameCount ();
-            Score_IngameCount ();          	
+            //Score_IngameCount ();    // Not needed during gameplay     	
             Multiplier_IngameCount ();				
             Distance_IngameCount ();
         }
@@ -161,20 +159,10 @@ public class GameUIController : MonoBehaviour
 				SoundController.Static.playSoundFromName ("Click");
 				break;
 		    case "Restart":
-				Time.timeScale = 1;				
-				GameEndMenuParent.transform.localScale = Vector3.zero;
-				continueScreen.SetActive (false);
-				ResumeMenuParent.SetActive (false);						
-				loadingParent.SetActive (true);
-                //SoundController.Static.playSoundFromName("Click");
-                MenuHelper._Instance.restartFromGameplay = 1;
-                SceneManager.LoadSceneAsync(1);
+                Invoke("RestartAfterButton", 0.2f);
 				break;
 		    case "Home":
-                //SoundController.Static.playSoundFromName ("Click");
-                ResumeMenuParent.SetActive (false);
-                MenuHelper._Instance.restartFromGameplay = 0;
-                SceneManager.LoadSceneAsync(1);
+                Invoke("GoHomeAfterButton", 0.2f);
 				break;
 		    case "FbLike":
 				string fbUrl = "https://www.facebook.com/AceGamesHyderabad";
@@ -193,11 +181,7 @@ public class GameUIController : MonoBehaviour
 		    case "YesBtn":
 				if (PlayerPrefs.GetInt ("TotalCoins", 0) >= GameUIController.Static.continueCoins)
                 {
-					GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerController> ().RespwanPlayer ();
-					Debug.Log ("Call Respwan method from Player Controller");
-					continueScreen.SetActive (false);
-					isGameEnd = false;
-					HUD.SetActive (true);
+                    Invoke("ContinueAfterOK", 0.2f);
 				}
                 else
                 {
@@ -212,6 +196,34 @@ public class GameUIController : MonoBehaviour
 		}
 	}
 
+    void RestartAfterButton()
+    {
+        Time.timeScale = 1;
+        SoundController.Static.playSoundFromName("Click");
+        GameEndMenuParent.transform.localScale = Vector3.zero;
+        continueScreen.SetActive(false);
+        ResumeMenuParent.SetActive(false);
+        loadingParent.SetActive(true);   
+        MenuHelper._Instance.restartFromGameplay = 1;
+        SceneManager.LoadSceneAsync(1);
+    }
+
+    void ContinueAfterOK()
+    {
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().RespwanPlayer();
+        Debug.Log("Call Respwan method from Player Controller");
+        continueScreen.SetActive(false);
+        isGameEnd = false;
+        HUD.SetActive(true);
+    }
+
+    void GoHomeAfterButton()
+    {
+        SoundController.Static.playSoundFromName ("Click");
+        ResumeMenuParent.SetActive(false);
+        MenuHelper._Instance.restartFromGameplay = 0;
+        SceneManager.LoadSceneAsync(1);
+    }
 
 	void InsufficientFunds ()
 	{
@@ -271,16 +283,18 @@ public class GameUIController : MonoBehaviour
 		coinsCountText.text = "" + inGameCoinCount.ToString ().PadLeft (3, '0');
 	}
 
-	void Score_IngameCount ()
-	{
-		//scoreCountText.text = "" + inGameScoreCount.ToString ().PadLeft (4,'0');
-	}
+	//void Score_IngameCount ()
+	//{
+	//	scoreCountText.text = "" + inGameScoreCount.ToString ().PadLeft (4,'0');
+	//}
 
 	
 	void Distance_IngameCount ()
 	{
-		inGameDistance += multiplierValue * 0.4f;
-		distanceCountText.text = "" + Mathf.RoundToInt (inGameDistance).ToString ().PadLeft (6, '0');
+        // get distance froom game controller and display it here
+        distanceCountText.text = ((int)GameController.Static.runDistance).ToString();
+		//inGameDistance += multiplierValue * 0.4f;
+		//distanceCountText.text = "" + Mathf.RoundToInt (inGameDistance).ToString ().PadLeft (6, '0');
 	}
 
 	void Completed_MissionsIndications ()

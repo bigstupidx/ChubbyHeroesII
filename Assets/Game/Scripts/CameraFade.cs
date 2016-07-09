@@ -98,7 +98,7 @@ public class CameraFade : MonoBehaviour
             newCallback();
         }
 
-        overlay.enabled = false;
+        //overlay.enabled = false;
         Log("Fade Out Complete");
     }
 
