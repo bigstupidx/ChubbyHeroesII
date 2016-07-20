@@ -159,10 +159,12 @@ public class GameUIController : MonoBehaviour
 				SoundController.Static.playSoundFromName ("Click");
 				break;
 		    case "Restart":
-                Invoke("RestartAfterButton", 0.2f);
+                //Time.timeScale = 1.0f;
+                RestartAfterButton();
 				break;
 		    case "Home":
-                Invoke("GoHomeAfterButton", 0.2f);
+                //Time.timeScale = 1.0f;
+                GoHomeAfterButton();
 				break;
 		    case "FbLike":
 				string fbUrl = "https://www.facebook.com/AceGamesHyderabad";
@@ -212,6 +214,7 @@ public class GameUIController : MonoBehaviour
     {
         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().RespwanPlayer();
         Debug.Log("Call Respwan method from Player Controller");
+
         continueScreen.SetActive(false);
         isGameEnd = false;
         HUD.SetActive(true);
@@ -221,6 +224,8 @@ public class GameUIController : MonoBehaviour
     {
         SoundController.Static.playSoundFromName ("Click");
         ResumeMenuParent.SetActive(false);
+        loadingParent.SetActive(true);
+
         MenuHelper._Instance.restartFromGameplay = 0;
         SceneManager.LoadSceneAsync(1);
     }
