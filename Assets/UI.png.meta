@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 5a4d9c6a3c366724ea0296c9866b8972
-timeCreated: 1467309019
+timeCreated: 1469468838
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -35,6 +35,8 @@ TextureImporter:
     21300056: ui_28
     21300058: ui_29
     21300060: ui_30
+    21300062: UI_0
+    21300064: UI_1
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -195,31 +197,37 @@ TextureImporter:
     - name: ui_6
       rect:
         serializedVersion: 2
-        x: 1651
-        y: 1016
-        width: 388
-        height: 1023
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-    - name: ui_7
-      rect:
-        serializedVersion: 2
-        x: 702
-        y: 1805
-        width: 373
-        height: 88
+        x: 1639
+        y: 1928
+        width: 395
+        height: 112
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline:
-      - - {x: -43.5, y: 23}
-        - {x: -93.5, y: 21}
-        - {x: -93.5, y: -20}
-        - {x: -7.5, y: -22}
-        - {x: 93.5, y: -22}
-        - {x: 93.5, y: 23}
+      - - {x: -85.5, y: 28}
+        - {x: -98.5, y: 27}
+        - {x: -98.5, y: -27}
+        - {x: -31.5, y: -28}
+        - {x: 99.5, y: -28}
+        - {x: 99.5, y: 28}
+    - name: ui_7
+      rect:
+        serializedVersion: 2
+        x: 691
+        y: 1792
+        width: 395
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -85.5, y: 28}
+        - {x: -98.5, y: 27}
+        - {x: -98.5, y: -27}
+        - {x: -31.5, y: -28}
+        - {x: 99.5, y: -28}
+        - {x: 99.5, y: 28}
     - name: ui_8
       rect:
         serializedVersion: 2
@@ -750,6 +758,40 @@ TextureImporter:
         - {x: 4, y: -19}
         - {x: 21, y: -19}
         - {x: 21, y: 20}
+    - name: UI_0
+      rect:
+        serializedVersion: 2
+        x: 1639
+        y: 1798
+        width: 395
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -85.5, y: 28}
+        - {x: -98.5, y: 27}
+        - {x: -98.5, y: -27}
+        - {x: -31.5, y: -28}
+        - {x: 99.5, y: -28}
+        - {x: 99.5, y: 28}
+    - name: UI_1
+      rect:
+        serializedVersion: 2
+        x: 1639
+        y: 1668
+        width: 395
+        height: 112
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -85.5, y: 28}
+        - {x: -98.5, y: 27}
+        - {x: -98.5, y: -27}
+        - {x: -31.5, y: -28}
+        - {x: 99.5, y: -28}
+        - {x: 99.5, y: 28}
     outline: []
   spritePackingTag: 
   userData: 
