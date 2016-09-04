@@ -195,7 +195,7 @@ public class PlayerController : MonoBehaviour
                     {
                         if (normalJump)
                         {//Normal Jump
-                            playerAnimator.SetTrigger("JumpHigh");
+                            playerAnimator.SetTrigger("JumpHigh"); 
                             jumpSpeed = Mathf.Clamp(speed * 1.6f, 15, 18);
                             InputController.Static.isJump = false;
                             doubleJump = false;
