@@ -33,9 +33,10 @@ public class GameUIController : MonoBehaviour
     jumpCount,
     coinCount;
 
-    public Image[] hearts;	
-     
-	public float continueCoins;
+    //public Image[] hearts;
+    public GameObject[] hearts;
+
+    public float continueCoins;
     float indicatorSpeed;
 
     public Text  
@@ -82,8 +83,12 @@ public class GameUIController : MonoBehaviour
 			coinsScript [i].GetComponent<coinControl> ().resetSize ();
 		}
 
-		isGameEnd = false;				
-	}
+		isGameEnd = false;
+
+        UpdateNumberOfHearts(PlayerController.PlayerHealth);
+        UpdateHearts(0);
+
+    }
 
     void OnApplicationFocus(bool focusStatus)
     {
@@ -101,7 +106,9 @@ public class GameUIController : MonoBehaviour
 		float v = missionCompletedIndicator.transform.localPosition.x;
 		continueCoins = 500;
 		worldCruveScript = GameObject.FindGameObjectWithTag ("GameController").GetComponent<curverSetter> ();
-	}
+        UpdateNumberOfHearts(PlayerController.PlayerHealth); // updatwe with current player health
+        
+    }
 
 	void Update ()
 	{
@@ -130,14 +137,29 @@ public class GameUIController : MonoBehaviour
         }
 	}
 
-    public void UpdateHearts(int hurtCount)
+    // TODO: populate hearts array based on instantiated player lives 
+   
+    public void UpdateNumberOfHearts(int playerHEalth)
     {
+        Debug.Log("UpdateNumberOfHearts(int selectedPlayerIndex): " + playerHEalth);
         for (int i = 0; i < hearts.Length; i++)
         {
-            if(hurtCount <= i)
-                hearts[i].enabled = true;
+            if (i < playerHEalth)
+            {
+                hearts[i].SetActive(true);
+            }
+        }
+    }
+
+    public void UpdateHearts(int hurtCount)
+    {
+        Debug.Log("UpdateHearts(int hurtCount): " + (hurtCount));
+        for (int i = 0; i < hearts.Length; i++)
+        {
+            if (i >= hurtCount)
+                hearts[i].GetComponent<Image>().enabled = true;
             else
-                hearts[i].enabled = false;
+                hearts[i].GetComponent<Image>().enabled = false;
         }
     }
         

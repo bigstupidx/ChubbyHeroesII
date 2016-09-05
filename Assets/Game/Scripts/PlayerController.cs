@@ -57,7 +57,12 @@ public class PlayerController : MonoBehaviour
 
     public ParticleEmitter coinParticle;
 
-    int playerHealt;// hitCount changes accoding to player index value THIS IS A STAT SPECIFFIC TO EACH PLAYER
+    public static int PlayerHealth
+    {
+        get { return playerHealt; }
+    }
+
+    static int playerHealt;// hitCount changes accoding to player index value THIS IS A STAT SPECIFFIC TO EACH PLAYER
     int runState = Animator.StringToHash("Base Layer.Run");
     int downStateValue2 = Animator.StringToHash("Base Layer.Roll");
     int downStateValue1 = Animator.StringToHash("Base Layer.Slide");
@@ -83,63 +88,80 @@ public class PlayerController : MonoBehaviour
 
     }
 
-
-
     void Start()
     {
+        InstantiateSelectedPlayer();
+    }
+
+    [SerializeField]
+    GameObject p;
+
+    public void InstantiateSelectedPlayer ()
+    {
+        
+
+        if (p != null)
+            Destroy(p);
 
         if (PlayerPrefs.GetInt("SelectedPlayer", 0) == 0)
         { // for Player 1
             // instantiate Correct player prefab
-            GameObject p = Instantiate(playerPrefabs[0], transform.position, Quaternion.identity) as GameObject;
+            p = Instantiate(playerPrefabs[0], transform.position, Quaternion.identity) as GameObject;
             p.transform.SetParent(transform);
             p.transform.position = transform.position;
             // set it's stats
+            playerHealt = 1;
         }
         else if (PlayerPrefs.GetInt("SelectedPlayer", 0) == 1)
         {//  for Player 2
             // instantiate Correct player prefab
-            GameObject p = Instantiate(playerPrefabs[1], transform.position, Quaternion.identity) as GameObject;
+            p = Instantiate(playerPrefabs[1], transform.position, Quaternion.identity) as GameObject;
             p.transform.SetParent(transform);
             p.transform.position = transform.position;
             // set it's stats
+            playerHealt = 2;
         }
         else if (PlayerPrefs.GetInt("SelectedPlayer", 0) == 2)
         { // for Player 3
             // instantiate Correct player prefab
-            GameObject p = Instantiate(playerPrefabs[2], transform.position, Quaternion.identity) as GameObject;
+            p = Instantiate(playerPrefabs[2], transform.position, Quaternion.identity) as GameObject;
             p.transform.SetParent(transform);
             p.transform.position = transform.position;
             // set it's stats
-
+            playerHealt = 3;
         }
         else if (PlayerPrefs.GetInt("SelectedPlayer", 0) == 3)
         { // for Player 4
             // instantiate Correct player prefab
-            GameObject p = Instantiate(playerPrefabs[3], transform.position, Quaternion.identity) as GameObject;
+            p = Instantiate(playerPrefabs[3], transform.position, Quaternion.identity) as GameObject;
             p.transform.SetParent(transform);
             p.transform.position = transform.position;
             // set it's stats
+            playerHealt = 4;
         }
         else if (PlayerPrefs.GetInt("SelectedPlayer", 0) == 4)
         { // for Player 4
             // instantiate Correct player prefab
-            GameObject p = Instantiate(playerPrefabs[3], transform.position, Quaternion.identity) as GameObject;
+            p = Instantiate(playerPrefabs[3], transform.position, Quaternion.identity) as GameObject;
             p.transform.SetParent(transform);
             p.transform.position = transform.position;
             // set it's stats
+            playerHealt = 5;
         }
-        else if (PlayerPrefs.GetInt("SelectedPlayer", 0) == 5)
-        { // for Player 4
-            // instantiate Correct player prefab
-            GameObject p = Instantiate(playerPrefabs[3], transform.position, Quaternion.identity) as GameObject;
-            p.transform.SetParent(transform);
-            p.transform.position = transform.position;
-            // set it's stats
-        }
-        //.......................................
+        //else if (PlayerPrefs.GetInt("SelectedPlayer", 0) == 5)
+        //{ // for Player 4
+        //    // instantiate Correct player prefab
+        //    p = Instantiate(playerPrefabs[3], transform.position, Quaternion.identity) as GameObject;
+        //    p.transform.SetParent(transform);
+        //    p.transform.position = transform.position;
+        //    // set it's stats
+        //    playerHealt = 5;
+        //}
 
-        playerAnimator = GetComponentInChildren<Animator>();
+        Debug.Log("Instantiated player with " + playerHealt + " health!");
+        CurrentState = PlayerStates.empty;
+        //.......................................
+        playerAnimator = p.GetComponent<Animator>();
         //powerObj_JetPack.SetActive(false); dezactivate pana testez platforma
         //powerObj_Magnet.SetActive(false);
         isPlayerDead = false;
@@ -149,7 +171,7 @@ public class PlayerController : MonoBehaviour
         thisTranfrom = transform;
         originalSpeed = speed;
 
-        playerHealt = 3; // lifes? per player?
+        // playerHealt = 3; // lifes? per player?
 
         CurrentState = PlayerStates.Idle;
     }
@@ -274,7 +296,6 @@ public class PlayerController : MonoBehaviour
                 isPlayerDead = true;
                 break;
             case PlayerStates.Idle:
-                //Debug.Log("Playerstate is IDLE");
                 playerAnimator.SetTrigger("Slide");
                 //play idle anim
                 break;
@@ -386,6 +407,7 @@ public class PlayerController : MonoBehaviour
         speed = 10;
         SoundController.Static.bgSound.enabled = true;
         ResetPlayerHurtCount();
+        GameUIController.Static.UpdateHearts(playeHurtCount);
         //PlayerEnemyController.Static.ResetToChase ();
         playerAnimator.SetTrigger("Run");
         CurrentState = PlayerStates.PlayerAlive;
@@ -419,10 +441,10 @@ public class PlayerController : MonoBehaviour
             if (!GameController.Static.isGamePaused || !isPlayerDead)
             {
                 playeHurtCount++;
+                Debug.Log("playeHurtCount" + playeHurtCount);
                 GameUIController.Static.UpdateHearts(playeHurtCount);
                 if (playeHurtCount == playerHealt)
                 {
-                    Debug.Log("hurt count max!");
                     KillPlayer();
 
                 }
@@ -761,6 +783,7 @@ public class PlayerController : MonoBehaviour
             print("Debug PlayerHurtCount : " + playeHurtCount);
             speed = originalSpeed;
             playeHurtCount++;
+            Debug.Log("playeHurtCount" + playeHurtCount);
             GameUIController.Static.UpdateHearts(playeHurtCount);
             if (playeHurtCount == playerHealt)
             {
@@ -811,9 +834,9 @@ public class PlayerController : MonoBehaviour
             {
                 playerAnimator.SetTrigger("RightSideHit");
             }
-            print("Debug PlayerHurtCount : " + playeHurtCount);
             speed = originalSpeed;
             playeHurtCount++;
+            Debug.Log("playeHurtCount" + playeHurtCount);
             GameUIController.Static.UpdateHearts(playeHurtCount);
             if (playeHurtCount == playerHealt)
             {

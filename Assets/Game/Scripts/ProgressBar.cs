@@ -56,7 +56,7 @@ public class ProgressBar : MonoBehaviour {
 		}
 		else if(playerScript.isJumpModeIndicator)
 		{
-            Debug.Log(PlayerPrefs.GetInt("JumpPower_Ingame"));
+            //Debug.Log(PlayerPrefs.GetInt("JumpPower_Ingame"));
 			jumpModeProgressbar.fillAmount -= (float) 1/( DoubleJumpValue   *500);
 			if(jumpModeProgressbar.fillAmount==0)
             {

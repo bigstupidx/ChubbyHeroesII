@@ -44,12 +44,14 @@ public class Playerselection : MonoBehaviour
 
     float Swipedistance = 20;
 
+    PlayerController pc;
 
 
     void Start ()
 	{ 
         PlayerIndex = PlayerPrefs.GetInt("SelectedPlayer", 0);
         ShowPlayerInfo();
+        pc = FindObjectOfType<PlayerController>();
     }
 
 	void Update ()
@@ -102,13 +104,16 @@ public class Playerselection : MonoBehaviour
                 PlayerSelectionWithCamera.SetActive(false);
                 PlayerSelectionMenu.SetActive (false);
 				MainMenuParent.SetActive (true);
+                pc.InstantiateSelectedPlayer();
                 MainMenu.currentScreen = MainMenu.MenuScreens.mainmenu;
                 break;
 		}
-	}
+        
+
+    }
 
 
-	void showNextPlayer ()
+    void showNextPlayer ()
 	{	
 		if (Time.timeSinceLevelLoad - lastSwipeTime < 0.3f)
 				return;
@@ -137,7 +142,7 @@ public class Playerselection : MonoBehaviour
 			case 0:
 				PlayerNameText.text = "Ninja";
 				PlayerPriceDisplayText.text = "FREE ";
-				playerDescriptionText.text = "WITHSTAND 1 HIT";	
+				playerDescriptionText.text = "Lives: <3";	
 				buyButton.SetActive (false);
                 previousButton.SetActive(false);
                 if (PlayerPrefs.GetInt("SelectedPlayer") == PlayerIndex)
@@ -152,7 +157,7 @@ public class Playerselection : MonoBehaviour
                 }
 				break;
 			case 1:		 
-				playerDescriptionText.text = "WITHSTAND 2 HITS ";
+				playerDescriptionText.text = "LIVES: <3 <3";
 				PlayerNameText.text = "Fire Ninja";
 				PlayerPriceDisplayText.text = "10000";
                 previousButton.SetActive(true);
@@ -179,11 +184,11 @@ public class Playerselection : MonoBehaviour
                 }
 				break;
 			case 2:		 
-				playerDescriptionText.text = "WITHSTAND 3 HITS ";
+				playerDescriptionText.text = "LIVES: <3 <3 <3";
 				PlayerNameText.text = "Earth Ninja";
 				PlayerPriceDisplayText.text = "30000 ";
-			
-				if (PlayerPrefs.GetInt ("isPlayer2Purchased", 0) == 1)
+                nextButton.SetActive(true);
+                if (PlayerPrefs.GetInt ("isPlayer2Purchased", 0) == 1)
                 {
 					buyButton.SetActive (false);
                     PlayerPriceGO.SetActive(false);
@@ -206,61 +211,11 @@ public class Playerselection : MonoBehaviour
                 }
 				break;
 			case 3:					 
-				playerDescriptionText.text = "WITHSTAND 4 HITS ";
+				playerDescriptionText.text = "LIVES: <3 <3 <3 <3";
 				PlayerNameText.text = "Water Ninja";
 				PlayerPriceDisplayText.text = "40000 ";
-			
-				if (PlayerPrefs.GetInt ("isPlayer3Purchased", 0) == 1) {
-					buyButton.SetActive (false);
-                    PlayerPriceGO.SetActive(false);
-                    if (PlayerPrefs.GetInt("SelectedPlayer") == PlayerIndex)
-                    {
-                        selectButton.SetActive(false);
-                        selectedButton.SetActive(true);
-                    }
-                    else
-                    {
-                        selectedButton.SetActive(false);
-                        selectButton.SetActive(true);
-                    }
-                } else {
-					buyButton.SetActive (true);
-                    PlayerPriceGO.SetActive(true);
-                    selectedButton.SetActive(false);
-                    selectButton.SetActive(false);
-                }
-				break;
-			case 4:					 
-				PlayerNameText.text = "";
-				PlayerPriceDisplayText.text = "50000 ";
-                nextButton.SetActive(true);
-                if (PlayerPrefs.GetInt ("isPlayer4Purchased", 0) == 1)
-                {
-					buyButton.SetActive (false);
-                    PlayerPriceGO.SetActive(false);
-                    if (PlayerPrefs.GetInt("SelectedPlayer") == PlayerIndex)
-                    {
-                        selectButton.SetActive(false);
-                        selectedButton.SetActive(true);
-                    }
-                    else
-                    {
-                        selectedButton.SetActive(false);
-                        selectButton.SetActive(true);
-                    }
-                } else {
-					buyButton.SetActive (true);
-                    PlayerPriceGO.SetActive(true);
-                    selectedButton.SetActive(false);
-                    selectButton.SetActive(false);
-                }
-				break;
-			case 5:						 
-				PlayerNameText.text = "Name : FFF";
-				PlayerPriceDisplayText.text = "70000 ";
                 nextButton.SetActive(false);
-				if (PlayerPrefs.GetInt ("isPlayer5Purchased", 0) == 1)
-                {
+                if (PlayerPrefs.GetInt ("isPlayer3Purchased", 0) == 1) {
 					buyButton.SetActive (false);
                     PlayerPriceGO.SetActive(false);
                     if (PlayerPrefs.GetInt("SelectedPlayer") == PlayerIndex)
@@ -279,9 +234,61 @@ public class Playerselection : MonoBehaviour
                     selectedButton.SetActive(false);
                     selectButton.SetActive(false);
                 }
-                break;
-			}	
-	}
+				break;
+			//case 4:
+   //             playerDescriptionText.text = "LIVES: <3 <3 <3 <3 <3";
+   //             PlayerNameText.text = "";
+			//	PlayerPriceDisplayText.text = "50000 ";
+   //             nextButton.SetActive(true);
+   //             if (PlayerPrefs.GetInt ("isPlayer4Purchased", 0) == 1)
+   //             {
+			//		buyButton.SetActive (false);
+   //                 PlayerPriceGO.SetActive(false);
+   //                 if (PlayerPrefs.GetInt("SelectedPlayer") == PlayerIndex)
+   //                 {
+   //                     selectButton.SetActive(false);
+   //                     selectedButton.SetActive(true);
+   //                 }
+   //                 else
+   //                 {
+   //                     selectedButton.SetActive(false);
+   //                     selectButton.SetActive(true);
+   //                 }
+   //             } else {
+			//		buyButton.SetActive (true);
+   //                 PlayerPriceGO.SetActive(true);
+   //                 selectedButton.SetActive(false);
+   //                 selectButton.SetActive(false);
+   //             }
+			//	break;
+                //case 5:
+                //  playerDescriptionText.text = "LAST PLAYER";
+                //  PlayerNameText.text = "Name : FFF";
+                //	PlayerPriceDisplayText.text = "70000 ";
+                //  nextButton.SetActive(false);
+                //	if (PlayerPrefs.GetInt ("isPlayer5Purchased", 0) == 1)
+                //  {
+                //      buyButton.SetActive (false);
+                //       PlayerPriceGO.SetActive(false);
+                //       if (PlayerPrefs.GetInt("SelectedPlayer") == PlayerIndex)
+                //       {
+                //           selectButton.SetActive(false);
+                //           selectedButton.SetActive(true);
+                //       }
+                //     else
+                //     {
+                //         selectedButton.SetActive(false);
+                //         selectButton.SetActive(true);
+                //     }
+                //  } else {
+                //		buyButton.SetActive (true);
+                //     PlayerPriceGO.SetActive(true);
+                //     selectedButton.SetActive(false);
+                //     selectButton.SetActive(false);
+                //  }
+                //   break;
+        }
+    }
 
 	void PurchasePlayer ()
 	{
@@ -334,18 +341,18 @@ public class Playerselection : MonoBehaviour
 					//PlayerSelectionMenu.SetActive (false);
 			}			
 			break;
-		case 5:
-			if (TotalCoins.Static.totalCoins >= 70000) {
-					buyPopUP.PlayerCost = 70000;
-					buyPopUp.SetActive (true);
-					//PlayerSelectionMenu.SetActive (false);
-			} else {
-					//	InAPPMenu.SetActive(true);
-					//	PlayerSelectionMenu.SetActive(false);
-					UnsufficentCoinsForPlayerselection.SetActive (true);
-					//PlayerSelectionMenu.SetActive (false);
-			}			
-			break;
+		//case 5:
+		//	if (TotalCoins.Static.totalCoins >= 70000) {
+		//			buyPopUP.PlayerCost = 70000;
+		//			buyPopUp.SetActive (true);
+		//			//PlayerSelectionMenu.SetActive (false);
+		//	} else {
+		//			//	InAPPMenu.SetActive(true);
+		//			//	PlayerSelectionMenu.SetActive(false);
+		//			UnsufficentCoinsForPlayerselection.SetActive (true);
+		//			//PlayerSelectionMenu.SetActive (false);
+		//	}			
+		//	break;
 		}	
 	}
 }

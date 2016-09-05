@@ -20,6 +20,8 @@ public class MainMenu : MonoBehaviour {
         PauseMenu,
         SettingsMenu
     };
+
+    
     public static MenuScreens currentScreen;
 
     public GameObject 
@@ -131,6 +133,7 @@ public class MainMenu : MonoBehaviour {
                 if (Input.GetKeyDown(KeyCode.Escape))
                 {
                     DeActive();
+                    //FindObjectOfType<PlayerController>().InstantiateSelectedPlayer(); why doesnt this work after purchasing a player??? fuuuck
                     MainMenuParent.SetActive(true);
                 }
                 break;
