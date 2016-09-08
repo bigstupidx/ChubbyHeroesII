@@ -88,6 +88,7 @@ public class GameController : MonoBehaviour
         
     }
 
+    //float oldRunDistance = 0f;
     void Update()
     {
         if (currentGameState == GameState.mainMenu)
@@ -98,6 +99,16 @@ public class GameController : MonoBehaviour
         else if (currentGameState == GameState.gameplay)
         {
             runDistance = Vector3.Distance(playerStartPos, playerTransform.position) / 2;
+
+                //if ((int)runDistance%10 == 0)
+                //{
+                //    if (runDistance > oldRunDistance)
+                //    {
+                //        oldRunDistance = runDistance;
+                //        ChangeMiniGameState();
+                //    }         
+                //}
+ 
 
             if (playerTransform.position.z - lastPlayerPosition > 295)
             {
@@ -120,13 +131,13 @@ public class GameController : MonoBehaviour
         Debug.Log("OnGameStart");
         GetComponent<curverSetter>().enabled = true;
         currentGameState = GameState.gameplay;
-        currentMiniGameState = actionPhaseState.easyRun; // start running in easymode
         playerController.CurrentState = PlayerStates.PlayerAlive;
-        
+        Debug.Log("Mini Game State is " + currentMiniGameState.ToString());
         InvokeRepeating("GenerateObstacles", 0.1f, 1.0f); // for obstacles
         InvokeRepeating("GeneratePowerUps", 5, 10f); // for PowerUps
         InvokeRepeating("GenerateCoins", 0.1F, 1.5f); // for coins
         InvokeRepeating("GenerateEnemies", 0.1f, 4f); // for enemies - this shpuld be replaced by currentMiniGameState logic
+        InvokeRepeating("ChangeMiniGameState", 10f, 10f);
         stopCreatingNewLand = true;
         stopCreatingObstacles = false;
        
@@ -137,11 +148,12 @@ public class GameController : MonoBehaviour
         SoundController.Static.bgSound.enabled = false;
         SoundController.Static.playSoundFromName("GameOver");
         GameUIController.isGameEnd = true;
-
+   
         CancelInvoke("GenerateObstacles"); // for obstacles
         CancelInvoke("GeneratePowerUps"); // for PowerUps
         CancelInvoke("GenerateCoins"); // for coins
         CancelInvoke("GenerateEnemies"); // for enemies
+        CancelInvoke("ChangeMiniGameState"); // for switching game difficulties
         stopCreatingNewLand = false;
     }
 
@@ -163,6 +175,7 @@ public class GameController : MonoBehaviour
                 currentMiniGameState = actionPhaseState.easyRun;
                 break;
             default:
+                currentMiniGameState = actionPhaseState.easyRun;
                 break;
         }
 
@@ -188,8 +201,9 @@ public class GameController : MonoBehaviour
         float laneOffset = lanePositions[UnityEngine.Random.Range(0, lanePositions.Length)];
 
         //raycast to that pposition down, see what hits
-        Vector3 origin = new Vector3(laneOffset, 40.0f, PlayerController.thisPosition.z + 100); // * newPowerup
+        Vector3 origin = new Vector3(laneOffset, 40.0f, PlayerController.thisPosition.z + 100 * newPowerUp); // * newPowerup?
         RaycastHit hit;
+
         if (Physics.Raycast(origin, Vector3.down, out hit, 500f))
         {
             if (hit.transform.name != "Col" || hit.transform.tag != "Coin")
@@ -220,6 +234,20 @@ public class GameController : MonoBehaviour
         if (PlayerController.isPlayerDead || isGamePaused)
             return;
 
+        switch (currentMiniGameState)
+        {
+            case actionPhaseState.easyRun:
+                break;
+            case actionPhaseState.mediumRun:
+                break;
+            case actionPhaseState.hardRun:
+                break;
+            case actionPhaseState.bossFight:
+                break;
+            default:
+                break;
+        }
+
         //raycast to that pposition down, see what hits
         Vector3 origin = new Vector3(0, 40.0f, PlayerController.thisPosition.z + 150); // * newPowerup
         RaycastHit hit;
@@ -231,6 +259,11 @@ public class GameController : MonoBehaviour
 
     }
     // ........................................
+
+    void GenerateBoss()
+    {
+
+    }
 
 
     // To created broken barrenl here........................
