@@ -53,18 +53,18 @@ public class MainMenu : MonoBehaviour {
             MainMenuParent.SetActive(true);
     }
 
-    void DoPlayStart()
-    {
-        GameController.Static.currentGameState = GameController.GameState.gameplay;
-        MainMenuParent.SetActive(false);
-        InGameUi.SetActive(true);
-        CameraFade.current.FadeIn(null, 1f, 0f);
-    }
+    //void DoPlayStart()
+    //{
+    //    GameController.Static.currentGameState = GameController.GameState.gameplay;
+    //    MainMenuParent.SetActive(false);
+    //    InGameUi.SetActive(true);
+    //    CameraFade.current.FadeIn(null, 1f, 0f);
+    //}
 	
 	public void OnButtonClick(string ButtonName){
 		switch(ButtonName){
 		    case "Play": // start intro animation, enable ingameUI
-                CameraFade.current.FadeOut(CameraFade.current.FadeInTest, 0f, 0f);
+                CameraFade.current.FadeOut(CameraFade.current.FadeInTest, 0.3f, 0f);
                 GameController.Static.OnGameStart();
                 SoundController.Static.playSoundFromName("Click");
                 MainMenuParent.SetActive(false);
@@ -72,7 +72,7 @@ public class MainMenu : MonoBehaviour {
                 TotalCoinsParent.SetActive(false);
                 break;
 		    case "PlayerSelect":
-                //CameraFade.current.FadeOut(CameraFade.current.FadeInTest, 0.3f, 0f);
+                CameraFade.current.FadeOut(CameraFade.current.FadeInTest, 0.3f, 0f);
                 Invoke("OpenPlayerSelection", 0.2f);
                 break;
 		    case "Credits":

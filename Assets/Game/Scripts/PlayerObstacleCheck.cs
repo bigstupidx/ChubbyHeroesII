@@ -21,6 +21,7 @@ public class PlayerObstacleCheck : MonoBehaviour
 	public bool CheckRightSide ()
 	{
 		//Debug.DrawRay (thisTrans.position, Vector3.right * 5, Color.red, 2, false);
+        // Can we do colliders?
 		 
 		if (Physics.Raycast (transform.position + charPositionOffset, Vector3.right * 2, out hit, 8))
         {

@@ -31,10 +31,10 @@ public class CameraFade : MonoBehaviour
 
     void Start()
     {
-        FadeIn(null, 0.3f, 0f);
+        FadeIn(null, 0.5f, 0f);
     }
 
-    public void FadeIn(Callback newCallback = null, float time = 2f, float delay = 0f)
+    public void FadeIn(Callback newCallback = null, float time = 1f, float delay = 0f)
     {
         // Stop all current coroutines
         StopAllCoroutines();

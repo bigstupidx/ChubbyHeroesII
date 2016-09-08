@@ -12,7 +12,18 @@ public class GameController : MonoBehaviour
         mainMenu,
         gameplay
     }
+
+    // use this to control game difficulty
+    public enum actionPhaseState 
+    {
+        easyRun,
+        mediumRun,
+        hardRun,
+        bossFight
+    }
+
     public GameState currentGameState;
+    public actionPhaseState currentMiniGameState;
     PlayerController playerController;
     public static GameController Static;
     public GameObject[] powerUps, coins, coins_FlyMode, obstacles_Tutorials, enemies;
@@ -22,7 +33,7 @@ public class GameController : MonoBehaviour
     public float[] lanePositions;
     public delegate void GAMESTATE();
     public float NewWayDistance, runDistance;
-    public bool isStopCreateNewWay = true;
+    public bool stopCreatingNewLand = true;
     public bool isGamePaused = false;
     public int CoinMultipler;
     Transform playerTransform;
@@ -93,27 +104,31 @@ public class GameController : MonoBehaviour
                 CreateNewWay();
                 lastPlayerPosition = playerTransform.position.z;
             }
+
+           
+
         }
     }
 
 
     //to create or stop the instatiation of new obstacles
     //if player is on ground ,we will create new obstacles,if he is flying or dead ,we will stop creating new ones.
-    public bool stopObsticalIns = false;
+    public bool stopCreatingObstacles = false;
 
     public void OnGameStart()
     {
         Debug.Log("OnGameStart");
         GetComponent<curverSetter>().enabled = true;
         currentGameState = GameState.gameplay;
+        currentMiniGameState = actionPhaseState.easyRun; // start running in easymode
         playerController.CurrentState = PlayerStates.PlayerAlive;
         
         InvokeRepeating("GenerateObstacles", 0.1f, 1.0f); // for obstacles
         InvokeRepeating("GeneratePowerUps", 5, 10f); // for PowerUps
         InvokeRepeating("GenerateCoins", 0.1F, 1.5f); // for coins
-        InvokeRepeating("GenerateEnemies", 0.1f, 4f); // for enemies
-        isStopCreateNewWay = true;
-        stopObsticalIns = false;
+        InvokeRepeating("GenerateEnemies", 0.1f, 4f); // for enemies - this shpuld be replaced by currentMiniGameState logic
+        stopCreatingNewLand = true;
+        stopCreatingObstacles = false;
        
     }
 
@@ -127,13 +142,37 @@ public class GameController : MonoBehaviour
         CancelInvoke("GeneratePowerUps"); // for PowerUps
         CancelInvoke("GenerateCoins"); // for coins
         CancelInvoke("GenerateEnemies"); // for enemies
-        isStopCreateNewWay = false;
+        stopCreatingNewLand = false;
+    }
+
+    // used to change dificulty stages...............................
+    public void ChangeMiniGameState() 
+    {
+        switch (currentMiniGameState)
+        {
+            case actionPhaseState.easyRun:
+                currentMiniGameState = actionPhaseState.mediumRun;
+                break;
+            case actionPhaseState.mediumRun:
+                currentMiniGameState = actionPhaseState.hardRun;
+                break;
+            case actionPhaseState.hardRun:
+                currentMiniGameState = actionPhaseState.bossFight;
+                break;
+            case actionPhaseState.bossFight:
+                currentMiniGameState = actionPhaseState.easyRun;
+                break;
+            default:
+                break;
+        }
+
+        Debug.Log("Mini Game State is " + currentMiniGameState.ToString());
     }
 
     // to create New Obstacles....................................
     void GenerateObstacles()
     {
-        if (!stopObsticalIns) {
+        if (!stopCreatingObstacles) {
             ObstacleGenerator.Static.CreateNewObstacle();
         }
     }
@@ -170,6 +209,9 @@ public class GameController : MonoBehaviour
 
 
     // To generate enemies ..........................
+    // to do : 
+    // spawn enemies based on currentMiniGameState
+
     Vector3 enemiesOffset = new Vector3(0, 12f, 0);
     int enemyIndex = 1;
     public void GenerateEnemies()
@@ -181,7 +223,7 @@ public class GameController : MonoBehaviour
         //raycast to that pposition down, see what hits
         Vector3 origin = new Vector3(0, 40.0f, PlayerController.thisPosition.z + 150); // * newPowerup
         RaycastHit hit;
-        if (Physics.Raycast(origin, Vector3.down, out hit, 50f))
+        if (Physics.Raycast(origin, Vector3.down, out hit, 100f))
         {
             GameObject Obj = Instantiate(enemies[UnityEngine.Random.Range(0, enemies.Length)], hit.point + enemiesOffset, Quaternion.identity) as GameObject;
             Obj.name = "Enemy " + enemyIndex++;

@@ -207,7 +207,7 @@ public class PlayerController : MonoBehaviour
 
                 if (controller.isGrounded)
                 {
-                    GameController.Static.stopObsticalIns = false;
+                    GameController.Static.stopCreatingObstacles = false;
 
                     moveDirection = new Vector3(0, 0, Time.deltaTime * 10 * speed);
                     moveDirection = transform.TransformDirection(moveDirection);
@@ -549,7 +549,7 @@ public class PlayerController : MonoBehaviour
             isFlyModeIndicator = true;
             playerAnimator.SetTrigger("JetPackJump");
             GameController.Static.GenerateCoins_FlyMode();
-            GameController.Static.stopObsticalIns = true;
+            GameController.Static.stopCreatingObstacles = true;
             ObstacleGenerator.Static.index = 0;
             //PlayerEnemyController.Static.QuickHideEnemy ();
             Destroy(incomingObj);
@@ -780,7 +780,7 @@ public class PlayerController : MonoBehaviour
             {
                 playerAnimator.SetTrigger("LeftSideHit");
             }
-            print("Debug PlayerHurtCount : " + playeHurtCount);
+
             speed = originalSpeed;
             playeHurtCount++;
             Debug.Log("playeHurtCount" + playeHurtCount);
