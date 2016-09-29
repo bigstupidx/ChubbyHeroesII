@@ -3,16 +3,20 @@ using System.Collections;
 
 public class ObstacleGenerator : MonoBehaviour
 {
-
-
 	public GameObject[]  obstaclesGroup;
-
-	public int index = 0, ObjCount = 0;
-	GameObject Obscaleobj, Obscaleobj1;
-	public float DistanceBetweenObstacles, FirstDistance;
+	public int 
+        index = 0, 
+        ObjCount = 0;
+	GameObject 
+        Obscaleobj, 
+        Obscaleobj1;
+	public float 
+        DistanceBetweenObstacles, 
+        FirstDistance,
+        ObstacleDistance;
 	public static ObstacleGenerator Static;
 
-	float ObstacleDistance ;
+	
 	void Start ()
 	{
 		Static = this;
@@ -25,7 +29,7 @@ public class ObstacleGenerator : MonoBehaviour
 
 	}
 
-	public void CreateNewObstacle ()
+	public void CreateNewObstacle () // to do: add generation frequency
 	{
 		if (PlayerController.isPlayerDead || GameController.Static.isGamePaused)
 			return;

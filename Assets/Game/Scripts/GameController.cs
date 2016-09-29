@@ -100,19 +100,9 @@ public class GameController : MonoBehaviour
         {
             runDistance = Vector3.Distance(playerStartPos, playerTransform.position) / 2;
 
-                //if ((int)runDistance%10 == 0)
-                //{
-                //    if (runDistance > oldRunDistance)
-                //    {
-                //        oldRunDistance = runDistance;
-                //        ChangeMiniGameState();
-                //    }         
-                //}
- 
-
             if (playerTransform.position.z - lastPlayerPosition > 295)
             {
-                CreateNewWay();
+                //CreateNewWay();
                 lastPlayerPosition = playerTransform.position.z;
             }
 
@@ -133,11 +123,11 @@ public class GameController : MonoBehaviour
         currentGameState = GameState.gameplay;
         playerController.CurrentState = PlayerStates.PlayerAlive;
         Debug.Log("Mini Game State is " + currentMiniGameState.ToString());
-        InvokeRepeating("GenerateObstacles", 0.1f, 1.0f); // for obstacles
-        InvokeRepeating("GeneratePowerUps", 5, 10f); // for PowerUps
-        InvokeRepeating("GenerateCoins", 0.1F, 1.5f); // for coins
-        InvokeRepeating("GenerateEnemies", 0.1f, 4f); // for enemies - this shpuld be replaced by currentMiniGameState logic
-        InvokeRepeating("ChangeMiniGameState", 10f, 10f);
+        //InvokeRepeating("GenerateObstacles", 0.1f, 1.0f); // for obstacles
+        //InvokeRepeating("GeneratePowerUps", 5, 10f); // for PowerUps
+        //InvokeRepeating("GenerateCoins", 0.1F, 1.5f); // for coins
+        //InvokeRepeating("GenerateEnemies", 0.1f, 4f); // for enemies - this shpuld be replaced by currentMiniGameState logic
+        //InvokeRepeating("ChangeMiniGameState", 10f, 10f);
         stopCreatingNewLand = true;
         stopCreatingObstacles = false;
        
@@ -226,35 +216,35 @@ public class GameController : MonoBehaviour
     // to do : 
     // spawn enemies based on currentMiniGameState
 
-    Vector3 enemiesOffset = new Vector3(0, 12f, 0);
+    Vector3 enemiesOffset = new Vector3(0, 100f, 0);
     int enemyIndex = 1;
+    public LayerMask groundLayerMask;
+
     public void GenerateEnemies()
     {
-        // stop generating if player dead
         if (PlayerController.isPlayerDead || isGamePaused)
             return;
 
-        switch (currentMiniGameState)
-        {
-            case actionPhaseState.easyRun:
-                break;
-            case actionPhaseState.mediumRun:
-                break;
-            case actionPhaseState.hardRun:
-                break;
-            case actionPhaseState.bossFight:
-                break;
-            default:
-                break;
-        }
+        Vector3 origin = new Vector3(0, 40.0f, PlayerController.thisPosition.z + 150);
 
-        //raycast to that pposition down, see what hits
-        Vector3 origin = new Vector3(0, 40.0f, PlayerController.thisPosition.z + 150); // * newPowerup
         RaycastHit hit;
-        if (Physics.Raycast(origin, Vector3.down, out hit, 100f))
+        if (Physics.Raycast(origin, Vector3.down, out hit, 100f, groundLayerMask))
         {
-            GameObject Obj = Instantiate(enemies[UnityEngine.Random.Range(0, enemies.Length)], hit.point + enemiesOffset, Quaternion.identity) as GameObject;
-            Obj.name = "Enemy " + enemyIndex++;
+            switch (currentMiniGameState)
+            {
+                case actionPhaseState.easyRun:
+                    GameObject Obj = Instantiate(enemies[UnityEngine.Random.Range(0, enemies.Length)], hit.point + enemiesOffset, Quaternion.identity) as GameObject;
+                    Obj.name = "Enemy " + enemyIndex++;
+                    break;
+                case actionPhaseState.mediumRun:
+                    break;
+                case actionPhaseState.hardRun:
+                    break;
+                case actionPhaseState.bossFight:
+                    break;
+                default:
+                    break;
+            }
         }
 
     }
@@ -267,57 +257,57 @@ public class GameController : MonoBehaviour
 
 
     // To created broken barrenl here........................
-    Component[] barrel_ChildObj, pot_ChildObj;
-	GameObject barrel;
+ //   Component[] barrel_ChildObj, pot_ChildObj;
+	//GameObject barrel;
 
-	public void GenerateBrokenBarrel ()
-	{
-		barrel = Instantiate (brokenBarrel)as GameObject;
-		if (PlayerController.isBarrelBroken) {
-			barrel.transform.position = PlayerController.thisPosition + new Vector3 (0, 0, 2.0f);//PlayerController.barrelPosition;
-			PlayerController.isBarrelBroken = false;
-		} else {
-			barrel.transform.position = ShurikenController.brokenBarrrel;
-		}
-		Destroy (barrel, 1.0f);
-	}
+	//public void GenerateBrokenBarrel ()
+	//{
+	//	barrel = Instantiate (brokenBarrel)as GameObject;
+	//	if (PlayerController.isBarrelBroken) {
+	//		barrel.transform.position = PlayerController.thisPosition + new Vector3 (0, 0, 2.0f);//PlayerController.barrelPosition;
+	//		PlayerController.isBarrelBroken = false;
+	//	} else {
+	//		barrel.transform.position = ShurikenController.brokenBarrrel;
+	//	}
+	//	Destroy (barrel, 1.0f);
+	//}
 	//.............................................................
 
 
 	// To creat broken pot here..................................
-	GameObject pot;
+	//GameObject pot;
 
-	public void GenerateBrokenPots ()
-	{
-		pot = Instantiate (brokenPot) as GameObject;
-		if (PlayerController.isPotBroken) {
-			pot.transform.position = PlayerController.thisPosition + new Vector3 (0, 0, 2.0f);
-			// PlayerController.potPosition;
-			PlayerController.isPotBroken = false;
-		} else {
-			//from shuriken poistion here
-			pot.transform.position = ShurikenController.brokenPot;
-			//}
-		}
-		Destroy (pot, 1.0f);
-	}
+	//public void GenerateBrokenPots ()
+	//{
+	//	pot = Instantiate (brokenPot) as GameObject;
+	//	if (PlayerController.isPotBroken) {
+	//		pot.transform.position = PlayerController.thisPosition + new Vector3 (0, 0, 2.0f);
+	//		// PlayerController.potPosition;
+	//		PlayerController.isPotBroken = false;
+	//	} else {
+	//		//from shuriken poistion here
+	//		pot.transform.position = ShurikenController.brokenPot;
+	//		//}
+	//	}
+	//	Destroy (pot, 1.0f);
+	//}
 
     //...........................................................
 
 
     // To create Coins.................................
-    int coin_Index = 0;
+    //int coin_Index = 0;
 	int newCoins = 1;
 
 	public void GenerateCoins ()
 	{
-		if (coin_Index >= coins.Length)
-			coin_Index = 0;
+		//if (coin_Index >= coins.Length)
+		//	coin_Index = 0;
 		GameObject coin = Instantiate (coins [UnityEngine.Random.Range (0, coins.Length)],
 		                            new Vector3 (0, 1f, PlayerController.thisPosition.z + 100), // * NEWCOINS
 		                            Quaternion.identity)as GameObject;
 		//coin.name = "Coin " + coin_Index;
-		coin_Index++;
+		//coin_Index++;
 		newCoins++;
 	}
 

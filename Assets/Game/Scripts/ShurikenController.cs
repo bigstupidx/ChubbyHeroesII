@@ -51,7 +51,7 @@ public class ShurikenController : MonoBehaviour
 
 		if (incomingTag.Contains ("Barrel")) { 
 			brokenBarrrel = incomingObj.transform.position;
-			GameController.Static.GenerateBrokenBarrel ();
+			//GameController.Static.GenerateBrokenBarrel ();
 			SoundController.Static.playSoundFromName ("Pot");
 			Destroy (incomingObj); // destroy  barrel or pot
 			Destroy (gameObject); // destroy Shuriken
@@ -61,7 +61,7 @@ public class ShurikenController : MonoBehaviour
         else if (incomingTag.Contains ("Pots"))
         {   
 			brokenPot = incomingObj.transform.position;
-			GameController.Static.GenerateBrokenPots ();
+			//GameController.Static.GenerateBrokenPots ();
 			SoundController.Static.playSoundFromName ("Pot");
 			Destroy (incomingObj); // destroy  barrel or pot
 			Destroy (gameObject); // destroy Shuriken

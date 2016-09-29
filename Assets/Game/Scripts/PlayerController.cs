@@ -77,6 +77,7 @@ public class PlayerController : MonoBehaviour
     public int rightTurn = Animator.StringToHash("Base Layer.Right_Turn");
     Transform thisTranfrom;
     public PlayerObstacleCheck ObstacleCheck;
+    bool canTurn;
 
     private float 
         presentSpeed,
@@ -209,8 +210,8 @@ public class PlayerController : MonoBehaviour
                 {
                     GameController.Static.stopCreatingObstacles = false;
 
-                    moveDirection = new Vector3(0, 0, Time.deltaTime * 10 * speed);
-                    moveDirection = transform.TransformDirection(moveDirection);
+                    moveDirection = transform.forward * Time.deltaTime * 10 * speed;
+                    //moveDirection = transform.TransformDirection(moveDirection);
                     moveDirection *= speed;
 
                     if (doubleJump || (playerAnimator.GetCurrentAnimatorStateInfo(0).fullPathHash == runState && InputController.Static.isJump))
@@ -246,8 +247,9 @@ public class PlayerController : MonoBehaviour
 
                 moveDirection.y -= (gravity * Time.deltaTime);
                 controller.Move(moveDirection * Time.deltaTime);
-                thisTranfrom.position = new Vector3(lanePosition, thisTranfrom.position.y, thisTranfrom.position.z);
 
+                //thisTranfrom.position = new Vector3(lanePosition, thisTranfrom.position.y, thisTranfrom.position.z); // make player move left right based on current orientation?
+                
                 //   player Collider reduces here when Player animation Base Layer name is Slide or Roll
 
                 if (playerAnimator.GetCurrentAnimatorStateInfo(0).fullPathHash == downStateValue1 || playerAnimator.GetCurrentAnimatorStateInfo(0).fullPathHash == downStateValue2)
@@ -277,11 +279,12 @@ public class PlayerController : MonoBehaviour
                 speed = 18;
                 flyHeight = Mathf.Lerp(flyHeight, 19, flySpeed);
                 moveDirection = new Vector3(0, 0, Time.deltaTime * 10 * speed);
+                //moveDirection = transform.forward;
                 moveDirection = transform.TransformDirection(moveDirection);
                 moveDirection *= speed;
                 controller.Move(moveDirection * Time.deltaTime);
-                thisTranfrom.rotation = Quaternion.Euler(0, lanePosition * tilt, 0);
-                thisTranfrom.position = new Vector3(lanePosition, flyHeight, thisTranfrom.position.z);
+                //thisTranfrom.rotation = Quaternion.Euler(0, lanePosition * tilt, 0);
+                //thisTranfrom.position = new Vector3(lanePosition, flyHeight, thisTranfrom.position.z);
                 if (flyHeight > 10)
                 {
                     playerAnimator.SetTrigger("JetPackFly");
@@ -363,7 +366,6 @@ public class PlayerController : MonoBehaviour
     public PlayerLane currentLane, lastLane;
 
     // Player lane changing here this method is called at fixed update Player state alive 
-
     void PlayerLaneChanging()
     {
         switch (currentLane)
@@ -432,6 +434,12 @@ public class PlayerController : MonoBehaviour
     {
         string incomingTag = incoming.tag;
         GameObject incomingObj = incoming.gameObject;
+
+        // player trigger with turn trigger
+        if (incomingTag.Contains("Turn"))
+        {
+            canTurn = true;
+        }
 
         // player Trigger with bullet...............
         if (incomingTag.Contains("Projectile"))
@@ -564,7 +572,7 @@ public class PlayerController : MonoBehaviour
             //PlayerEnemyController.Static.currentEnemyState = PlayerEnemyController.PlayerEnemyStates.chasing;
             isBarrelBroken = true;
             barrelPosition = incomingObj.transform.position;
-            GameController.Static.GenerateBrokenBarrel();
+            //GameController.Static.GenerateBrokenBarrel();
             int randomNum = UnityEngine.Random.Range(-1, 2);
             if (randomNum < 0)
             {
@@ -596,7 +604,7 @@ public class PlayerController : MonoBehaviour
             PlayerPrefs.SetInt("MissionDestroyPotsCount", PlayerPrefs.GetInt("MissionDestroyPotsCount", 0) - 1);
             //PlayerEnemyController.Static.currentEnemyState = PlayerEnemyController.PlayerEnemyStates.chasing;// Player enemy state changes here
             potPosition = incomingObj.transform.position;
-            GameController.Static.GenerateBrokenPots();// to generate broken pot here
+            //GameController.Static.GenerateBrokenPots();// to generate broken pot here
             int randomNum = UnityEngine.Random.Range(-1, 2);
             if (randomNum < 0)
             {
@@ -620,6 +628,15 @@ public class PlayerController : MonoBehaviour
             Invoke("ResetBarrelPotCount", 5.0f);// to reset the pots touche count and player enemy state
             Destroy(incomingObj);
         }
+    }
+
+    void OnTriggerExit(Collider incoming)
+    {
+        if (incoming.CompareTag("Turn"))
+        {
+            canTurn = false;
+        }
+
     }
 
     #endregion
@@ -763,11 +780,14 @@ public class PlayerController : MonoBehaviour
     #endregion
     //.......................................................
 
+ 
+
 
     #region Lanchange Anim
 
     //Player Lane changes here to check the left side is any obstacle player hurt count increased
     int playeHurtCount = 0;
+ 
 
     public void LeftSideMoving()
     {
@@ -792,7 +812,12 @@ public class PlayerController : MonoBehaviour
         }
         else if (CurrentState != PlayerStates.PlayerDead)
         {
-
+            if (canTurn)
+            {
+                gameObject.transform.Rotate(new Vector3(0, -90, 0));
+                canTurn = false;
+            }
+            
             switch (currentLane)
             {
                 case PlayerLane.one:
@@ -818,6 +843,7 @@ public class PlayerController : MonoBehaviour
                     SoundController.Static.playSoundFromName("swipe");
                     break;
             }
+
         }
     }
 
@@ -844,11 +870,14 @@ public class PlayerController : MonoBehaviour
             }
 
         }
-        else
-
-
-        if (CurrentState != PlayerStates.PlayerDead)
+        else if (CurrentState != PlayerStates.PlayerDead)
         {
+            if (canTurn)
+            {
+                gameObject.transform.Rotate(new Vector3(0, 90, 0));
+                canTurn = false;
+            }
+
             switch (currentLane)
             {
                 case PlayerLane.one:
