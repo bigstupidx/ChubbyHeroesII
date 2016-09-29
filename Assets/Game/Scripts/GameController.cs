@@ -35,6 +35,8 @@ public class GameController : MonoBehaviour
     public float NewWayDistance, runDistance;
     public bool stopCreatingNewLand = true;
     public bool isGamePaused = false;
+    public bool stopCreatingObstacles = false;
+
     public int CoinMultipler;
     Transform playerTransform;
     float lastPlayerPosition;
@@ -42,6 +44,19 @@ public class GameController : MonoBehaviour
     public List<GameObject> upCoins = new List<GameObject>();
     public List<GameObject> pooledGrounds = new List<GameObject>();
     Vector3 playerStartPos;
+    Vector3 enemiesOffset = new Vector3(0, 100f, 0);
+    int enemyIndex = 1;
+    public LayerMask groundLayerMask;
+    int newPowerUp = 1;
+    Vector3 powerupOffset = new Vector3(0, 1f, 0);
+    //int coin_Index = 0;
+    int newCoins = 1;
+
+    int newWay_Index = 2;
+    int selectedGroundIndex;
+    GameObject nextObj;
+    Vector3 restingPos = new Vector3(0, 0, -1000);
+    public bool usePooling;
 
 
 
@@ -88,7 +103,6 @@ public class GameController : MonoBehaviour
         
     }
 
-    //float oldRunDistance = 0f;
     void Update()
     {
         if (currentGameState == GameState.mainMenu)
@@ -105,16 +119,8 @@ public class GameController : MonoBehaviour
                 //CreateNewWay();
                 lastPlayerPosition = playerTransform.position.z;
             }
-
-           
-
         }
     }
-
-
-    //to create or stop the instatiation of new obstacles
-    //if player is on ground ,we will create new obstacles,if he is flying or dead ,we will stop creating new ones.
-    public bool stopCreatingObstacles = false;
 
     public void OnGameStart()
     {
@@ -147,7 +153,6 @@ public class GameController : MonoBehaviour
         stopCreatingNewLand = false;
     }
 
-    // used to change dificulty stages...............................
     public void ChangeMiniGameState() 
     {
         switch (currentMiniGameState)
@@ -172,19 +177,13 @@ public class GameController : MonoBehaviour
         Debug.Log("Mini Game State is " + currentMiniGameState.ToString());
     }
 
-    // to create New Obstacles....................................
     void GenerateObstacles()
     {
         if (!stopCreatingObstacles) {
             ObstacleGenerator.Static.CreateNewObstacle();
         }
     }
-    //...................................
-
-    // to create PowerUPs ....................
-    int newPowerUp = 1;
-    Vector3 powerupOffset = new Vector3(0, 1f, 0);
-
+  
     public void GeneratePowerUps()
     {
         //get random lane position on X axis
@@ -209,16 +208,6 @@ public class GameController : MonoBehaviour
         }
         newPowerUp++;
     }
-    //..........................................
-
-
-    // To generate enemies ..........................
-    // to do : 
-    // spawn enemies based on currentMiniGameState
-
-    Vector3 enemiesOffset = new Vector3(0, 100f, 0);
-    int enemyIndex = 1;
-    public LayerMask groundLayerMask;
 
     public void GenerateEnemies()
     {
@@ -248,56 +237,11 @@ public class GameController : MonoBehaviour
         }
 
     }
-    // ........................................
 
     void GenerateBoss()
     {
 
     }
-
-
-    // To created broken barrenl here........................
- //   Component[] barrel_ChildObj, pot_ChildObj;
-	//GameObject barrel;
-
-	//public void GenerateBrokenBarrel ()
-	//{
-	//	barrel = Instantiate (brokenBarrel)as GameObject;
-	//	if (PlayerController.isBarrelBroken) {
-	//		barrel.transform.position = PlayerController.thisPosition + new Vector3 (0, 0, 2.0f);//PlayerController.barrelPosition;
-	//		PlayerController.isBarrelBroken = false;
-	//	} else {
-	//		barrel.transform.position = ShurikenController.brokenBarrrel;
-	//	}
-	//	Destroy (barrel, 1.0f);
-	//}
-	//.............................................................
-
-
-	// To creat broken pot here..................................
-	//GameObject pot;
-
-	//public void GenerateBrokenPots ()
-	//{
-	//	pot = Instantiate (brokenPot) as GameObject;
-	//	if (PlayerController.isPotBroken) {
-	//		pot.transform.position = PlayerController.thisPosition + new Vector3 (0, 0, 2.0f);
-	//		// PlayerController.potPosition;
-	//		PlayerController.isPotBroken = false;
-	//	} else {
-	//		//from shuriken poistion here
-	//		pot.transform.position = ShurikenController.brokenPot;
-	//		//}
-	//	}
-	//	Destroy (pot, 1.0f);
-	//}
-
-    //...........................................................
-
-
-    // To create Coins.................................
-    //int coin_Index = 0;
-	int newCoins = 1;
 
 	public void GenerateCoins ()
 	{
@@ -311,9 +255,6 @@ public class GameController : MonoBehaviour
 		newCoins++;
 	}
 
-    //................................................
-
-    // To create Coins at fly mode.................................
     public void GenerateCoins_FlyMode ()
 	{
 		//Debug.Log ("Generate Coins At fly Mode");
@@ -332,14 +273,6 @@ public class GameController : MonoBehaviour
 			Destroy (Coinobj);
 		}
 	}
-	//................................................
-
-	// To create new way.............................
-	int newWay_Index = 2;
-	int selectedGroundIndex;
-	GameObject nextObj;
-    Vector3 restingPos = new Vector3(0, 0, -1000);
-    public bool usePooling;
 
 	public void CreateNewWay ()
 	{

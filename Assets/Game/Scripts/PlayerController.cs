@@ -15,10 +15,31 @@ public enum PlayerStates
 	Tutorial,
 	Idle,
 };
+
+
 //..
 public class PlayerController : MonoBehaviour
 {
     public PlayerStates CurrentState;
+
+    public enum lastSwipeTurn
+    {
+        left,
+        right,
+        none
+    }
+
+    public lastSwipeTurn lastRegisteredSwipe;
+
+    public enum TurnColliders
+    {
+        SOUTH = 1,
+        EAST,
+        NORTH,
+        WEST
+    }
+
+    public TurnColliders _currentTurnCollider, _targetCollider;
 
     public static event EventHandler
         switchOnMagnetPower,
@@ -71,17 +92,44 @@ public class PlayerController : MonoBehaviour
     int hitSide1 = Animator.StringToHash("Base Layer.LookBackSideleft");
     int hitSide2 = Animator.StringToHash("Base Layer.LookBackSideRight");//Double_Jump
     int Double_Jump = Animator.StringToHash("Base Layer.Double_Jump");
-    // To check the Animations state
-
     public int leftTurn = Animator.StringToHash("Base Layer.Left_Turn");
     public int rightTurn = Animator.StringToHash("Base Layer.Right_Turn");
-    Transform thisTranfrom;
+    Transform 
+        thisTranfrom,
+        turnTarget;
     public PlayerObstacleCheck ObstacleCheck;
+
+    bool canTurnLeft;
+    bool canTurnRight;
     bool canTurn;
+    bool canChangeLane = true;
 
     private float 
         presentSpeed,
         originalSpeed;
+
+    public float tilt;
+    float lastTimeColliderChange;
+    float PlayerHorizontalMovement;
+    public float HorizontalLerpTarget;
+    public float horizontalLerpSpeed;
+    public float flyHeight, flySpeed;
+
+    GameObject[] destroy_Obsticals_Respwan;
+
+    public static bool doubleJump = false, normalJump = false;
+    public bool isMagnetIndicator = false, isMultiplierIndicator = false, isFlyModeIndicator = false, isJumpModeIndicator = false;
+    public static Vector3 barrelPosition, potPosition;
+    public static bool isBarrelBroken = false, isPotBroken = false;
+    int barrelPotTouche_Count = 0;
+    int score = 0;
+    int playeHurtCount = 0;
+    public float magnetPowerTime, multiplierPowerTime, lastTriggerJumpTime;
+
+
+
+    [SerializeField]
+    GameObject p;
 
     void Awake()
     {
@@ -93,9 +141,6 @@ public class PlayerController : MonoBehaviour
     {
         InstantiateSelectedPlayer();
     }
-
-    [SerializeField]
-    GameObject p;
 
     public void InstantiateSelectedPlayer ()
     {
@@ -177,13 +222,6 @@ public class PlayerController : MonoBehaviour
         CurrentState = PlayerStates.Idle;
     }
 
-    public float tilt;
-    float lastTimeColliderChange;
-    float PlayerHorizontalMovement;
-    public float HorizontalLerpTarget;
-    public float horizontalLerpSpeed;
-    public float flyHeight, flySpeed;
-
     void FixedUpdate()
     {
 
@@ -229,12 +267,10 @@ public class PlayerController : MonoBehaviour
                             jumpSpeed = Mathf.Clamp(speed * 1.6f, 30, 36);
                             InputController.Static.isJump = false;
                             if (playerAnimator.GetCurrentAnimatorStateInfo(0).fullPathHash != Double_Jump)
-                                //playerAnimator.SetTrigger ("DoubleJump");
                                 playerAnimator.SetTrigger("JumpHigh");
                         }
                         else
                         { // when jump power 
-
                             playerAnimator.SetTrigger("Jump");
                             PlayJumpSound();
                             PlayerPrefs.SetInt("MissionJumpCount", PlayerPrefs.GetInt("MissionJumpCount", 0) - 1);
@@ -248,10 +284,10 @@ public class PlayerController : MonoBehaviour
                 moveDirection.y -= (gravity * Time.deltaTime);
                 controller.Move(moveDirection * Time.deltaTime);
 
+                // *** CHANGE LANES HERE    
                 //thisTranfrom.position = new Vector3(lanePosition, thisTranfrom.position.y, thisTranfrom.position.z); // make player move left right based on current orientation?
-                
-                //   player Collider reduces here when Player animation Base Layer name is Slide or Roll
 
+                //   player Collider reduces here when Player animation Base Layer name is Slide or Roll
                 if (playerAnimator.GetCurrentAnimatorStateInfo(0).fullPathHash == downStateValue1 || playerAnimator.GetCurrentAnimatorStateInfo(0).fullPathHash == downStateValue2)
                 {
                     controller.center = DownPosistion;
@@ -267,10 +303,6 @@ public class PlayerController : MonoBehaviour
                     }
                 }
                 break;
-
-            //............................................................
-
-            // player in fly mode........................................
 
             case PlayerStates.fly:
 
@@ -291,13 +323,13 @@ public class PlayerController : MonoBehaviour
                 }
                 //Invoke ("PlayerStateChange", 10.0f);
                 break;
-            //.......................................................
 
             case PlayerStates.PlayerDead:
                 CurrentState = PlayerStates.empty;
                 InputController.Static.takeInput = false;
                 isPlayerDead = true;
                 break;
+
             case PlayerStates.Idle:
                 playerAnimator.SetTrigger("Slide");
                 //play idle anim
@@ -306,16 +338,11 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    // Random Animation for slide or role
     public void Slide_Roll()
     {
         playerAnimator.SetTrigger("Roll");
-
         SoundController.Static.playSoundFromName("roll");
     }
-    //......................................
-
-    // to reset the jump power.......
 
     public void PowerJumpReset()
     {
@@ -326,9 +353,6 @@ public class PlayerController : MonoBehaviour
         shoe1.SetActive(false);
         shoe2.SetActive(false);
     }
-    //......................................
-
-    // to reset the Jetpack power.......
 
     public void JetPackPowerReset()
     {
@@ -345,16 +369,15 @@ public class PlayerController : MonoBehaviour
         if (DestroyUpCoins != null)
             DestroyUpCoins(null, null);
     }
-    //................................
-
 
 
     #region player lanePosition
 
-    //public float[] LaneLimits;
     public float[] LanesPositions;
-    public float laneShiftSpeed;
-    public float targetLanePosition, lanePosition;
+    public float
+        laneShiftSpeed,
+        targetLanePosition, 
+        lanePosition;
 
     public enum PlayerLane
     {
@@ -363,33 +386,28 @@ public class PlayerController : MonoBehaviour
         three
     };
 
-    public PlayerLane currentLane, lastLane;
+    public PlayerLane currentLane;
+    //public PlayerLane lastLane;
 
     // Player lane changing here this method is called at fixed update Player state alive 
-    void PlayerLaneChanging()
+    void PlayerLaneChanging() // called from Fixed Update if case PlayerStates.PlayerAlive
     {
         switch (currentLane)
         {
             case PlayerLane.one:
-                targetLanePosition = LanesPositions[0];
+                targetLanePosition = LanesPositions[0]; // -4
                 break;
             case PlayerLane.two:
-                targetLanePosition = LanesPositions[1];
+                targetLanePosition = LanesPositions[1]; // 0
                 break;
             case PlayerLane.three:
-                targetLanePosition = LanesPositions[2];
+                targetLanePosition = LanesPositions[2]; // 4
                 break;
         }
-        lastLane = currentLane;
-        lanePosition = Mathf.Lerp(lanePosition, targetLanePosition, laneShiftSpeed);
+        //lastLane = currentLane; // WTF did I do here?
+        lanePosition = Mathf.Lerp(lanePosition, targetLanePosition, laneShiftSpeed); // float, changing from lanePosition to targetLanePosition in time amount = laneShiftSpeed. Used in Fixed update 
     }
-
-
-
     #endregion
-
-    //for  destroy already crated objects 
-    GameObject[] destroy_Obsticals_Respwan;
 
     // when play Again button clicked this Method is called
     public void RespwanPlayer()
@@ -417,19 +435,11 @@ public class PlayerController : MonoBehaviour
         GameController.Static.OnGameStart();
         GameUIController.isGameEnd = false;
     }
-    // used when player trigger with DoubleJump
-    public static bool doubleJump = false, normalJump = false;
-    public bool isMagnetIndicator = false, isMultiplierIndicator = false, isFlyModeIndicator = false, isJumpModeIndicator = false;
-    public static Vector3 barrelPosition, potPosition;
-    public static bool isBarrelBroken = false, isPotBroken = false;
-    int barrelPotTouche_Count = 0;
-    int score = 0;
 
     #region player Trigger Enter with
-    //for some reason ,if player is at great speed ,it misses the collision with DoubleJump trigger,so we checking with ray
 
-    public float magnetPowerTime, multiplierPowerTime, lastTriggerJumpTime;
 
+    Transform[] possibleTargets;
     void OnTriggerEnter(Collider incoming)
     {
         string incomingTag = incoming.tag;
@@ -439,6 +449,28 @@ public class PlayerController : MonoBehaviour
         if (incomingTag.Contains("Turn"))
         {
             canTurn = true;
+            canChangeLane = false;
+            lastRegisteredSwipe = lastSwipeTurn.none;
+            
+            switch (incomingObj.name)
+            {
+                case "NORTH":
+                    _currentTurnCollider = TurnColliders.NORTH;
+                    break;
+                case "EAST":
+                    _currentTurnCollider = TurnColliders.EAST;
+                    break;
+                case "SOUTH":
+                    _currentTurnCollider = TurnColliders.SOUTH;
+                    break;
+                case "WEST":
+                    _currentTurnCollider = TurnColliders.WEST;
+                    break;
+                default:
+                    break;
+            }
+
+            IntersectionParent = incomingObj.transform.parent;         
         }
 
         // player Trigger with bullet...............
@@ -459,9 +491,6 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-
-        // Player Trigger with Coin............
-
         if (incomingTag.Contains("Coin"))
         {
 
@@ -479,10 +508,6 @@ public class PlayerController : MonoBehaviour
 
         }
 
-        //......................................................		
-
-        // player  Trigger with Magnet...........
-
         else if (incomingTag.Contains("Magnet"))
         {
             GameUIController.Static.ShowPowerIndicatorAnim();
@@ -499,9 +524,6 @@ public class PlayerController : MonoBehaviour
             Destroy(incomingObj);
             //Invoke ("switchOffMagnet", 10);
         }
-        //.........................................................
-
-        //Player trigger with Multiplier..........
 
         else if (incomingTag.Contains("Multiplier"))
         {
@@ -516,9 +538,7 @@ public class PlayerController : MonoBehaviour
             Destroy(incomingObj);
             //Invoke ("switchOffMultiplier", 10);
         }
-        //.........................................................
 
-        // Player trigger with JumpMode the current will jump mode in 10sec
         else if (incomingTag.Contains("JumpMode"))
         {
             GameUIController.Static.ShowPowerIndicatorAnim();
@@ -536,8 +556,6 @@ public class PlayerController : MonoBehaviour
             Destroy(incomingObj);
 
         }
-
-        // Player trigger with FlyMode the currentState will  Fly mode 10 sec
 
         else if (incomingTag.Contains("FlyMode"))
         {
@@ -562,9 +580,6 @@ public class PlayerController : MonoBehaviour
             //PlayerEnemyController.Static.QuickHideEnemy ();
             Destroy(incomingObj);
         }
-        //...................................................
-
-        // incomingTag.Contains Barrel or Pot................
 
         else if (incomingTag.Contains("Barrel"))
         {
@@ -597,7 +612,6 @@ public class PlayerController : MonoBehaviour
             Destroy(incomingObj);
         }
 
-        // trigger with Pots
         else if (incomingTag.Contains("Pots"))
         {
             isPotBroken = true;
@@ -635,19 +649,17 @@ public class PlayerController : MonoBehaviour
         if (incoming.CompareTag("Turn"))
         {
             canTurn = false;
+            canChangeLane = true;
         }
 
     }
-
     #endregion
-
 
     void ResetBarrelPotCount()
     {
         //PlayerEnemyController.Static.currentEnemyState = PlayerEnemyController.PlayerEnemyStates.Idle;
         barrelPotTouche_Count = 0;
     }
-
 
     #region Player Collision with
     public static bool isPlayerDead;
@@ -707,7 +719,6 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
-    // to reset the Multiplier Power............
     public void switchOffMultiplier()
     {
         GameUIController.Static.progressBarScript.multiplierProgressBar.fillAmount = 1;
@@ -716,9 +727,7 @@ public class PlayerController : MonoBehaviour
         GameUIController.Static.multiplierIndicator.SetActive(false);
         GameUIController.Static.multiplierValue = PlayerPrefs.GetInt("MultiplierCount_Ingame", 1);
     }
-    //........................................
 
-    // to reset the magnet Power......................
     public void switchOffMagnet()
     {
         GameUIController.Static.progressBarScript.magnetProgressBar.fillAmount = 1;
@@ -730,7 +739,6 @@ public class PlayerController : MonoBehaviour
         if (switchOFFMagnetPower != null)
             switchOFFMagnetPower(null, null);
     }
-    //................................................
 
     #region On Game End
 
@@ -746,8 +754,6 @@ public class PlayerController : MonoBehaviour
     {
         SoundController.Static.playSoundFromName("Jump");
     }
-
-    // to draw ray down when palyer in slopes to play down animation
 
     #region RayDraw to Play Down Anim
 
@@ -776,34 +782,20 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
-
     #endregion
-    //.......................................................
-
- 
-
 
     #region Lanchange Anim
-
-    //Player Lane changes here to check the left side is any obstacle player hurt count increased
-    int playeHurtCount = 0;
- 
-
     public void LeftSideMoving()
     {
-
-        //thisTranfrom.eulerAngles = new Vector3 (0, 0, 0);
-        //Invoke("ResetPlayerHurtCount", 5.0f); // to reset player hurt count
+        thisTranfrom.eulerAngles = new Vector3 (0, 0, 0);
         if (ObstacleCheck.CheckLeftSide())
         {
             if (playerAnimator.GetCurrentAnimatorStateInfo(0).fullPathHash == runState)
             {
                 playerAnimator.SetTrigger("LeftSideHit");
             }
-
             speed = originalSpeed;
             playeHurtCount++;
-            Debug.Log("playeHurtCount" + playeHurtCount);
             GameUIController.Static.UpdateHearts(playeHurtCount);
             if (playeHurtCount == playerHealt)
             {
@@ -814,7 +806,14 @@ public class PlayerController : MonoBehaviour
         {
             if (canTurn)
             {
+                //register last swipe
+                lastRegisteredSwipe = lastSwipeTurn.left;
+
+                // get target
+                GetNewStreetTarget();
+                // align player
                 gameObject.transform.Rotate(new Vector3(0, -90, 0));
+
                 canTurn = false;
             }
             
@@ -822,8 +821,8 @@ public class PlayerController : MonoBehaviour
             {
                 case PlayerLane.one:
                     break;
-                case PlayerLane.two:
 
+                case PlayerLane.two:
                     currentLane = PlayerLane.one;
                     PlayerPrefs.SetInt("MissionswipeLeftCount", PlayerPrefs.GetInt("MissionswipeLeftCount", 0) - 1);
                     if (playerAnimator.GetCurrentAnimatorStateInfo(0).fullPathHash == runState)
@@ -832,8 +831,8 @@ public class PlayerController : MonoBehaviour
                     }
                     SoundController.Static.playSoundFromName("swipe");
                     break;
-                case PlayerLane.three:
 
+                case PlayerLane.three:
                     currentLane = PlayerLane.two;
                     PlayerPrefs.SetInt("MissionswipeLeftCount", PlayerPrefs.GetInt("MissionswipeLeftCount", 0) - 1);
                     if (playerAnimator.GetCurrentAnimatorStateInfo(0).fullPathHash == runState)
@@ -843,17 +842,14 @@ public class PlayerController : MonoBehaviour
                     SoundController.Static.playSoundFromName("swipe");
                     break;
             }
-
         }
     }
 
     //Player Lane changes here to check the right side is any obstacle player hurt count increased
-
     public void RightSideMoving()
     {
         
-        //thisTranfrom.eulerAngles = new Vector3 (0, 0, 0);
-        //Invoke("ResetPlayerHurtCount", 5.0f);// Player hurt count reset after 5 seconds,so he can hit two more times
+        thisTranfrom.eulerAngles = new Vector3 (0, 0, 0);
         if (ObstacleCheck.CheckRightSide())
         {
             if (playerAnimator.GetCurrentAnimatorStateInfo(0).fullPathHash == runState)
@@ -862,7 +858,6 @@ public class PlayerController : MonoBehaviour
             }
             speed = originalSpeed;
             playeHurtCount++;
-            Debug.Log("playeHurtCount" + playeHurtCount);
             GameUIController.Static.UpdateHearts(playeHurtCount);
             if (playeHurtCount == playerHealt)
             {
@@ -874,14 +869,20 @@ public class PlayerController : MonoBehaviour
         {
             if (canTurn)
             {
+                //register last swipe
+                lastRegisteredSwipe = lastSwipeTurn.right;
+
+                // get target
+                GetNewStreetTarget();
+
                 gameObject.transform.Rotate(new Vector3(0, 90, 0));
+
                 canTurn = false;
             }
 
             switch (currentLane)
             {
                 case PlayerLane.one:
-
                     PlayerPrefs.SetInt("MissionswipeRightCount", PlayerPrefs.GetInt("MissionswipeRightCount") - 1);
                     currentLane = PlayerLane.two;
                     if (playerAnimator.GetCurrentAnimatorStateInfo(0).fullPathHash == runState)
@@ -890,8 +891,8 @@ public class PlayerController : MonoBehaviour
                     }
                     SoundController.Static.playSoundFromName("swipe");
                     break;
-                case PlayerLane.two:
 
+                case PlayerLane.two:
                     PlayerPrefs.SetInt("MissionswipeRightCount", PlayerPrefs.GetInt("MissionswipeRightCount") - 1);
                     currentLane = PlayerLane.three;
                     if (playerAnimator.GetCurrentAnimatorStateInfo(0).fullPathHash == runState)
@@ -900,13 +901,51 @@ public class PlayerController : MonoBehaviour
                     }
                     SoundController.Static.playSoundFromName("swipe");
                     break;
+
                 case PlayerLane.three:
-
                     break;
-
             }
-
         }
+    }
+
+    Transform nextStreetTarget;
+    Transform IntersectionParent;
+    void GetNewStreetTarget()
+    {
+        nextStreetTarget = null;
+
+        if (_currentTurnCollider == TurnColliders.EAST && lastRegisteredSwipe == lastSwipeTurn.left)
+            nextStreetTarget = IntersectionParent.FindChild(TurnColliders.SOUTH.ToString());
+        if (_currentTurnCollider == TurnColliders.EAST && lastRegisteredSwipe == lastSwipeTurn.right)
+            nextStreetTarget = IntersectionParent.FindChild(TurnColliders.NORTH.ToString()); 
+
+        if (_currentTurnCollider == TurnColliders.WEST && lastRegisteredSwipe == lastSwipeTurn.left)
+            IntersectionParent.FindChild(TurnColliders.NORTH.ToString());
+        if (_currentTurnCollider == TurnColliders.WEST && lastRegisteredSwipe == lastSwipeTurn.right)
+            nextStreetTarget = IntersectionParent.FindChild(TurnColliders.SOUTH.ToString());
+
+        if (_currentTurnCollider == TurnColliders.SOUTH && lastRegisteredSwipe == lastSwipeTurn.left)
+            nextStreetTarget = IntersectionParent.FindChild(TurnColliders.WEST.ToString());
+        if (_currentTurnCollider == TurnColliders.SOUTH && lastRegisteredSwipe == lastSwipeTurn.right)
+            nextStreetTarget = IntersectionParent.FindChild(TurnColliders.EAST.ToString());
+
+        if (_currentTurnCollider == TurnColliders.NORTH && lastRegisteredSwipe == lastSwipeTurn.left)
+            nextStreetTarget = IntersectionParent.FindChild(TurnColliders.EAST.ToString());
+        if (_currentTurnCollider == TurnColliders.NORTH && lastRegisteredSwipe == lastSwipeTurn.right)
+            nextStreetTarget = IntersectionParent.FindChild(TurnColliders.WEST.ToString());
+
+
+        nextStreetTarget.GetComponent<Collider>().enabled = false;
+        nextStreetTarget.GetComponent<MeshRenderer>().enabled = false;
+        Invoke("ResetTargetTrigger", 3);
+
+        Debug.Log("Last Swipe was " + lastRegisteredSwipe + " and currentTurnCollider = " + _currentTurnCollider + " and nextStreetTarget is " + nextStreetTarget.name);
+    }
+
+    void ResetTargetTrigger()
+    {
+        nextStreetTarget.GetComponent<Collider>().enabled = true;
+        nextStreetTarget.GetComponent<MeshRenderer>().enabled = true;
     }
 
     void KillPlayer()
@@ -917,7 +956,6 @@ public class PlayerController : MonoBehaviour
         GameUIController.Static.ContinueScreen();
     }
 
-    // Player hurt count reset here
     void ResetPlayerHurtCount()
     {
         playeHurtCount = 0;
