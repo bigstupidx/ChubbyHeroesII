@@ -243,6 +243,8 @@ public class PlayerController : MonoBehaviour
                 // for LaneChanging
                 PlayerLaneChanging();
                 //..................................
+                if(nextStreetTarget != null)
+                    Debug.Log(transform.position.y - nextStreetTarget.position.y);
 
                 if (controller.isGrounded)
                 {
@@ -875,9 +877,12 @@ public class PlayerController : MonoBehaviour
                 // get target
                 GetNewStreetTarget();
 
-                gameObject.transform.Rotate(new Vector3(0, 90, 0));
+                //rotate player when he reaches the correct point  -needs time move to update
+                
 
-                canTurn = false;
+                //gameObject.transform.Rotate(new Vector3(0, 90, 0));
+
+                //canTurn = false;
             }
 
             switch (currentLane)
