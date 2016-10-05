@@ -12,7 +12,7 @@ public class CollisionChecker : MonoBehaviour
         playerControllerScript = GetComponentInParent<PlayerController>();
     }
 
-
+    int colNumber = 0;
     void OnTriggerEnter(Collider other)
     {
         GameObject incomingObj = other.gameObject;
@@ -41,10 +41,11 @@ public class CollisionChecker : MonoBehaviour
  
         }
 
-        if(other.CompareTag("InterZone"))
+        if(other.CompareTag("InterZone")) // aici tre sa inregistrez swipe de turn si sa fac disable la turnuri in functie de ce lane am
         {
             turnOnce = true;
-            Debug.Log("turnOnce " + turnOnce);
+            //playerControllerScript.canChangeLane = false;
+            //playerControllerScript.canTurn = true;
             // enable turn buttons and turn logic
 
             // get intersection type
@@ -66,22 +67,110 @@ public class CollisionChecker : MonoBehaviour
 
         if (other.CompareTag("Turn"))
         {
-            Debug.Log("turnOnce is: " + turnOnce);
+            colNumber++;
+            
+            if (turnOnce && (InputController.Static.turnSide == InputController.TurnSide.left))
+            {
+
+                switch (playerControllerScript.currentLane)
+                {           
+                    case PlayerController.PlayerLane.one:
+                        if (colNumber == 1)
+                        {
+                            CallTurning(other);
+                        }
+                        break;
+                    case PlayerController.PlayerLane.two:                   
+                        if(colNumber == 2)
+                        {
+                            CallTurning(other);
+                        }
+                        break;
+                    case PlayerController.PlayerLane.three:
+
+                        if (colNumber == 3)
+                        {
+                            CallTurning(other);
+                        }
+                        break;
+                    case PlayerController.PlayerLane.four:
+
+                        if (colNumber == 4)
+                        {
+                            CallTurning(other);
+                        }
+                        break;
+                    default:
+                        break;
+                }
+
+                Debug.Log(colNumber);
+            }
+
+            if (turnOnce && (InputController.Static.turnSide == InputController.TurnSide.right))
+            {
+                
+                switch (playerControllerScript.currentLane)
+                {
+                    case PlayerController.PlayerLane.one:
+                        if (colNumber == 4)
+                        {
+                            CallTurning(other);
+                        }
+                        break;
+                    case PlayerController.PlayerLane.two:
+                        if (colNumber == 3)
+                        {
+                            CallTurning(other);
+                        }
+                        break;
+                    case PlayerController.PlayerLane.three:
+
+                        if (colNumber == 2)
+                        {
+                            CallTurning(other);
+                        }
+                        break;
+                    case PlayerController.PlayerLane.four:
+                        if (colNumber == 1)
+                        {
+                            CallTurning(other);
+                        }
+                        break;
+                    default:
+                        break;
+                }
+
+                
+            }
+
+
             if (turnOnce && (InputController.Static.turnSide != InputController.TurnSide.none))
             {
-                Debug.Log("trigger small turn collider");
-                // perform turning based on where i entered
-                playerControllerScript.currentTurnLaneBlock = other.transform;
-                playerControllerScript.GetNewStreetTarget(playerControllerScript.intersectionType);
+                //Debug.Log("trigger small turn collider");
+                //// perform turning based on where i entered
+                //playerControllerScript.currentTurnLaneBlock = other.transform;
+                //playerControllerScript.GetNewStreetTarget(playerControllerScript.intersectionType);
                 
             }
         }
     }
 
+    void CallTurning(Collider other)
+    {
+        Debug.Log(colNumber);
+        playerControllerScript.currentTurnLaneBlock = other.transform;
+        playerControllerScript.GetNewStreetTarget(playerControllerScript.intersectionType);
+        colNumber = 0;
+    }
+
     void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Turn"))
+        if (other.CompareTag("InterZone"))
         {
+            colNumber = 0;
+            //playerControllerScript.canChangeLane = true;
+            //playerControllerScript.canTurn = false;
         }
 
     }

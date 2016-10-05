@@ -125,7 +125,7 @@ public class PlayerController : MonoBehaviour
     public float magnetPowerTime, multiplierPowerTime, lastTriggerJumpTime;
     CollisionChecker collisionCheckerScript;
     Rigidbody rb;
-
+    public int hitTurnsInThisIntersection = 0;
 
     [SerializeField]
     GameObject p;
@@ -141,6 +141,7 @@ public class PlayerController : MonoBehaviour
         InstantiateSelectedPlayer();
         collisionCheckerScript = GetComponentInChildren<CollisionChecker>();
         rb = GetComponent<Rigidbody>();
+        ics = true;
     }
 
     public void InstantiateSelectedPlayer ()
@@ -237,6 +238,9 @@ public class PlayerController : MonoBehaviour
                 RotatePlayer();
                 PlayerLaneChanging();
 
+
+
+
                 if (controller.isGrounded)
                 {
                     GameController.Static.stopCreatingObstacles = false;
@@ -274,9 +278,26 @@ public class PlayerController : MonoBehaviour
                 }
 
                 moveDirection.y -= (gravity * Time.deltaTime);
-                controller.Move(moveDirection * Time.deltaTime);
 
-                //rb.MovePosition(new Vector3(rb.position.x + targetLanePosition, rb.position.y, rb.position.z));
+                controller.Move(moveDirection * Time.deltaTime);
+                //transform.Translate(transform.forward * speed *  Time.deltaTime);
+
+                if (ics)
+                {
+                    Debug.Log("ics este " + ics);
+                    //move on X
+                    transform.position = new Vector3 (Mathf.Lerp(transform.position.x, targetLanePosition, 0.5f), transform.position.y, transform.position.z);
+                    //rb.MovePosition(new Vector3 (Mathf.Lerp(transform.position.x, targetLanePosition, 0.5f), transform.localPosition.y));
+                }
+                else
+                {
+                    Debug.Log("ics este " + ics);
+                    // move on Z
+                    //rb.MovePosition(new Vector3(rb.position.x, rb.position.y, rb.position.x + targetLanePosition));
+                    transform.position = new Vector3(transform.position.x, transform.position.y, Mathf.Lerp(transform.position.x, targetLanePosition, 0.5f));
+                }
+
+
 
                 if (playerAnimator.GetCurrentAnimatorStateInfo(0).fullPathHash == downStateValue1 || playerAnimator.GetCurrentAnimatorStateInfo(0).fullPathHash == downStateValue2)
                 {
@@ -399,7 +420,7 @@ public class PlayerController : MonoBehaviour
                 break;
         }
         // calc horiz value to move player on local X axis
-        valueLane = Vector3.right * targetLanePosition; // this returns a vector 3 with targetPosition as th X value. checked it.        
+        valueLane = Vector3.right * targetLanePosition; // this returns a vector3 with targetPosition as th X value. checked it.        
     }
 
     #endregion
@@ -846,39 +867,87 @@ public class PlayerController : MonoBehaviour
 
     public Transform nextStreetTarget;
     public Transform IntersectionParent;
+    public bool ics  =false;
     public void GetNewStreetTarget(IntersectionType i)
     {
         nextStreetTarget = null;
         if (i == IntersectionType.x)
         {
-            // get next target for CROSS INTERSECTION
+            // get next target for CROSS INTERSECTION pt ca aliniez playerul cu local forward al strazii
             if (_currentTurnCollider == TurnColliders.EAST && InputController.Static.turnSide == InputController.TurnSide.left)
+            {
                 nextStreetTarget = IntersectionParent.FindChild(TurnColliders.SOUTH.ToString());
+                ics = true;
+            }
+
             if (_currentTurnCollider == TurnColliders.EAST && InputController.Static.turnSide == InputController.TurnSide.right)
+            {
                 nextStreetTarget = IntersectionParent.FindChild(TurnColliders.NORTH.ToString());
+                ics = true;
+            }
+
+
             if (_currentTurnCollider == TurnColliders.EAST && InputController.Static.turnSide == InputController.TurnSide.none)
+            {
                 nextStreetTarget = IntersectionParent.FindChild(TurnColliders.WEST.ToString());
+                ics = false;
+            }
+
 
             if (_currentTurnCollider == TurnColliders.WEST && InputController.Static.turnSide == InputController.TurnSide.left)
+            {
                 nextStreetTarget = IntersectionParent.FindChild(TurnColliders.NORTH.ToString());
+                ics = true;
+            }
+
             if (_currentTurnCollider == TurnColliders.WEST && InputController.Static.turnSide == InputController.TurnSide.right)
-                nextStreetTarget = IntersectionParent.FindChild(TurnColliders.SOUTH.ToString());
+            {
+               nextStreetTarget = IntersectionParent.FindChild(TurnColliders.SOUTH.ToString());
+                ics = true;
+            }
+ 
             if (_currentTurnCollider == TurnColliders.WEST && InputController.Static.turnSide == InputController.TurnSide.none)
+            {
                 nextStreetTarget = IntersectionParent.FindChild(TurnColliders.EAST.ToString());
+                ics = false;
+            }
+
 
             if (_currentTurnCollider == TurnColliders.SOUTH && InputController.Static.turnSide == InputController.TurnSide.left)
+            {
                 nextStreetTarget = IntersectionParent.FindChild(TurnColliders.WEST.ToString());
+                ics = false;
+            }
+                
             if (_currentTurnCollider == TurnColliders.SOUTH && InputController.Static.turnSide == InputController.TurnSide.right)
+            {
                 nextStreetTarget = IntersectionParent.FindChild(TurnColliders.EAST.ToString());
+                ics = false;
+            }
+
             if (_currentTurnCollider == TurnColliders.SOUTH && InputController.Static.turnSide == InputController.TurnSide.none)
+            {
                 nextStreetTarget = IntersectionParent.FindChild(TurnColliders.NORTH.ToString());
+                ics = true;
+            }
 
             if (_currentTurnCollider == TurnColliders.NORTH && InputController.Static.turnSide == InputController.TurnSide.left)
+            {
                 nextStreetTarget = IntersectionParent.FindChild(TurnColliders.EAST.ToString());
+                ics = false;
+            }
+
             if (_currentTurnCollider == TurnColliders.NORTH && InputController.Static.turnSide == InputController.TurnSide.right)
+            {
                 nextStreetTarget = IntersectionParent.FindChild(TurnColliders.WEST.ToString());
+                ics = false;
+            }
             if (_currentTurnCollider == TurnColliders.NORTH && InputController.Static.turnSide == InputController.TurnSide.none)
+            {
                 nextStreetTarget = IntersectionParent.FindChild(TurnColliders.SOUTH.ToString());
+                ics = true;
+            }
+
         }
         else if (intersectionType == IntersectionType.y)
         {
@@ -890,8 +959,8 @@ public class PlayerController : MonoBehaviour
         }
 
         //Debug.Log("currentTurnCollider = " + _currentTurnCollider + " and nextStreetTarget is " + nextStreetTarget.name);
-
-        nextStreetTarget.gameObject.SetActive(false);
+        
+        IntersectionParent.gameObject.SetActive(false);
         Invoke("ResetTargetTrigger", 3);
         isTurning = true;
     }
@@ -905,12 +974,15 @@ public class PlayerController : MonoBehaviour
     {
 
         if (nextStreetTarget == null)
-            return;   
+            return;
+
+        //if (canTurn) this fucks up turning for some reason
+        //    return;
 
         if (isTurning)
         {
             playerRotDiff = Quaternion.Angle(transform.rotation, nextStreetTarget.rotation);
-            if (playerRotDiff >= 1)
+            if (playerRotDiff >= 5)
             {
                 oldMoveDir = moveDirection;
                 moveDirection = Vector3.zero;
@@ -922,14 +994,16 @@ public class PlayerController : MonoBehaviour
                 transform.position = new Vector3(currentTurnLaneBlock.position.x, transform.position.y, currentTurnLaneBlock.position.z);
                 transform.rotation = nextStreetTarget.rotation;
                 isTurning = false;
+                
             }
         }
+
     }
 
 
     void ResetTargetTrigger()
     {
-        nextStreetTarget.gameObject.SetActive(true);
+        IntersectionParent.gameObject.SetActive(true);
     }
 
     void KillPlayer()
