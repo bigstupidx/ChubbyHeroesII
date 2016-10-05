@@ -29,6 +29,9 @@ public class ProjectileEnemyBombDropper : MonoBehaviour
                 case PlayerController.PlayerLane.three:
                     targetPos = new Vector3(playerController.LanesPositions[2], 0f, player.transform.position.z + 30f);
                     break;
+                case PlayerController.PlayerLane.four:
+                    targetPos = new Vector3(playerController.LanesPositions[3], 0f, player.transform.position.z + 30f);
+                    break;
                 default:
                     break;
             }

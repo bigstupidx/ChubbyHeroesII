@@ -2,41 +2,81 @@ using UnityEngine;
 
 public class InputController : MonoBehaviour
 {
-	public  static InputController Static;
-	PlayerController playerScript;
+    public static InputController Static;
+    PlayerController playerScript;
     AttackScript attackScript;
-	public bool isJump = false, isDown = false, isLeft = false, isRight = false;
-	Touch currentTouch ;
-	float minSwipeDistY = 40;
-	float minSwipeDistX = 30;
-	private Vector2 startPos;
-	int touches;
-	public bool stopTutorial = false;
-	
-	void Start ()
-	{
-			Static = this;
-			playerScript = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerController> ();
-            attackScript = GameObject.FindGameObjectWithTag("Player").GetComponent<AttackScript>();
-            swipe_Initial_X = 0.0f;  
-			swipe_Initial_Y = 0.0f;  
-			swipe_Final_X = 0.0f;  
-			swipe_Final_Y = 0.0f;
-			present_Input_X = 0.0f;  
-			present_Input_Y = 0.0f;  
-	}
+    public bool isJump = false, isDown = false, turnLeft = false, turnRight = false;
+    Touch currentTouch;
+    float minSwipeDistY = 40;
+    float minSwipeDistX = 30;
+    private Vector2 startPos;
+    int touches;
+    public bool stopTutorial = false;
 
-	float lastThrowTime ;
-	
-	public bool doubleTap;
-	float doubleTapTime;
+    public enum TurnSide { left, right, none }
+    public TurnSide turnSide;
+
+    void Start()
+    {
+        Static = this;
+        playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        attackScript = GameObject.FindGameObjectWithTag("Player").GetComponent<AttackScript>();
+        swipe_Initial_X = 0.0f;
+        swipe_Initial_Y = 0.0f;
+        swipe_Final_X = 0.0f;
+        swipe_Final_Y = 0.0f;
+        present_Input_X = 0.0f;
+        present_Input_Y = 0.0f;
+    }
+
+    float lastThrowTime;
+
+    public bool doubleTap;
+    float doubleTapTime;
     public bool takeInput = true;
-	
-	Vector2 startMousePosition;
-	void Update ()
-	{
+
+    bool isLeftButtonHeld;
+    bool isRightButtonHeld;
+    public void onPointerDownLeftButton()
+    {
+        isLeftButtonHeld = true;
+    }
+
+    public void onPointerUpLEftButton()
+    {
+        isLeftButtonHeld = false;
+    }
+
+    public void onPointerDownRightButton()
+    {
+        isRightButtonHeld = true;
+    }
+
+    public void onPointerUpRightButton()
+    {
+        isRightButtonHeld = false;
+    }
+
+    Vector2 startMousePosition;
+    void Update()
+    {
         if (!takeInput)
             return;
+
+        if (Input.GetKey(KeyCode.K) || isLeftButtonHeld)
+        {
+            turnSide = TurnSide.left;
+        }
+        else if (Input.GetKey(KeyCode.L) || isRightButtonHeld)
+        {
+            turnSide = TurnSide.right;
+        }
+        else
+        {
+            turnSide = TurnSide.none;
+        }
+
+
 
         if (Input.GetKeyDown (KeyCode.Mouse0)) {
 			startMousePosition = Input.mousePosition;
@@ -56,7 +96,7 @@ public class InputController : MonoBehaviour
 			doubleTap = true;
 	    }
 		
-	    // to generate new shuriken.
+	    // to generate new 
 	    if (Time.timeSinceLevelLoad - lastThrowTime > 0.3f && (doubleTap)) {
 			doubleTap = false;					
 			lastThrowTime = Time.timeSinceLevelLoad;
@@ -106,11 +146,11 @@ public class InputController : MonoBehaviour
 	{
 		switch (ButtonName) {
 		case "Left":
-				isLeft = true;
+				turnLeft = true;
 				playerScript.HorizontalLerpTarget = -1;
 				break;
 		case "Right":
-				isRight = true;
+				turnRight = true;
 				playerScript.HorizontalLerpTarget = 1;
 				break;
 		case "Jump":

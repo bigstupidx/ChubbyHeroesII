@@ -124,11 +124,11 @@ public class GameController : MonoBehaviour
 
     public void OnGameStart()
     {
-        Debug.Log("OnGameStart");
+        //Debug.Log("OnGameStart");
         GetComponent<curverSetter>().enabled = true;
         currentGameState = GameState.gameplay;
         playerController.CurrentState = PlayerStates.PlayerAlive;
-        Debug.Log("Mini Game State is " + currentMiniGameState.ToString());
+        //Debug.Log("Mini Game State is " + currentMiniGameState.ToString());
         //InvokeRepeating("GenerateObstacles", 0.1f, 1.0f); // for obstacles
         //InvokeRepeating("GeneratePowerUps", 5, 10f); // for PowerUps
         //InvokeRepeating("GenerateCoins", 0.1F, 1.5f); // for coins

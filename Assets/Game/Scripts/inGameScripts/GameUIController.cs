@@ -90,11 +90,11 @@ public class GameUIController : MonoBehaviour
 
     }
 
-    void OnApplicationFocus(bool focusStatus)
-    {
-        if (!isGameEnd)
-        OnButtonClick("Pause");
-    }
+    //void OnApplicationFocus(bool focusStatus)
+    //{
+    //    if (!isGameEnd)
+    //    OnButtonClick("Pause");
+    //}
 
     void Start ()
 	{
@@ -141,7 +141,7 @@ public class GameUIController : MonoBehaviour
    
     public void UpdateNumberOfHearts(int playerHEalth)
     {
-        Debug.Log("UpdateNumberOfHearts(int selectedPlayerIndex): " + playerHEalth);
+        //Debug.Log("UpdateNumberOfHearts(int selectedPlayerIndex): " + playerHEalth);
         for (int i = 0; i < hearts.Length; i++)
         {
             if (i < playerHEalth)
@@ -153,7 +153,7 @@ public class GameUIController : MonoBehaviour
 
     public void UpdateHearts(int hurtCount)
     {
-        Debug.Log("UpdateHearts(int hurtCount): " + (hurtCount));
+        //Debug.Log("UpdateHearts(int hurtCount): " + (hurtCount));
         for (int i = 0; i < hearts.Length; i++)
         {
             if (i >= hurtCount)
