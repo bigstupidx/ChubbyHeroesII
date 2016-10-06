@@ -141,7 +141,8 @@ public class PlayerController : MonoBehaviour
         InstantiateSelectedPlayer();
         collisionCheckerScript = GetComponentInChildren<CollisionChecker>();
         rb = GetComponent<Rigidbody>();
-        ics = true;
+        //controller = GetComponent<CharacterController>();
+        moveDir = transform.forward;
     }
 
     public void InstantiateSelectedPlayer ()
@@ -215,6 +216,9 @@ public class PlayerController : MonoBehaviour
         CurrentState = PlayerStates.Idle;
     }
 
+    Vector3 moveDir;
+    bool handledLaneChange;
+    bool Grounded;
     void FixedUpdate()
     {
 
@@ -235,82 +239,96 @@ public class PlayerController : MonoBehaviour
                 presentSpeed = speed;
                 isPlayerOnGround();
 
+                if (transform.position.y < 1)
+                    Grounded = true;
+
                 RotatePlayer();
                 PlayerLaneChanging();
 
-
-
+                //moveDir *= speed;
 
                 if (controller.isGrounded)
                 {
+                    Debug.Log("GR");
                     GameController.Static.stopCreatingObstacles = false;
-
-                    moveDirection = transform.forward * Time.deltaTime * 10 * speed;
-                    moveDirection *= speed;
 
                     if (doubleJump || (playerAnimator.GetCurrentAnimatorStateInfo(0).fullPathHash == runState && InputController.Static.isJump))
                     {
                         if (normalJump)
-                        {//Normal Jump
-                            playerAnimator.SetTrigger("JumpHigh"); 
-                            jumpSpeed = Mathf.Clamp(speed * 1.6f, 15, 18);
+                        { // shoe
+                            playerAnimator.SetTrigger("JumpHigh");
+                            //jumpSpeed = Mathf.Clamp(speed, 10, 18);
+                            jumpSpeed = 5f;
                             InputController.Static.isJump = false;
                             doubleJump = false;
                         }
                         else if (doubleJump)
-                        {// Double jump trigger	
+                        {	// booster
                             doubleJump = false;
-                            jumpSpeed = Mathf.Clamp(speed * 1.6f, 30, 36);
+                            //jumpSpeed = Mathf.Clamp(speed * 1.5f, 20, 22);
+                            jumpSpeed = 7f;
                             InputController.Static.isJump = false;
                             if (playerAnimator.GetCurrentAnimatorStateInfo(0).fullPathHash != Double_Jump)
                                 playerAnimator.SetTrigger("JumpHigh");
                         }
                         else
-                        { // when jump power 
+                        {  
                             playerAnimator.SetTrigger("Jump");
                             PlayJumpSound();
                             PlayerPrefs.SetInt("MissionJumpCount", PlayerPrefs.GetInt("MissionJumpCount", 0) - 1);
-                            jumpSpeed = 15f;
+                            jumpSpeed = speed/3;
                             InputController.Static.isJump = false;
                         }
-                        moveDirection.y = jumpSpeed;
+                        moveDir.y = jumpSpeed;
                     }
+
                 }
+                moveDir.y -= (gravity * Time.deltaTime);
+                controller.Move(moveDir * speed * Time.deltaTime);
+                //transform.Translate(moveDir * speed * Time.deltaTime);
 
-                moveDirection.y -= (gravity * Time.deltaTime);
 
-                controller.Move(moveDirection * Time.deltaTime);
-                //transform.Translate(transform.forward * speed *  Time.deltaTime);
-
-                if(!isTurning)
+                if (!isTurning)
                 {
-                    if (ics)
+                    switch (CardinalDir)
                     {
-                        rb.MovePosition(new Vector3 (transform.position.x + targetLanePosition, transform.localPosition.y, transform.position.z));
-                    }
-                    else
-                    {
-                        rb.MovePosition(new Vector3(transform.position.x, transform.localPosition.y, transform.position.z - targetLanePosition));
-                    }
-                }
+                        case cardinalDir.north:
+                            transform.position = Vector3.Lerp(transform.position, new Vector3(nextStreetTarget.position.x + targetLanePosition, transform.position.y, transform.position.z), 0.3f);
+                            break;
+                        case cardinalDir.east:
+                            transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, transform.position.y,  nextStreetTarget.position.z - targetLanePosition), 0.3f);
 
+                            break;
+                        case cardinalDir.south:
+                            transform.position = Vector3.Lerp(transform.position, new Vector3( nextStreetTarget.position.x - targetLanePosition, transform.position.y, transform.position.z), 0.3f);
 
+                            break;
+                        case cardinalDir.west:
+                            transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, transform.position.y, nextStreetTarget.position.z + targetLanePosition), 0.3f);
 
-
-                if (playerAnimator.GetCurrentAnimatorStateInfo(0).fullPathHash == downStateValue1 || playerAnimator.GetCurrentAnimatorStateInfo(0).fullPathHash == downStateValue2)
-                {
-                    controller.center = DownPosistion;
-                    controller.height = DownHeight;
-                }
-                else
-                {
-                    if (Time.timeSinceLevelLoad - lastTimeColliderChange > 0.2f)
-                    {
-                        controller.center = StandingPosition;
-                        controller.height = StandingHeight;
-                        lastTimeColliderChange = Time.timeSinceLevelLoad;
+                            break;
+                        default:
+                            break;
                     }
                 }
+
+
+
+
+                //if (playerAnimator.GetCurrentAnimatorStateInfo(0).fullPathHash == downStateValue1 || playerAnimator.GetCurrentAnimatorStateInfo(0).fullPathHash == downStateValue2)
+                //{
+                //    controller.center = DownPosistion;
+                //    controller.height = DownHeight;
+                //}
+                //else
+                //{
+                //    if (Time.timeSinceLevelLoad - lastTimeColliderChange > 0.2f)
+                //    {
+                //        controller.center = StandingPosition;
+                //        controller.height = StandingHeight;
+                //        lastTimeColliderChange = Time.timeSinceLevelLoad;
+                //    }
+                //}
                 break;
 
             case PlayerStates.fly: // under construction after I get the stupid thing running normally
@@ -397,9 +415,8 @@ public class PlayerController : MonoBehaviour
 
     public PlayerLane currentLane;
 
-
+    Vector3 laneVector;
     // Player lane changing here this method is called at fixed update Player state alive 
-    Vector3 valueLane;
     void PlayerLaneChanging() // called from Fixed Update if case PlayerStates.PlayerAlive
     {
         switch (currentLane)
@@ -417,8 +434,8 @@ public class PlayerController : MonoBehaviour
                 targetLanePosition = LanesPositions[3]; // 8
                 break;
         }
-        // calc horiz value to move player on local X axis
-        //valueLane = Vector3.right * targetLanePosition; // this returns a vector3 with targetPosition as th X value. checked it.        
+        lanePosition = Mathf.Lerp(lanePosition, targetLanePosition, 1f);
+        laneVector = new Vector3(lanePosition, 0, 0);
     }
 
     #endregion
@@ -769,6 +786,8 @@ public class PlayerController : MonoBehaviour
         }
         else if (CurrentState != PlayerStates.PlayerDead && CurrentState != PlayerStates.Idle && CurrentState != PlayerStates.empty)
         {
+            handledLaneChange = false;
+
             if (isTurning)
                 return;
             
@@ -798,6 +817,7 @@ public class PlayerController : MonoBehaviour
     //Player Lane changes here to check the right side is any obstacle player hurt count increased
     public void RightSideMoving()
     {
+
         //thisTranfrom.eulerAngles = new Vector3 (0, 0, 0);
         if (ObstacleCheck.CheckRightSide())
         {
@@ -816,6 +836,9 @@ public class PlayerController : MonoBehaviour
         }
         else if (CurrentState != PlayerStates.PlayerDead && CurrentState != PlayerStates.Idle && CurrentState != PlayerStates.empty)
         {
+
+            handledLaneChange = false;
+
             if (isTurning)
                 return;
 
@@ -865,9 +888,12 @@ public class PlayerController : MonoBehaviour
 
     public Transform nextStreetTarget;
     public Transform IntersectionParent;
-    public bool ics  =false;
+    public enum cardinalDir { north, east, south, west }
+    public cardinalDir CardinalDir;
     public void GetNewStreetTarget(IntersectionType i)
     {
+        moveDir = Vector3.zero;
+        moveDir.y = transform.position.y;
         nextStreetTarget = null;
         if (i == IntersectionType.x)
         {
@@ -875,89 +901,78 @@ public class PlayerController : MonoBehaviour
             if (_currentTurnCollider == TurnColliders.EAST && InputController.Static.turnSide == InputController.TurnSide.left)
             {
                 nextStreetTarget = IntersectionParent.FindChild(TurnColliders.SOUTH.ToString());
-                ics = true;
+                CardinalDir = cardinalDir.south;
             }
 
             if (_currentTurnCollider == TurnColliders.EAST && InputController.Static.turnSide == InputController.TurnSide.right)
             {
                 nextStreetTarget = IntersectionParent.FindChild(TurnColliders.NORTH.ToString());
-                ics = true;
+                CardinalDir = cardinalDir.north;
             }
 
 
             if (_currentTurnCollider == TurnColliders.EAST && InputController.Static.turnSide == InputController.TurnSide.none)
             {
                 nextStreetTarget = IntersectionParent.FindChild(TurnColliders.WEST.ToString());
-                ics = false;
+                CardinalDir = cardinalDir.west;
             }
 
 
             if (_currentTurnCollider == TurnColliders.WEST && InputController.Static.turnSide == InputController.TurnSide.left)
             {
                 nextStreetTarget = IntersectionParent.FindChild(TurnColliders.NORTH.ToString());
-                ics = true;
+                CardinalDir = cardinalDir.north;
             }
 
             if (_currentTurnCollider == TurnColliders.WEST && InputController.Static.turnSide == InputController.TurnSide.right)
             {
                nextStreetTarget = IntersectionParent.FindChild(TurnColliders.SOUTH.ToString());
-                ics = true;
+                CardinalDir = cardinalDir.south;
             }
  
             if (_currentTurnCollider == TurnColliders.WEST && InputController.Static.turnSide == InputController.TurnSide.none)
             {
                 nextStreetTarget = IntersectionParent.FindChild(TurnColliders.EAST.ToString());
-                ics = false;
+                CardinalDir = cardinalDir.east;
             }
 
 
             if (_currentTurnCollider == TurnColliders.SOUTH && InputController.Static.turnSide == InputController.TurnSide.left)
             {
                 nextStreetTarget = IntersectionParent.FindChild(TurnColliders.WEST.ToString());
-                ics = false;
+                CardinalDir = cardinalDir.west;
             }
                 
             if (_currentTurnCollider == TurnColliders.SOUTH && InputController.Static.turnSide == InputController.TurnSide.right)
             {
                 nextStreetTarget = IntersectionParent.FindChild(TurnColliders.EAST.ToString());
-                ics = false;
+                CardinalDir = cardinalDir.east;
             }
 
             if (_currentTurnCollider == TurnColliders.SOUTH && InputController.Static.turnSide == InputController.TurnSide.none)
             {
                 nextStreetTarget = IntersectionParent.FindChild(TurnColliders.NORTH.ToString());
-                ics = true;
+                CardinalDir = cardinalDir.north;
             }
 
             if (_currentTurnCollider == TurnColliders.NORTH && InputController.Static.turnSide == InputController.TurnSide.left)
             {
                 nextStreetTarget = IntersectionParent.FindChild(TurnColliders.EAST.ToString());
-                ics = false;
+                CardinalDir = cardinalDir.east;
             }
 
             if (_currentTurnCollider == TurnColliders.NORTH && InputController.Static.turnSide == InputController.TurnSide.right)
             {
                 nextStreetTarget = IntersectionParent.FindChild(TurnColliders.WEST.ToString());
-                ics = false;
+                CardinalDir = cardinalDir.west;
             }
             if (_currentTurnCollider == TurnColliders.NORTH && InputController.Static.turnSide == InputController.TurnSide.none)
             {
                 nextStreetTarget = IntersectionParent.FindChild(TurnColliders.SOUTH.ToString());
-                ics = true;
+                CardinalDir = cardinalDir.south;
             }
 
-        }
-        else if (intersectionType == IntersectionType.y)
-        {
-
-        }
-        else if(intersectionType == IntersectionType.t)
-        {
-
-        }
-
-        //Debug.Log("currentTurnCollider = " + _currentTurnCollider + " and nextStreetTarget is " + nextStreetTarget.name);
-        
+        }        
         IntersectionParent.gameObject.SetActive(false);
         Invoke("ResetTargetTrigger", 3);
         isTurning = true;
@@ -966,7 +981,6 @@ public class PlayerController : MonoBehaviour
 
     float playerRotDiff;
     public Transform currentTurnLaneBlock;
-    Vector3 oldMoveDir;
 
     public void RotatePlayer()  // called from fixed update
     {
@@ -979,26 +993,47 @@ public class PlayerController : MonoBehaviour
 
         if (isTurning)
         {
+            moveDir = Vector3.zero;
             playerRotDiff = Quaternion.Angle(transform.rotation, nextStreetTarget.rotation);
             if (playerRotDiff >= 5)
             {
-                oldMoveDir = moveDirection;
-                moveDirection = Vector3.zero;
-                transform.rotation = Quaternion.Lerp(transform.rotation, nextStreetTarget.rotation, 15f * Time.deltaTime);      
-                if(ics)         
-                    transform.position = Vector3.Lerp(transform.position, new Vector3(nextStreetTarget.position.x + targetLanePosition , transform.position.y, currentTurnLaneBlock.position.z), 0.5f * Time.deltaTime);
-                else
-                    transform.position = Vector3.Lerp(transform.position, new Vector3(currentTurnLaneBlock.position.x, transform.position.y, nextStreetTarget.position.z + targetLanePosition), 0.5f * Time.deltaTime);
+                //oldMoveDir = moveDir;
+                
+                transform.rotation = Quaternion.Lerp(transform.rotation, nextStreetTarget.rotation, 10f * Time.deltaTime);
+                //if (ics)
+                //    transform.position = Vector3.Lerp(transform.position, new Vector3(nextStreetTarget.position.x + targetLanePosition, transform.position.y, currentTurnLaneBlock.position.z), 0.5f * Time.deltaTime);
+                //else
+                //    transform.position = Vector3.Lerp(transform.position, new Vector3(currentTurnLaneBlock.position.x, transform.position.y, nextStreetTarget.position.z + targetLanePosition), 0.5f * Time.deltaTime);
 
             }
             else
             {
-                if (ics)
-                    transform.position = new Vector3(nextStreetTarget.position.x + targetLanePosition, transform.position.y, currentTurnLaneBlock.position.z);
-                else
-                    transform.position = new Vector3(currentTurnLaneBlock.position.x, transform.position.y, nextStreetTarget.position.z + targetLanePosition);
+                switch (CardinalDir)
+                {
+                    case cardinalDir.north:
+                        transform.position = new Vector3(nextStreetTarget.position.x + targetLanePosition, transform.position.y, currentTurnLaneBlock.position.z);
+
+                        break;
+                    case cardinalDir.east:
+                        transform.position = new Vector3(currentTurnLaneBlock.position.x, transform.position.y, nextStreetTarget.position.z - targetLanePosition);
+
+                        break;
+                    case cardinalDir.west:
+                        transform.position = new Vector3(currentTurnLaneBlock.position.x, transform.position.y, nextStreetTarget.position.z + targetLanePosition);
+
+                        break;
+                    case cardinalDir.south:
+                        transform.position = new Vector3(nextStreetTarget.position.x - targetLanePosition, transform.position.y, nextStreetTarget.position.z);
+
+                        break;
+                    default:
+                        break;
+                }
 
                 transform.rotation = nextStreetTarget.rotation;
+                //set new dir
+                //moveDir = oldMoveDir;
+                moveDir = transform.forward;  
                 isTurning = false;
                 
             }
