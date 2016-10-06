@@ -282,20 +282,18 @@ public class PlayerController : MonoBehaviour
                 controller.Move(moveDirection * Time.deltaTime);
                 //transform.Translate(transform.forward * speed *  Time.deltaTime);
 
-                if (ics)
+                if(!isTurning)
                 {
-                    Debug.Log("ics este " + ics);
-                    //move on X
-                    transform.position = new Vector3 (Mathf.Lerp(transform.position.x, targetLanePosition, 0.5f), transform.position.y, transform.position.z);
-                    //rb.MovePosition(new Vector3 (Mathf.Lerp(transform.position.x, targetLanePosition, 0.5f), transform.localPosition.y));
+                    if (ics)
+                    {
+                        rb.MovePosition(new Vector3 (transform.position.x + targetLanePosition, transform.localPosition.y, transform.position.z));
+                    }
+                    else
+                    {
+                        rb.MovePosition(new Vector3(transform.position.x, transform.localPosition.y, transform.position.z - targetLanePosition));
+                    }
                 }
-                else
-                {
-                    Debug.Log("ics este " + ics);
-                    // move on Z
-                    //rb.MovePosition(new Vector3(rb.position.x, rb.position.y, rb.position.x + targetLanePosition));
-                    transform.position = new Vector3(transform.position.x, transform.position.y, Mathf.Lerp(transform.position.x, targetLanePosition, 0.5f));
-                }
+
 
 
 
@@ -420,7 +418,7 @@ public class PlayerController : MonoBehaviour
                 break;
         }
         // calc horiz value to move player on local X axis
-        valueLane = Vector3.right * targetLanePosition; // this returns a vector3 with targetPosition as th X value. checked it.        
+        //valueLane = Vector3.right * targetLanePosition; // this returns a vector3 with targetPosition as th X value. checked it.        
     }
 
     #endregion
@@ -986,12 +984,20 @@ public class PlayerController : MonoBehaviour
             {
                 oldMoveDir = moveDirection;
                 moveDirection = Vector3.zero;
-                transform.rotation = Quaternion.Lerp(transform.rotation, nextStreetTarget.rotation, 15f * Time.deltaTime);               
-                transform.position = Vector3.Lerp(transform.position, new Vector3(currentTurnLaneBlock.position.x, transform.position.y, currentTurnLaneBlock.position.z), 0.5f * Time.deltaTime);
+                transform.rotation = Quaternion.Lerp(transform.rotation, nextStreetTarget.rotation, 15f * Time.deltaTime);      
+                if(ics)         
+                    transform.position = Vector3.Lerp(transform.position, new Vector3(nextStreetTarget.position.x + targetLanePosition , transform.position.y, currentTurnLaneBlock.position.z), 0.5f * Time.deltaTime);
+                else
+                    transform.position = Vector3.Lerp(transform.position, new Vector3(currentTurnLaneBlock.position.x, transform.position.y, nextStreetTarget.position.z + targetLanePosition), 0.5f * Time.deltaTime);
+
             }
             else
             {
-                transform.position = new Vector3(currentTurnLaneBlock.position.x, transform.position.y, currentTurnLaneBlock.position.z);
+                if (ics)
+                    transform.position = new Vector3(nextStreetTarget.position.x + targetLanePosition, transform.position.y, currentTurnLaneBlock.position.z);
+                else
+                    transform.position = new Vector3(currentTurnLaneBlock.position.x, transform.position.y, nextStreetTarget.position.z + targetLanePosition);
+
                 transform.rotation = nextStreetTarget.rotation;
                 isTurning = false;
                 
