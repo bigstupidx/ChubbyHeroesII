@@ -104,7 +104,7 @@ public class CollisionChecker : MonoBehaviour
                         break;
                 }
 
-                Debug.Log(colNumber);
+                //Debug.Log(colNumber);
             }
 
             if (turnOnce && (InputController.Static.turnSide == InputController.TurnSide.right))

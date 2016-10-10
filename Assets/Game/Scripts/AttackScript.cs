@@ -24,7 +24,7 @@ public class AttackScript : MonoBehaviour {
         if (Time.timeScale != 1)
             return;
 
-        if ((playerScript.CurrentState == PlayerStates.PlayerAlive || playerScript.CurrentState == PlayerStates.powerJump) && currentTarget != null)
+        if ((playerScript.CurrentState == PlayerStates.PlayerRunning || playerScript.CurrentState == PlayerStates.powerJump) && currentTarget != null)
         {
             // really shoot a bullet
             playerScript.playerAnimator.SetTrigger("attack");

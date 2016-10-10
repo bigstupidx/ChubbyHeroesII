@@ -184,7 +184,7 @@ public class InputController : MonoBehaviour
 	// when down Arrow pressed slide and roll 
 	public void RollPlayer ()
 	{
-		if (playerScript.CurrentState == PlayerStates.PlayerAlive || playerScript.CurrentState == PlayerStates.powerJump) {
+		if (playerScript.CurrentState == PlayerStates.PlayerRunning || playerScript.CurrentState == PlayerStates.powerJump) {
 				PlayerPrefs.SetInt ("MissionRoll/SlideCount", PlayerPrefs.GetInt ("MissionRoll/SlideCount") - 1);
 				playerScript.Slide_Roll ();
 				isDown = false;

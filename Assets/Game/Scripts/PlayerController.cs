@@ -7,7 +7,7 @@ using System;
 public enum PlayerStates
 {
 	
-	PlayerAlive,
+	PlayerRunning,
 	PlayerDead,
 	fly,
 	powerJump,
@@ -30,7 +30,7 @@ public class PlayerController : MonoBehaviour
         WEST
     }
 
-    public TurnColliders _currentTurnCollider, _targetCollider;
+    public TurnColliders _currentTurnCollider;
 
     public enum IntersectionType
     {
@@ -97,10 +97,10 @@ public class PlayerController : MonoBehaviour
         turnTarget;
     public PlayerObstacleCheck ObstacleCheck;
 
-    public bool canTurn;
+    //public bool canTurn;
     public bool isTurning;
-    public bool canRegisterTurn;
-    public bool canChangeLane = true;
+    //public bool canRegisterTurn;
+    //public bool canChangeLane = true;
 
     private float 
         presentSpeed,
@@ -226,30 +226,24 @@ public class PlayerController : MonoBehaviour
 
         if (GameController.Static.isGamePaused)
             return;
-        
 
+        
 
         switch (CurrentState)
         {
             // player in normal mode....................................................
-            case PlayerStates.PlayerAlive:
+            case PlayerStates.PlayerRunning:
                 InputController.Static.takeInput = true;
                 isPlayerDead = false;
                 speed = Mathf.Lerp(speed, TopSpeed, increaseSpeedTime);
                 presentSpeed = speed;
                 isPlayerOnGround();
 
-                if (transform.position.y < 1)
-                    Grounded = true;
-
                 RotatePlayer();
                 PlayerLaneChanging();
 
-                //moveDir *= speed;
-
                 if (controller.isGrounded)
                 {
-                    Debug.Log("GR");
                     GameController.Static.stopCreatingObstacles = false;
 
                     if (doubleJump || (playerAnimator.GetCurrentAnimatorStateInfo(0).fullPathHash == runState && InputController.Static.isJump))
@@ -332,22 +326,44 @@ public class PlayerController : MonoBehaviour
                 break;
 
             case PlayerStates.fly: // under construction after I get the stupid thing running normally
-
-                PlayerCamera.Static.currentCam = PlayerCamera.Cam.flyModeCam;
+                //PlayerCamera.Static.currentCam = PlayerCamera.Cam.flyModeCam;
+                RotatePlayer();
                 PlayerLaneChanging();
-                speed = 18;
-                flyHeight = Mathf.Lerp(flyHeight, 19, flySpeed);
-                moveDirection = transform.forward;
-                moveDirection = transform.TransformDirection(moveDirection);
-                moveDirection *= speed;
-                controller.Move(moveDirection * Time.deltaTime);
-                //thisTranfrom.rotation = Quaternion.Euler(0, lanePosition * tilt, 0);
-                //thisTranfrom.position = new Vector3(lanePosition, flyHeight, thisTranfrom.position.z);
-                if (flyHeight > 10)
+                speed = 25;
+                flyHeight = Mathf.Lerp(flyHeight, 15, flySpeed);
+                if (flyHeight > 5)
                 {
                     playerAnimator.SetTrigger("JetPackFly");
                 }
-                //Invoke ("PlayerStateChange", 10.0f);
+
+
+                controller.Move(moveDir * speed * Time.deltaTime);
+                transform.position = new Vector3(transform.position.x, flyHeight, transform.position.z);
+
+
+                if (!isTurning)
+                {
+                    switch (CardinalDir)
+                    {
+                        case cardinalDir.north:
+                            transform.position = Vector3.Lerp(transform.position, new Vector3(nextStreetTarget.position.x + targetLanePosition, transform.position.y, transform.position.z), 0.3f);
+                            break;
+                        case cardinalDir.east:
+                            transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, transform.position.y , nextStreetTarget.position.z - targetLanePosition), 0.3f);
+
+                            break;
+                        case cardinalDir.south:
+                            transform.position = Vector3.Lerp(transform.position, new Vector3(nextStreetTarget.position.x - targetLanePosition, transform.position.y , transform.position.z), 0.3f);
+
+                            break;
+                        case cardinalDir.west:
+                            transform.position = Vector3.Lerp(transform.position, new Vector3(transform.position.x, transform.position.y, nextStreetTarget.position.z + targetLanePosition), 0.3f);
+
+                            break;
+                        default:
+                            break;
+                    }
+                }
                 break;
 
             case PlayerStates.PlayerDead:
@@ -382,14 +398,14 @@ public class PlayerController : MonoBehaviour
 
     public void JetPackPowerReset()
     {
-        PlayerCamera.Static.currentCam = PlayerCamera.Cam.NormalCam;
+        //PlayerCamera.Static.currentCam = PlayerCamera.Cam.NormalCam;
         GameUIController.Static.playerInFlyIndicator.SetActive(false);
         GameUIController.Static.progressBarScript.flyModeProgressBar.fillAmount = 1;// to reset fill amount here
         isFlyModeIndicator = false;
         playerAnimator.SetTrigger("JetPackLand");
         powerObj_JetPack.SetActive(false);
         SoundController.Static.jetPackSound.volume = 0f;
-        CurrentState = PlayerStates.PlayerAlive;
+        CurrentState = PlayerStates.PlayerRunning;
         speed = presentSpeed;
         ObstacleGenerator.Static.resetObstacles();
         if (DestroyUpCoins != null)
@@ -461,7 +477,7 @@ public class PlayerController : MonoBehaviour
         GameUIController.Static.UpdateHearts(playeHurtCount);
         //PlayerEnemyController.Static.ResetToChase ();
         playerAnimator.SetTrigger("Run");
-        CurrentState = PlayerStates.PlayerAlive;
+        CurrentState = PlayerStates.PlayerRunning;
         GameObject.FindGameObjectWithTag("GameController").GetComponent<curverSetter>().enabled = true;
         GameController.Static.OnGameStart();
         GameUIController.isGameEnd = false;
@@ -568,10 +584,10 @@ public class PlayerController : MonoBehaviour
             powerObj_JetPack.SetActive(true);
             PlayerPrefs.SetInt("MissionFlyPowerCount", PlayerPrefs.GetInt("MissionFlyPowerCount") - 1);
             GameObject[] Obj = GameObject.FindGameObjectsWithTag("Destroy");
-            for (int i = 0; i <= Obj.Length - 1; i++)
-            {
-                Destroy(Obj[i], 1.0f);
-            }
+            //for (int i = 0; i <= Obj.Length - 1; i++)
+            //{
+            //    Destroy(Obj[i], 1.0f);
+            //}
             GameUIController.Static.playerInFlyIndicator.SetActive(true);
             isFlyModeIndicator = true;
             playerAnimator.SetTrigger("JetPackJump");
@@ -676,7 +692,7 @@ public class PlayerController : MonoBehaviour
                 SoundController.Static.playSoundFromName("jumpTrigger");
             }
         }
-        else if (incomingTag.Contains("Obstacle") && (CurrentState == PlayerStates.PlayerAlive || CurrentState == PlayerStates.powerJump || CurrentState == PlayerStates.fly))
+        else if (incomingTag.Contains("Obstacle") && (CurrentState == PlayerStates.PlayerRunning || CurrentState == PlayerStates.powerJump || CurrentState == PlayerStates.fly))
         {
 
             //this is to to avoid collision caliculation when he is double jump mode
@@ -997,14 +1013,7 @@ public class PlayerController : MonoBehaviour
             playerRotDiff = Quaternion.Angle(transform.rotation, nextStreetTarget.rotation);
             if (playerRotDiff >= 5)
             {
-                //oldMoveDir = moveDir;
-                
                 transform.rotation = Quaternion.Lerp(transform.rotation, nextStreetTarget.rotation, 10f * Time.deltaTime);
-                //if (ics)
-                //    transform.position = Vector3.Lerp(transform.position, new Vector3(nextStreetTarget.position.x + targetLanePosition, transform.position.y, currentTurnLaneBlock.position.z), 0.5f * Time.deltaTime);
-                //else
-                //    transform.position = Vector3.Lerp(transform.position, new Vector3(currentTurnLaneBlock.position.x, transform.position.y, nextStreetTarget.position.z + targetLanePosition), 0.5f * Time.deltaTime);
-
             }
             else
             {
@@ -1031,8 +1040,6 @@ public class PlayerController : MonoBehaviour
                 }
 
                 transform.rotation = nextStreetTarget.rotation;
-                //set new dir
-                //moveDir = oldMoveDir;
                 moveDir = transform.forward;  
                 isTurning = false;
                 

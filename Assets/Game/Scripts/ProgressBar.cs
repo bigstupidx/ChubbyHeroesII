@@ -45,16 +45,16 @@ public class ProgressBar : MonoBehaviour {
 			}
 		}
 
-		else if(playerScript.isFlyModeIndicator)
-		{
-			flyModeProgressBar.fillAmount -=(float) 1/(JetpackValue  *500 );
-			if(flyModeProgressBar.fillAmount==0)
-			{
-				playerScript.JetPackPowerReset();
-			}
-			
-		}
-		else if(playerScript.isJumpModeIndicator)
+        else if (playerScript.isFlyModeIndicator)
+        {
+            flyModeProgressBar.fillAmount -= (float)1 / (JetpackValue * 500);
+            if (flyModeProgressBar.fillAmount == 0)
+            {
+                playerScript.JetPackPowerReset();
+            }
+
+        }
+        else if(playerScript.isJumpModeIndicator)
 		{
             //Debug.Log(PlayerPrefs.GetInt("JumpPower_Ingame"));
 			jumpModeProgressbar.fillAmount -= (float) 1/( DoubleJumpValue   *500);
