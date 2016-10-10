@@ -245,7 +245,7 @@ public class PlayerController : MonoBehaviour
                 if (controller.isGrounded)
                 {
                     GameController.Static.stopCreatingObstacles = false;
-
+                    //Debug.Log("GROUNDED");
                     if (doubleJump || (playerAnimator.GetCurrentAnimatorStateInfo(0).fullPathHash == runState && InputController.Static.isJump))
                     {
                         if (normalJump)
@@ -274,10 +274,17 @@ public class PlayerController : MonoBehaviour
                             InputController.Static.isJump = false;
                         }
                         moveDir.y = jumpSpeed;
+
                     }
 
                 }
-                moveDir.y -= (gravity * Time.deltaTime);
+
+                if(moveDir.y > -2f)
+                {
+                    moveDir.y -= (gravity * Time.deltaTime);
+                }
+
+                //Debug.Log("Movedir Y is " + moveDir.y);
                 controller.Move(moveDir * speed * Time.deltaTime);
                 //transform.Translate(moveDir * speed * Time.deltaTime);
 
