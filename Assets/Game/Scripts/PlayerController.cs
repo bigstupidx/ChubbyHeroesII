@@ -276,7 +276,7 @@ public class PlayerController : MonoBehaviour
                             playerAnimator.SetTrigger("Jump");
                             PlayJumpSound();
                             PlayerPrefs.SetInt("MissionJumpCount", PlayerPrefs.GetInt("MissionJumpCount", 0) - 1);
-                            jumpSpeed = speed/3;
+                            jumpSpeed = 3f;
                             InputController.Static.isJump = false;
                         }
                         moveDir.y = jumpSpeed;
